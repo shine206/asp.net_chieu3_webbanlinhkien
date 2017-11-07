@@ -1,0 +1,11 @@
+Description_database_web
+Table:
+	1. Products (id <auto increment> : int, name:string, price: float, link_main_image: string, status: string, details: Details)
+	2. Images (id: int, id_product: int, link_sub_image: string)
+	3. GroupCategories (id: int, name: string, category: Category)
+	4. Category(id: int, name: string)
+	5. Details (id: int, id_product: int, description: string, content: string, date_create: date)
+	6. Users (id, username, email, address, fullname, birthday, avatar, phone_number)
+	7. Orders (id, id_user<is_null>, id_product, date, id_order, status)
+	8. OrderDetail (id, quantity, total_money, date_order, payment_method, is_coupon:boolean)
+	9. Favorites (id: int, id_products, id_user)
