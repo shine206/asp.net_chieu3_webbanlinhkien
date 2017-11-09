@@ -1,0 +1,22 @@
+* Front end 
+	- Hiển thị thông tin sản phẩm lên trang chủ (bao gồm hiển thị banner, sản phẩm đang sale)
+	- Search thông tin sản phẩm
+	- Hiển thị thông tin sản phẩm theo danh mục
+	- Liên hệ (hiển thị địa chỉ , google map, thông tin thanh toán, ....)
+	- Giỏ hàng
+		+ Thêm sản phẩm vào giỏ hàng
+		+ Cập nhật, xóa, giỏ hàng
+		+ Cho phép nhập mã khuyến mãi
+	- Thanh toán, giao hàng (Có 2 loại, tài khoản khách hoặc tài khoản thành viên)
+		+ Chọn phương thức thanh toán
+		+ Chọn phương thức vận chuyển
+		+ Sau khi thanh toán gửi mail để xác nhận thanh toán
+	- Tài khoản người dùng
+		+ Đăng nhập, đăng ký
+		+ Cập nhật thông tin thanh toán
+
+* Backend
+	- Đăng nhập tài khoản người quản trị 
+	- Tài khoản quản trị có quyền thêm, xóa, sửa, quản lý bình luận, user
+	- Quản lý đơn hàng 
+	- Quản lý danh mục
