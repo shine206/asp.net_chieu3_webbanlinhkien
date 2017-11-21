@@ -26,7 +26,7 @@ CREATE TABLE Images(
 	updated_at DATETIME NULL DEFAULT NULL
 )
 
-CREATE TABLE banners (
+CREATE TABLE Banners (
   id_banner int PRIMARY KEY IDENTITY NOT NULL,
   name nvarchar(255) NOT NULL,
   url text NOT NULL,
