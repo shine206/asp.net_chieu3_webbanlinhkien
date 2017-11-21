@@ -5,6 +5,7 @@ GO
 
 CREATE TABLE Products(
 	id_product INTEGER PRIMARY KEY IDENTITY NOT NULL,
+	id_category INT,
 	name NVARCHAR(100),
 	price FLOAT,
 	status INT,
@@ -115,3 +116,6 @@ ALTER TABLE GroupCategories
 	
 ALTER TABLE Images
 	add constraint fk_image_id FOREIGN KEY (id_product) REFERENCES Products(id_product)
+	
+ALTER TABLE	Products
+	add constraint fk_product_category_id FOREIGN KEY (id_category) REFERENCES Category(id_category)
