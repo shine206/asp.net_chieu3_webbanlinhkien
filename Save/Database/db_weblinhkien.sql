@@ -5,8 +5,8 @@ GO
 
 CREATE TABLE Products(
 	id_product INTEGER PRIMARY KEY IDENTITY NOT NULL,
-	id_category INT,
-	name NVARCHAR(100),
+	id_category INT NOT NULL,
+	name NVARCHAR(100) NOT NULL,
 	price FLOAT,
 	status INT,
 	promotion VARCHAR(255),
@@ -20,17 +20,17 @@ CREATE TABLE Products(
 
 CREATE TABLE Images(
 	id_image INT PRIMARY KEY IDENTITY NOT NULL,
-	id_product INT,
+	id_product INT NOT NULL,
 	link_image TEXT,
 	created_at DATETIME NULL DEFAULT NULL,
 	updated_at DATETIME NULL DEFAULT NULL
 )
 
 CREATE TABLE Banners (
-  id_banner int PRIMARY KEY IDENTITY NOT NULL,
-  name nvarchar(255) NOT NULL,
-  url text NOT NULL,
-  url_banner text NOT NULL,
+  id_banner INT PRIMARY KEY IDENTITY NOT NULL,
+  name NVARCHAR(255) NOT NULL,
+  url TEXT NOT NULL,
+  url_banner TEXT NOT NULL,
   created_at DATETIME NULL DEFAULT NULL,
   updated_at DATETIME NULL DEFAULT NULL
 )
@@ -38,7 +38,7 @@ CREATE TABLE Banners (
 CREATE TABLE GroupCategories(
 	id_group_category INT PRIMARY KEY IDENTITY NOT NULL,
 	name NVARCHAR(50),
-	id_category INT,
+	id_category INT NOT NULL,
 	created_at DATETIME NULL DEFAULT NULL,
 	updated_at DATETIME NULL DEFAULT NULL
 )
@@ -52,10 +52,10 @@ CREATE TABLE Category(
 
 CREATE TABLE Admin_Users(
 	id_admin_user INT PRIMARY KEY IDENTITY NOT NULL,
-	username VARCHAR(20) NOT NULL,
+	username VARCHAR(20) UNIQUE NOT NULL,
 	password varchar(30) NOT NULL,
-	fullname NVARCHAR(50),
-	email VARCHAR(255) UNIQUE,
+	fullname NVARCHAR(50) NOT NULL,
+	email VARCHAR(255) UNIQUE NOT NULL,
 	address TEXT,
 	phone_number INT,
 	role varchar(255) NOT NULL,
@@ -66,9 +66,9 @@ CREATE TABLE Admin_Users(
 
 CREATE TABLE Users (
   id_user INT PRIMARY KEY IDENTITY NOT NULL,
-  username NVARCHAR(20) NOT NULL,
+  username NVARCHAR(20) UNIQUE NOT NULL,
   password varchar(30) NOT NULL,
-  fullname NVARCHAR(50),
+  fullname NVARCHAR(50) NOT NULL,
   email varchar(255) UNIQUE NOT NULL,
   address TEXT,
   phone INT,
@@ -81,7 +81,7 @@ CREATE TABLE Users (
 CREATE TABLE Orders(
 	id_order INT NOT NULL,
 	id_order_detail INT NOT NULL,
-	id_user INT,
+	id_user INT NOT NULL,
 	status INT,
 	payment_method INT,
 	coupon VARCHAR(6),
