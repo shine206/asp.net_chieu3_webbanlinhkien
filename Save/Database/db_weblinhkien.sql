@@ -53,11 +53,11 @@ CREATE TABLE Category(
 CREATE TABLE Admin_Users(
 	id_admin_user INT PRIMARY KEY IDENTITY NOT NULL,
 	username VARCHAR(20) UNIQUE NOT NULL,
-	password varchar(30) NOT NULL,
+	password varchar(50) NOT NULL,
 	fullname NVARCHAR(50) NOT NULL,
 	email VARCHAR(255) UNIQUE NOT NULL,
 	address TEXT,
-	phone_number INT,
+	phone TEXT,
 	role varchar(255) NOT NULL,
 	created_at DATETIME NULL DEFAULT NULL,
 	updated_at DATETIME NULL DEFAULT NULL
@@ -67,11 +67,11 @@ CREATE TABLE Admin_Users(
 CREATE TABLE Users (
   id_user INT PRIMARY KEY IDENTITY NOT NULL,
   username NVARCHAR(20) UNIQUE NOT NULL,
-  password varchar(30) NOT NULL,
+  password varchar(50) NOT NULL,
   fullname NVARCHAR(50) NOT NULL,
   email varchar(255) UNIQUE NOT NULL,
   address TEXT,
-  phone INT,
+  phone TEXT,
   created_at DATETIME NULL DEFAULT NULL,
   updated_at DATETIME NULL DEFAULT NULL
 )
@@ -119,3 +119,53 @@ ALTER TABLE Images
 	
 ALTER TABLE	Products
 	add constraint fk_product_category_id FOREIGN KEY (id_category) REFERENCES Category(id_category)
+
+create procedure loginByUserAdmin
+	@username varchar(20),
+	@password varchar(50)
+as
+begin
+	select * from Admin_Users where username=@username and password=@password	
+end
+
+create procedure loginByUser
+	@username varchar(20),
+	@password varchar(50)
+as
+begin
+	select * from Users where username=@username and password=@password	
+end
+
+create procedure addNewUserAdmin
+	@username varchar(20),
+	@password varchar(50),
+	@fullname nvarchar(50),
+	@email varchar(255),
+	@address text,
+	@phone text,
+	@role varchar(255),
+	@created_at datetime,
+	@updated_at datetime
+as
+begin
+	insert into Admin_Users(username, password, fullname, email, address, phone, role, created_at, updated_at)
+	values(@username, @password, @fullname, @email, @address, @phone, @role, @created_at, @updated_at);
+end
+
+create procedure addNewUser
+	@username varchar(20),
+	@password varchar(50),
+	@fullname nvarchar(50),
+	@email varchar(255),
+	@address text,
+	@phone text,
+	@created_at datetime,
+	@updated_at datetime
+as
+begin
+	insert into Admin_Users(username, password, fullname, email, address, phone, created_at, updated_at)
+	values(@username, @password, @fullname, @email, @address, @phone, @created_at, @updated_at);
+end
+
+
+--exec loginByUser 'admin', '21232f297a57a5a743894a0e4a801fc3'

@@ -127,6 +127,29 @@
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
+    <Content Include="Admin\Content\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="Admin\Content\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="Admin\Content\bootstrap\css\bootstrap.css" />
+    <Content Include="Admin\Content\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Admin\Content\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Admin\Content\bootstrap\js\bootstrap.js" />
+    <Content Include="Admin\Content\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Admin\Content\css\buttons.css" />
+    <Content Include="Admin\Content\css\calendar.css" />
+    <Content Include="Admin\Content\css\forms.css" />
+    <Content Include="Admin\Content\css\stats.css" />
+    <Content Include="Admin\Content\css\styles.css" />
+    <Content Include="Admin\Content\images\facebook.png" />
+    <Content Include="Admin\Content\js\calendar.js" />
+    <Content Include="Admin\Content\js\custom.js" />
+    <Content Include="Admin\Content\js\editors.js" />
+    <Content Include="Admin\Content\js\forms.js" />
+    <Content Include="Admin\Content\js\stats.js" />
+    <Content Include="Admin\Content\js\tables.js" />
+    <Content Include="Admin\Content\js\users.js" />
+    <Content Include="Admin\Dashboard.aspx" />
+    <Content Include="Admin\Login.aspx" />
+    <Content Include="Admin\Users.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\contact.css" />
@@ -305,7 +328,6 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
-    <Content Include="Header.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
@@ -349,6 +371,10 @@
     <Content Include="Content\fonts\Roboto-Regular.ttf" />
     <Content Include="Content\fonts\Roboto-Thin.ttf" />
     <Content Include="Content\fonts\Roboto-ThinItalic.ttf" />
+    <Content Include="Admin\Admin.Master" />
+    <Content Include="Admin\Content\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Admin\Content\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Admin\Content\bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -384,6 +410,34 @@
     <Content Include="Bundle.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\Admin.Master.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Admin.Master.designer.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Users.aspx.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Users.aspx.designer.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="About.aspx.cs">
@@ -442,15 +496,9 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Function.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Header.aspx.cs">
-      <DependentUpon>Header.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Header.aspx.designer.cs">
-      <DependentUpon>Header.aspx</DependentUpon>
     </Compile>
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
