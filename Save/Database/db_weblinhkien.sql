@@ -3,6 +3,38 @@ GO
 USE db_weblinhkien;
 GO
 
+CREATE TABLE GroupCategories(
+	id_group_category INT PRIMARY KEY IDENTITY NOT NULL,
+	name NVARCHAR(50),
+	created_at DATETIME NULL DEFAULT NULL,
+	updated_at DATETIME NULL DEFAULT NULL
+)
+INSERT INTO GroupCategories (id_group_category, name, created_at, updated_at) VALUES
+(1, 'USB - THẺ NHỚ', NULL, NULL),
+(2, 'Ổ CỨNG', NULL, NULL),
+(3, 'THIẾT BỊ MẠNG', NULL, NULL),
+(4, 'RAM', NULL, NULL),
+(5, 'MÀN HÌNH', NULL, NULL),
+(6, 'MAINBOARD', NULL, NULL),
+(7, 'LINH KIỆN', NULL, NULL)
+
+CREATE TABLE Category(
+	id_category INT PRIMARY KEY IDENTITY NOT NULL,
+	id_group_category INT NOT NULL,
+	name NVARCHAR(50),
+	created_at DATETIME NULL DEFAULT NULL,
+	updated_at DATETIME NULL DEFAULT NULL
+)
+
+INSERT INTO Category (id_category, name, created_at, updated_at) VALUES
+(1, 7, 'Chuột', NULL, NULL),
+(2, 7, 'Bàn phím', NULL, NULL),
+(3, 1, 'USB', NULL, NULL),
+(4, 5, 'Màn Hình', NULL, NULL),
+(5, 1, 'Thẻ nhớ', NULL, NULL),
+(6, 2, 'HDD', NULL, NULL),
+(7, 2, 'SSD', NULL, NULL)
+
 CREATE TABLE Products(
 	id_product INTEGER PRIMARY KEY IDENTITY NOT NULL,
 	id_category INT NOT NULL,
@@ -53,38 +85,6 @@ CREATE TABLE Banners (
   created_at DATETIME NULL DEFAULT NULL,
   updated_at DATETIME NULL DEFAULT NULL
 )
-
-CREATE TABLE GroupCategories(
-	id_group_category INT PRIMARY KEY IDENTITY NOT NULL,
-	name NVARCHAR(50),
-	created_at DATETIME NULL DEFAULT NULL,
-	updated_at DATETIME NULL DEFAULT NULL
-)
-INSERT INTO GroupCategories (id_group_category, name, created_at, updated_at) VALUES
-(1, 'USB - THẺ NHỚ', NULL, NULL),
-(2, 'Ổ CỨNG', NULL, NULL),
-(3, 'THIẾT BỊ MẠNG', NULL, NULL),
-(4, 'RAM', NULL, NULL),
-(5, 'MÀN HÌNH', NULL, NULL),
-(6, 'MAINBOARD', NULL, NULL),
-(7, 'LINH KIỆN', NULL, NULL)
-
-CREATE TABLE Category(
-	id_category INT PRIMARY KEY IDENTITY NOT NULL,
-	id_group_category INT NOT NULL,
-	name NVARCHAR(50),
-	created_at DATETIME NULL DEFAULT NULL,
-	updated_at DATETIME NULL DEFAULT NULL
-)
-
-INSERT INTO Category (id_category, name, created_at, updated_at) VALUES
-(1, 7, 'Chuột', NULL, NULL),
-(2, 7, 'Bàn phím', NULL, NULL),
-(3, 1, 'USB', NULL, NULL),
-(4, 5, 'Màn Hình', NULL, NULL),
-(5, 1, 'Thẻ nhớ', NULL, NULL),
-(6, 2, 'HDD', NULL, NULL),
-(7, 2, 'SSD', NULL, NULL)
 
 CREATE TABLE Admin_Users(
 	id_admin_user INT PRIMARY KEY IDENTITY NOT NULL,
