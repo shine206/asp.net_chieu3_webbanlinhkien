@@ -5,10 +5,17 @@
         <div class="col-md-12">
             <div class="table-users">
                 <div class="panel panel-primary">
-                    <div class="panel-heading">Danh sách thành viên</div>
+                    <div class="panel-heading">
+                        <strong>Danh sách thành viên</strong>
+                        <div class="pull-right">
+                        <a href="Users.aspx?action=add" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Thêm thành viên</a>
+                            
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-md-3">
+                            <%--<div class="col-md-3">
                                 <div class="input-group">
                                     <asp:TextBox runat="server" CssClass="form-control" TextMode="Number" Text="10" />
                                     <span class="input-group-addon">dòng cho mỗi trang</span>
@@ -31,10 +38,16 @@
                                     <asp:ListItem Text="Sắp xếp theo ID" />
                                 </asp:DropDownList>
 
+                            </div>--%>
+
+                            <div class="col-md-3">
+                                
                             </div>
                         </div>
                         <br />
-                        <table class="table table-hover" id="task-table">
+                        <asp:PlaceHolder runat="server" ID="tableContent" />
+                        
+                        <%--<table class="table table-hover" id="task-table">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -57,7 +70,18 @@
                                     <td></td>
                                 </tr>
                             </tbody>
-                        </table>
+                        </table>--%>
+                        <%--<div class="row">
+                            <div class="col-md-6 pull-left">
+                                <ul class="pagination pull-left" style="margin:0;">
+                                    <li><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                </ul>
+                            </div>
+                        </div>--%>
                     </div>
                 </div>
 
