@@ -183,12 +183,12 @@ INSERT INTO Orders (id_order, id_order_detail, id_user, status, payment_method, 
 (1, 2, 1, null, NULL, NULL, NULL, null),
 (2, 3, 2, null, NULL, NULL, NULL, null)
 
-select * from Images;
-select * from Admin_Users;
-select * from Banners;
-select * from Category;
-select * from GroupCategories;
-select * from Products;
-select * from Users;
-select * from OrderDetail;
-select * from Orders;
+--select * from Images;
+--select * from Admin_Users;
+--select * from Banners;
+--select * from Category;
+--select * from GroupCategories;
+--select * from Products;
+--select * from Users;
+--select * from OrderDetail;
+--select * from Orders;
