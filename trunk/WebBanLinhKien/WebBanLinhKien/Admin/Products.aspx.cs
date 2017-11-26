@@ -13,9 +13,33 @@ namespace WebBanLinhKien.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Request.QueryString["action"] != null)
+            {
+                string action = Request.QueryString["action"].ToString();
+                if (action == "add")
+                {
+                    pnAddNew.Visible = true;
+                    pnTable.Visible = false;
+                    LoadCategories();
+                }
+                else
+                {
+                    LoadListProductsToTable();
+                }
+            }
+            else
             {
                 LoadListProductsToTable();
+            }
+        }
+
+        private void LoadCategories()
+        {
+            ConnectDB db = new ConnectDB();
+            DataTable dt = db.getAllCategories();
+            foreach (DataRow row in dt.Rows)    
+            {
+                ddlDanhMucSanPham.Items.Add(new ListItem(row["name"].ToString(), row["id_category"].ToString()));
             }
         }
 
@@ -29,22 +53,44 @@ namespace WebBanLinhKien.Admin
             {
                 html.Append("<tr>");
                 html.Append("<td>" + row["id_product"] + "</td>");
-                html.Append("<td>" + row["id_category"] + "</td>");
+                html.Append("<td>" + row["category"] + "</td>");
                 html.Append("<td>" + row["name"] + "</td>");
                 html.Append("<td>" + row["price"] + "</td>");
                 html.Append("<td>" + row["status"] + "</td>");
+                html.Append("<td>" + row["tag"] + "</td>");
                 html.Append("<td>" + row["promotion"] + "</td>");
                 html.Append("<td>" + row["details"] + "</td>");
                 html.Append("<td>" + row["description"] + "</td>");
                 html.Append("<td>" + row["content"] + "</td>");
                 html.Append("<td>");
-                html.Append("<a href='Users.aspx?action=edit&id=" + row["ID"] + "' class='btn btn-primary btn-sm'>Sửa</a><span style='margin-left:10px;'></span>");
-                html.Append("<a href='Users.aspx?action=delete&id=" + row["ID"] + "' class='btn btn-danger btn-sm'>Xóa</a>");
+                html.Append("<a href='Products.aspx?action=edit&id=" + row["id_product"] + "' class='btn btn-primary btn-sm'>Sửa</a><span style='margin-left:10px;'></span>");
+                html.Append("<a href='Products.aspx?action=delete&id=" + row["id_product"] + "' class='btn btn-danger btn-sm'>Xóa</a>");
                 html.Append("</td>");
                 html.Append("</tr>");
             }
 
             tableContent.Controls.Add(new Literal { Text = html.ToString() });
+        }
+
+        private void addNewProduct()
+        {
+            ConnectDB db = new ConnectDB();
+            int id = Convert.ToInt32(ddlDanhMucSanPham.SelectedValue);
+            string name = txtTenSp.Text.ToString();
+            int price = Convert.ToInt32(txtGiaSp.Text);
+            bool isSuccess = db.addNewProduct(id, name, price);
+            if (isSuccess)
+            {
+                Response.Write("OK");
+            }
+            else {
+                Response.Write("ERROR");
+            }
+        }
+
+        protected void btnThemSanPham_Click(object sender, EventArgs e)
+        {
+            addNewProduct();
         }
     }
 }

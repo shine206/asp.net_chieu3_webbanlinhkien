@@ -286,6 +286,43 @@ begin
 	select * from Admin_Users where username=@username and password=@password	
 end
 
+--Get all products
+GO
+create procedure getAllProducts
+as
+begin
+	select Products.id_product, Category.name as category, Products.name, price, status, promotion, tag, details, description, content 
+	from Products, Category 
+	where Products.id_category=Category.id_category
+end
+
+GO
+--Get all categories
+create procedure getAllCategories
+as
+begin
+	select * from Category
+end
+
+--Add new product
+GO
+create procedure addNewProduct
+	@id_category int,
+	@name nvarchar(100),
+	@price float,
+	@status int,
+	@promotion nvarchar(255),
+	@tag nvarchar(255),
+	@details ntext,
+	@description ntext,
+	@content ntext,
+	@created_at datetime,
+	@updated_at datetime
+as
+begin
+	insert into Products(id_category, name, price, status, promotion, tag, details, description, content, created_at, updated_at)
+	values(@id_category, @name, @price, @status, @promotion, @tag, @details, @description, @content, @created_at, @updated_at);
+end
 
 --select * from Images;
 --select * from Admin_Users;

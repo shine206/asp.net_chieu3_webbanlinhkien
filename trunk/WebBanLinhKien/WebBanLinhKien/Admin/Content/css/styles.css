@@ -650,3 +650,10 @@ body {
       border-radius:10px;
    }  
 }
+
+
+.err-message {
+    color: red;
+    margin-top: 9px;
+    display: block;
+}
