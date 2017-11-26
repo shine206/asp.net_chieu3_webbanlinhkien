@@ -53,5 +53,25 @@ namespace WebBanLinhKien
             }
             return result;
         }
+
+        public DataTable getAllProducts()
+        {
+
+            DataTable result = new DataTable();
+            try
+            {
+                connect();
+                SqlCommand cmd = new SqlCommand("getAllProducts", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataReader rd = cmd.ExecuteReader();
+                result.Load(rd);
+            }
+            finally
+            {
+                result.Dispose();
+                disconnect();
+            }
+            return result;
+        }
     }
 }

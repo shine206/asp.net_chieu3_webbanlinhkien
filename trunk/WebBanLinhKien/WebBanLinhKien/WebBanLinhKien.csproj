@@ -127,6 +127,7 @@
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
+    <Content Include="Admin\Categories.aspx" />
     <Content Include="Admin\Content\bootstrap\css\bootstrap-theme.css" />
     <Content Include="Admin\Content\bootstrap\css\bootstrap-theme.min.css" />
     <Content Include="Admin\Content\bootstrap\css\bootstrap.css" />
@@ -149,6 +150,7 @@
     <Content Include="Admin\Content\js\users.js" />
     <Content Include="Admin\Dashboard.aspx" />
     <Content Include="Admin\Login.aspx" />
+    <Content Include="Admin\Products.aspx" />
     <Content Include="Admin\Users.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\css\bootstrap.min.css" />
@@ -417,6 +419,13 @@
     <Compile Include="Admin\Admin.Master.designer.cs">
       <DependentUpon>Admin.Master</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Categories.aspx.cs">
+      <DependentUpon>Categories.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Categories.aspx.designer.cs">
+      <DependentUpon>Categories.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -430,6 +439,13 @@
     </Compile>
     <Compile Include="Admin\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Products.aspx.cs">
+      <DependentUpon>Products.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Products.aspx.designer.cs">
+      <DependentUpon>Products.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Users.aspx.cs">
       <DependentUpon>Users.aspx</DependentUpon>

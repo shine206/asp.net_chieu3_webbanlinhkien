@@ -23,10 +23,9 @@ namespace WebBanLinhKien.Admin
             LoadListUsersToTable();
         }
 
-        private void LoadListUsersToTable(int start = 0, int end = 10)
+        private void LoadListUsersToTable()
         {
             StringBuilder html = new StringBuilder();
-            if (end >= dt.Rows.Count) end = dt.Rows.Count;
             html.Append("<table class='table table-hover' id='task-table'>");
             html.Append("<thead><tr>");
             foreach (DataColumn item in dt.Columns)
