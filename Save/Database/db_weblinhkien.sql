@@ -3,6 +3,10 @@ GO
 USE db_weblinhkien;
 GO
 
+/*==========================================================================================*/
+
+--CREATE TABLE
+
 CREATE TABLE GroupCategories(
 	id_group_category INT PRIMARY KEY IDENTITY NOT NULL,
 	name NVARCHAR(50),
@@ -36,7 +40,7 @@ CREATE TABLE Products(
 CREATE TABLE Images(
 	id_image INT PRIMARY KEY IDENTITY NOT NULL,
 	id_product INT NOT NULL,
-	link_image  NTEXT,
+	link_image  TEXT,
 	created_at DATETIME NULL DEFAULT NULL,
 	updated_at DATETIME NULL DEFAULT NULL
 )
@@ -57,7 +61,7 @@ CREATE TABLE Admin_Users(
 	fullname NVARCHAR(50) NOT NULL,
 	email VARCHAR(255) UNIQUE NOT NULL,
 	address  NTEXT,
-	phone_number INT,
+	phone_number VARCHAR(15),
 	role varchar(255) NOT NULL,
 	created_at DATETIME NULL DEFAULT NULL,
 	updated_at DATETIME NULL DEFAULT NULL
@@ -71,7 +75,7 @@ CREATE TABLE Users (
   fullname NVARCHAR(50) NOT NULL,
   email varchar(255) UNIQUE NOT NULL,
   address  NTEXT,
-  phone INT,
+  phone VARCHAR(15),
   created_at DATETIME NULL DEFAULT NULL,
   updated_at DATETIME NULL DEFAULT NULL
 )
@@ -97,9 +101,9 @@ CREATE TABLE Orders(
 	PRIMARY KEY (id_order, id_order_detail)
 )
 
---drop database db_weblinhkien;
-------------------------------------------------
---Ràng buộc khóa ngoại
+/*===============================================================================================*/
+
+--CONSTRAINT FOREIGN KEY
 
 ALTER TABLE Orders
 	add constraint fk_orders_user_id FOREIGN KEY (id_user) REFERENCES Users(id_user)
@@ -118,6 +122,8 @@ ALTER TABLE Images
 	
 ALTER TABLE	Products
 	add constraint fk_product_category_id FOREIGN KEY (id_category) REFERENCES Category(id_category)
+
+/*================================================================================================*/
 
 --Insert table Groupcategories
 INSERT INTO GroupCategories (name, created_at, updated_at) VALUES
@@ -150,26 +156,27 @@ INSERT INTO Products (id_category, name, price, status, promotion, tag, details,
 
 --Insert table Images
 INSERT INTO Images (id_product, link_image, created_at, updated_at) VALUES
-(6, N'Content\images\kb-motospeed-co-k81-led-pro1461370666.jpg', NULL, NULL),
-(2, N'Content\images\keyboard-r8-1822-led1461323688.jpg', NULL, NULL),
-(3, N'Content\images\mouse-r8-1658-led1461323899.jpg', NULL, NULL),
-(4, N'Content\images\2650_1506504793-4.jpg', NULL, NULL),
-(4, N'Content\images\2650_1506504793-1.jpg', NULL, NULL),
-(5, N'Content\images\9054_1498896883-1.jpg', NULL, NULL),
-(5, N'Content\images\9054_1498896884-4.jpg', NULL, NULL),
-(1, N'Content\images\kb-bosston-k803-gia-co-chuyen-game-usb-chinh-hang1478848619.jpg', NULL, NULL)
+(6, 'Content\images\kb-motospeed-co-k81-led-pro1461370666.jpg', NULL, NULL),
+(2, 'Content\images\keyboard-r8-1822-led1461323688.jpg', NULL, NULL),
+(3, 'Content\images\mouse-r8-1658-led1461323899.jpg', NULL, NULL),
+(4, 'Content\images\2650_1506504793-4.jpg', NULL, NULL),
+(4, 'Content\images\2650_1506504793-1.jpg', NULL, NULL),
+(5, 'Content\images\9054_1498896883-1.jpg', NULL, NULL),
+(5, 'Content\images\9054_1498896884-4.jpg', NULL, NULL),
+(1, 'Content\images\kb-bosston-k803-gia-co-chuyen-game-usb-chinh-hang1478848619.jpg', NULL, NULL)
 
 --Insert table Banners
 
 --Insert table Admin_Users
 INSERT INTO Admin_Users (username, password, fullname, email, address, phone_number, role, created_at, updated_at) VALUES
-('admin', 'admin', N'Quản trị viên', N'admin@hmail.com', N'Address', 080002222, N'Level max', NULL, NULL),
-('cskh01', '123456', N'Chăm sóc khách hàng', N'cskh01@hmail.com', N'Address', 080002222, N'Level 1', NULL, NULL)
+('admin', 'admin', N'Quản trị viên', 'admin@hmail.com', N'Address', '080002222', 'Level max', NULL, NULL),
+('cskh01', '123456', N'Chăm sóc khách hàng', 'cskh01@hmail.com', N'Address', '080002222', 'Level 1', NULL, NULL),
+('cskh02', '123456', N'Chăm sóc khách hàng', 'cskh02@hmail.com', N'Address', '01639123123', 'Level 1', NULL, NULL)
 
 --Insert table Users
 INSERT INTO Users (username, password, fullname, email, address, phone, created_at, updated_at) VALUES
-('kh01', '123456', N'Khách hàng 1', N'kh01@hmail.com', N'Address', 123456789, NULL, NULL),
-('kh02', '123456', N'Khách hàng 2', N'kh02@hmail.com', N'Address', 123456789, NULL, NULL)
+('kh01', '123456', N'Khách hàng 1', 'kh01@hmail.com', N'Address', 123456789, NULL, NULL),
+('kh02', '123456', N'Khách hàng 2', 'kh02@hmail.com', N'Address', 123456789, NULL, NULL)
 
 --Insert table OrderDetail
 INSERT INTO OrderDetail (id_product, quantity, current_price, created_at, updated_at) VALUES
@@ -182,6 +189,102 @@ INSERT INTO Orders (id_order, id_order_detail, id_user, status, payment_method, 
 (1, 1, 1, null, NULL, NULL, NULL, null),
 (1, 2, 1, null, NULL, NULL, NULL, null),
 (2, 3, 2, null, NULL, NULL, NULL, null)
+
+--=======================================================================================================
+
+--CODE PROCEDURE
+
+--Insert Admin Users
+GO
+create proc addNewUserAdmin
+	@username varchar(20),
+	@password varchar(50),
+	@fullname nvarchar(50),
+	@email varchar(255),
+	@address ntext,
+	@phone varchar(15),
+	@role varchar(255),
+	@created_at datetime,
+	@updated_at datetime
+as
+begin
+	insert into Admin_Users(username, password, fullname, email, address, phone, role, created_at, updated_at)
+	values(@username, @password, @fullname, @email, @address, @phone, @role, @created_at, @updated_at);
+end
+
+--Insert Users
+GO
+create procedure addNewUser
+	@username varchar(20),
+	@password varchar(50),
+	@fullname nvarchar(50),
+	@email varchar(255),
+	@address ntext,
+	@phone varchar(15),
+	@created_at datetime,
+	@updated_at datetime
+as
+begin
+	insert into Admin_Users(username, password, fullname, email, address, phone, created_at, updated_at)
+	values(@username, @password, @fullname, @email, @address, @phone, @created_at, @updated_at);
+end
+
+--Get all accounts custommer
+GO
+CREATE procedure getAllUsers
+as
+begin
+	select 
+		id_user as 'ID', 
+		username as 'Tài khoản',
+		fullname as 'Họ và tên',
+		email as 'Email',
+		phone as 'Số điện thoại'
+	from Users ;
+end
+
+--Login By account admin
+GO
+create procedure loginByUserAdmin
+	@username varchar(20),
+	@password varchar(50)
+as
+begin
+	select * from Admin_Users where username=@username and password=@password	
+end
+
+--Login by account custommer
+GO
+create procedure loginByUser
+	@username varchar(20),
+	@password varchar(50)
+as
+begin
+	select * from Admin_Users where username=@username and password=@password	
+end
+
+--Get all accounts admin
+GO
+CREATE procedure getAllAdminUsers
+as
+begin
+	select 
+		id_admin_user as 'ID', 
+		username as 'Tài khoản',
+		fullname as 'Họ và tên',
+		email as 'Email',
+		phone as 'Số điện thoại',
+		role as 'Chức vụ'
+	from Admin_Users ;
+end
+
+--Get all products
+GO
+create procedure getAllProducts
+as
+begin
+	select * from Products
+end
 
 --select * from Images;
 --select * from Admin_Users;
