@@ -194,7 +194,7 @@ INSERT INTO Orders (id_order, id_order_detail, id_user, status, payment_method, 
 
 --CODE PROCEDURE
 
---Insert Admin Users
+--Insert accounts admin
 GO
 create proc addNewUserAdmin
 	@username varchar(20),
@@ -212,7 +212,7 @@ begin
 	values(@username, @password, @fullname, @email, @address, @phone, @role, @created_at, @updated_at);
 end
 
---Insert Users
+--Insert accounts custommer
 GO
 create procedure addNewUser
 	@username varchar(20),
@@ -229,6 +229,21 @@ begin
 	values(@username, @password, @fullname, @email, @address, @phone, @created_at, @updated_at);
 end
 
+--Get all accounts admin
+GO
+CREATE procedure getAllAdminUsers
+as
+begin
+	select 
+		id_admin_user as 'ID', 
+		username as 'Tài khoản',
+		fullname as 'Họ và tên',
+		email as 'Email',
+		phone as 'Số điện thoại',
+		role as 'Chức vụ'
+	from Admin_Users ;
+end
+
 --Get all accounts custommer
 GO
 CREATE procedure getAllUsers
@@ -241,6 +256,14 @@ begin
 		email as 'Email',
 		phone as 'Số điện thoại'
 	from Users ;
+end
+
+--Get all products
+GO
+create procedure getAllProducts
+as
+begin
+	select * from Products
 end
 
 --Login By account admin
@@ -263,28 +286,6 @@ begin
 	select * from Admin_Users where username=@username and password=@password	
 end
 
---Get all accounts admin
-GO
-CREATE procedure getAllAdminUsers
-as
-begin
-	select 
-		id_admin_user as 'ID', 
-		username as 'Tài khoản',
-		fullname as 'Họ và tên',
-		email as 'Email',
-		phone as 'Số điện thoại',
-		role as 'Chức vụ'
-	from Admin_Users ;
-end
-
---Get all products
-GO
-create procedure getAllProducts
-as
-begin
-	select * from Products
-end
 
 --select * from Images;
 --select * from Admin_Users;
