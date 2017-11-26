@@ -202,13 +202,13 @@ create proc addNewUserAdmin
 	@fullname nvarchar(50),
 	@email varchar(255),
 	@address ntext,
-	@phone varchar(15),
+	@phone_number varchar(15),
 	@role varchar(255),
 	@created_at datetime,
 	@updated_at datetime
 as
 begin
-	insert into Admin_Users(username, password, fullname, email, address, phone, role, created_at, updated_at)
+	insert into Admin_Users(username, password, fullname, email, address, phone_number, role, created_at, updated_at)
 	values(@username, @password, @fullname, @email, @address, @phone, @role, @created_at, @updated_at);
 end
 
