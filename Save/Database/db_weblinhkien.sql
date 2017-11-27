@@ -294,6 +294,7 @@ begin
 	select Products.id_product, Category.name as category, Products.name, price, status, promotion, tag, details, description, content 
 	from Products, Category 
 	where Products.id_category=Category.id_category
+	order by id_product DESC
 end
 
 GO
@@ -322,6 +323,14 @@ as
 begin
 	insert into Products(id_category, name, price, status, promotion, tag, details, description, content, created_at, updated_at)
 	values(@id_category, @name, @price, @status, @promotion, @tag, @details, @description, @content, @created_at, @updated_at);
+end
+
+-- Delete product
+create procedure deleteProduct
+	@id int
+as
+begin
+	delete from Products where Products.id_product=@id
 end
 
 --select * from Images;

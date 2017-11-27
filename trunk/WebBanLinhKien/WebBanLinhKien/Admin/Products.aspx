@@ -14,7 +14,6 @@
                             </div>
                             <div class="clearfix"></div>
                         </div>
-
                         <div class="panel-body">
                             <table class='table table-hover' id='task-table'>
                                 <thead>
@@ -45,6 +44,12 @@
                         <div class="panel-title">Thêm sản phẩm mới</div>
                     </div>
                     <div class="panel-body">
+                        <asp:Panel runat="server" ID="pnMessage" Visible="False">
+                            <div class="alert alert-success" id="myMessage">
+                                <strong>Success!</strong>
+                                <asp:Label Text="" runat="server" ID="lblMessage" />
+                            </div>
+                        </asp:Panel>
                         <div class="form-group clearfix">
                             <label class="col-sm-2 control-label">Danh mục sản phẩm:</label>
                             <div class="col-sm-8">
@@ -52,22 +57,22 @@
                                     <%--<asp:ListItem Text="Danh mục gốc" Value="root" />--%>
                                 </asp:DropDownList>
                             </div>
-                            
+
                         </div>
                         <div class="form-group clearfix">
                             <label class="col-sm-2 control-label">Tên sản phẩm:</label>
                             <div class="col-sm-8">
-                                <asp:TextBox runat="server" ID="txtTenSp" CssClass="form-control"/>
+                                <asp:TextBox runat="server" ID="txtTenSp" CssClass="form-control" />
                             </div>
                             <div class="col-sm-2">
                                 <asp:RequiredFieldValidator CssClass="err-message" ControlToValidate="txtTenSp" runat="server" ErrorMessage="Chưa có tên sản phẩm !" Font-Bold="True" SetFocusOnError="True" ForeColor="Red"></asp:RequiredFieldValidator>
                             </div>
                         </div>
-                        
+
                         <div class="form-group clearfix">
-                            <label  class="col-sm-2 control-label">Giá sản phẩm:</label>
+                            <label class="col-sm-2 control-label">Giá sản phẩm:</label>
                             <div class="col-sm-8">
-                                <asp:TextBox runat="server" ID="txtGiaSp" CssClass="form-control" TextMode="Number"/>
+                                <asp:TextBox runat="server" ID="txtGiaSp" CssClass="form-control" TextMode="Number" />
                             </div>
                             <div class="col-sm-2">
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" CssClass="err-message" ControlToValidate="txtGiaSp" runat="server" ErrorMessage="Chưa có giá sản phẩm !" Font-Bold="True" SetFocusOnError="True" ForeColor="Red"></asp:RequiredFieldValidator>
@@ -75,44 +80,44 @@
                         </div>
 
                         <div class="form-group clearfix">
-                            <label  class="col-sm-2 control-label">Trạng thái:</label>
+                            <label class="col-sm-2 control-label">Trạng thái:</label>
                             <div class="col-sm-8">
-                                <asp:TextBox runat="server" ID="txtTrangThaiSp" CssClass="form-control"/>
+                                <asp:TextBox runat="server" ID="txtTrangThaiSp" CssClass="form-control" />
                             </div>
                         </div>
                         <div class="form-group clearfix">
-                            <label  class="col-sm-2 control-label">Tags:</label>
+                            <label class="col-sm-2 control-label">Tags:</label>
                             <div class="col-sm-8">
-                                <asp:TextBox runat="server" ID="txtTags" CssClass="form-control"/>
+                                <asp:TextBox runat="server" ID="txtTags" CssClass="form-control" />
                             </div>
                         </div>
                         <div class="form-group clearfix">
-                            <label  class="col-sm-2 control-label">Khuyến mãi:</label>
+                            <label class="col-sm-2 control-label">Khuyến mãi:</label>
                             <div class="col-sm-8">
-                                <asp:TextBox runat="server" ID="txtKhuyenMai" CssClass="form-control"/>
+                                <asp:TextBox runat="server" ID="txtKhuyenMai" CssClass="form-control" />
                             </div>
                         </div>
                         <div class="form-group clearfix">
                             <label class="col-sm-2 control-label">Chi tiết sản phẩm:</label>
                             <div class="col-sm-8">
-                                <asp:TextBox runat="server" id="txtChiTietSp" TextMode="MultiLine" CssClass="form-control"/>
+                                <asp:TextBox runat="server" ID="txtChiTietSp" TextMode="MultiLine" CssClass="form-control" />
                             </div>
                         </div>
-                        
+
                         <div class="form-group clearfix">
                             <label class="col-sm-2 control-label">Mô tả sản phẩm:</label>
                             <div class="col-sm-8">
-                                <asp:TextBox runat="server" id="txtMoTaSp" TextMode="MultiLine" CssClass="form-control"/>
+                                <asp:TextBox runat="server" ID="txtMoTaSp" TextMode="MultiLine" CssClass="form-control" />
                             </div>
                         </div>
-                        
+
                         <div class="form-group clearfix">
                             <label class="col-sm-2 control-label">Nội dung sản phẩm:</label>
                             <div class="col-sm-8">
-                                <asp:TextBox runat="server" id="txtNoiDungSp" TextMode="MultiLine" CssClass="form-control"/>
+                                <asp:TextBox runat="server" ID="txtNoiDungSp" TextMode="MultiLine" CssClass="form-control" />
                             </div>
                         </div>
-                        
+
                         <div class="form-group clearfix">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <asp:CheckBox Text="Tiếp tục thêm sản phẩm" runat="server" />

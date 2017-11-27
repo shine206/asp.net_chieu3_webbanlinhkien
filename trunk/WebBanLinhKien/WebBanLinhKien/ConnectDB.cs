@@ -122,5 +122,24 @@ namespace WebBanLinhKien
             }
             return result;
         }
+
+        public bool deleteProduct(int id)
+        {
+            bool result = false;
+            try
+            {
+                connect();
+                SqlCommand cmd = new SqlCommand("deleteProduct", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id", id);
+                if (cmd.ExecuteNonQuery() == 1)
+                    result = true;
+            }
+            finally
+            {
+                disconnect();
+            }
+            return result;
+        }
     }
 }

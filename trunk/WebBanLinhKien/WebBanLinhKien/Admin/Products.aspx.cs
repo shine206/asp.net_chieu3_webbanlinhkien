@@ -18,26 +18,27 @@ namespace WebBanLinhKien.Admin
                 string action = Request.QueryString["action"].ToString();
                 if (action == "add")
                 {
+                    //ShowMessage("OK", "Success");
                     pnAddNew.Visible = true;
                     pnTable.Visible = false;
                     LoadCategories();
+                    return;
                 }
-                else
+                else if (action == "delete")
                 {
-                    LoadListProductsToTable();
+                    int id = Convert.ToInt32(Request.QueryString["id"].ToString());
+                    deleteProduct(id);
                 }
             }
-            else
-            {
-                LoadListProductsToTable();
-            }
+            LoadListProductsToTable();
+
         }
 
         private void LoadCategories()
         {
             ConnectDB db = new ConnectDB();
             DataTable dt = db.getAllCategories();
-            foreach (DataRow row in dt.Rows)    
+            foreach (DataRow row in dt.Rows)
             {
                 ddlDanhMucSanPham.Items.Add(new ListItem(row["name"].ToString(), row["id_category"].ToString()));
             }
@@ -78,19 +79,48 @@ namespace WebBanLinhKien.Admin
             int id = Convert.ToInt32(ddlDanhMucSanPham.SelectedValue);
             string name = txtTenSp.Text.ToString();
             int price = Convert.ToInt32(txtGiaSp.Text);
-            bool isSuccess = db.addNewProduct(id, name, price);
+            int status = 1;
+            if (txtTrangThaiSp.Text != "")
+                status = Convert.ToInt32(txtTrangThaiSp.Text);
+            string promotion = txtKhuyenMai.Text;
+            string tag = txtTags.Text;
+            string details = txtChiTietSp.Text;
+            string desc = txtMoTaSp.Text;
+            string content = txtNoiDungSp.Text;
+            bool isSuccess = db.addNewProduct(id, name, price, status, promotion, tag, details, desc, content);
             if (isSuccess)
             {
-                Response.Write("OK");
+                showmessage("Thêm sản phẩm thành công");
             }
-            else {
-                Response.Write("ERROR");
+        }
+
+        private void deleteProduct(int id)
+        {
+            ConnectDB db = new ConnectDB();
+            bool isSuccess = db.deleteProduct(id);
+            if (isSuccess)
+            {
+                lblMessage.Text = "Xóa sản phẩm thành công";
+            }
+            else
+            {
+                lblMessage.Text = "Xóa sản phẩm thất bại";
             }
         }
 
         protected void btnThemSanPham_Click(object sender, EventArgs e)
         {
             addNewProduct();
+        }
+
+        private void showmessage(string message)
+        {
+            pnMessage.Visible = true;
+            lblMessage.Text = message;
+        }
+
+        protected void btnTest_Click(object sender, EventArgs e)
+        {
         }
     }
 }
