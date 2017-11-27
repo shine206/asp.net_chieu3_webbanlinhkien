@@ -141,5 +141,27 @@ namespace WebBanLinhKien
             }
             return result;
         }
+
+        //Search
+        public DataTable getAllProductsInSearch(string q)
+        {
+
+            DataTable result = new DataTable();
+            try
+            {
+                connect();
+                SqlCommand cmd = new SqlCommand("getAllProductsInSearch", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@q", q);
+                SqlDataReader rd = cmd.ExecuteReader();
+                result.Load(rd);
+            }
+            finally
+            {
+                result.Dispose();
+                disconnect();
+            }
+            return result;
+        }
     }
 }

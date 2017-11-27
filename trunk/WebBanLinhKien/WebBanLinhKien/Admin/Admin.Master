@@ -90,7 +90,7 @@
                             <li class="current"><a href="index.html"><i class="glyphicon glyphicon-home"></i>Dashboard</a></li>
                             <li><a href="Users.aspx"><i class="glyphicon glyphicon-user"></i>Thành viên</a></li>
                             <li><a href="Products.aspx"><i class="glyphicon glyphicon-tasks"></i>Sản phẩm</a></li>
-                            <li><a href="stats.html"><i class="glyphicon glyphicon-stats"></i>Statistics (Charts)</a></li>
+                            <li><a href="Categories.aspx"><i class="glyphicon glyphicon-list"></i>Categories</a></li>
                             <li><a href="tables.html"><i class="glyphicon glyphicon-list"></i>Tables</a></li>
                             <li><a href="buttons.html"><i class="glyphicon glyphicon-record"></i>Buttons</a></li>
                             <li><a href="editors.html"><i class="glyphicon glyphicon-pencil"></i>Editors</a></li>

@@ -118,9 +118,5 @@ namespace WebBanLinhKien.Admin
             pnMessage.Visible = true;
             lblMessage.Text = message;
         }
-
-        protected void btnTest_Click(object sender, EventArgs e)
-        {
-        }
     }
 }
