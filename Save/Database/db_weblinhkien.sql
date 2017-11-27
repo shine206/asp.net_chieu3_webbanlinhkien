@@ -25,7 +25,7 @@ CREATE TABLE Category(
 CREATE TABLE Products(
 	id_product INTEGER PRIMARY KEY IDENTITY NOT NULL,
 	id_category INT NOT NULL,
-	name NVARCHAR(100) NOT NULL,
+	name NVARCHAR(255) UNIQUE NOT NULL,
 	price FLOAT,
 	status INT,
 	promotion VARCHAR(255),
@@ -209,7 +209,7 @@ create proc addNewUserAdmin
 as
 begin
 	insert into Admin_Users(username, password, fullname, email, address, phone_number, role, created_at, updated_at)
-	values(@username, @password, @fullname, @email, @address, @phone, @role, @created_at, @updated_at);
+	values(@username, @password, @fullname, @email, @address, @phone_number, @role, @created_at, @updated_at);
 end
 
 --Insert accounts custommer
@@ -225,7 +225,7 @@ create procedure addNewUser
 	@updated_at datetime
 as
 begin
-	insert into Admin_Users(username, password, fullname, email, address, phone, created_at, updated_at)
+	insert into Users(username, password, fullname, email, address, phone, created_at, updated_at)
 	values(@username, @password, @fullname, @email, @address, @phone, @created_at, @updated_at);
 end
 
@@ -239,7 +239,7 @@ begin
 		username as 'Tài khoản',
 		fullname as 'Họ và tên',
 		email as 'Email',
-		phone as 'Số điện thoại',
+		phone_number as 'Số điện thoại',
 		role as 'Chức vụ'
 	from Admin_Users ;
 end
@@ -256,14 +256,6 @@ begin
 		email as 'Email',
 		phone as 'Số điện thoại'
 	from Users ;
-end
-
---Get all products
-GO
-create procedure getAllProducts
-as
-begin
-	select * from Products
 end
 
 --Login By account admin
@@ -283,7 +275,7 @@ create procedure loginByUser
 	@password varchar(50)
 as
 begin
-	select * from Admin_Users where username=@username and password=@password	
+	select * from Users where username=@username and password=@password	
 end
 
 --Get all products
@@ -326,6 +318,7 @@ begin
 end
 
 -- Delete product
+go
 create procedure deleteProduct
 	@id int
 as
