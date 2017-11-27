@@ -291,10 +291,12 @@ end
 
 GO
 --Get all categories
-create procedure getAllCategories
+alter procedure getAllCategories
 as
 begin
-	select * from Category
+	select id_category,Category.name as category, GroupCategories.name as group_category 
+	from Category, GroupCategories 
+	where Category.id_group_category = GroupCategories.id_group_category
 end
 
 --Add new product
@@ -325,6 +327,22 @@ as
 begin
 	delete from Products where Products.id_product=@id
 end
+
+go
+-- Add new category
+create procedure addNewCategory
+	@parent int,
+	@name nvarchar(50),
+	@created_at datetime,
+	@updated_at datetime
+as
+begin
+	if (@parent = 0)
+		insert into GroupCategories(name, created_at, updated_at) values(@name, @created_at, @updated_at);
+	else
+		insert into Category(id_category, name, created_at, updated_at) values(@parent, @name, @created_at, @updated_at);
+end
+
 
 --select * from Images;
 --select * from Admin_Users;
