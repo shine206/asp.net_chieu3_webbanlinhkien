@@ -69,5 +69,14 @@ namespace WebBanLinhKien
         {
 
         }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtQuery.Text))
+            {
+                Response.Redirect("Search.aspx?action=search&q=" + txtQuery.Text);
+            }
+            
+        }
     }
 }

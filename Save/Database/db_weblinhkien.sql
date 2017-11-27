@@ -326,6 +326,19 @@ begin
 	delete from Products where Products.id_product=@id
 end
 
+--Get all products in search
+GO
+alter procedure getAllProductsInSearch
+	@q NVARCHAR(255)
+as
+begin
+	select Products.id_product, Category.name as category, Products.name, price, status, promotion, tag, details, description, content, Images.link_image 
+	from Products, Category, Images 
+	where Products.id_category=Category.id_category and Products.name like '%'+@q+'%' and Images.id_product=Products.id_product
+	order by id_product DESC
+end
+
+exec getAllProductsInSearch 'KB'
 --select * from Images;
 --select * from Admin_Users;
 --select * from Banners;
