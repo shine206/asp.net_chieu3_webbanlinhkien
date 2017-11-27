@@ -17,6 +17,7 @@
     <link href="Content/css/item_2.css" rel="stylesheet" type="text/css" />
      <link href="Content/css/product.css" rel="stylesheet" type="text/css"/>
     <link href="Content/css/item_3.css" rel="stylesheet" type="text/css"/>
+    <link href="Content/css/login.css" rel="stylesheet" type="text/css" />
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
