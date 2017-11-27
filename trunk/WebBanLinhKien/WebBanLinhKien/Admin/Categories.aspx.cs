@@ -13,9 +13,56 @@ namespace WebBanLinhKien.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request.QueryString["action"] != null)
+            {
+                string action = Request.QueryString["action"].ToString();
+                if (action == "add")
+                {
+                    pnAddNew.Visible = true;
+                    pnTable.Visible = false;
+                    LoadCategories();
+                    return;
+                }
+                else if (action == "delete")
+                {
+                    int id = Convert.ToInt32(Request.QueryString["id"].ToString());
+                    deleteCategory(id);
+                }
+            }
             LoadListCateegoriesToTable();
         }
 
+        private void addNewCategory()
+        {
+            ConnectDB db = new ConnectDB();
+            int id = Convert.ToInt32(ddlDanhMucSanPham.SelectedItem.Value);
+            //Response.Write();
+            string name = txtTenDanhMuc.Text.ToString();
+            bool isSuccess = db.addNewCategory(id, name);
+            if (isSuccess)
+            {
+                showmessage("Thêm sản phẩm thành công");
+            }
+            else
+            {
+                showmessage("Thất bại");
+            }
+        }
+
+        private void deleteCategory(int id)
+        {
+            ConnectDB db = new ConnectDB();
+            bool isSuccess = db.deleteCategory(id);
+            if (isSuccess)
+            {
+                lblMessage.Text = "Xóa sản phẩm thành công";
+            }
+            else
+            {
+                lblMessage.Text = "Xóa sản phẩm thất bại";
+            }
+        }
+        
         private void LoadListCateegoriesToTable()
         {
             ConnectDB db = new ConnectDB();
@@ -36,6 +83,37 @@ namespace WebBanLinhKien.Admin
             }
 
             tableContent.Controls.Add(new Literal { Text = html.ToString() });
+
+            ConnectDB db1 = new ConnectDB();
+            DataTable dt1 = db1.getAllGroupCategories();
+            lbNhomDanhMuc.Items.Clear();
+            foreach (DataRow row in dt1.Rows)
+            {
+                lbNhomDanhMuc.Items.Add(new ListItem(row["name"].ToString(), row["id_group_category"].ToString()));
+            }
+        }
+
+        private void LoadCategories()
+        {
+            ConnectDB db = new ConnectDB();
+            DataTable dt = db.getAllGroupCategories();
+            ddlDanhMucSanPham.Items.Clear();
+            ddlDanhMucSanPham.Items.Add(new ListItem("Danh mục gốc", "0"));
+            foreach (DataRow row in dt.Rows)
+            {
+                ddlDanhMucSanPham.Items.Add(new ListItem(row["name"].ToString(), row["id_group_category"].ToString()));
+            }
+        }
+
+        private void showmessage(string message)
+        {
+            pnMessage.Visible = true;
+            lblMessage.Text = message;
+        }
+
+        protected void btnThemDanhMuc_Click(object sender, EventArgs e)
+        {
+            addNewCategory();
         }
 
     }

@@ -291,10 +291,10 @@ end
 
 GO
 --Get all categories
-alter procedure getAllCategories
+create procedure getAllCategories
 as
 begin
-	select id_category,Category.name as category, GroupCategories.name as group_category 
+	select id_category,Category.name as category, GroupCategories.name as group_category
 	from Category, GroupCategories 
 	where Category.id_group_category = GroupCategories.id_group_category
 end
@@ -343,6 +343,26 @@ begin
 		insert into Category(id_category, name, created_at, updated_at) values(@parent, @name, @created_at, @updated_at);
 end
 
+-- Get all categories group
+go
+create procedure getAllGroupCategories
+as
+begin
+	select * from GroupCategories
+end
+
+-- Delete category
+go
+create procedure deleteCategory
+	@id int,
+	@isRoot int
+as
+begin
+	if (@isRoot = 0)
+		delete from GroupCategories where GroupCategories.id_group_category=@id
+	else
+		delete from Category where Category.id_category=@id
+end
 
 --select * from Images;
 --select * from Admin_Users;

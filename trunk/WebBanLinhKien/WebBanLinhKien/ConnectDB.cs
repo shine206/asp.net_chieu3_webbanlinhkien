@@ -10,10 +10,28 @@ namespace WebBanLinhKien
 {
     public class ConnectDB
     {
+        /// <summary>
+        /// Danh sách hàm:
+        /// GET:
+        ///     getAllAdminUsers
+        ///     getAllProducts
+        ///     getAllCategories
+        ///     getAllGroupCategories
+        ///     getAllProductsInSearch
+        /// POST:
+        ///     addNewProduct
+        ///     addNewCategory
+        ///     deleteCategory
+        ///     deleteProduct
+        /// </summary>
+     
         SqlConnection conn;
 
         public ConnectDB() { }
 
+        /// <summary>
+        /// Kết nối đến db
+        /// </summary>
         public void connect()
         {
             if (conn == null)
@@ -26,6 +44,9 @@ namespace WebBanLinhKien
             }
         }
 
+        /// <summary>
+        /// Đóng kết nối với db hiện tại
+        /// </summary>
         public void disconnect()
         {
             if ((conn != null) && (conn.State == ConnectionState.Open))
@@ -34,6 +55,10 @@ namespace WebBanLinhKien
             }
         }
 
+        /// <summary>
+        /// Lấy tất cả user thuộc nhóm admin
+        /// </summary>
+        /// <returns>Danh sách user</returns>
         public DataTable getAllAdminUsers()
         {
 
@@ -54,6 +79,10 @@ namespace WebBanLinhKien
             return result;
         }
 
+        /// <summary>
+        /// Lấy tất cả sản phẩm
+        /// </summary>
+        /// <returns>Danh sách sản phẩm</returns>
         public DataTable getAllProducts()
         {
 
@@ -74,6 +103,10 @@ namespace WebBanLinhKien
             return result;
         }
 
+        /// <summary>
+        /// Lây tất cả danh mục
+        /// </summary>
+        /// <returns>Danh sách danh mục</returns>
         public DataTable getAllCategories()
         {
 
@@ -94,6 +127,69 @@ namespace WebBanLinhKien
             return result;
         }
 
+        /// <summary>
+        /// Lấy tất cả nhóm danh mục
+        /// </summary>
+        /// <returns>Danh sách nhóm danh mục</returns>
+        public DataTable getAllGroupCategories()
+        {
+
+            DataTable result = new DataTable();
+            try
+            {
+                connect();
+                SqlCommand cmd = new SqlCommand("getAllGroupCategories", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataReader rd = cmd.ExecuteReader();
+                result.Load(rd);
+            }
+            finally
+            {
+                result.Dispose();
+                disconnect();
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Tìm sản phẩm bằng tên
+        /// </summary>
+        /// <param name="q">Tên sản phẩm cần tìm</param>
+        /// <returns>Danh sách sản phẩm</returns>
+        public DataTable getAllProductsInSearch(string q)
+        {
+
+            DataTable result = new DataTable();
+            try
+            {
+                connect();
+                SqlCommand cmd = new SqlCommand("getAllProductsInSearch", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@q", q);
+                SqlDataReader rd = cmd.ExecuteReader();
+                result.Load(rd);
+            }
+            finally
+            {
+                result.Dispose();
+                disconnect();
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Thêm sản phẩm mới
+        /// </summary>
+        /// <param name="id_category">id của danh mục</param>
+        /// <param name="name">Tên sản phẩm</param>
+        /// <param name="price">Giá sản phẩm</param>
+        /// <param name="status">Trạng thái sản phẩm</param>
+        /// <param name="promotion">Khuyến mãi</param>
+        /// <param name="tags">Tags</param>
+        /// <param name="details">Chi tiết sản phẩm</param>
+        /// <param name="description">Mô tả sản phẩm</param>
+        /// <param name="content">Nội dung sản phẩm</param>
+        /// <returns>True or False</returns>
         public bool addNewProduct(int id_category, string name, int price, int status = 1, string promotion = "", string tags = "", string details = "", string description = "", string content = "")
         {
             bool result = false;
@@ -123,6 +219,11 @@ namespace WebBanLinhKien
             return result;
         }
 
+        /// <summary>
+        /// Xóa sản phẩm bằng id sản phẩm
+        /// </summary>
+        /// <param name="id">id sản phẩm</param>
+        /// <returns>True or False</returns>
         public bool deleteProduct(int id)
         {
             bool result = false;
@@ -142,26 +243,59 @@ namespace WebBanLinhKien
             return result;
         }
 
-        //Search
-        public DataTable getAllProductsInSearch(string q)
+        /// <summary>
+        /// Thêm mới danh mục sản phẩm
+        /// </summary>
+        /// <param name="parent">id danh mục cha, nêu id = 0 sẽ thêm vào nhóm danh mục</param>
+        /// <param name="name">Tên danh mục</param>
+        /// <returns>True or False</returns>
+        public bool addNewCategory(int parent, string name)
         {
-
-            DataTable result = new DataTable();
+            bool result = false;
             try
             {
                 connect();
-                SqlCommand cmd = new SqlCommand("getAllProductsInSearch", conn);
+                SqlCommand cmd = new SqlCommand("addNewCategory", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@q", q);
-                SqlDataReader rd = cmd.ExecuteReader();
-                result.Load(rd);
+                cmd.Parameters.AddWithValue("@parent", parent);
+                cmd.Parameters.AddWithValue("@name", name);
+                cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
+                cmd.Parameters.AddWithValue("@updated_at", DateTime.Now);
+                if (cmd.ExecuteNonQuery() == 1)
+                    result = true;
             }
             finally
             {
-                result.Dispose();
                 disconnect();
             }
             return result;
         }
+
+        /// <summary>
+        /// Xóa danh mục
+        /// </summary>
+        /// <param name="id">id danh mục</param>
+        /// <param name="isRoot">Nếu isRoot = 1 là xóa danh mục con, isRoot = 0 là xóa danh mục cha (nhóm danh mục)</param>
+        /// <returns>True or False</returns>
+        public bool deleteCategory(int id, int isRoot = 1)
+        {
+            bool result = false;
+            try
+            {
+                connect();
+                SqlCommand cmd = new SqlCommand("deleteCategory", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@isRoot", isRoot);
+                if (cmd.ExecuteNonQuery() == 1)
+                    result = true;
+            }
+            finally
+            {
+                disconnect();
+            }
+            return result;
+        }
+
     }
 }

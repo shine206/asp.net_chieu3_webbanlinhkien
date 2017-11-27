@@ -18,7 +18,6 @@ namespace WebBanLinhKien.Admin
                 string action = Request.QueryString["action"].ToString();
                 if (action == "add")
                 {
-                    //ShowMessage("OK", "Success");
                     pnAddNew.Visible = true;
                     pnTable.Visible = false;
                     LoadCategories();
@@ -38,9 +37,10 @@ namespace WebBanLinhKien.Admin
         {
             ConnectDB db = new ConnectDB();
             DataTable dt = db.getAllCategories();
+            ddlDanhMucSanPham.Items.Clear();
             foreach (DataRow row in dt.Rows)
             {
-                ddlDanhMucSanPham.Items.Add(new ListItem(row["name"].ToString(), row["id_category"].ToString()));
+                ddlDanhMucSanPham.Items.Add(new ListItem(row["category"].ToString(), row["id_category"].ToString()));
             }
         }
 
