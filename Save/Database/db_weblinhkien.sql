@@ -284,7 +284,7 @@ create procedure getAllProducts
 as
 begin
 	select Products.id_product, Category.name as category, Products.name, price, status, promotion, tag, details, description, content 
-	from Products, Category, Images
+	from Products, Category
 	where Products.id_category=Category.id_category
 	order by id_product DESC
 end
@@ -301,7 +301,7 @@ end
 
 --Add new product
 GO
-create procedure addNewProduct
+alter procedure addNewProduct
 	@id_category int,
 	@name nvarchar(100),
 	@price float,
@@ -318,6 +318,17 @@ as
 begin
 	insert into Products(id_category, name, price, status, promotion, tag, details, description, content, created_at, updated_at)
 	values(@id_category, @name, @price, @status, @promotion, @tag, @details, @description, @content, @created_at, @updated_at);
+end
+
+go
+
+-- Upload Image by id
+create procedure uploadImage
+	@link_image text,
+	@created_at datetime,
+	@updated_at datetime
+as
+begin
 	insert into Images (id_product, link_image, created_at, updated_at) values((select MAX(id_product) from Products), @link_image, @created_at, @updated_at);
 end
 
@@ -374,7 +385,15 @@ begin
 	select * from Images where Images.id_product=@id_product; 
 end
 
-exec getImagesByIdProduct 1
+go
+-- Get products filter by price
+create procedure filterProductsByPrice
+	@min_price int,
+	@max_price int
+as
+begin
+	select Products.*, Images.link_image from Products, Images where Products.id_product=Images.id_product and price >= @min_price and price < @max_price
+end
 --select * from Images;
 --select * from Admin_Users;
 --select * from Banners;
