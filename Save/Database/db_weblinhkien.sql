@@ -25,7 +25,7 @@ CREATE TABLE Category(
 CREATE TABLE Products(
 	id_product INTEGER PRIMARY KEY IDENTITY NOT NULL,
 	id_category INT NOT NULL,
-	name NVARCHAR(255) UNIQUE NOT NULL,
+	name NVARCHAR(255) NOT NULL,
 	price FLOAT,
 	status INT,
 	promotion VARCHAR(255),
@@ -284,7 +284,7 @@ create procedure getAllProducts
 as
 begin
 	select Products.id_product, Category.name as category, Products.name, price, status, promotion, tag, details, description, content 
-	from Products, Category 
+	from Products, Category, Images
 	where Products.id_category=Category.id_category
 	order by id_product DESC
 end
@@ -305,6 +305,7 @@ create procedure addNewProduct
 	@id_category int,
 	@name nvarchar(100),
 	@price float,
+	@link_image text,
 	@status int,
 	@promotion nvarchar(255),
 	@tag nvarchar(255),
@@ -317,6 +318,7 @@ as
 begin
 	insert into Products(id_category, name, price, status, promotion, tag, details, description, content, created_at, updated_at)
 	values(@id_category, @name, @price, @status, @promotion, @tag, @details, @description, @content, @created_at, @updated_at);
+	insert into Images (id_product, link_image, created_at, updated_at) values((select MAX(id_product) from Products), @link_image, @created_at, @updated_at);
 end
 
 -- Delete product
@@ -363,7 +365,16 @@ begin
 	else
 		delete from Category where Category.id_category=@id
 end
+go
+-- Get Images by id product
+create procedure getImagesByIdProduct
+	@id_product int
+as
+begin
+	select * from Images where Images.id_product=@id_product; 
+end
 
+exec getImagesByIdProduct 1
 --select * from Images;
 --select * from Admin_Users;
 --select * from Banners;
@@ -373,3 +384,6 @@ end
 --select * from Users;
 --select * from OrderDetail;
 --select * from Orders;
+
+
+--select MAX(id_product) from Products

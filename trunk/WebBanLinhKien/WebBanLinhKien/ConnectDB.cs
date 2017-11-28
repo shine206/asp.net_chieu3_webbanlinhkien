@@ -178,6 +178,31 @@ namespace WebBanLinhKien
         }
 
         /// <summary>
+        /// Lấy hình ảnh từ id product
+        /// </summary>
+        /// <param name="id_product">id của product</param>
+        /// <returns>Danh sách ảnh</returns>
+        public DataTable getImagesByIdProduct(int id_product)
+        {
+            DataTable result = new DataTable();
+            try
+            {
+                connect();
+                SqlCommand cmd = new SqlCommand("getImagesByIdProduct", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id_product", id_product);
+                SqlDataReader rd = cmd.ExecuteReader();
+                result.Load(rd);
+            }
+            finally
+            {
+                result.Dispose();
+                disconnect();
+            }
+            return result;
+        }
+
+        /// <summary>
         /// Thêm sản phẩm mới
         /// </summary>
         /// <param name="id_category">id của danh mục</param>
@@ -190,7 +215,7 @@ namespace WebBanLinhKien
         /// <param name="description">Mô tả sản phẩm</param>
         /// <param name="content">Nội dung sản phẩm</param>
         /// <returns>True or False</returns>
-        public bool addNewProduct(int id_category, string name, int price, int status = 1, string promotion = "", string tags = "", string details = "", string description = "", string content = "")
+        public bool addNewProduct(int id_category, string name, int price, string image, int status = 1, string promotion = "", string tags = "", string details = "", string description = "", string content = "")
         {
             bool result = false;
             try
@@ -201,6 +226,7 @@ namespace WebBanLinhKien
                 cmd.Parameters.AddWithValue("@id_category", id_category);
                 cmd.Parameters.AddWithValue("@name", name);
                 cmd.Parameters.AddWithValue("@price", price);
+                cmd.Parameters.AddWithValue("@link_image", image);
                 cmd.Parameters.AddWithValue("@status", status);
                 cmd.Parameters.AddWithValue("@promotion", promotion);
                 cmd.Parameters.AddWithValue("@tag", tags);
