@@ -14,6 +14,7 @@
                             </div>
                             <div class="clearfix"></div>
                         </div>
+                        
                         <div class="panel-body">
                             <table class='table table-hover' id='task-table'>
                                 <thead>
@@ -21,6 +22,7 @@
                                         <th>ID</th>
                                         <th>Danh mục</th>
                                         <th>Tên sản phẩm</th>
+                                        <th>Hình ảnh</th>
                                         <th>Giá</th>
                                         <th>Trạng thái</th>
                                         <th>Tags</th>
@@ -97,6 +99,7 @@
                                 <asp:TextBox runat="server" ID="txtKhuyenMai" CssClass="form-control" />
                             </div>
                         </div>
+
                         <div class="form-group clearfix">
                             <label class="col-sm-2 control-label">Chi tiết sản phẩm:</label>
                             <div class="col-sm-8">
@@ -115,6 +118,13 @@
                             <label class="col-sm-2 control-label">Nội dung sản phẩm:</label>
                             <div class="col-sm-8">
                                 <asp:TextBox runat="server" ID="txtNoiDungSp" TextMode="MultiLine" CssClass="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group clearfix">
+                            <label class="col-sm-2 control-label">Hình ảnh:</label>
+                            <div class="col-sm-6">
+                                <asp:FileUpload ID="FileUpload1" runat="server" AllowMultiple="true" ValidateRequestMode="Inherit" />
                             </div>
                         </div>
 

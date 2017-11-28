@@ -215,7 +215,7 @@ namespace WebBanLinhKien
         /// <param name="description">Mô tả sản phẩm</param>
         /// <param name="content">Nội dung sản phẩm</param>
         /// <returns>True or False</returns>
-        public bool addNewProduct(int id_category, string name, int price, string image, int status = 1, string promotion = "", string tags = "", string details = "", string description = "", string content = "")
+        public bool addNewProduct(int id_category, string name, int price, int status = 1, string promotion = "", string tags = "", string details = "", string description = "", string content = "")
         {
             bool result = false;
             try
@@ -226,7 +226,6 @@ namespace WebBanLinhKien
                 cmd.Parameters.AddWithValue("@id_category", id_category);
                 cmd.Parameters.AddWithValue("@name", name);
                 cmd.Parameters.AddWithValue("@price", price);
-                cmd.Parameters.AddWithValue("@link_image", image);
                 cmd.Parameters.AddWithValue("@status", status);
                 cmd.Parameters.AddWithValue("@promotion", promotion);
                 cmd.Parameters.AddWithValue("@tag", tags);
@@ -321,6 +320,28 @@ namespace WebBanLinhKien
                 disconnect();
             }
             return result;
+        }
+
+        public void uploadImages(string images)
+        {
+            try
+            {
+                connect();
+                string[] arrayImages = images.Split(new char[] { ';' });
+                foreach (string image in arrayImages)
+                {
+                    SqlCommand cmd = new SqlCommand("uploadImage", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@link_image", image);
+                    cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
+                    cmd.Parameters.AddWithValue("@updated_at", DateTime.Now);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            finally
+            {
+                disconnect();
+            }
         }
 
     }

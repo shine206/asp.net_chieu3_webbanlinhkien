@@ -55,8 +55,13 @@ namespace WebBanLinhKien.Admin
                 html.Append("<tr>");
                 html.Append("<td>" + row["id_product"] + "</td>");
                 html.Append("<td>" + row["category"] + "</td>");
-                html.Append("<td>" + row["name"] + "</td>");
-                html.Append("<td>" + row["price"] + "</td>");
+                html.Append("<td>" + row["name"] + "</td><td>");
+                DataTable dtImages = getImagesByIdProduct(Convert.ToInt32(row["id_product"]));
+                foreach (DataRow image in dtImages.Rows)
+                {
+                    html.Append("<img src='/" + image["link_image"].ToString().Replace("\\", "/") + "' alt='" + row["name"] + "' width='70' height='70' />");
+                }
+                html.Append("</td><td>" + row["price"] + "</td>");
                 html.Append("<td>" + row["status"] + "</td>");
                 html.Append("<td>" + row["tag"] + "</td>");
                 html.Append("<td>" + row["promotion"] + "</td>");
@@ -65,7 +70,7 @@ namespace WebBanLinhKien.Admin
                 html.Append("<td>" + row["content"] + "</td>");
                 html.Append("<td>");
                 html.Append("<a href='Products.aspx?action=edit&id=" + row["id_product"] + "' class='btn btn-primary btn-sm'>Sửa</a><span style='margin-left:10px;'></span>");
-                html.Append("<a href='Products.aspx?action=delete&id=" + row["id_product"] + "' class='btn btn-danger btn-sm'>Xóa</a>");
+                html.Append("<br><a href='Products.aspx?action=delete&id=" + row["id_product"] + "' class='btn btn-danger btn-sm'>Xóa</a>");
                 html.Append("</td>");
                 html.Append("</tr>");
             }
@@ -87,11 +92,19 @@ namespace WebBanLinhKien.Admin
             string details = txtChiTietSp.Text;
             string desc = txtMoTaSp.Text;
             string content = txtNoiDungSp.Text;
-            bool isSuccess = db.addNewProduct(id, name, price, status, promotion, tag, details, desc, content);
-            if (isSuccess)
+            string image = "";
+            foreach (HttpPostedFile file in FileUpload1.PostedFiles)
             {
-                showmessage("Thêm sản phẩm thành công");
+                System.IO.File.Copy(Server.MapPath(file.FileName), Server.MapPath("/Dog/defaultImage.jpeg"));
+                image += file.FileName + ";";
             }
+            Response.Write(image);
+            //bool isSuccess = db.addNewProduct(id, name, price, status, promotion, tag, details, desc, content);
+            //db.uploadImages(image);
+            //if (isSuccess)
+            //{
+            //    showmessage("Thêm sản phẩm thành công");
+            //}
         }
 
         private void deleteProduct(int id)
@@ -106,6 +119,12 @@ namespace WebBanLinhKien.Admin
             {
                 lblMessage.Text = "Xóa sản phẩm thất bại";
             }
+        }
+
+        private DataTable getImagesByIdProduct(int id_product)
+        {
+            ConnectDB db = new ConnectDB();
+            return db.getImagesByIdProduct(id_product);
         }
 
         protected void btnThemSanPham_Click(object sender, EventArgs e)
