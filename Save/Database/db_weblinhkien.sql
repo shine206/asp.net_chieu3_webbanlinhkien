@@ -294,18 +294,17 @@ GO
 create procedure getAllCategories
 as
 begin
-	select id_category,Category.name as category, GroupCategories.name as group_category
+	select id_category,Category.name as category, GroupCategories.name as group_category, GroupCategories.id_group_category as id_group
 	from Category, GroupCategories 
 	where Category.id_group_category = GroupCategories.id_group_category
 end
 
 --Add new product
 GO
-alter procedure addNewProduct
+create procedure addNewProduct
 	@id_category int,
 	@name nvarchar(100),
 	@price float,
-	@link_image text,
 	@status int,
 	@promotion nvarchar(255),
 	@tag nvarchar(255),
@@ -338,7 +337,8 @@ create procedure deleteProduct
 	@id int
 as
 begin
-	delete from Products where Products.id_product=@id
+	delete from Images where Images.id_product=@id;
+	delete from Products where Products.id_product=@id;
 end
 
 go
@@ -385,24 +385,26 @@ begin
 	select * from Images where Images.id_product=@id_product; 
 end
 
-go
--- Get products filter by price
-create procedure filterProductsByPrice
+--Get products in search by name
+GO
+CREATE procedure getAllProductsInSearch
+	@q NVARCHAR(255)
+as
+begin
+	select Products.id_product, Category.name as category, Products.name, price, status, promotion, tag, details, description, content, Images.link_image 
+	from Products, Category, Images 
+	where Products.id_category=Category.id_category and Products.name like '%'+@q+'%' and Images.id_product=Products.id_product
+	order by id_product DESC
+end
+--Get products filter by price
+GO
+create procedure getProductsByPrice
 	@min_price int,
 	@max_price int
 as
 begin
-	select Products.*, Images.link_image from Products, Images where Products.id_product=Images.id_product and price >= @min_price and price < @max_price
+	select Products.*, Images.link_image
+	from Products, Images 
+	where Products.price >=@min_price and price <@max_price and Images.id_product=Products.id_product
 end
---select * from Images;
---select * from Admin_Users;
---select * from Banners;
---select * from Category;
---select * from GroupCategories;
---select * from Products;
---select * from Users;
---select * from OrderDetail;
---select * from Orders;
 
-
---select MAX(id_product) from Products
