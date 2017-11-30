@@ -74,7 +74,7 @@ namespace WebBanLinhKien
         {
             if (!string.IsNullOrEmpty(txtQuery.Text))
             {
-                Response.Redirect("Search.aspx?action=search&q=" + txtQuery.Text);
+                Response.Redirect("Search.aspx?action=search&type=name&q=" + txtQuery.Text);
             }
             
         }

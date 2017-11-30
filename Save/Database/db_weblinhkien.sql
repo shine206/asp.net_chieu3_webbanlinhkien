@@ -301,7 +301,7 @@ end
 
 --Add new product
 GO
-alter procedure addNewProduct
+create procedure addNewProduct
 	@id_category int,
 	@name nvarchar(100),
 	@price float,
@@ -386,23 +386,41 @@ begin
 end
 
 go
--- Get products filter by price
-create procedure filterProductsByPrice
+--Get products in search by name
+GO
+CREATE procedure getAllProductsInSearch
+	@q NVARCHAR(255)
+as
+begin
+	select Products.id_product, Category.name as category, Products.name, price, status, promotion, tag, details, description, content, Images.link_image 
+	from Products, Category, Images 
+	where Products.id_category=Category.id_category and Products.name like '%'+@q+'%' and Images.id_product=Products.id_product
+	order by id_product DESC
+end
+
+--Get products filter by price
+GO
+create procedure getProductsByPrice
 	@min_price int,
 	@max_price int
 as
 begin
-	select Products.*, Images.link_image from Products, Images where Products.id_product=Images.id_product and price >= @min_price and price < @max_price
+	select Products.*, Images.link_image
+	from Products, Images 
+	where Products.price >=@min_price and price <@max_price and Images.id_product=Products.id_product
 end
---select * from Images;
---select * from Admin_Users;
---select * from Banners;
---select * from Category;
---select * from GroupCategories;
---select * from Products;
---select * from Users;
---select * from OrderDetail;
---select * from Orders;
-
-
---select MAX(id_product) from Products
+/*
+	drop database db_weblinhkien;
+	
+	select * from Images;
+	select * from Admin_Users;
+	select * from Banners;
+	select * from Category;
+	select * from GroupCategories;
+	select * from Products;
+	select * from Users;
+	select * from OrderDetail;
+	select * from Orders;
+	
+	
+*/

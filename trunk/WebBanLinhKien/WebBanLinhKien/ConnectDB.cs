@@ -202,6 +202,28 @@ namespace WebBanLinhKien
             return result;
         }
 
+		// Lọc sản phẩm theo giá
+        public DataTable getProductsByPrice(int min=0, int max = 500000)
+        {
+            DataTable result = new DataTable();
+            try
+            {
+                connect();
+                SqlCommand cmd = new SqlCommand("getProductsByPrice", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@min_price", min);
+                cmd.Parameters.AddWithValue("@max_price", max);
+                SqlDataReader rd = cmd.ExecuteReader();
+                result.Load(rd);
+            }
+            finally
+            {
+                result.Dispose();
+                disconnect();
+            }
+            return result;
+        }
+		
         /// <summary>
         /// Thêm sản phẩm mới
         /// </summary>
