@@ -294,7 +294,7 @@ GO
 create procedure getAllCategories
 as
 begin
-	select id_category,Category.name as category, GroupCategories.name as group_category
+	select id_category,Category.name as category, GroupCategories.name as group_category, GroupCategories.id_group_category as id_group
 	from Category, GroupCategories 
 	where Category.id_group_category = GroupCategories.id_group_category
 end
@@ -305,7 +305,6 @@ create procedure addNewProduct
 	@id_category int,
 	@name nvarchar(100),
 	@price float,
-	@link_image text,
 	@status int,
 	@promotion nvarchar(255),
 	@tag nvarchar(255),
@@ -338,7 +337,8 @@ create procedure deleteProduct
 	@id int
 as
 begin
-	delete from Products where Products.id_product=@id
+	delete from Images where Images.id_product=@id;
+	delete from Products where Products.id_product=@id;
 end
 
 go
@@ -385,7 +385,6 @@ begin
 	select * from Images where Images.id_product=@id_product; 
 end
 
-go
 --Get products in search by name
 GO
 CREATE procedure getAllProductsInSearch
@@ -408,18 +407,4 @@ begin
 	from Products, Images 
 	where Products.price >=@min_price and price <@max_price and Images.id_product=Products.id_product
 end
-/*
-	drop database db_weblinhkien;
-	
-	select * from Images;
-	select * from Admin_Users;
-	select * from Banners;
-	select * from Category;
-	select * from GroupCategories;
-	select * from Products;
-	select * from Users;
-	select * from OrderDetail;
-	select * from Orders;
-	
-	
-*/
+

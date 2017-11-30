@@ -5,90 +5,7 @@
     <div class="row">
         <div class="hidden-xs hidden-sm hidden-md col-lg-3">
             <ul class="list-unstyled listCate hasIcon ">
-                <li class="hasSubListCate">
-                    <i class="fa fa-angle-right"></i>
-                    <a href="product.html">Điện lạnh</a>
-                    <div class="subListCate">
-                        <a href="product.html">Máy giặt</a>
-                        <a href="product.html">Máy lạnh</a>
-                        <a href="product.html">Tủ lạnh</a>
-                        <a href="product.html">Máy sấy quần áo</a>
-                        <a href="product.html">Máy nước nóng</a>
-                        <a href="product.html">Máy lọc nước</a>
-                        <a href="product.html">Máy rửa chén</a>
-                    </div>
-                </li>
-                <li class="hasSubListCate">
-                    <i class="fa fa-angle-right"></i>
-                    <a href="product.html">Nhà bếp</a>
-                    <div class="subListCate">
-                        <a href="product.html">Bếp điện</a>
-                        <a href="product.html">Nồi áp suất</a>
-                        <a href="product.html">Nồi cơm điện</a>
-                        <a href="product.html">Lò vi sóng</a>
-                        <a href="product.html">Bếp gas</a>
-                        <a href="product.html">Máy xay</a>
-                        <a href="product.html">Máy khử mùi</a>
-                    </div>
-                </li>
-                <li class="hasSubListCate">
-                    <i class="fa fa-angle-right"></i>
-                    <a href="product.html">Đồ gia dụng</a>
-                    <div class="subListCate">
-                        <a href="product.html">Máy hút bụi</a>
-                        <a href="product.html">Máy hút ẩm</a>
-                        <a href="product.html">Quạt phun sương</a>
-                        <a href="product.html">Ổn áp</a>
-                        <a href="product.html">Đèn điện</a>
-                        <a href="product.html">Bàn là</a>
-                        <a href="product.html">Máy may</a>
-                    </div>
-                </li>
-                <li class="hasSubListCate">
-                    <i class="fa fa-angle-right"></i>
-                    <a href="product.html">Kỹ thuật số</a>
-                    <div class="subListCate">
-                        <a href="product.html">Máy ảnh ống kính rời</a>
-                        <a href="product.html">Máy ảnh du lịch</a>
-                        <a href="product.html">Máy quay phim</a>
-                        <a href="product.html">Thiết bị giải trí</a>
-                        <a href="product.html">Phụ kiện kỹ thuật số</a>
-                        <a href="product.html">Máy nghe nhạc</a>
-                    </div>
-                </li>
-                <li class="hasSubListCate">
-                    <i class="fa fa-angle-right"></i>
-                    <a href="product.html">Phụ kiện</a>
-                    <div class="subListCate">
-                        <a href="product.html">Phụ kiện điện tử</a>
-                        <a href="product.html">Phụ kiện điện thoại</a>
-                        <a href="product.html">Phụ kiện văn phòng</a>
-                        <a href="product.html">Phụ kiện kỹ thuật số</a>
-                        <a href="product.html">Phụ kiện Apple</a>
-                    </div>
-                </li>
-                <li class="hasSubListCate">
-                    <i class="fa fa-angle-right"></i>
-                    <a href="product.html">Sức khỏe</a>
-                    <div class="subListCate">
-                        <a href="product.html">Máy sấy tóc</a>
-                        <a href="product.html">Máy cạo râu</a>
-                        <a href="product.html">Cân sức khỏe</a>
-                        <a href="product.html">Máy tập đa năng</a>
-                    </div>
-                </li>
-                <li class="hasSubListCate">
-                    <i class="fa fa-angle-right"></i>
-                    <a href="product.html">Bách hóa</a>
-                    <div class="subListCate">
-                        <a href="product.html">Balo &amp; Vali</a>
-                        <a href="product.html">Hóa phẩm</a>
-                        <a href="product.html">Gối và áo gối</a>
-                        <a href="product.html">Bọc nệm</a>
-                        <a href="product.html">Nệm</a>
-                        <a href="product.html">Thùng rác</a>
-                    </div>
-                </li>
+                <asp:PlaceHolder runat="server" ID="liContent" />
             </ul>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
@@ -282,69 +199,11 @@
     <div class="bigCollection s1" id="bigCollection_1">
         <div class="controlTabsWrapper">
             <div class="controlTabs">
-                <h2 class="title hidden-xs hidden-sm">Điện lạnh</h2>
+                <h2 class="title hidden-xs hidden-sm">Danh Mục</h2>
                 <a href="#navBigCollectionMobile1" class="title hidden-md hidden-lg bigCollectionBtnNav dropDownButton" data-toggle="collapse">Điện lạnh <i class="fa fa-bars"></i></a>
-                <div class="navBigCollectionMobile dropList hidden-md hidden-lg collapse" id="navBigCollectionMobile1">
-                    <ul class="nav nav-tabs tabAJAXProducts" role="tablist">
-                        <li role="presentation" class="active">
-                            <a href="#taba1" data-collection="may-giat" role="tab" data-toggle="tab">Máy giặt</a>
-                            <a href="#" class="readMore" data-toggle="tooltip" title="" data-original-title="Xem thêm sản phẩm khác">+</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#taba2" data-collection="may-lanh" role="tab" data-toggle="tab">Máy lạnh</a>
-                            <a href="#" class="readMore" data-toggle="tooltip" title="" data-original-title="Xem thêm sản phẩm khác">+</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#taba3" data-collection="tu-lanh" role="tab" data-toggle="tab">Tủ lạnh</a>
-                            <a href="#" class="readMore" data-toggle="tooltip" title="" data-original-title="Xem thêm sản phẩm khác">+</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#taba4" data-collection="may-say-quan-ao" role="tab" data-toggle="tab">Máy sấy quần áo</a>
-                            <a href="#" class="readMore" data-toggle="tooltip" title="" data-original-title="Xem thêm sản phẩm khác">+</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#taba5" data-collection="may-nuoc-nong" role="tab" data-toggle="tab">Máy nước nóng</a>
-                            <a href="#" class="readMore" data-toggle="tooltip" title="" data-original-title="Xem thêm sản phẩm khác">+</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#taba6" data-collection="may-loc-nuoc" role="tab" data-toggle="tab">Máy lọc nước</a>
-                            <a href="#" class="readMore" data-toggle="tooltip" title="" data-original-title="Xem thêm sản phẩm khác">+</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#taba7" data-collection="" role="tab" data-toggle="tab">Máy rửa chén</a>
-                            <a href="#" class="readMore" data-toggle="tooltip" title="" data-original-title="Xem thêm sản phẩm khác">+</a>
-                        </li>
-                    </ul>
-                </div>
+
                 <ul class="nav nav-tabs tabAJAXProducts hidden-xs hidden-sm" role="tablist">
-                    <li role="presentation" class="active">
-                        <a href="#taba1" data-collection="may-giat" role="tab" data-toggle="tab">Máy giặt</a>
-                        <a href="#" class="readMore" data-toggle="tooltip" title="" data-original-title="Xem thêm sản phẩm khác">+</a>
-                    </li>
-                    <li role="presentation">
-                        <a href="#taba2" data-collection="may-lanh" role="tab" data-toggle="tab">Máy lạnh</a>
-                        <a href="#" class="readMore" data-toggle="tooltip" title="" data-original-title="Xem thêm sản phẩm khác">+</a>
-                    </li>
-                    <li role="presentation">
-                        <a href="#taba3" data-collection="tu-lanh" role="tab" data-toggle="tab">Tủ lạnh</a>
-                        <a href="#" class="readMore" data-toggle="tooltip" title="" data-original-title="Xem thêm sản phẩm khác">+</a>
-                    </li>
-                    <li role="presentation">
-                        <a href="#taba4" data-collection="may-say-quan-ao" role="tab" data-toggle="tab">Máy sấy quần áo</a>
-                        <a href="#" class="readMore" data-toggle="tooltip" title="" data-original-title="Xem thêm sản phẩm khác">+</a>
-                    </li>
-                    <li role="presentation">
-                        <a href="#taba5" data-collection="may-nuoc-nong" role="tab" data-toggle="tab">Máy nước nóng</a>
-                        <a href="#" class="readMore" data-toggle="tooltip" title="" data-original-title="Xem thêm sản phẩm khác">+</a>
-                    </li>
-                    <li role="presentation">
-                        <a href="#taba6" data-collection="may-loc-nuoc" role="tab" data-toggle="tab">Máy lọc nước</a>
-                        <a href="#" class="readMore" data-toggle="tooltip" title="" data-original-title="Xem thêm sản phẩm khác">+</a>
-                    </li>
-                    <li role="presentation">
-                        <a href="#taba7" data-collection="" role="tab" data-toggle="tab">Máy rửa chén</a>
-                        <a href="#/" class="readMore" data-toggle="tooltip" title="" data-original-title="Xem thêm sản phẩm khác">+</a>
-                    </li>
+                    <asp:PlaceHolder runat="server" ID="tabAJAXProductsContent" />
                 </ul>
             </div>
         </div>
@@ -557,7 +416,115 @@
         <!--  tabContentWrapper -->
     </div>
     <!-- End s1 -->
-
+    <div id="999" class="modal fade" role="dialog">
+        <div class="quickViewWrapper">
+            <a href="#" class="close close-window" data-dismiss="modal" title="Close" href="">×</a>
+            <div class="quickViewCountDown" style="">236D : 22H : 2M : 5S</div>
+            <div class="clearfix">
+                <div class="quickViewImg">
+                    <div class="quickViewFeaturedImg">
+                        <div class="slideshow-product owl-carousel owl-theme">
+                            <div class="item" data-hash="sp1">
+                                <img src="Content/images/sp1.jpg" class="img-responsive" alt="Ảnh sản phẩm">
+                            </div>
+                            <div class="item" data-hash="sp2">
+                                <img src="Content/images/sp2.jpg" class="img-responsive" alt="Ảnh sản phẩm">
+                            </div>
+                            <div class="item" data-hash="sp3">
+                                <img src="Content/images/sp3.jpg" class="img-responsive" alt="Ảnh sản phẩm">
+                            </div>
+                            <div class="item" data-hash="sp4">
+                                <img src="Content/images/sp4.jpg" class="img-responsive" alt="Ảnh sản phẩm">
+                            </div>
+                            <div class="item" data-hash="sp5">
+                                <img src="Content/images/sp5.jpg" class="img-responsive" alt="Ảnh sản phẩm">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="quickViewThumbImg owl-carousel owl-theme">
+                        <div class="sub-item">
+                            <a href="#sp1">
+                                <img src="Content/images/sub-1.jpg"></a>
+                        </div>
+                        <div class="sub-item">
+                            <a href="#sp2">
+                                <img src="Content/images/sub-2.jpg"></a>
+                        </div>
+                        <div class="sub-item">
+                            <a href="#sp3">
+                                <img src="Content/images/sub-3.jpg"></a>
+                        </div>
+                        <div class="sub-item">
+                            <a href="#sp4">
+                                <img src="Content/images/sub-4.jpg"></a>
+                        </div>
+                        <div class="sub-item">
+                            <a href="#sp5">
+                                <img src="Content/images/sub-5.jpg"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="quickViewProduct">
+                    <div class="quickViewProductTitle"><a href="#">Bếp hồng ngoại Midea MIR-T2015DC</a></div>
+                    <div class="quickViewProductMeta clearfix">
+                        <div class="quickViewProductVendor">NSX: <b>Midea</b></div>
+                        <div class="quickViewProductBrand">Loại: <b>Bếp điện</b></div>
+                        <div class="quickViewProductsku" style="display: none;"></div>
+                        <div class="quickViewProductBarcode">Mã SP: <b>T2015DC</b></div>
+                    </div>
+                    <div class="quickViewProductPrice hasMarginTop">
+                        <span>900.000 VND</span>
+                        <del style="">1.300.000 VND</del>
+                    </div>
+                    <div class="quickViewProductActions clearfix">
+                        <form action="#" method="post" class="quickViewProductVariants" id="product-actions-5868449">
+                            <div class="quickViewProductQuantity clearfix">
+                                <label>Số lượng:</label>
+                                <div class="quickViewProductQuantityGroup">
+                                    <button class="button quickViewProductQuantityButton" onclick="var result = document.getElementById('quickviewQty'); var quickviewQty = result.value; if( !isNaN( quickviewQty ) &amp;&amp; quickviewQty > 1 ) result.value--;return false;">-</button>
+                                    <input type="text" title="Số lượng" value="1" min="1" class="quickviewQty" id="quickviewQty" name="quantity">
+                                    <button class="button quickViewProductQuantityButton" onclick="var result = document.getElementById('quickviewQty'); var quickviewQty = result.value; if( !isNaN( quickviewQty )) result.value++;return false;">+</button>
+                                </div>
+                            </div>
+                            <div class="quickViewProductButtons">
+                                <button class="button quickViewAddCart">
+                                    <i class="fa fa-shopping-cart"></i>Cho vào giỏ hàng
+                                </button>
+                                <a href="javascript:void(0);" class="button quickViewContact" style="display: none;" data-code="T2015DC">
+                                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                    Đặt hàng
+                                </a>
+                                <a href="#" title="Tư vấn qua Skype" class="button skype"><i class="fa fa-skype"></i></a>
+                            </div>
+                            <input type="hidden" name="variantId" value="9363066">
+                        </form>
+                    </div>
+                    <a href="tel:0868155456" class="boxHotline"><i class="fa fa-volume-control-phone"></i>0868.155.456</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="998" class="modal fade" role="dialog">
+        <div class="noticeAddWrapper">
+            <a href="#" class="close" data-dismiss="modal">×</a>
+            <span class="noteAddWrapper">✔ Thêm vào giỏ hàng thành công!</span>
+            <div class="clearfix">
+                <div class="noticeAddImg">
+                    <a href="">
+                        <img src="Content/images/big-165330-bep-hong-ngoai-midea-mir-t2015dc.jpg" class="img-responsive" alt="Ảnh sản phẩm"></a>
+                </div>
+                <div class="noticeAddInfo">
+                    <div class="noticeAddInfoTitle">Bếp hồng ngoại Midea MIR-T2015DC</div>
+                    <div class="noticeAddInfoQty"><i>Số lượng: 1</i></div>
+                    <div class="noticeAddInfoPrice">900.000 VND</div>
+                </div>
+            </div>
+            <div class="clearfix noticeAddBottom">
+                <a href="#" data-dismiss="modal" class="left button"><i class="hoverButton"></i>Tiếp tục mua hàng</a>
+                <a href="#" class="right button"><i class="hoverButton"></i>Thanh toán</a>
+            </div>
+        </div>
+    </div>
 </asp:Content>
 
 <asp:Content runat="server" ContentPlaceHolderID="BrandContent" ID="BrandContent">
