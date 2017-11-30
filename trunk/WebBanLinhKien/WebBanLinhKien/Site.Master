@@ -50,87 +50,11 @@
         <nav class="offset-menu offset-menu-left">
             <div class="offset-menu-wrapper">
                 <ul class="list-unstyled mobile-menu">
-                    <li><a href="/">Trang chủ</a></li>
+                    <li><a href="Home.aspx">Trang chủ</a></li>
                     <li class="has-sub">
                         <a href="#">Sản phẩm</a><em data-target="#sub-menu-product" data-toggle="collapse" class="collapsed"><i class="fa fa-angle-down"></i></em>
                         <ul class="list-unstyled collapse panel-group" id="sub-menu-product">
-                            <li class="has-sub panel">
-                                <a href="#">Điện lạnh</a><em data-parent="#sub-menu-product" data-target="#sub-sub-menu-1" data-toggle="collapse" class="collapsed"><i class="fa fa-angle-down"></i></em>
-                                <ul class="list-unstyled collapse" id="sub-sub-menu-1">
-                                    <li><a href="#">Máy giặt</a></li>
-                                    <li><a href="#">Máy lạnh</a></li>
-                                    <li><a href="#">Tủ lạnh</a></li>
-                                    <li><a href="#">Máy sấy quần áo</a></li>
-                                    <li><a href="#">Máy nước nóng</a></li>
-                                    <li><a href="#">Máy lọc nước</a></li>
-                                    <li><a href="#">Máy rửa chén</a></li>
-                                </ul>
-                            </li>
-                            <li class="has-sub panel">
-                                <a href="#">Nhà bếp</a><em data-parent="#sub-menu-product" data-target="#sub-sub-menu-2" data-toggle="collapse" class="collapsed"><i class="fa fa-angle-down"></i></em>
-                                <ul class="list-unstyled collapse" id="sub-sub-menu-2">
-                                    <li><a href="#">Bếp điện</a></li>
-                                    <li><a href="#">Nồi áp suất</a></li>
-                                    <li><a href="#">Nồi cơm điện</a></li>
-                                    <li><a href="#">Lò vi sóng</a></li>
-                                    <li><a href="#">Bếp gas</a></li>
-                                    <li><a href="#">Máy xay</a></li>
-                                    <li><a href="#">Máy khử mùi</a></li>
-                                </ul>
-                            </li>
-                            <li class="has-sub panel">
-                                <a href="#">Đồ gia dụng</a><em data-parent="#sub-menu-product" data-target="#sub-sub-menu-3" data-toggle="collapse" class="collapsed"><i class="fa fa-angle-down"></i></em>
-                                <ul class="list-unstyled collapse" id="sub-sub-menu-3">
-                                    <li><a href="#">Máy hút bụi</a></li>
-                                    <li><a href="#">Máy hút ẩm</a></li>
-                                    <li><a href="#">Quạt phun sương</a></li>
-                                    <li><a href="#">Ổn áp</a></li>
-                                    <li><a href="#">Đèn điện</a></li>
-                                    <li><a href="#">Bàn là</a></li>
-                                    <li><a href="#">Máy may</a></li>
-                                </ul>
-                            </li>
-                            <li class="has-sub panel">
-                                <a href="#">Kỹ thuật số</a><em data-parent="#sub-menu-product" data-target="#sub-sub-menu-4" data-toggle="collapse" class="collapsed"><i class="fa fa-angle-down"></i></em>
-                                <ul class="list-unstyled collapse" id="sub-sub-menu-4">
-                                    <li><a href="#">Máy ảnh ống kính rời</a></li>
-                                    <li><a href="#">Máy ảnh du lịch</a></li>
-                                    <li><a href="#">Máy quay phim</a></li>
-                                    <li><a href="#">Thiết bị giải trí</a></li>
-                                    <li><a href="#">Phụ kiện kỹ thuật số</a></li>
-                                    <li><a href="#">Máy nghe nhạc</a></li>
-                                </ul>
-                            </li>
-                            <li class="has-sub panel">
-                                <a href="#">Phụ kiện</a><em data-parent="#sub-menu-product" data-target="#sub-sub-menu-5" data-toggle="collapse" class="collapsed"><i class="fa fa-angle-down"></i></em>
-                                <ul class="list-unstyled collapse" id="sub-sub-menu-5">
-                                    <li><a href="#">Phụ kiện điện tử</a></li>
-                                    <li><a href="#">Phụ kiện điện thoại</a></li>
-                                    <li><a href="#">Phụ kiện văn phòng</a></li>
-                                    <li><a href="#">Phụ kiện kỹ thuật số</a></li>
-                                    <li><a href="#">Phụ kiện Apple</a></li>
-                                </ul>
-                            </li>
-                            <li class="has-sub panel">
-                                <a href="#">Sức khỏe</a><em data-parent="#sub-menu-product" data-target="#sub-sub-menu-6" data-toggle="collapse" class="collapsed"><i class="fa fa-angle-down"></i></em>
-                                <ul class="list-unstyled collapse" id="sub-sub-menu-6">
-                                    <li><a href="#">Máy sấy tóc</a></li>
-                                    <li><a href="#">Máy cạo râu</a></li>
-                                    <li><a href="#">Cân sức khỏe</a></li>
-                                    <li><a href="#">Máy tập đa năng</a></li>
-                                </ul>
-                            </li>
-                            <li class="has-sub panel">
-                                <a href="#">Bách hóa</a><em data-parent="#sub-menu-product" data-target="#sub-sub-menu-7" data-toggle="collapse" class="collapsed"><i class="fa fa-angle-down"></i></em>
-                                <ul class="list-unstyled collapse" id="sub-sub-menu-7">
-                                    <li><a href="#">Balo &amp; Vali</a></li>
-                                    <li><a href="#">Hóa phẩm</a></li>
-                                    <li><a href="#">Gối và áo gối</a></li>
-                                    <li><a href="#">Bọc nệm</a></li>
-                                    <li><a href="#">Nệm</a></li>
-                                    <li><a href="#">Thùng rác</a></li>
-                                </ul>
-                            </li>
+                            <asp:PlaceHolder runat="server" ID="liContent"/>
                         </ul>
                     </li>
                     <li><a href="#">Tin tức</a></li>
@@ -191,7 +115,7 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
                             <h1 class="logo">
-                                <a href="index.html">
+                                <a href="Home.aspx">
                                     <span>skymarket</span>
                                     <img src="Content/images/logo.png" alt="skymarket" class="img-responsive">
                                 </a>
@@ -243,157 +167,16 @@
                             <h3 class="hidden-lg cateTitle dropDownButton collapsed" data-toggle="collapse" data-target="#listCateMobile"><i class="spr icoBar"></i>Danh mục sản phẩm</h3>
                             <div class="hidden-lg listCateMobile dropList collapse" id="listCateMobile">
                                 <ul class="list-unstyled hasIcon mobile-menu panel-group" id="panel-mobile-menu">
-                                    <li class="hasSubListCate panel">
-                                        <a href="product.html">Điện lạnh</a><em data-parent="#panel-mobile-menu" class="collapsed" data-toggle="collapse" data-target="#sub-menu-1"><i class="fa fa-angle-down"></i></em>
-                                        <ul class="list-unstyled SubListCate collapse" id="sub-menu-1">
-                                            <li><a href="product.html">Máy giặt</a></li>
-                                            <li><a href="product.html">Máy lạnh</a></li>
-                                            <li><a href="product.html">Tủ lạnh</a></li>
-                                            <li><a href="product.html">Máy sấy quần áo</a></li>
-                                            <li><a href="product.html">Máy lọc nước</a></li>
-                                            <li><a href="product.html">Máy rửa chén</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="hasSubListCate panel">
-                                        <a href="product.html">Nhà bếp</a><em data-parent="#panel-mobile-menu" class="collapsed" data-toggle="collapse" data-target="#sub-menu-2"><i class="fa fa-angle-down"></i></em>
-                                        <ul class="list-unstyled SubListCate collapse" id="sub-menu-2">
-                                            <li><a href="product.html">Bếp điện</a></li>
-                                            <li><a href="product.html">Nồi áp suất</a></li>
-                                            <li><a href="product.html">Nồi cơm điện</a></li>
-                                            <li><a href="product.html">Lò vi sóng</a></li>
-                                            <li><a href="product.html">Bếp gas</a></li>
-                                            <li><a href="product.html">Máy xay</a></li>
-                                            <li><a href="product.html">Máy khử mùi</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="hasSubListCate panel">
-                                        <a href="product.html">Đồ gia dụng</a><em data-parent="#panel-mobile-menu" class="collapsed" data-toggle="collapse" data-target="#sub-menu-3"><i class="fa fa-angle-down"></i></em>
-                                        <ul class="list-unstyled SubListCate collapse" id="sub-menu-3">
-                                            <li><a href="product.html">Máy hút bụi</a></li>
-                                            <li><a href="product.html">Máy hút ẩm</a></li>
-                                            <li><a href="product.html">Quạt phun sương</a></li>
-                                            <li><a href="product.html">Ổn áp</a></li>
-                                            <li><a href="product.html">Đèn điện</a></li>
-                                            <li><a href="product.html">Bàn là</a></li>
-                                            <li><a href="product.html">Máy may</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="hasSubListCate panel">
-                                        <a href="product.html">Kỹ thuật số</a><em data-parent="#panel-mobile-menu" class="collapsed" data-toggle="collapse" data-target="#sub-menu-4"><i class="fa fa-angle-down"></i></em>
-                                        <ul class="list-unstyled SubListCate collapse" id="sub-menu-4">
-                                            <li><a href="product.html">Máy ảnh ống kính rời</a></li>
-                                            <li><a href="product.html">Máy ảnh du lịch</a></li>
-                                            <li><a href="product.html">Máy quay phim</a></li>
-                                            <li><a href="product.html">Thiết bị giải trí</a></li>
-                                            <li><a href="product.html">Phụ kiện kỹ thuật số</a></li>
-                                            <li><a href="product.html">Máy nghe nhạc</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="hasSubListCate panel">
-                                        <a href="product.html">Phụ kiện</a><em data-parent="#panel-mobile-menu" class="collapsed" data-toggle="collapse" data-target="#sub-menu-5"><i class="fa fa-angle-down"></i></em>
-                                        <ul class="list-unstyled SubListCate collapse" id="sub-menu-5">
-                                            <li><a href="product.html">Phụ kiện điện tử</a></li>
-                                            <li><a href="product.html">Phụ kiện điện thoại</a></li>
-                                            <li><a href="product.html">Phụ kiện văn phòng</a></li>
-                                            <li><a href="product.html">Phụ kiện kỹ thuật số</a></li>
-                                            <li><a href="product.html">Phụ kiện Apple</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="hasSubListCate panel">
-                                        <a href="product.html">Sức khỏe</a><em data-parent="#panel-mobile-menu" class="collapsed" data-toggle="collapse" data-target="#sub-menu-6"><i class="fa fa-angle-down"></i></em>
-                                        <ul class="list-unstyled SubListCate collapse" id="sub-menu-6">
-                                            <li><a href="product.html">Máy sấy tóc</a></li>
-                                            <li><a href="product.html">Máy cạo râu</a></li>
-                                            <li><a href="product.html">Cân sức khỏe</a></li>
-                                            <li><a href="product.html">Máy tập đa năng</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="hasSubListCate panel">
-                                        <a href="product.html">Bách hóa</a><em data-parent="#panel-mobile-menu" class="collapsed" data-toggle="collapse" data-target="#sub-menu-7"><i class="fa fa-angle-down"></i></em>
-                                        <ul class="list-unstyled SubListCate collapse" id="sub-menu-7">
-                                            <li><a href="product.html">Balo &amp; Vali</a></li>
-                                            <li><a href="product.html">Hóa phẩm</a></li>
-                                            <li><a href="product.html">Gối và áo gối</a></li>
-                                            <li><a href="product.html">Bọc nệm</a></li>
-                                            <li><a href="product.html">Nệm</a></li>
-                                            <li><a href="product.html">Thùng rác</a></li>
-                                        </ul>
-                                    </li>
+                                    <asp:PlaceHolder runat="server" ID="mobileMenuContent"/>
                                 </ul>
                             </div>
                         </div>
                         <div class="hidden-xs hidden-sm col-md-9 col-lg-9">
                             <ul class="list-unstyled mainNav list-inline">
-                                <li class="active"><a href="index.html">Trang chủ</a></li>
+                                <li class="active"><a href="Home.aspx">Trang chủ</a></li>
                                 <li class="hasMega"><a href="product.html">Sản phẩm</a>
                                     <div class="megaMenu">
-                                        <div class="col-md-4">
-                                            <h2 class="titleDecoration"><span class="line"></span><a href="product.html" class="title">Điện lạnh</a></h2>
-                                            <ul class="list-unstyled listMenu">
-                                                <li><a href="product.html">Máy giặt</a></li>
-                                                <li><a href="product.html">Máy lạnh</a></li>
-                                                <li><a href="product.html">Tủ lạnh</a></li>
-                                                <li><a href="product.html">Máy sấy quần áo</a></li>
-                                                <li><a href="product.html">Máy nước nóng</a></li>
-                                                <li><a href="product.html">Máy lọc nước</a></li>
-                                                <li><a href="product.html">Máy rửa chén</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <h2 class="titleDecoration"><span class="line"></span><a href="product.html" class="title">Nhà bếp</a></h2>
-                                            <ul class="list-unstyled listMenu">
-                                                <li><a href="product.html">Bếp điện</a></li>
-                                                <li><a href="product.html">Nồi áp suất</a></li>
-                                                <li><a href="product.html">Nồi cơm điện</a></li>
-                                                <li><a href="product.html">Lò vi sóng</a></li>
-                                                <li><a href="product.html">Bếp gas</a></li>
-                                                <li><a href="product.html">Máy xay</a></li>
-                                                <li><a href="product.html">Máy khử mùi</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <h2 class="titleDecoration"><span class="line"></span><a href="product.html" class="title">Đồ gia dụng</a></h2>
-                                            <ul class="list-unstyled listMenu">
-                                                <li><a href="product.html">Máy hút bụi</a></li>
-                                                <li><a href="product.html">Máy hút ẩm</a></li>
-                                                <li><a href="product.html">Quạt phun sương</a></li>
-                                                <li><a href="product.html">Ổn áp</a></li>
-                                                <li><a href="product.html">Đèn điện</a></li>
-                                                <li><a href="product.html">Bàn là</a></li>
-                                                <li><a href="product.html">Máy may</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                        <div class="col-md-4">
-                                            <h2 class="titleDecoration"><span class="line"></span><a href="product.html" class="title">Kỹ thuật số</a></h2>
-                                            <ul class="list-unstyled listMenu">
-                                                <li><a href="product.html">Máy ảnh ống kính rời</a></li>
-                                                <li><a href="product.html">Máy ảnh du lịch</a></li>
-                                                <li><a href="product.html">Máy quay phim</a></li>
-                                                <li><a href="product.html">Thiết bị giải trí</a></li>
-                                                <li><a href="product.html">Phụ kiện kỹ thuật số</a></li>
-                                                <li><a href="product.html">Máy nghe nhạc</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <h2 class="titleDecoration"><span class="line"></span><a href="product.html" class="title">Phụ kiện</a></h2>
-                                            <ul class="list-unstyled listMenu">
-                                                <li><a href="product.html">Phụ kiện điện tử</a></li>
-                                                <li><a href="product.html">Phụ kiện điện thoại</a></li>
-                                                <li><a href="product.html">Phụ kiện văn phòng</a></li>
-                                                <li><a href="product.html">Phụ kiện kỹ thuật số</a></li>
-                                                <li><a href="product.html">Phụ kiện Apple</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <h2 class="titleDecoration"><span class="line"></span><a href="product.html" class="title">Sức khỏe</a></h2>
-                                            <ul class="list-unstyled listMenu">
-                                                <li><a href="product.html">Máy sấy tóc</a></li>
-                                                <li><a href="product.html">Máy cạo râu</a></li>
-                                                <li><a href="product.html">Cân sức khỏe</a></li>
-                                                <li><a href="product.html">Máy tập đa năng</a></li>
-                                            </ul>
-                                        </div>
+                                        <asp:PlaceHolder runat="server" ID="megaMenuContent" />
                                         <div class="clearfix"></div>
                                     </div>
                                 </li>
@@ -509,7 +292,7 @@
             <div class="copyright">
                 <div class="container">
                     © Bản quyền thuộc về Medusa Team | Cung cấp bởi <a href="#">SDViet</a>.
-                <img src="images/payment.png" class="payment hidden-xs hidden-sm" alt="Phương thức thanh toán">
+                <img src="Content/images/payment.png" class="payment hidden-xs hidden-sm" alt="Phương thức thanh toán">
                 </div>
             </div>
             <!-- Back Top -->

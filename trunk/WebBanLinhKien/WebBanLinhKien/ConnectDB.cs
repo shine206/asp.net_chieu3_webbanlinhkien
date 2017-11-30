@@ -24,7 +24,7 @@ namespace WebBanLinhKien
         ///     deleteCategory
         ///     deleteProduct
         /// </summary>
-     
+
         SqlConnection conn;
 
         public ConnectDB() { }
@@ -202,6 +202,28 @@ namespace WebBanLinhKien
             return result;
         }
 
+		// Lọc sản phẩm theo giá
+        public DataTable getProductsByPrice(int min=0, int max = 500000)
+        {
+            DataTable result = new DataTable();
+            try
+            {
+                connect();
+                SqlCommand cmd = new SqlCommand("getProductsByPrice", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@min_price", min);
+                cmd.Parameters.AddWithValue("@max_price", max);
+                SqlDataReader rd = cmd.ExecuteReader();
+                result.Load(rd);
+            }
+            finally
+            {
+                result.Dispose();
+                disconnect();
+            }
+            return result;
+        }
+		
         /// <summary>
         /// Thêm sản phẩm mới
         /// </summary>
@@ -322,21 +344,18 @@ namespace WebBanLinhKien
             return result;
         }
 
-        public void uploadImages(string images)
+        public void uploadImages(string image)
         {
+
             try
             {
                 connect();
-                string[] arrayImages = images.Split(new char[] { ';' });
-                foreach (string image in arrayImages)
-                {
-                    SqlCommand cmd = new SqlCommand("uploadImage", conn);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@link_image", image);
-                    cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
-                    cmd.Parameters.AddWithValue("@updated_at", DateTime.Now);
-                    cmd.ExecuteNonQuery();
-                }
+                SqlCommand cmd = new SqlCommand("uploadImage", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@link_image", image);
+                cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
+                cmd.Parameters.AddWithValue("@updated_at", DateTime.Now);
+                cmd.ExecuteNonQuery();
             }
             finally
             {

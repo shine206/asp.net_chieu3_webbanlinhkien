@@ -48,7 +48,7 @@
                                 <td>
                                     <a href="/may-say-quan-ao-electrolux-6-kg-edv6051?variantid=9362597">
 
-                                        <img alt="MÁY S?Y QU?N ÁO ELECTROLUX 6 KG EDV6051" src="/images/sanpham-8.jpg" class="img-fix">
+                                        <img alt="MÁY S?Y QU?N ÁO ELECTROLUX 6 KG EDV6051" src="Content/images/sanpham-8.jpg" class="img-fix">
 
                                     </a>
                                 </td>

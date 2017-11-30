@@ -5,7 +5,7 @@
         <div class="container">
             <ol class="list-unstyled list-inline">
                 <li>
-                    <a href="index.html" itemprop="item"><i class="fa fa-home"></i> <span>Trang chủ</span></a>
+                    <a href="Home.aspx" itemprop="item"><i class="fa fa-home"></i> <span>Trang chủ</span></a>
                 </li>
                 <li><span class="divide"><i class="fa fa-angle-right"></i></span></li>
                 <li>
@@ -20,7 +20,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-md-push-3 col-lg-push-3">
                     <div class="topImgCollection">
                         <h1 class="titleCollection">Tất cả sản phẩm</h1>
-                        <img src="images/bg_collection.jpg" class="img-responsive" alt="Tất cả sản phẩm">
+                        <img src="Content/images/bg_collection.jpg" class="img-responsive" alt="Tất cả sản phẩm">
                         <div class="bg"></div>
                     </div>
                     <div class="toolsCollection clearfix">
@@ -37,9 +37,19 @@
                                 <option value="created-asc">Hàng cũ nhất</option>
                             </select>
                         </div>
-                        <a href="product.html" class="switchView active viewCollection" data-view="grid" data-toggle="tooltip" title="" data-original-title="Xem dạng lưới"><i class="fa fa-th"></i></a>
+                        <asp:LinkButton ID="btnViewGrid" runat="server">
+                            <a href="Search.aspx" class="switchView active viewCollection" data-view="grid" data-toggle="tooltip" title="" data-original-title="Xem dạng lưới">
+                                <i class="fa fa-th"></i>
+                            </a>
+                        </asp:LinkButton>
+                        <asp:LinkButton ID="btnViewList" runat="server">
+                            <a href="SearchViewList.aspx" class="switchView viewCollection" data-view="list" data-toggle="tooltip" title="" data-original-title="Xem dạng danh sách">
+                                <i class="fa fa-th-list"></i>
+                            </a>
+                        </asp:LinkButton>
+                        <%--<a href="Search.aspx" class="switchView active viewCollection" data-view="grid" data-toggle="tooltip" title="" data-original-title="Xem dạng lưới"><i class="fa fa-th"></i></a>
 
-                        <a href="productSingle.html" class="switchView viewCollection" data-view="list" data-toggle="tooltip" title="" data-original-title="Xem dạng danh sách"><i class="fa fa-th-list"></i></a>
+                        <a href="Search.aspx" class="switchView viewCollection" data-view="list" data-toggle="tooltip" title="" data-original-title="Xem dạng danh sách"><i class="fa fa-th-list"></i></a>--%>
                     </div>
                     <div class="collectionDisplay">
                         <div class="collectionResultProducts" id="sp-1">
@@ -121,58 +131,13 @@
                                 <span class="title">Lọc theo giá</span>
                             </h2>
                             <div class="filterToolGroup">
-                                <div id="slider" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
-                                    <div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 0%; width: 100%;"></div>
-                                    <!--<span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: %;"></span>
-                                    <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 100%;"></span>-->
-                                </div>
-                                <div class="clearfix">
-                                    <div id="start" class="left"><input value="0"></div>
-                                    <div id="stop" class="right"><input value="20000000"></div>
-                                </div>
-                                <a id="old-value" href="javascript:;"></a>
-                                <a id="filter-value" class="button" href="javascript:void(0);" data-value="(>-1 AND < 20000001)"><i class="hoverButton"></i>Lọc</a>
-                                <script>
-                                    var maxx = 20000000 / 10;
-                                    $('#slider').slider({
-                                        min: '0',
-                                        max: maxx,
-                                        range: true,
-                                        values: [0, 20000000],
-                                        slide: function (event, ui) {
-                                            if (ui.values[0] >= ui.values[1]) {
-                                                if (ui.handle == $("#slider a")[0]) {
-                                                    $("#slider").slider("values", 1, ui.value);
-                                                    ui.values[0] = ui.value;
-                                                    ui.values[1] = ui.value;
-                                                } else {
-                                                    $("#slider").slider("values", 0, ui.value);
-                                                    ui.values[0] = ui.value;
-                                                    ui.values[1] = ui.value;
-                                                }
-                                            }
-                                            var uimax = ui.values[1] + 1;
-                                            $('#start input').val(ui.values[0]);
-                                            $('#stop input').val(ui.values[1] + 1);
-                                            var uimin = ui.values[0] - 1;
-                                            var uimax = ui.values[1] + 2;
-                                            $('#filter-value').attr('data-value', '(>' + uimin + ' AND <' + uimax + ')');
-                                        }
-                                    });
-                                    $(document).on('change', '#start', function (e) {
-                                        var val = parseInt($('#start input').val()) - 1;
-                                        var val2 = parseInt($('#stop input').val()) + 1;
-
-                                        $("#slider").slider("values", 0, parseInt(val));
-                                        $('#filter-value').attr('data-value', '(>' + val + ' AND <' + val2 + ')');
-                                    });
-                                    $(document).on('change', '#stop', function (e) {
-                                        var val = parseInt($('#start input').val()) - 1;
-                                        var val2 = parseInt($('#stop input').val()) + 1;
-                                        $("#slider").slider("values", 1, parseInt(val2));
-                                        $('#filter-value').attr('data-value', '(>' + val + ' AND <' + val2 + ')');
-                                    });
-                                </script>
+                                <asp:DropDownList ID="drlFilterPrice" CssClass="filterDRLPrice" runat="server">
+                                        <asp:ListItem Text="< 500000" />
+                                        <asp:ListItem Text="500000 - 1000000" />
+                                        <asp:ListItem Text="1000000-3000000" />
+                                        <asp:ListItem Text="> 3000000" />
+                                    </asp:DropDownList>
+                                <asp:LinkButton ID="btnFilter" CssClass="button" runat="server" Text="Lọc" OnClick="btnFilter_Click"><i class="hoverButton"></i>Lọc</asp:LinkButton>
                             </div>
                         </div><!-- EndFilterRange -->
                         
@@ -182,7 +147,7 @@
                         <h2 class="titleDecoration"><span class="line"></span><span class="title">Sản phẩm khuyến mại</span></h2>
                         <ul class="list-unstyled listProducts">                       
                             <li class="clearfix">
-                                <img src="images/15239577.jpg" class="listsProductsImg" alt="Máy hút bụi Hitachi BM16 1600 W">                        
+                                <img src="Content/images/15239577.jpg" class="listsProductsImg" alt="Máy hút bụi Hitachi BM16 1600 W">                        
                                 <div class="listsProductsInfo">
                                     <h3><a href="#">Máy hút bụi Hitachi BM16 1600 W</a></h3>
                                     <div class="listsProductsPrice">
@@ -191,7 +156,7 @@
                                 </div>
                             </li>
                             <li class="clearfix">
-                                <img src="images/1600232-noi-ap-suat-dien-da-nang-sunhouse-5-lit-sh-1650.jpg" class="listsProductsImg" alt="Nồi áp suất điện Sunhouse SHD-1552 5.0 lít">
+                                <img src="Content/images/1600232-noi-ap-suat-dien-da-nang-sunhouse-5-lit-sh-1650.jpg" class="listsProductsImg" alt="Nồi áp suất điện Sunhouse SHD-1552 5.0 lít">
                                                                 
                                 <div class="listsProductsInfo">
                                     <h3><a href="#">Nồi áp suất điện Sunhouse SHD-1552 5.0 lít</a></h3>
@@ -212,7 +177,7 @@
                                 </div>
                             </li>
                             <li class="clearfix">
-                                <img src="images/bep-hong-ngoai-sunhouse-shd6017-kem-vi-nuong.jpg" class="listsProductsImg" alt="Bếp hồng ngoại Sunhouse SHD 6017"> 
+                                <img src="Content/images/bep-hong-ngoai-sunhouse-shd6017-kem-vi-nuong.jpg" class="listsProductsImg" alt="Bếp hồng ngoại Sunhouse SHD 6017"> 
                                 <div class="listsProductsInfo">
                                     <h3><a href="#">Bếp hồng ngoại Sunhouse SHD 6017</a></h3>
                                     <div class="listsProductsPrice">
@@ -222,7 +187,7 @@
                                 </div>
                             </li>
                             <li class="clearfix">
-                                <img src="images/may-giat-toshiba-aw-b1000gv-wl-tim-5862-3154811-1.jpg" class="listsProductsImg" alt="Máy giặt Toshiba 8.2kg AW-MF920LV WK">                  
+                                <img src="Content/images/may-giat-toshiba-aw-b1000gv-wl-tim-5862-3154811-1.jpg" class="listsProductsImg" alt="Máy giặt Toshiba 8.2kg AW-MF920LV WK">                  
                                 <div class="listsProductsInfo">
                                     <h3><a href="#">Máy giặt Toshiba 8.2kg AW-MF920LV WK</a></h3>
                                     <div class="listsProductsPrice">
@@ -239,7 +204,7 @@
                             <h2 class="titleDecoration"><span class="line"></span><span class="title">Sản phẩm đã xem</span></h2>
                             <ul class="list-unstyled listProducts" id="recently-viewed-products">    
                                 <li class="clearfix">
-                                    <img src="images/1600232-noi-ap-suat-dien-da-nang-sunhouse-5-lit-sh-1650.jpg" class="listsProductsImg" alt="Nồi áp suất điện Sunhouse SHD-1552 5.0 lít">
+                                    <img src="Content/images/1600232-noi-ap-suat-dien-da-nang-sunhouse-5-lit-sh-1650.jpg" class="listsProductsImg" alt="Nồi áp suất điện Sunhouse SHD-1552 5.0 lít">
                                     <div class="listsProductsInfo">
                                         <h3 title="Nồi áp suất điện Sunhouse SHD-1552 5.0 lít"><a href="#">Nồi áp suất điện Sunhouse SHD-1552 5.0 lít</a></h3>     <div class="listsProductsPrice">
                                             <span>800.000 VND</span>
@@ -248,7 +213,7 @@
                                     </div>
                                 </li>
                                  <li class="clearfix">
-                                    <img src="images/1600232-noi-ap-suat-dien-da-nang-sunhouse-5-lit-sh-1650.jpg" class="listsProductsImg" alt="Nồi áp suất điện Sunhouse SHD-1552 5.0 lít">
+                                    <img src="Content/images/1600232-noi-ap-suat-dien-da-nang-sunhouse-5-lit-sh-1650.jpg" class="listsProductsImg" alt="Nồi áp suất điện Sunhouse SHD-1552 5.0 lít">
                                     <div class="listsProductsInfo">
                                         <h3 title="Nồi áp suất điện Sunhouse SHD-1552 5.0 lít"><a href="#">Nồi áp suất điện Sunhouse SHD-1552 5.0 lít</a></h3>     <div class="listsProductsPrice">
                                             <span>800.000 VND</span>
@@ -261,7 +226,7 @@
                     </div><!-- End SidebarBlogDefault -->
                     <div class="sidebarPorductGroup">
                         <a href="#">
-                            <img src="images/banner_blog_page.jpg" class="img-responsive lazy" alt="Galaxy S6">
+                            <img src="Content/images/banner_blog_page.jpg" class="img-responsive lazy" alt="Galaxy S6">
                         </a>
                     </div><!-- End SidebarPorductGroup -->
                 </div>
