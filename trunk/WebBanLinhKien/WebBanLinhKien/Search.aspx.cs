@@ -31,36 +31,28 @@ namespace WebBanLinhKien
                         int max = Convert.ToInt32(Request.QueryString["max"].ToString());
                         SearchItemByPrice(min, max);
                     }
-                    
+
                 }
-                   
+
             }
-            
+
         }
 
         //Connect and Load products in database when search by name
-        private void LoadItemsSearch(string q)
+        private void LoadItemsSearch(string q, string view = "1")
         {
             ConnectDB db = new ConnectDB();
             DataTable dt = db.getAllProductsInSearch(q);
-            grdContent.Controls.Add(new Literal { Text = ""});
-            StringBuilder html = new StringBuilder();
-            foreach (DataRow row in dt.Rows)
-            {
-                CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");   // try with "en-US"
-                string tien = double.Parse(row["price"].ToString()).ToString("#,### VNĐ", cul.NumberFormat);
-                html.Append("<div class='coDownProduct'><div class='productGrid'><div class='countDown' data-end='kmdn_ngay1_thang12_nam2017'>208D : 12H : 38M : 10S</div><div class='productImg'>");
-                html.Append("<a href='#' title='" + row["name"] + "'><img src='" + row["link_image"] + "' data-original='" + row["link_image"] + "' class='img-fix' alt='" + row["name"] + "' style='display: inline;'></a>");
-                html.Append("<div class='hoverButtons'>");
-                html.Append("<span data-toggle='modal' data-target='#998'><a class='button quickview-btn' data-toggle='tooltip' data-placement='top' title='' data-countdown='null' data-alias='may-giat-panasonic-10-kg-na-f100a1wrv' data-original-title='Cho vào giỏ hàng'><i class='fa fa-shopping-cart'></i></a></span>");
-                html.Append("<span data-toggle='modal' data-target='#999'><a class='button quickview-btn' data-toggle='tooltip' data-placement='top' title='' data-countdown='null' data-alias='may-giat-panasonic-10-kg-na-f100a1wrv' data-original-title='Xem nhanh'><i class='fa fa-search'></i></a></span>");
-                html.Append("<a href='#' class='button skype' data-toggle='tooltip' data-placement='top' title='' data-original-title='Tư vấn qua Skype'><i class='fa fa-skype'></i></a>");
-                html.Append("</div></div><h3><a href='#' title='" + row["name"] + "'>" + row["name"] + "</a></h3>");
-                html.Append("<div class='productPrice'><del>7.990.000₫</del><span>&nbsp;&nbsp;" + tien + "</span></div></div></div>");
+            renderHTML(dt, view);
+        }
 
-            }
+        //Connect and Load products filter
 
-            grdContent.Controls.Add(new Literal { Text = html.ToString() });
+        private void SearchItemByPrice(int min, int max, string view = "1")
+        {
+            ConnectDB db = new ConnectDB();
+            DataTable dt = db.getProductsByPrice(min, max);
+            renderHTML(dt, view);
         }
 
         //Filter button
@@ -84,35 +76,56 @@ namespace WebBanLinhKien
                 max = 100000000;
             }
             Response.Redirect("Search.aspx?action=search&type=price&min=" + min.ToString() + "&max=" + max.ToString());
-            
+
             // Response.Write(min.ToString() + "\t" + max.ToString());
         }
 
 
-        //Connect and Load products filter
-
-        private void SearchItemByPrice(int min, int max)
+        private void renderHTML(DataTable dt, string view = "1")
         {
-            ConnectDB db = new ConnectDB();
-            DataTable dt = db.getProductsByPrice(min, max);
-            grdContent.Controls.Add(new Literal { Text = "" });
             StringBuilder html = new StringBuilder();
             foreach (DataRow row in dt.Rows)
             {
                 CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");   // try with "en-US"
                 string tien = double.Parse(row["price"].ToString()).ToString("#,### VNĐ", cul.NumberFormat);
-                html.Append("<div class='coDownProduct'><div class='productGrid'><div class='countDown' data-end='kmdn_ngay1_thang12_nam2017'>208D : 12H : 38M : 10S</div><div class='productImg'>");
-                html.Append("<a href='#' title='" + row["name"] + "'><img src='" + row["link_image"] + "' data-original='" + row["link_image"] + "' class='img-fix' alt='" + row["name"] + "' style='display: inline;'></a>");
-                html.Append("<div class='hoverButtons'>");
-                html.Append("<span data-toggle='modal' data-target='#998'><a class='button quickview-btn' data-toggle='tooltip' data-placement='top' title='' data-countdown='null' data-alias='may-giat-panasonic-10-kg-na-f100a1wrv' data-original-title='Cho vào giỏ hàng'><i class='fa fa-shopping-cart'></i></a></span>");
-                html.Append("<span data-toggle='modal' data-target='#999'><a class='button quickview-btn' data-toggle='tooltip' data-placement='top' title='' data-countdown='null' data-alias='may-giat-panasonic-10-kg-na-f100a1wrv' data-original-title='Xem nhanh'><i class='fa fa-search'></i></a></span>");
-                html.Append("<a href='#' class='button skype' data-toggle='tooltip' data-placement='top' title='' data-original-title='Tư vấn qua Skype'><i class='fa fa-skype'></i></a>");
-                html.Append("</div></div><h3><a href='#' title='" + row["name"] + "'>" + row["name"] + "</a></h3>");
-                html.Append("<div class='productPrice'><del>7.990.000₫</del><span>&nbsp;&nbsp;" + tien + "</span></div></div></div>");
-
+                if (view == "1")
+                {
+                    html.Append("<div class='coDownProduct'><div class='productGrid'><div class='countDown' data-end='kmdn_ngay1_thang12_nam2017'>208D : 12H : 38M : 10S</div><div class='productImg'>");
+                    html.Append("<a href='#' title='" + row["name"] + "'><img src='" + row["link_image"] + "' data-original='" + row["link_image"] + "' class='img-fix' alt='" + row["name"] + "' style='display: inline;'></a>");
+                    html.Append("<div class='hoverButtons'>");
+                    html.Append("<span data-toggle='modal' data-target='#998'><a class='button quickview-btn' data-toggle='tooltip' data-placement='top' title='' data-countdown='null' data-alias='may-giat-panasonic-10-kg-na-f100a1wrv' data-original-title='Cho vào giỏ hàng'><i class='fa fa-shopping-cart'></i></a></span>");
+                    html.Append("<span data-toggle='modal' data-target='#999'><a class='button quickview-btn' data-toggle='tooltip' data-placement='top' title='' data-countdown='null' data-alias='may-giat-panasonic-10-kg-na-f100a1wrv' data-original-title='Xem nhanh'><i class='fa fa-search'></i></a></span>");
+                    html.Append("<a href='#' class='button skype' data-toggle='tooltip' data-placement='top' title='' data-original-title='Tư vấn qua Skype'><i class='fa fa-skype'></i></a>");
+                    html.Append("</div></div><h3><a href='#' title='" + row["name"] + "'>" + row["name"] + "</a></h3>");
+                    html.Append("<div class='productPrice'><del>7.990.000₫</del><span>&nbsp;&nbsp;" + tien + "</span></div></div></div>");
+                }
+                else
+                {
+                    html.Append("<div class='item-2'><div class='productList QuickAddToCart clearfix'><div class='productListImg'>");
+                    html.Append("<a href='#'><img src='" + row["link_image"] + "' data-original='" + row["link_image"] + "' class='img-responsive lazy imgQuickAddToCart' alt='" + row["name"] + "'></a></div>");
+                    html.Append("<div class='productListInfo'>");
+                    html.Append("<h3><a href='#'>" + row["name"] + "</a></h3>");
+                    html.Append("<div class='productListPrice priceQuickAddToCart'><span>" + tien + "</span></div>");
+                    html.Append("<span class='line'></span>");
+                    html.Append("<div class='productListDesc'>" + row["description"] + "</div>");
+                    html.Append("<div class='formQuickAddToCart productListForm'>");
+                    html.Append("<input type='hidden' name='variantId' value='9363959'>");
+                    html.Append("<button class='button buttonProductList quickAddToCart' data-toggle='tooltip' title='' data-original-title='Cho vào giỏ hàng'><i class='fa fa-shopping-cart'></i> Cho vào giỏ hàng</button>");
+                    html.Append("<a href='#' class='button skype' data-toggle='tooltip' title='' data-original-title='Chat qua Skype'><i class='fa fa-skype'></i></a></div></div></div></div>");
+                }
             }
 
+            Response.Write(view);
+            grdContent.Controls.Add(new Literal { Text = "" });
             grdContent.Controls.Add(new Literal { Text = html.ToString() });
+                
         }
+
+        //protected void btnViewGrid_Click(object sender, EventArgs e)
+        //{
+        //    string path = Request.Url.ToString();
+        //    Response.Redirect(path + "&view=2");
+        //    Response.Write("URL:" + path);
+        //}
     }
 }

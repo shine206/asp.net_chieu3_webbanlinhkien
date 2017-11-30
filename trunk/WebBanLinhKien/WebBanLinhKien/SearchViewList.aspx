@@ -37,156 +37,20 @@
                                 <option value="created-asc">Hàng cũ nhất</option>
                             </select>
                         </div>
-                        <a href="product.html" class="switchView viewCollection" data-view="grid" data-toggle="tooltip" title="" data-original-title="Xem dạng lưới"><i class="fa fa-th"></i></a>
-
-                        <a href="productSingle.html" class="switchView active viewCollection" data-view="list" data-toggle="tooltip" title="" data-original-title="Xem dạng danh sách"><i class="fa fa-th-list"></i></a>
+                        <asp:LinkButton ID="btnViewGrid" runat="server">
+                            <a href="Search.aspx" class="switchView viewCollection" data-view="grid" data-toggle="tooltip" title="" data-original-title="Xem dạng lưới">
+                                <i class="fa fa-th"></i>
+                            </a>
+                        </asp:LinkButton>
+                        <asp:LinkButton ID="btnViewList" runat="server">
+                            <a href="SearchViewList.aspx" class="switchView active viewCollection" data-view="list" data-toggle="tooltip" title="" data-original-title="Xem dạng danh sách">
+                                <i class="fa fa-th-list"></i>
+                            </a>
+                        </asp:LinkButton>
                     </div>
                     <div class="collectionDisplay">
                         <div class="collectionResultProducts" id="sp-2">
-                            <div class="item-2">
-                                <div class="productList QuickAddToCart clearfix">
-                                    <div class="productListImg">
-                                        <a href="#">
-                                            <img src="images/sanpham-1.jpg" data-original="sanpham-1.jpg" class="img-responsive lazy imgQuickAddToCart" alt="Máy hút bụi Electrolux ZAP9940 1900W">
-                                        </a>
-                                    </div>
-                                    <div class="productListInfo">
-                                        <h3><a href="#">Máy hút bụi Electrolux ZAP9940 1900W</a></h3>
-                                        <div class="productListPrice priceQuickAddToCart">
-                                            <span>3.200.000₫</span>   
-                                        </div>
-                                        <span class="line"></span>
-                                        <div class="productListDesc">
-                                             Hút bụi nhanh chóng với công suất 1900 W. Máy hút bụi có bộ lọc Hepa kháng khuẩn, làm sạch bụi hiệu quả. Công nghệ hút xoáy Cyclonic giúp việc xử lý bụi dễ...
-                                        </div>
-                                        <form action="#" method="post" class="formQuickAddToCart productListForm">
-                                            <input type="hidden" name="variantId" value="9363959">
-                                            <button class="button buttonProductList quickAddToCart" data-toggle="tooltip" title="" data-original-title="Cho vào giỏ hàng"><i class="fa fa-shopping-cart"></i> Cho vào giỏ hàng</button>
-                                            <a href="#" class="button skype" data-toggle="tooltip" title="" data-original-title="Chat qua Skype"><i class="fa fa-skype"></i></a>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item-2">
-                                <div class="productList QuickAddToCart clearfix">
-                                    <div class="productListImg">
-                                        <a href="#">
-                                            <img src="images/sanpham-2.jpg" data-original="sanpham-2.jpg" class="img-responsive lazy imgQuickAddToCart" alt="Máy hút bụi Electrolux ZAP9940 1900W">
-                                        </a>
-                                    </div>
-                                    <div class="productListInfo">
-                                        <h3><a href="#">Máy hút bụi Electrolux ZAP9940 1900W</a></h3>
-                                        <div class="productListPrice priceQuickAddToCart">
-                                            <span>3.200.000₫</span>   
-                                        </div>
-                                        <span class="line"></span>
-                                        <div class="productListDesc">
-                                             Hút bụi nhanh chóng với công suất 1900 W. Máy hút bụi có bộ lọc Hepa kháng khuẩn, làm sạch bụi hiệu quả. Công nghệ hút xoáy Cyclonic giúp việc xử lý bụi dễ...
-                                        </div>
-                                        <form action="#" method="post" class="formQuickAddToCart productListForm">
-                                            <input type="hidden" name="variantId" value="9363959">
-                                            <button class="button buttonProductList quickAddToCart" data-toggle="tooltip" title="" data-original-title="Cho vào giỏ hàng"><i class="fa fa-shopping-cart"></i> Cho vào giỏ hàng</button>
-                                            <a href="#" class="button skype" data-toggle="tooltip" title="" data-original-title="Chat qua Skype"><i class="fa fa-skype"></i></a>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item-2">
-                                <div class="productList QuickAddToCart clearfix">
-                                    <div class="productListImg">
-                                        <a href="#">
-                                            <img src="images/sanpham-3.jpg" data-original="sanpham-3.jpg" class="img-responsive lazy imgQuickAddToCart" alt="Máy hút bụi Electrolux ZAP9940 1900W">
-                                        </a>
-                                    </div>
-                                    <div class="productListInfo">
-                                        <h3><a href="#">Máy hút bụi Electrolux ZAP9940 1900W</a></h3>
-                                        <div class="productListPrice priceQuickAddToCart">
-                                            <span>3.200.000₫</span>   
-                                        </div>
-                                        <span class="line"></span>
-                                        <div class="productListDesc">
-                                             Hút bụi nhanh chóng với công suất 1900 W. Máy hút bụi có bộ lọc Hepa kháng khuẩn, làm sạch bụi hiệu quả. Công nghệ hút xoáy Cyclonic giúp việc xử lý bụi dễ...
-                                        </div>
-                                        <form action="#" method="post" class="formQuickAddToCart productListForm">
-                                            <input type="hidden" name="variantId" value="9363959">
-                                            <button class="button buttonProductList quickAddToCart" data-toggle="tooltip" title="" data-original-title="Cho vào giỏ hàng"><i class="fa fa-shopping-cart"></i> Cho vào giỏ hàng</button>
-                                            <a href="#" class="button skype" data-toggle="tooltip" title="" data-original-title="Chat qua Skype"><i class="fa fa-skype"></i></a>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item-2">
-                                <div class="productList QuickAddToCart clearfix">
-                                    <div class="productListImg">
-                                        <a href="#">
-                                            <img src="images/sanpham-4.jpg" data-original="sanpham-4.jpg" class="img-responsive lazy imgQuickAddToCart" alt="Máy hút bụi Electrolux ZAP9940 1900W">
-                                        </a>
-                                    </div>
-                                    <div class="productListInfo">
-                                        <h3><a href="#">Máy hút bụi Electrolux ZAP9940 1900W</a></h3>
-                                        <div class="productListPrice priceQuickAddToCart">
-                                            <span>3.200.000₫</span>   
-                                        </div>
-                                        <span class="line"></span>
-                                        <div class="productListDesc">
-                                             Hút bụi nhanh chóng với công suất 1900 W. Máy hút bụi có bộ lọc Hepa kháng khuẩn, làm sạch bụi hiệu quả. Công nghệ hút xoáy Cyclonic giúp việc xử lý bụi dễ...
-                                        </div>
-                                        <form action="#" method="post" class="formQuickAddToCart productListForm">
-                                            <input type="hidden" name="variantId" value="9363959">
-                                            <button class="button buttonProductList quickAddToCart" data-toggle="tooltip" title="" data-original-title="Cho vào giỏ hàng"><i class="fa fa-shopping-cart"></i> Cho vào giỏ hàng</button>
-                                            <a href="#" class="button skype" data-toggle="tooltip" title="" data-original-title="Chat qua Skype"><i class="fa fa-skype"></i></a>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item-2">
-                                <div class="productList QuickAddToCart clearfix">
-                                    <div class="productListImg">
-                                        <a href="#">
-                                            <img src="images/sanpham-5.jpg" data-original="sanpham-5.jpg" class="img-responsive lazy imgQuickAddToCart" alt="Máy hút bụi Electrolux ZAP9940 1900W">
-                                        </a>
-                                    </div>
-                                    <div class="productListInfo">
-                                        <h3><a href="#">Máy hút bụi Electrolux ZAP9940 1900W</a></h3>
-                                        <div class="productListPrice priceQuickAddToCart">
-                                            <span>3.200.000₫</span>   
-                                        </div>
-                                        <span class="line"></span>
-                                        <div class="productListDesc">
-                                             Hút bụi nhanh chóng với công suất 1900 W. Máy hút bụi có bộ lọc Hepa kháng khuẩn, làm sạch bụi hiệu quả. Công nghệ hút xoáy Cyclonic giúp việc xử lý bụi dễ...
-                                        </div>
-                                        <form action="#" method="post" class="formQuickAddToCart productListForm">
-                                            <input type="hidden" name="variantId" value="9363959">
-                                            <button class="button buttonProductList quickAddToCart" data-toggle="tooltip" title="" data-original-title="Cho vào giỏ hàng"><i class="fa fa-shopping-cart"></i> Cho vào giỏ hàng</button>
-                                            <a href="#" class="button skype" data-toggle="tooltip" title="" data-original-title="Chat qua Skype"><i class="fa fa-skype"></i></a>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item-2">
-                                <div class="productList QuickAddToCart clearfix">
-                                    <div class="productListImg">
-                                        <a href="#">
-                                            <img src="images/sanpham-6.jpg" data-original="sanpham-6.jpg" class="img-responsive lazy imgQuickAddToCart" alt="Máy hút bụi Electrolux ZAP9940 1900W">
-                                        </a>
-                                    </div>
-                                    <div class="productListInfo">
-                                        <h3><a href="#">Máy hút bụi Electrolux ZAP9940 1900W</a></h3>
-                                        <div class="productListPrice priceQuickAddToCart">
-                                            <span>3.200.000₫</span>   
-                                        </div>
-                                        <span class="line"></span>
-                                        <div class="productListDesc">
-                                             Hút bụi nhanh chóng với công suất 1900 W. Máy hút bụi có bộ lọc Hepa kháng khuẩn, làm sạch bụi hiệu quả. Công nghệ hút xoáy Cyclonic giúp việc xử lý bụi dễ...
-                                        </div>
-                                        <form action="#" method="post" class="formQuickAddToCart productListForm">
-                                            <input type="hidden" name="variantId" value="9363959">
-                                            <button class="button buttonProductList quickAddToCart" data-toggle="tooltip" title="" data-original-title="Cho vào giỏ hàng"><i class="fa fa-shopping-cart"></i> Cho vào giỏ hàng</button>
-                                            <a href="#" class="button skype" data-toggle="tooltip" title="" data-original-title="Chat qua Skype"><i class="fa fa-skype"></i></a>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
+                             <asp:PlaceHolder runat="server" id="grdContentList"/>
                         </div>
                         <div class="pager clearfix">
                             <span class="current" data-toggle="tooltip" data-placement="top" title="" data-original-title="Trang 1">1</span>
@@ -216,92 +80,19 @@
                                 <span class="title">Lọc theo giá</span>
                             </h2>
                             <div class="filterToolGroup">
-                                <div id="slider" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
-                                    <div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 0%; width: 100%;"></div>
-                                    <!--<span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: %;"></span>
-                                    <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 100%;"></span>-->
-                                </div>
-                                <div class="clearfix">
-                                    <div id="start" class="left"><input value="0"></div>
-                                    <div id="stop" class="right"><input value="20000000"></div>
-                                </div>
-                                <a id="old-value" href="javascript:;"></a>
-                                <a id="filter-value" class="button" href="javascript:void(0);" data-value="(>-1 AND < 20000001)"><i class="hoverButton"></i>Lọc</a>
-                                <script>
-                                    var maxx = 20000000 / 10;
-                                    $('#slider').slider({
-                                        min: '0',
-                                        max: maxx,
-                                        range: true,
-                                        values: [0, 20000000],
-                                        slide: function (event, ui) {
-                                            if (ui.values[0] >= ui.values[1]) {
-                                                if (ui.handle == $("#slider a")[0]) {
-                                                    $("#slider").slider("values", 1, ui.value);
-                                                    ui.values[0] = ui.value;
-                                                    ui.values[1] = ui.value;
-                                                } else {
-                                                    $("#slider").slider("values", 0, ui.value);
-                                                    ui.values[0] = ui.value;
-                                                    ui.values[1] = ui.value;
-                                                }
-                                            }
-                                            var uimax = ui.values[1] + 1;
-                                            $('#start input').val(ui.values[0]);
-                                            $('#stop input').val(ui.values[1] + 1);
-                                            var uimin = ui.values[0] - 1;
-                                            var uimax = ui.values[1] + 2;
-                                            $('#filter-value').attr('data-value', '(>' + uimin + ' AND <' + uimax + ')');
-                                        }
-                                    });
-                                    $(document).on('change', '#start', function (e) {
-                                        var val = parseInt($('#start input').val()) - 1;
-                                        var val2 = parseInt($('#stop input').val()) + 1;
-
-                                        $("#slider").slider("values", 0, parseInt(val));
-                                        $('#filter-value').attr('data-value', '(>' + val + ' AND <' + val2 + ')');
-                                    });
-                                    $(document).on('change', '#stop', function (e) {
-                                        var val = parseInt($('#start input').val()) - 1;
-                                        var val2 = parseInt($('#stop input').val()) + 1;
-                                        $("#slider").slider("values", 1, parseInt(val2));
-                                        $('#filter-value').attr('data-value', '(>' + val + ' AND <' + val2 + ')');
-                                    });
-                                </script>
+                                <asp:DropDownList ID="drlFilterPrice" CssClass="filterDRLPrice" runat="server">
+                                        <asp:ListItem Text="< 500000" />
+                                        <asp:ListItem Text="500000 - 1000000" />
+                                        <asp:ListItem Text="1000000-3000000" />
+                                        <asp:ListItem Text="> 3000000" />
+                                    </asp:DropDownList>
+                                <asp:LinkButton ID="btnFilter" CssClass="button" OnClick="btnFilter_Click" runat="server" Text="Lọc"><i class="hoverButton"></i>Lọc</asp:LinkButton>
                             </div>
                         </div><!-- EndFilterRange -->
-                        <div class="filtersTool filterColor">
-                            <h2 class="titleDecoration"><span class="line"></span>
-                                <span class="title">Bộ lọc màu</span>
-                            </h2>
-                            <div class="filterToolGroup">
-                                <ul class="list-unstyled">
-                                    <li class="color">                      
-                                        <input type="checkbox" id="filter-do" data-group="tag1" data-field="tags" data-text="Đỏ" value="(Đỏ)" data-operator="OR">
-                                        <label for="filter-do" style="background-color:red;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Đỏ">Đỏ</label>
-                                    </li>
-                                    <li class="color">                      
-                                        <input type="checkbox" id="filter-xanh" data-group="tag1" data-field="tags" data-text="Xanh" value="(Xanh)" data-operator="OR">
-                                        <label for="filter-xanh" style="background-color:#0007ff;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Xanh">Xanh</label>
-                                    </li>
-                                    <li class="color">                      
-                                        <input type="checkbox" id="filter-tim" data-group="tag1" data-field="tags" data-text="Tím" value="(Tím)" data-operator="OR">
-                                        <label for="filter-tim" style="background-color:#b409f3;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tím">Tím</label>
-                                    </li>
-                                    <li class="color">                      
-                                        <input type="checkbox" id="filter-cam" data-group="tag1" data-field="tags" data-text="Cam" value="(Cam)" data-operator="OR">
-                                        <label for="filter-cam" style="background-color:#ff5300;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Cam">Cam</label>
-                                    </li>
-                                    <li class="color">                      
-                                        <input type="checkbox" id="filter-trang" data-group="tag1" data-field="tags" data-text="Trắng" value="(Trắng)" data-operator="OR">
-                                        <label for="filter-trang" style="background-color:#fff;border:2px solid #ebebeb;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Trắng">Trắng</label>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div><!-- End filterColor -->
+                        
                         <div class="filtersTool filterCheckbox">
                             <h2 class="titleDecoration"><span class="line"></span>
-                                <span class="title">Lọc theo thương hiệu</span>
+                                <span class="title">Lọc theo danh mục</span>
                             </h2>
                             <div class="filterToolGroup">
                                 <ul class="list-unstyled clearfix">

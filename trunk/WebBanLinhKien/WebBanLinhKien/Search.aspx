@@ -37,15 +37,16 @@
                                 <option value="created-asc">Hàng cũ nhất</option>
                             </select>
                         </div>
-                        <asp:LinkButton ID="btnViewGrid" runat="server">
+                      <%--  <asp:LinkButton ID="btnViewGrid" runat="server" OnClick="btnViewGrid_Click">
                             <a href="Search.aspx" class="switchView active viewCollection" data-view="grid" data-toggle="tooltip" title="" data-original-title="Xem dạng lưới">
                                 <i class="fa fa-th"></i>
                             </a>
-                        </asp:LinkButton>
-                        <asp:LinkButton ID="btnViewList" runat="server">
-                            <a href="SearchViewList.aspx" class="switchView viewCollection" data-view="list" data-toggle="tooltip" title="" data-original-title="Xem dạng danh sách">
+                        </asp:LinkButton>--%>
+                        <asp:LinkButton ID="btnViewGrid" Text="Tstsdasd" runat="server" OnClick="btnViewGrid_Click">
+                            
+<%--                            <a href="SearchViewList.aspx" class="switchView viewCollection" data-view="list" data-toggle="tooltip" title="" data-original-title="Xem dạng danh sách">
                                 <i class="fa fa-th-list"></i>
-                            </a>
+                            </a>--%>
                         </asp:LinkButton>
                         <%--<a href="Search.aspx" class="switchView active viewCollection" data-view="grid" data-toggle="tooltip" title="" data-original-title="Xem dạng lưới"><i class="fa fa-th"></i></a>
 
@@ -54,6 +55,8 @@
                     <div class="collectionDisplay">
                         <div class="collectionResultProducts" id="sp-1">
                             <asp:PlaceHolder runat="server" id="grdContent"/>
+                            <asp:PlaceHolder runat="server" id="grdContent1"/>
+
                         </div>
                         <div class="pager clearfix">
                             <span class="current" data-toggle="tooltip" data-placement="top" title="" data-original-title="Trang 1">1</span>

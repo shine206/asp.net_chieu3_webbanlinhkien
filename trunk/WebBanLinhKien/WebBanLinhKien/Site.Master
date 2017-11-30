@@ -15,8 +15,9 @@
     <link href="Content/css/index.css" rel="stylesheet" type="text/css" />
     <link href="Content/css/item.css" rel="stylesheet" type="text/css" />
     <link href="Content/css/item_2.css" rel="stylesheet" type="text/css" />
-     <link href="Content/css/product.css" rel="stylesheet" type="text/css"/>
+    <link href="Content/css/product.css" rel="stylesheet" type="text/css"/>
     <link href="Content/css/item_3.css" rel="stylesheet" type="text/css"/>
+    <link href="Content/css/item_4.css" rel="stylesheet" type="text/css"/>
     <link href="Content/css/login.css" rel="stylesheet" type="text/css" />
     <link href="Content/css/cart.css" rel="stylesheet" type="text/css" />
     <webopt:BundleReference runat="server" Path="~/Content/css" />
