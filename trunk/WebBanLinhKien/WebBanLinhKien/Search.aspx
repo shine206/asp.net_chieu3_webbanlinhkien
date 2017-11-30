@@ -20,7 +20,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-md-push-3 col-lg-push-3">
                     <div class="topImgCollection">
                         <h1 class="titleCollection">Tất cả sản phẩm</h1>
-                        <img src="images/bg_collection.jpg" class="img-responsive" alt="Tất cả sản phẩm">
+                        <img src="Content/images/bg_collection.jpg" class="img-responsive" alt="Tất cả sản phẩm">
                         <div class="bg"></div>
                     </div>
                     <div class="toolsCollection clearfix">
@@ -182,7 +182,7 @@
                         <h2 class="titleDecoration"><span class="line"></span><span class="title">Sản phẩm khuyến mại</span></h2>
                         <ul class="list-unstyled listProducts">                       
                             <li class="clearfix">
-                                <img src="images/15239577.jpg" class="listsProductsImg" alt="Máy hút bụi Hitachi BM16 1600 W">                        
+                                <img src="Content/images/15239577.jpg" class="listsProductsImg" alt="Máy hút bụi Hitachi BM16 1600 W">                        
                                 <div class="listsProductsInfo">
                                     <h3><a href="#">Máy hút bụi Hitachi BM16 1600 W</a></h3>
                                     <div class="listsProductsPrice">
@@ -191,7 +191,7 @@
                                 </div>
                             </li>
                             <li class="clearfix">
-                                <img src="images/1600232-noi-ap-suat-dien-da-nang-sunhouse-5-lit-sh-1650.jpg" class="listsProductsImg" alt="Nồi áp suất điện Sunhouse SHD-1552 5.0 lít">
+                                <img src="Content/images/1600232-noi-ap-suat-dien-da-nang-sunhouse-5-lit-sh-1650.jpg" class="listsProductsImg" alt="Nồi áp suất điện Sunhouse SHD-1552 5.0 lít">
                                                                 
                                 <div class="listsProductsInfo">
                                     <h3><a href="#">Nồi áp suất điện Sunhouse SHD-1552 5.0 lít</a></h3>
@@ -212,7 +212,7 @@
                                 </div>
                             </li>
                             <li class="clearfix">
-                                <img src="images/bep-hong-ngoai-sunhouse-shd6017-kem-vi-nuong.jpg" class="listsProductsImg" alt="Bếp hồng ngoại Sunhouse SHD 6017"> 
+                                <img src="Content/images/bep-hong-ngoai-sunhouse-shd6017-kem-vi-nuong.jpg" class="listsProductsImg" alt="Bếp hồng ngoại Sunhouse SHD 6017"> 
                                 <div class="listsProductsInfo">
                                     <h3><a href="#">Bếp hồng ngoại Sunhouse SHD 6017</a></h3>
                                     <div class="listsProductsPrice">
@@ -222,7 +222,7 @@
                                 </div>
                             </li>
                             <li class="clearfix">
-                                <img src="images/may-giat-toshiba-aw-b1000gv-wl-tim-5862-3154811-1.jpg" class="listsProductsImg" alt="Máy giặt Toshiba 8.2kg AW-MF920LV WK">                  
+                                <img src="Content/images/may-giat-toshiba-aw-b1000gv-wl-tim-5862-3154811-1.jpg" class="listsProductsImg" alt="Máy giặt Toshiba 8.2kg AW-MF920LV WK">                  
                                 <div class="listsProductsInfo">
                                     <h3><a href="#">Máy giặt Toshiba 8.2kg AW-MF920LV WK</a></h3>
                                     <div class="listsProductsPrice">
@@ -239,7 +239,7 @@
                             <h2 class="titleDecoration"><span class="line"></span><span class="title">Sản phẩm đã xem</span></h2>
                             <ul class="list-unstyled listProducts" id="recently-viewed-products">    
                                 <li class="clearfix">
-                                    <img src="images/1600232-noi-ap-suat-dien-da-nang-sunhouse-5-lit-sh-1650.jpg" class="listsProductsImg" alt="Nồi áp suất điện Sunhouse SHD-1552 5.0 lít">
+                                    <img src="Content/images/1600232-noi-ap-suat-dien-da-nang-sunhouse-5-lit-sh-1650.jpg" class="listsProductsImg" alt="Nồi áp suất điện Sunhouse SHD-1552 5.0 lít">
                                     <div class="listsProductsInfo">
                                         <h3 title="Nồi áp suất điện Sunhouse SHD-1552 5.0 lít"><a href="#">Nồi áp suất điện Sunhouse SHD-1552 5.0 lít</a></h3>     <div class="listsProductsPrice">
                                             <span>800.000 VND</span>
@@ -248,7 +248,7 @@
                                     </div>
                                 </li>
                                  <li class="clearfix">
-                                    <img src="images/1600232-noi-ap-suat-dien-da-nang-sunhouse-5-lit-sh-1650.jpg" class="listsProductsImg" alt="Nồi áp suất điện Sunhouse SHD-1552 5.0 lít">
+                                    <img src="Content/images/1600232-noi-ap-suat-dien-da-nang-sunhouse-5-lit-sh-1650.jpg" class="listsProductsImg" alt="Nồi áp suất điện Sunhouse SHD-1552 5.0 lít">
                                     <div class="listsProductsInfo">
                                         <h3 title="Nồi áp suất điện Sunhouse SHD-1552 5.0 lít"><a href="#">Nồi áp suất điện Sunhouse SHD-1552 5.0 lít</a></h3>     <div class="listsProductsPrice">
                                             <span>800.000 VND</span>
@@ -261,7 +261,7 @@
                     </div><!-- End SidebarBlogDefault -->
                     <div class="sidebarPorductGroup">
                         <a href="#">
-                            <img src="images/banner_blog_page.jpg" class="img-responsive lazy" alt="Galaxy S6">
+                            <img src="Content/images/banner_blog_page.jpg" class="img-responsive lazy" alt="Galaxy S6">
                         </a>
                     </div><!-- End SidebarPorductGroup -->
                 </div>

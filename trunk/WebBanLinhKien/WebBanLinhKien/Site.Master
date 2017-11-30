@@ -509,7 +509,7 @@
             <div class="copyright">
                 <div class="container">
                     © Bản quyền thuộc về Medusa Team | Cung cấp bởi <a href="#">SDViet</a>.
-                <img src="images/payment.png" class="payment hidden-xs hidden-sm" alt="Phương thức thanh toán">
+                <img src="Content/images/payment.png" class="payment hidden-xs hidden-sm" alt="Phương thức thanh toán">
                 </div>
             </div>
             <!-- Back Top -->
