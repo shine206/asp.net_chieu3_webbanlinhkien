@@ -11,13 +11,18 @@
                             <input name="FormType" type="hidden" value="customer_login">
                             <input name="utf8" type="hidden" value="true">
                             <div class="group">
-                                <label for="username">Username <span class="error">*</span></label>
+                                <label for="username">Username <span class="error">*</span>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" CssClass="error" ErrorMessage="(Tài khoản không được trống !!!)" ControlToValidate="username"></asp:RequiredFieldValidator>
+                                </label>
                                 <%--<input type="text" name="username" id="username" required="" class="input-control">--%>
                                 <asp:TextBox runat="server" ID="username" CssClass="input-control"/>
                             </div>
                             <div class="group">
-                                <label for="passLogin">Mật khẩu <span class="error">*</span></label>
+                                <label for="passLogin">Mật khẩu <span class="error">*</span>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" CssClass="error" runat="server" ErrorMessage="(Mật khẩu không được trống !!!)" ControlToValidate="passLogin"></asp:RequiredFieldValidator>
+                                </label>
                                 <asp:TextBox runat="server" TextMode="Password" ID="passLogin" CssClass="input-control"/>
+                                   
                                 <%--<input type="password" id="passLogin" name="password" required="" class="input-control">--%>
                             </div>
                             <div class="group clearfix mt-10">

@@ -364,5 +364,32 @@ namespace WebBanLinhKien
         }
 
 
+        /// <summary>
+        /// Đăng nhập với tài khoản người dùng
+        /// </summary>
+        /// <param name="username">Tài khoản</param>
+        /// <param name="password">Mật khẩu</param>
+        /// <returns>Thành viên, nếu đăng nhập thành công</returns>
+        public DataTable loginWithUser(string username, string password)
+        {
+            DataTable result = new DataTable();
+            try
+            {
+                connect();
+                SqlCommand cmd = new SqlCommand("loginByUser", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@username", username);
+                cmd.Parameters.AddWithValue("@password", password);
+                SqlDataReader rd = cmd.ExecuteReader();
+                result.Load(rd);
+            }
+            finally
+            {
+                result.Dispose();
+                disconnect();
+            }
+            return result;
+        }
+
     }
 }
