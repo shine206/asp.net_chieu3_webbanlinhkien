@@ -142,9 +142,23 @@ INSERT INTO Category (id_group_category, name, created_at, updated_at) VALUES
 (1, N'USB', NULL, NULL),
 (5, N'Màn Hình', NULL, NULL),
 (1, N'Thẻ nhớ', NULL, NULL),
+(1, N'USB 3G - 4G', NULL, NULL),
 (2, N'HDD', NULL, NULL),
-(2, N'SSD', NULL, NULL)
-
+(2, N'SSD', NULL, NULL),
+(2, N'3.5 PC', NULL, NULL),
+(2, N'Phụ kiện Ổ cứng', NULL, NULL),
+(2, N'Ổ cứng laptop', NULL, NULL),
+(3, N'ADSL & ADSL Wireless', NULL, NULL),
+(3, N'Network - Network Wireless', NULL, NULL),
+(3, N'Hub - Switch', NULL, NULL),
+(3, N'Cable mạng', NULL, NULL),
+(3, N'Card mạng', NULL, NULL),
+(3, N'Khác', NULL, NULL),
+(5, N'LCD 17-21 INCH', NULL, NULL),
+(5, N'LCD 12-24 INCH', NULL, NULL),
+(5, N'LCD 25-32 INCH', NULL, NULL),
+(5, N'LCD 33-MAX INCH', NULL, NULL),
+(7, N'Quạt tản nhiệt', NULL, NULL)
 --Insert table Products
 INSERT INTO Products (id_category, name, price, status, promotion, tag, details, description, content, created_at, updated_at) VALUES
 (2, N'KB Bosston K803 giả cơ chuyên Game USB Chính Hãng', 250000, 1, NULL, 'boston', N'chi tiết sản phẩm', N'mô tả chi tiết sản phẩm', N'nội dung bài viết', NULL, NULL),
