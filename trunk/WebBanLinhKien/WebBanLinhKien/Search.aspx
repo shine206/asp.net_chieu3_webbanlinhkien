@@ -121,58 +121,13 @@
                                 <span class="title">Lọc theo giá</span>
                             </h2>
                             <div class="filterToolGroup">
-                                <div id="slider" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
-                                    <div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 0%; width: 100%;"></div>
-                                    <!--<span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: %;"></span>
-                                    <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 100%;"></span>-->
-                                </div>
-                                <div class="clearfix">
-                                    <div id="start" class="left"><input value="0"></div>
-                                    <div id="stop" class="right"><input value="20000000"></div>
-                                </div>
-                                <a id="old-value" href="javascript:;"></a>
-                                <a id="filter-value" class="button" href="javascript:void(0);" data-value="(>-1 AND < 20000001)"><i class="hoverButton"></i>Lọc</a>
-                                <script>
-                                    var maxx = 20000000 / 10;
-                                    $('#slider').slider({
-                                        min: '0',
-                                        max: maxx,
-                                        range: true,
-                                        values: [0, 20000000],
-                                        slide: function (event, ui) {
-                                            if (ui.values[0] >= ui.values[1]) {
-                                                if (ui.handle == $("#slider a")[0]) {
-                                                    $("#slider").slider("values", 1, ui.value);
-                                                    ui.values[0] = ui.value;
-                                                    ui.values[1] = ui.value;
-                                                } else {
-                                                    $("#slider").slider("values", 0, ui.value);
-                                                    ui.values[0] = ui.value;
-                                                    ui.values[1] = ui.value;
-                                                }
-                                            }
-                                            var uimax = ui.values[1] + 1;
-                                            $('#start input').val(ui.values[0]);
-                                            $('#stop input').val(ui.values[1] + 1);
-                                            var uimin = ui.values[0] - 1;
-                                            var uimax = ui.values[1] + 2;
-                                            $('#filter-value').attr('data-value', '(>' + uimin + ' AND <' + uimax + ')');
-                                        }
-                                    });
-                                    $(document).on('change', '#start', function (e) {
-                                        var val = parseInt($('#start input').val()) - 1;
-                                        var val2 = parseInt($('#stop input').val()) + 1;
-
-                                        $("#slider").slider("values", 0, parseInt(val));
-                                        $('#filter-value').attr('data-value', '(>' + val + ' AND <' + val2 + ')');
-                                    });
-                                    $(document).on('change', '#stop', function (e) {
-                                        var val = parseInt($('#start input').val()) - 1;
-                                        var val2 = parseInt($('#stop input').val()) + 1;
-                                        $("#slider").slider("values", 1, parseInt(val2));
-                                        $('#filter-value').attr('data-value', '(>' + val + ' AND <' + val2 + ')');
-                                    });
-                                </script>
+                                <asp:DropDownList ID="drlFilterPrice" CssClass="filterDRLPrice" runat="server">
+                                        <asp:ListItem Text="< 500000" />
+                                        <asp:ListItem Text="500000 - 1000000" />
+                                        <asp:ListItem Text="1000000-3000000" />
+                                        <asp:ListItem Text="> 3000000" />
+                                    </asp:DropDownList>
+                                <asp:LinkButton ID="btnFilter" CssClass="button" runat="server" Text="Lọc" OnClick="btnFilter_Click"><i class="hoverButton"></i>Lọc</asp:LinkButton>
                             </div>
                         </div><!-- EndFilterRange -->
                         

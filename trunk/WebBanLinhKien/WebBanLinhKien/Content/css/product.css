@@ -960,6 +960,10 @@ header .bottom-header .listCateMobile li:nth-child(7) {
   background: #000;
   border: solid 2px transparent;
 }
+.filter-container .filtersTool .filterToolGroup .filterDRLPrice {
+    display: block;
+    width: 100%;
+}
 .filter-container .filterColor {
   padding-bottom: 20px;
 }
