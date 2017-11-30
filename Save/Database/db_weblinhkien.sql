@@ -294,18 +294,17 @@ GO
 create procedure getAllCategories
 as
 begin
-	select id_category,Category.name as category, GroupCategories.name as group_category
+	select id_category,Category.name as category, GroupCategories.name as group_category, GroupCategories.id_group_category as id_group
 	from Category, GroupCategories 
 	where Category.id_group_category = GroupCategories.id_group_category
 end
 
 --Add new product
 GO
-alter procedure addNewProduct
+create procedure addNewProduct
 	@id_category int,
 	@name nvarchar(100),
 	@price float,
-	@link_image text,
 	@status int,
 	@promotion nvarchar(255),
 	@tag nvarchar(255),
@@ -338,7 +337,8 @@ create procedure deleteProduct
 	@id int
 as
 begin
-	delete from Products where Products.id_product=@id
+	delete from Images where Images.id_product=@id;
+	delete from Products where Products.id_product=@id;
 end
 
 go
@@ -403,6 +403,7 @@ end
 --select * from Users;
 --select * from OrderDetail;
 --select * from Orders;
+
 
 
 --select MAX(id_product) from Products

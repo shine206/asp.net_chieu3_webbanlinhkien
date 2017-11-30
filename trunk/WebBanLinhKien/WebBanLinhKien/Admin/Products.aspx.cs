@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Text;
 using System.Data;
+using System.IO;
 
 namespace WebBanLinhKien.Admin
 {
@@ -27,6 +28,7 @@ namespace WebBanLinhKien.Admin
                 {
                     int id = Convert.ToInt32(Request.QueryString["id"].ToString());
                     deleteProduct(id);
+                    Response.Redirect("Products.aspx");
                 }
             }
             LoadListProductsToTable();
@@ -92,19 +94,36 @@ namespace WebBanLinhKien.Admin
             string details = txtChiTietSp.Text;
             string desc = txtMoTaSp.Text;
             string content = txtNoiDungSp.Text;
-            string image = "";
+            string images = "";
             foreach (HttpPostedFile file in FileUpload1.PostedFiles)
             {
-                System.IO.File.Copy(Server.MapPath(file.FileName), Server.MapPath("/Dog/defaultImage.jpeg"));
-                image += file.FileName + ";";
+                //System.IO.File.Copy(Server.MapPath(file.FileName), Server.MapPath("/Content/" + file.FileName));
+                string fileName = Path.GetFileNameWithoutExtension(file.FileName) + "_" + GetTimestamp(DateTime.Now) + Path.GetExtension(file.FileName);
+                string saveLocation = Server.MapPath("\\Content\\images\\" + fileName);
+                file.SaveAs(saveLocation);
+                images += "Content\\images\\" + fileName + ";";
             }
-            Response.Write(image);
-            //bool isSuccess = db.addNewProduct(id, name, price, status, promotion, tag, details, desc, content);
-            //db.uploadImages(image);
-            //if (isSuccess)
-            //{
-            //    showmessage("Thêm sản phẩm thành công");
-            //}
+            Response.Write(images);
+            bool isSuccess = db.addNewProduct(id, name, price, status, promotion, tag, details, desc, content);
+            string[] arrayImages = images.Split(new char[] { ';' });
+            foreach (string image in arrayImages)
+            {
+                if (!string.IsNullOrWhiteSpace(image) && string.IsNullOrEmpty(image))
+                {
+                    ConnectDB dbUpload = new ConnectDB();
+                    dbUpload.uploadImages(image);
+                }
+            }
+
+            if (isSuccess)
+            {
+                showmessage("Thêm sản phẩm thành công");
+            }
+        }
+
+        private static String GetTimestamp(DateTime value)
+        {
+            return value.ToString("yyyyMMddHHmmssffff");
         }
 
         private void deleteProduct(int id)

@@ -24,7 +24,7 @@ namespace WebBanLinhKien
         ///     deleteCategory
         ///     deleteProduct
         /// </summary>
-     
+
         SqlConnection conn;
 
         public ConnectDB() { }
@@ -322,21 +322,18 @@ namespace WebBanLinhKien
             return result;
         }
 
-        public void uploadImages(string images)
+        public void uploadImages(string image)
         {
+
             try
             {
                 connect();
-                string[] arrayImages = images.Split(new char[] { ';' });
-                foreach (string image in arrayImages)
-                {
-                    SqlCommand cmd = new SqlCommand("uploadImage", conn);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@link_image", image);
-                    cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
-                    cmd.Parameters.AddWithValue("@updated_at", DateTime.Now);
-                    cmd.ExecuteNonQuery();
-                }
+                SqlCommand cmd = new SqlCommand("uploadImage", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@link_image", image);
+                cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
+                cmd.Parameters.AddWithValue("@updated_at", DateTime.Now);
+                cmd.ExecuteNonQuery();
             }
             finally
             {
