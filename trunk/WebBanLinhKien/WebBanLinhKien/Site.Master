@@ -50,7 +50,7 @@
         <nav class="offset-menu offset-menu-left">
             <div class="offset-menu-wrapper">
                 <ul class="list-unstyled mobile-menu">
-                    <li><a href="/">Trang chủ</a></li>
+                    <li><a href="Home.aspx">Trang chủ</a></li>
                     <li class="has-sub">
                         <a href="#">Sản phẩm</a><em data-target="#sub-menu-product" data-toggle="collapse" class="collapsed"><i class="fa fa-angle-down"></i></em>
                         <ul class="list-unstyled collapse panel-group" id="sub-menu-product">
@@ -115,7 +115,7 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
                             <h1 class="logo">
-                                <a href="index.html">
+                                <a href="Home.aspx">
                                     <span>skymarket</span>
                                     <img src="Content/images/logo.png" alt="skymarket" class="img-responsive">
                                 </a>
@@ -173,7 +173,7 @@
                         </div>
                         <div class="hidden-xs hidden-sm col-md-9 col-lg-9">
                             <ul class="list-unstyled mainNav list-inline">
-                                <li class="active"><a href="index.html">Trang chủ</a></li>
+                                <li class="active"><a href="Home.aspx">Trang chủ</a></li>
                                 <li class="hasMega"><a href="product.html">Sản phẩm</a>
                                     <div class="megaMenu">
                                         <asp:PlaceHolder runat="server" ID="megaMenuContent" />
