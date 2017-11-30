@@ -166,7 +166,9 @@ INSERT INTO Products (id_category, name, price, status, promotion, tag, details,
 (1, N'MOUSE R8 - 1658 LED', 50000, 1, NULL, 'r8', N'chi tiết sản phẩm', N'mô tả chi tiết sản phẩm', N'nội dung bài viết', NULL, NULL),
 (3, N'USB Kingston 32GB DT100G3 3.0', 199000, 1, NULL, 'kingston', N'chi tiết sản phẩm', N'mô tả chi tiết sản phẩm', N'nội dung bài viết', NULL, NULL),
 (4, N'Màn hình LCD Samsung 21.5" LS22F350FHEXXV', 2600000, 1, NULL, 'sam-sung', N'chi tiết sản phẩm', N'mô tả chi tiết sản phẩm', N'nội dung bài viết', NULL, NULL),
-(2, N'KB MOTOSPEED CƠ K81 LED PRO', 1400000, 1, NULL, 'motospeed', N'chi tiết sản phẩm', N'mô tả chi tiết sản phẩm', N'nội dung bài viết', NULL, NULL)
+(2, N'KB MOTOSPEED CƠ K81 LED PRO', 1400000, 1, NULL, 'motospeed', N'chi tiết sản phẩm', N'mô tả chi tiết sản phẩm', N'nội dung bài viết', NULL, NULL),
+(1, N'Chuột máy tính Logitech Gaming G903', 3700000, 1, 10, 'chuột',N'chi tiết sản phẩm', N'mô tả chi tiết sản phẩm', N'nội dung bài viết', NULL, NULL)
+
 
 --Insert table Images
 INSERT INTO Images (id_product, link_image, created_at, updated_at) VALUES
