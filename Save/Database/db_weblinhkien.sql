@@ -396,7 +396,6 @@ begin
 	where Products.id_category=Category.id_category and Products.name like '%'+@q+'%' and Images.id_product=Products.id_product
 	order by id_product DESC
 end
-
 --Get products filter by price
 GO
 create procedure getProductsByPrice
