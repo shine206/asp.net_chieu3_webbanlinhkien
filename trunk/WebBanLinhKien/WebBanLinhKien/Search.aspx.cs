@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Text;
 using System.Globalization;
+using System.Text.RegularExpressions;
 
 namespace WebBanLinhKien
 {
@@ -14,6 +15,13 @@ namespace WebBanLinhKien
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            string viewType = "1";
+            
+            if (Request.QueryString["view"] != null)
+            {
+                viewType = Request.QueryString["view"].ToString();
+            }
+
             if (Request.QueryString["action"] != null)
             {
                 string action = Request.QueryString["action"].ToString();
@@ -23,19 +31,41 @@ namespace WebBanLinhKien
                     if (type == "name")
                     {
                         string q = Request.QueryString["q"].ToString();
-                        LoadItemsSearch(q);
+                        LoadItemsSearch(q, viewType);
                     }
                     else if (type == "price")
                     {
                         int min = Convert.ToInt32(Request.QueryString["min"].ToString());
                         int max = Convert.ToInt32(Request.QueryString["max"].ToString());
-                        SearchItemByPrice(min, max);
+                        SearchItemByPrice(min, max, viewType);
                     }
 
                 }
-
             }
 
+            // view by category
+
+            if (Request.QueryString["group_cat"] != null && Request.QueryString["cat"] != null)
+            {
+                string groupCat = Request.QueryString["group_cat"].ToString();
+                string cat = Request.QueryString["cat"].ToString();
+                loadProductByCategory(Convert.ToInt32(groupCat), Convert.ToInt32(cat), viewType);
+            }
+            else
+            {
+                if (Request.QueryString["group_cat"] != null)
+                {
+                    string groupCat = Request.QueryString["group_cat"].ToString();
+                    loadProductByCategory(Convert.ToInt32(groupCat), -1, viewType);
+                }
+                else if (Request.QueryString["cat"] != null)
+                {
+                    string cat = Request.QueryString["cat"].ToString();
+                    loadProductByCategory(-1, Convert.ToInt32(cat), viewType);
+                }
+            }
+
+            setCssFor2Button(viewType);
         }
 
         //Connect and Load products in database when search by name
@@ -52,6 +82,31 @@ namespace WebBanLinhKien
         {
             ConnectDB db = new ConnectDB();
             DataTable dt = db.getProductsByPrice(min, max);
+            renderHTML(dt, view);
+        }
+
+        // Get item by category
+        private void loadProductByCategory(int cat_group = -1, int cat = -1, string view = "1")
+        {
+            DataTable dt = null;
+            ConnectDB db = new ConnectDB();
+
+            if (cat_group >= 0 && cat >= 0)
+            {
+                dt = db.getAllProductsByCategoryAndGroup(cat, cat_group);
+            }
+            else
+            {
+                if (cat_group >= 0)
+                {
+                    dt = db.getAllProductsByGroupCategory(cat_group);
+                }
+                else
+                {
+                    dt = db.getAllProductsByCategory(cat);
+                }
+            }
+
             renderHTML(dt, view);
         }
 
@@ -84,48 +139,103 @@ namespace WebBanLinhKien
         private void renderHTML(DataTable dt, string view = "1")
         {
             StringBuilder html = new StringBuilder();
-            foreach (DataRow row in dt.Rows)
+            if (dt.Rows.Count > 0)
             {
-                CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");   // try with "en-US"
-                string tien = double.Parse(row["price"].ToString()).ToString("#,### VNĐ", cul.NumberFormat);
-                if (view == "1")
+                pnControl.Visible = true;
+                foreach (DataRow row in dt.Rows)
                 {
-                    html.Append("<div class='coDownProduct'><div class='productGrid'><div class='countDown' data-end='kmdn_ngay1_thang12_nam2017'>208D : 12H : 38M : 10S</div><div class='productImg'>");
-                    html.Append("<a href='#' title='" + row["name"] + "'><img src='" + row["link_image"] + "' data-original='" + row["link_image"] + "' class='img-fix' alt='" + row["name"] + "' style='display: inline;'></a>");
-                    html.Append("<div class='hoverButtons'>");
-                    html.Append("<span data-toggle='modal' data-target='#998'><a class='button quickview-btn' data-toggle='tooltip' data-placement='top' title='' data-countdown='null' data-alias='may-giat-panasonic-10-kg-na-f100a1wrv' data-original-title='Cho vào giỏ hàng'><i class='fa fa-shopping-cart'></i></a></span>");
-                    html.Append("<span data-toggle='modal' data-target='#999'><a class='button quickview-btn' data-toggle='tooltip' data-placement='top' title='' data-countdown='null' data-alias='may-giat-panasonic-10-kg-na-f100a1wrv' data-original-title='Xem nhanh'><i class='fa fa-search'></i></a></span>");
-                    html.Append("<a href='#' class='button skype' data-toggle='tooltip' data-placement='top' title='' data-original-title='Tư vấn qua Skype'><i class='fa fa-skype'></i></a>");
-                    html.Append("</div></div><h3><a href='#' title='" + row["name"] + "'>" + row["name"] + "</a></h3>");
-                    html.Append("<div class='productPrice'><del>7.990.000₫</del><span>&nbsp;&nbsp;" + tien + "</span></div></div></div>");
-                }
-                else
-                {
-                    html.Append("<div class='item-2'><div class='productList QuickAddToCart clearfix'><div class='productListImg'>");
-                    html.Append("<a href='#'><img src='" + row["link_image"] + "' data-original='" + row["link_image"] + "' class='img-responsive lazy imgQuickAddToCart' alt='" + row["name"] + "'></a></div>");
-                    html.Append("<div class='productListInfo'>");
-                    html.Append("<h3><a href='#'>" + row["name"] + "</a></h3>");
-                    html.Append("<div class='productListPrice priceQuickAddToCart'><span>" + tien + "</span></div>");
-                    html.Append("<span class='line'></span>");
-                    html.Append("<div class='productListDesc'>" + row["description"] + "</div>");
-                    html.Append("<div class='formQuickAddToCart productListForm'>");
-                    html.Append("<input type='hidden' name='variantId' value='9363959'>");
-                    html.Append("<button class='button buttonProductList quickAddToCart' data-toggle='tooltip' title='' data-original-title='Cho vào giỏ hàng'><i class='fa fa-shopping-cart'></i> Cho vào giỏ hàng</button>");
-                    html.Append("<a href='#' class='button skype' data-toggle='tooltip' title='' data-original-title='Chat qua Skype'><i class='fa fa-skype'></i></a></div></div></div></div>");
+                    CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");   // try with "en-US"
+                    string tien = double.Parse(row["price"].ToString()).ToString("#,### VNĐ", cul.NumberFormat);
+                    string image_link = ""; //getImagesByIdProduct
+                    if (dt.Columns.Contains("link_image"))
+                    {
+                        image_link = row["link_image"].ToString();
+                    }
+                    else
+                    {
+                        ConnectDB dbConnect = new ConnectDB();
+                        DataTable dtImages = dbConnect.getImagesByIdProduct(Convert.ToInt32(row["id_product"]));
+                        if (dtImages.Rows.Count >= 1)
+                        {
+                            image_link = dtImages.Rows[0]["link_image"].ToString();
+                        }
+                    }
+
+                    if (view == "1")
+                    {
+                        html.Append("<div class='coDownProduct'><div class='productGrid'><div class='countDown' data-end='kmdn_ngay1_thang12_nam2017'>208D : 12H : 38M : 10S</div><div class='productImg'>");
+                        html.Append("<a href='#' title='" + row["name"] + "'><img src='" + image_link + "' data-original='" + image_link + "' class='img-fix' alt='" + row["name"] + "' style='display: inline;'></a>");
+                        html.Append("<div class='hoverButtons'>");
+                        html.Append("<span data-toggle='modal' data-target='#998'><a class='button quickview-btn' data-toggle='tooltip' data-placement='top' title='' data-countdown='null' data-alias='may-giat-panasonic-10-kg-na-f100a1wrv' data-original-title='Cho vào giỏ hàng'><i class='fa fa-shopping-cart'></i></a></span>");
+                        html.Append("<span data-toggle='modal' data-target='#999'><a class='button quickview-btn' data-toggle='tooltip' data-placement='top' title='' data-countdown='null' data-alias='may-giat-panasonic-10-kg-na-f100a1wrv' data-original-title='Xem nhanh'><i class='fa fa-search'></i></a></span>");
+                        html.Append("<a href='#' class='button skype' data-toggle='tooltip' data-placement='top' title='' data-original-title='Tư vấn qua Skype'><i class='fa fa-skype'></i></a>");
+                        html.Append("</div></div><h3><a href='#' title='" + row["name"] + "'>" + row["name"] + "</a></h3>");
+                        html.Append("<div class='productPrice'><del>7.990.000₫</del><span>&nbsp;&nbsp;" + tien + "</span></div></div></div>");
+                    }
+                    else
+                    {
+                        html.Append("<div class='item-2'><div class='productList QuickAddToCart clearfix'><div class='productListImg'>");
+                        html.Append("<a href='#'><img src='" + image_link + "' data-original='" + image_link + "' class='img-responsive lazy imgQuickAddToCart' alt='" + row["name"] + "'></a></div>");
+                        html.Append("<div class='productListInfo'>");
+                        html.Append("<h3><a href='#'>" + row["name"] + "</a></h3>");
+                        html.Append("<div class='productListPrice priceQuickAddToCart'><span>" + tien + "</span></div>");
+                        html.Append("<span class='line'></span>");
+                        html.Append("<div class='productListDesc'>" + row["description"] + "</div>");
+                        html.Append("<div class='formQuickAddToCart productListForm'>");
+                        html.Append("<input type='hidden' name='variantId' value='9363959'>");
+                        html.Append("<button class='button buttonProductList quickAddToCart' data-toggle='tooltip' title='' data-original-title='Cho vào giỏ hàng'><i class='fa fa-shopping-cart'></i> Cho vào giỏ hàng</button>");
+                        html.Append("<a href='#' class='button skype' data-toggle='tooltip' title='' data-original-title='Chat qua Skype'><i class='fa fa-skype'></i></a></div></div></div></div>");
+                    }
                 }
             }
-
-            Response.Write(view);
+            else
+            {
+                pnControl.Visible = false;
+                html.Append("<h2 style='text-align:center;margin: 40px auto;font-size: 2em;'>Không có sản phẩm nào được hiển thị :(</h2>");
+            }
             grdContent.Controls.Add(new Literal { Text = "" });
             grdContent.Controls.Add(new Literal { Text = html.ToString() });
-                
+
         }
 
-        //protected void btnViewGrid_Click(object sender, EventArgs e)
-        //{
-        //    string path = Request.Url.ToString();
-        //    Response.Redirect(path + "&view=2");
-        //    Response.Write("URL:" + path);
-        //}
+        protected void btnViewGrid_Click(object sender, EventArgs e)
+        {
+            selectGridView("1");
+        }
+
+        protected void btnViewList_Click(object sender, EventArgs e)
+        {
+            selectGridView("2");
+
+        }
+
+        private void selectGridView(string view)
+        {
+            string path = Request.Url.ToString();
+            if (!path.Contains("?")) return;
+            if (path.Contains("&view="))
+            {
+                path = Regex.Replace(path, "view=([0-9])", "view=" + view);
+            }
+            else
+            {
+                path += "&view=" + view;
+            }
+            Response.Redirect(path);
+        }
+
+        private void setCssFor2Button(string view = "1")
+        {
+            if (view.Contains("2"))
+            {
+                btnViewGird.Attributes["class"] = "switchView viewCollection";
+                btnViewList.Attributes["class"] = "switchView active viewCollection";
+            }
+            else
+            {
+                btnViewGird.Attributes["class"] = "switchView active viewCollection";
+                btnViewList.Attributes["class"] = "switchView viewCollection";
+            }
+        }
     }
 }

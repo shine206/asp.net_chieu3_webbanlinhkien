@@ -26,12 +26,12 @@ namespace WebBanLinhKien
             foreach (DataRow gCat in dtGroupCats.Rows)
             {
                 html.Append("<li class='hasSubListCate'><i class='fa fa-angle-right'></i>");
-                html.Append("<a href='" + gCat["id_group_category"] + "'>" + gCat["name"] + "</a>");
+                html.Append("<a href='Search.aspx?group_cat=" + gCat["id_group_category"] + "'>" + gCat["name"] + "</a>");
                 html.Append("<div class='subListCate'>");
                 foreach (DataRow cat in dtCats.Rows)
                 {
                     if (cat["id_group"].ToString() == gCat["id_group_category"].ToString())
-                        html.Append("<a href='" + cat["id_category"] + "'>" + cat["category"] + "</a>");
+                        html.Append("<a href='Search.aspx?group_cat=" + gCat["id_group_category"] + "&cat=" + cat["id_category"] + "'>" + cat["category"] + "</a>");
                 }
                 html.Append("</div></li>");
             }

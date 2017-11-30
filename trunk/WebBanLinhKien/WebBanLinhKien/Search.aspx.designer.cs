@@ -13,13 +13,31 @@ namespace WebBanLinhKien {
     public partial class Search {
         
         /// <summary>
-        /// btnViewGrid control.
+        /// pnControl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnViewGrid;
+        protected global::System.Web.UI.WebControls.Panel pnControl;
+        
+        /// <summary>
+        /// btnViewList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnViewList;
+        
+        /// <summary>
+        /// btnViewGird control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnViewGird;
         
         /// <summary>
         /// grdContent control.
@@ -29,15 +47,6 @@ namespace WebBanLinhKien {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder grdContent;
-        
-        /// <summary>
-        /// grdContent1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder grdContent1;
         
         /// <summary>
         /// drlFilterPrice control.

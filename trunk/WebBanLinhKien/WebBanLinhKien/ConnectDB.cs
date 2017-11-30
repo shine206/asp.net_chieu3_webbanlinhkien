@@ -18,6 +18,11 @@ namespace WebBanLinhKien
         ///     getAllCategories
         ///     getAllGroupCategories
         ///     getAllProductsInSearch
+        ///     getAllProductsByGroupCategory
+        ///     getAllProductsByCategory
+        ///     getAllProductsByCategoryAndGroup
+        ///     loginWithUser
+        ///     getImagesByIdProduct
         /// POST:
         ///     addNewProduct
         ///     addNewCategory
@@ -391,5 +396,81 @@ namespace WebBanLinhKien
             return result;
         }
 
+        /// <summary>
+        /// Lấy tất cả sản phẩm được lọc bằng nhóm sản phẩm
+        /// </summary>
+        /// <param name="group_category_id">id của nhóm sản phẩm</param>
+        /// <returns>Danh sách sản phẩm</returns>
+        public DataTable getAllProductsByGroupCategory(int group_category_id)
+        {
+            DataTable result = new DataTable();
+            try
+            {
+                connect();
+                SqlCommand cmd = new SqlCommand("getProductsByGroupCategory", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@group_category_id", group_category_id);
+                SqlDataReader rd = cmd.ExecuteReader();
+                result.Load(rd);
+            }
+            finally
+            {
+                result.Dispose();
+                disconnect();
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Lấy tất cả sản phẩm được lọc bằng đanh mục
+        /// </summary>
+        /// <param name="category_id">id danh mục sản phẩm</param>
+        /// <returns>Danh sách sản phẩm</returns>
+        public DataTable getAllProductsByCategory(int category_id)
+        {
+            DataTable result = new DataTable();
+            try
+            {
+                connect();
+                SqlCommand cmd = new SqlCommand("getProductsByCategory", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@category_id", category_id);
+                SqlDataReader rd = cmd.ExecuteReader();
+                result.Load(rd);
+            }
+            finally
+            {
+                result.Dispose();
+                disconnect();
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Lấy danh sách sản phẩm bằng nhóm sản phẩm và danh mục
+        /// </summary>
+        /// <param name="category_id">id danh mục</param>
+        /// <param name="group_category_id">id nhóm danh mục</param>
+        /// <returns></returns>
+        public DataTable getAllProductsByCategoryAndGroup(int category_id, int group_category_id)
+        {
+            DataTable result = new DataTable();
+            try
+            {
+                connect();
+                SqlCommand cmd = new SqlCommand("getProductsByCategoryAndGroup", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@category_id", category_id);
+                cmd.Parameters.AddWithValue("@group_category_id", group_category_id);
+                SqlDataReader rd = cmd.ExecuteReader();
+                result.Load(rd);
+            }
+            finally
+            {
+                result.Dispose();
+                disconnect();
+            }
+            return result;
+        }
     }
 }

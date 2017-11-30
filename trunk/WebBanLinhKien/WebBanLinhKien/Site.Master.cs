@@ -92,12 +92,12 @@ namespace WebBanLinhKien
             foreach (DataRow gCat in dtGroupCats.Rows)
             {
                 html.Append("<li class='has-sub panel'>");
-                html.Append("<a href='#'>" + gCat["name"] + "</a><em data-parent='#sub-menu-product' data-target='#sub-sub-menu-" + subMenu.ToString() + "' data-toggle='collapse' class='collapsed'><i class='fa fa-angle-down'></i></em>");
+                html.Append("<a href='Search.aspx?group_cat=" + gCat["id_group_category"] + "'>" + gCat["name"] + "</a><em data-parent='#sub-menu-product' data-target='#sub-sub-menu-" + subMenu.ToString() + "' data-toggle='collapse' class='collapsed'><i class='fa fa-angle-down'></i></em>");
                 html.Append("<ul class='list-unstyled collapse' id='sub-sub-menu-" + subMenu.ToString() + "'>");
                 foreach (DataRow cat in dtCats.Rows)
                 {
                     if (cat["id_group"].ToString() == gCat["id_group_category"].ToString())
-                        html.Append("<li><a href='#'>"+ cat["category"] +"</a></li>");
+                        html.Append("<li><a href='Search.aspx?group_cat=" + gCat["id_group_category"] + "&cat=" + cat["id_category"] + "'>" + cat["category"] + "</a></li>");
                 }
                 html.Append("</ul></li>");
                 subMenu++;
@@ -110,12 +110,12 @@ namespace WebBanLinhKien
             foreach (DataRow gCat in dtGroupCats.Rows)
             {
                 html.Append("<div class='col-md-4'>");
-                html.Append("<h2 class='titleDecoration'><span class='line'></span><a href='product.html' class='title'>" + gCat["name"] + "</a></h2>");
+                html.Append("<h2 class='titleDecoration'><span class='line'></span><a href='Search.aspx?group_cat=" + gCat["id_group_category"] + "' class='title'>" + gCat["name"] + "</a></h2>");
                 html.Append("<ul class='list-unstyled listMenu'>");
                 foreach (DataRow cat in dtCats.Rows)
                 {
                     if (cat["id_group"].ToString() == gCat["id_group_category"].ToString())
-                        html.Append("<li><a href='product.html'>" + cat["category"] + "</a></li>");
+                        html.Append("<li><a href='Search.aspx?group_cat=" + gCat["id_group_category"] + "&cat=" + cat["id_category"] + "'>" + cat["category"] + "</a></li>");
                 }
                 html.Append("</ul></div>");
                 count++;
@@ -133,12 +133,12 @@ namespace WebBanLinhKien
             foreach (DataRow gCat in dtGroupCats.Rows)
             {
                 html.Append("<li class='hasSubListCate panel'>");
-                html.Append("<a href='product.html'>" + gCat["name"] + "</a><em data-parent='#panel-mobile-menu' class='collapsed' data-toggle='collapse' data-target='#sub-menu-" + subMenu.ToString() + "'><i class='fa fa-angle-down'></i></em>");
+                html.Append("<a href='Search.aspx?group_cat=" + gCat["id_group_category"] + "'>" + gCat["name"] + "</a><em data-parent='#panel-mobile-menu' class='collapsed' data-toggle='collapse' data-target='#sub-menu-" + subMenu.ToString() + "'><i class='fa fa-angle-down'></i></em>");
                 html.Append("<ul class='list-unstyled SubListCate collapse' id='sub-menu-"+ subMenu.ToString() +"'>");
                 foreach (DataRow cat in dtCats.Rows)
                 {
                     if (cat["id_group"].ToString() == gCat["id_group_category"].ToString())
-                        html.Append("<li><a href='product.html'>"+ cat["category"] +"</a></li>");
+                        html.Append("<li><a href='Search.aspx?group_cat=" + gCat["id_group_category"] + "&cat=" + cat["id_category"] + "'>" + cat["category"] + "</a></li>");
                 }
                 html.Append("</ul></li>");
                 subMenu++;

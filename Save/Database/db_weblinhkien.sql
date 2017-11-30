@@ -424,3 +424,44 @@ begin
 	where Products.price >=@min_price and price <@max_price and Images.id_product=Products.id_product
 end
 
+Go
+-- Get products filter by group_category
+create procedure getProductsByGroupCategory
+	@group_category_id int
+as
+begin
+	select Products.*, GroupCategories.name as group_category_name, GroupCategories.id_group_category as group_category_id
+	from Products, Category, GroupCategories
+	where
+		Products.id_category=Category.id_category and
+		Category.id_group_category=GroupCategories.id_group_category and
+		GroupCategories.id_group_category=@group_category_id
+end
+Go
+-- Get products filter by category
+create procedure getProductsByCategory
+	@category_id int
+as
+begin
+	select Products.*, GroupCategories.name as group_category_name, GroupCategories.id_group_category as group_category_id
+	from Products, Category, GroupCategories
+	where
+		Products.id_category=Category.id_category and
+		Category.id_group_category=GroupCategories.id_group_category and
+		Category.id_category=@category_id
+end
+Go
+-- Get products filter by category and Group
+create procedure getProductsByCategoryAndGroup
+	@category_id int,
+	@group_category_id int
+as
+begin
+	select Products.*, GroupCategories.name as group_category_name, GroupCategories.id_group_category as group_category_id
+	from Products, Category, GroupCategories
+	where
+		Products.id_category=Category.id_category and
+		Category.id_group_category=GroupCategories.id_group_category and
+		Category.id_category=@category_id and
+		GroupCategories.id_group_category=@group_category_id
+end
