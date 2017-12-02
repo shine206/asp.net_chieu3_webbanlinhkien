@@ -20,10 +20,10 @@ namespace WebBanLinhKien
             if (!IsPostBack)
             {
                 HttpCookie ck = Request.Cookies["User_Login"];
-                string s;
+                string saveCk;
                 if (ck != null)
                 {
-                    s = ck.Values["Username"];
+                    saveCk = ck.Values["Username"];
                 }
             }
 

@@ -13,14 +13,14 @@ namespace WebBanLinhKien
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            //if (!IsPostBack)
-            //{
-            //    HttpCookie cookie = new HttpCookie("User_Login");
-            //    if (cookie != null)
-            //    {
-            //        Response.Redirect("Home.aspx");
-            //    }
-            //}
+            if (!ispostback)
+            {
+                httpcookie cookie = new httpcookie("user_login");
+                if (cookie != null)
+                {
+                    response.redirect("home.aspx");
+                }
+            }
 
         }
 
