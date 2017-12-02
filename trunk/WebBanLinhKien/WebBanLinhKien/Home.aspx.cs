@@ -13,7 +13,22 @@ namespace WebBanLinhKien
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+         
             loadLeftMenu();
+
+            //Login - Cookie
+            if (!IsPostBack)
+            {
+                HttpCookie ck = Request.Cookies["User_Login"];
+                string s;
+                if (ck != null)
+                {
+
+                    s = ck.Values["Username"];
+                    //= ck["Username"].ToString();
+                }
+            }
+
         }
 
         protected void loadLeftMenu()

@@ -12,11 +12,27 @@ namespace WebBanLinhKien
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            //if(!IsPostBack)
+            //{
+            //    HttpCookie cookie = new HttpCookie("User_Login");
+            //    if(cookie != null)
+            //    {
+            //        Response.Redirect("Home.aspx");
+            //    }
+            //}
+
         }
 
         protected void btnDangNhap_Click(object sender, EventArgs e)
         {
-            Response.Write(username.Text);
+            HttpCookie cookie = new HttpCookie("User_Login");
+            cookie["Username"] = username.Text;
+            //cookie.Expires = DateTime.Now.AddHours(3);
+            Response.Cookies.Add(cookie);
+            Response.Redirect("Home.aspx");
+
+            //Response.Write(username.Text);
+
         }
     }
 }
