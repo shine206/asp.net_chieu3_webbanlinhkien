@@ -23,9 +23,7 @@ namespace WebBanLinhKien
                 string s;
                 if (ck != null)
                 {
-
                     s = ck.Values["Username"];
-                    //= ck["Username"].ToString();
                 }
             }
 

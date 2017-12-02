@@ -1,7 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Home.aspx.cs" MasterPageFile="~/Site.Master" Inherits="WebBanLinhKien.Home" %>
 
 <asp:Content runat="server" ContentPlaceHolderID="SlideShowContent" ID="slideShowContent">
-
     <div class="row">
         <div class="hidden-xs hidden-sm hidden-md col-lg-3">
             <ul class="list-unstyled listCate hasIcon ">

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
 
 namespace WebBanLinhKien
 {
@@ -12,10 +13,10 @@ namespace WebBanLinhKien
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            //if(!IsPostBack)
+            //if (!IsPostBack)
             //{
             //    HttpCookie cookie = new HttpCookie("User_Login");
-            //    if(cookie != null)
+            //    if (cookie != null)
             //    {
             //        Response.Redirect("Home.aspx");
             //    }
@@ -25,13 +26,28 @@ namespace WebBanLinhKien
 
         protected void btnDangNhap_Click(object sender, EventArgs e)
         {
-            HttpCookie cookie = new HttpCookie("User_Login");
-            cookie["Username"] = username.Text;
-            //cookie.Expires = DateTime.Now.AddHours(3);
-            Response.Cookies.Add(cookie);
-            Response.Redirect("Home.aspx");
+            string txtName = username.Text;
+            string txtPass = passLogin.Text;
+            ConnectDB db = new ConnectDB();
+            DataTable dt = db.loginWithUser(txtName, txtPass);
 
-            //Response.Write(username.Text);
+            Response.Write(dt.Rows.Count.ToString());
+
+            if (dt.Rows.Count > 0)
+            {
+                HttpCookie cookie = new HttpCookie("User_Login");
+                cookie["Username"] = txtName;
+                cookie.Expires = DateTime.Now.AddHours(3);
+                Response.Cookies.Add(cookie);
+                Response.Redirect("Home.aspx");
+
+            }
+            else {
+                Response.Redirect("Login2.aspx");
+                //username.Text = "Username or password incorrect. Please try again!";
+
+                
+            }
 
         }
     }
