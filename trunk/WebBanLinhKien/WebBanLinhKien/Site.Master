@@ -4,7 +4,7 @@
 <html lang="en">
 <head runat="server">
     <meta charset="utf-8" />
-    <title><%: Page.Title %> - My ASP.NET Application</title>
+    <title><%: Page.Title %>- My ASP.NET Application</title>
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
@@ -15,9 +15,9 @@
     <link href="Content/css/index.css" rel="stylesheet" type="text/css" />
     <link href="Content/css/item.css" rel="stylesheet" type="text/css" />
     <link href="Content/css/item_2.css" rel="stylesheet" type="text/css" />
-    <link href="Content/css/product.css" rel="stylesheet" type="text/css"/>
-    <link href="Content/css/item_3.css" rel="stylesheet" type="text/css"/>
-    <link href="Content/css/item_4.css" rel="stylesheet" type="text/css"/>
+    <link href="Content/css/product.css" rel="stylesheet" type="text/css" />
+    <link href="Content/css/item_3.css" rel="stylesheet" type="text/css" />
+    <link href="Content/css/item_4.css" rel="stylesheet" type="text/css" />
     <link href="Content/css/login.css" rel="stylesheet" type="text/css" />
     <link href="Content/css/cart.css" rel="stylesheet" type="text/css" />
     <webopt:BundleReference runat="server" Path="~/Content/css" />
@@ -55,7 +55,7 @@
                     <li class="has-sub">
                         <a href="#">Sản phẩm</a><em data-target="#sub-menu-product" data-toggle="collapse" class="collapsed"><i class="fa fa-angle-down"></i></em>
                         <ul class="list-unstyled collapse panel-group" id="sub-menu-product">
-                            <asp:PlaceHolder runat="server" ID="liContent"/>
+                            <asp:PlaceHolder runat="server" ID="liContent" />
                         </ul>
                     </li>
                     <li><a href="#">Tin tức</a></li>
@@ -70,7 +70,9 @@
                 <div class="container">
                     <div class="row">
                         <div class="hidden-xs hidden-sm col-md-4 col-lg-4">
-                            <a href="#" class="welText">Chào bạn, cửa hàng có thể giúp gì cho bạn ?</a>
+                            <a href="#" class="welText">Chào bạn, cửa hàng có thể giúp gì cho bạn? </a>
+
+
                         </div>
                         <div class="hidden-xs hidden-sm col-md-8 col-lg-8">
                             <ul class="list-unstyled list-inline pull-right">
@@ -80,6 +82,7 @@
                                 <li><a href="register.html">Đăng ký</a></li>
                                 <li><a href="login.html">Đăng nhập</a></li>
                             </ul>
+                            
                         </div>
                     </div>
                 </div>
@@ -125,9 +128,9 @@
                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                             <div class="searchForm">
                                 <asp:TextBox ID="txtQuery" CssClass="input-control" runat="server" ToolTip="Tìm kiếm sản phẩm ..."></asp:TextBox>
-                                <%--<input type="text" class="input-control" name="query" title="Nhập từ khóa tìm kiếm sản phẩm" placeholder="Tìm kiếm sản phẩm..." required="">--%>
+                                <%--Framework Scripts--%>
                                 <asp:LinkButton ID="btnSearch" CssClass="button" runat="server" Text="Tìm kiếm" OnClick="btnSearch_Click"><i class="fa fa-search"></i></asp:LinkButton>
-                                <%--<a href="Search.aspx?action=search&q=chuot" id="btnSearch" class="button" title="Tìm kiếm"><i class="fa fa-search"></i></a>--%>
+                                <%--<asp:ScriptReference Name="jquery.ui.combined" />--%>
                             </div>
                         </div>
                         <div class="hidden-xs hidden-sm col-md-5 col-lg-5">
@@ -168,7 +171,7 @@
                             <h3 class="hidden-lg cateTitle dropDownButton collapsed" data-toggle="collapse" data-target="#listCateMobile"><i class="spr icoBar"></i>Danh mục sản phẩm</h3>
                             <div class="hidden-lg listCateMobile dropList collapse" id="listCateMobile">
                                 <ul class="list-unstyled hasIcon mobile-menu panel-group" id="panel-mobile-menu">
-                                    <asp:PlaceHolder runat="server" ID="mobileMenuContent"/>
+                                    <asp:PlaceHolder runat="server" ID="mobileMenuContent" />
                                 </ul>
                             </div>
                         </div>

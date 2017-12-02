@@ -23,11 +23,13 @@ namespace WebBanLinhKien
         ///     getAllProductsByCategoryAndGroup
         ///     loginWithUser
         ///     getImagesByIdProduct
+        ///     getProductById
         /// POST:
         ///     addNewProduct
         ///     addNewCategory
         ///     deleteCategory
         ///     deleteProduct
+        ///     deleteImageById
         /// </summary>
 
         SqlConnection conn;
@@ -468,6 +470,55 @@ namespace WebBanLinhKien
             finally
             {
                 result.Dispose();
+                disconnect();
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Lấy sản phẩm bằng id của sản phẩm
+        /// </summary>
+        /// <param name="id_product">id sản phẩm</param>
+        /// <returns>Danh sách sản phẩm</returns>
+        public DataTable getProductById(int id_product)
+        {
+            DataTable result = new DataTable();
+            try
+            {
+                connect();
+                SqlCommand cmd = new SqlCommand("getProductById", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id_product", id_product);
+                SqlDataReader rd = cmd.ExecuteReader();
+                result.Load(rd);
+            }
+            finally
+            {
+                result.Dispose();
+                disconnect();
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Xóa hình ảnh
+        /// </summary>
+        /// <param name="id_image">id của ảnh</param>
+        /// <returns></returns>
+        public bool deleteImageById(int id_image)
+        {
+            bool result = false;
+            try
+            {
+                connect();
+                SqlCommand cmd = new SqlCommand("deleteImageById", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id_image", id_image);
+                if (cmd.ExecuteNonQuery() == 1)
+                    result = true;
+            }
+            finally
+            {
                 disconnect();
             }
             return result;

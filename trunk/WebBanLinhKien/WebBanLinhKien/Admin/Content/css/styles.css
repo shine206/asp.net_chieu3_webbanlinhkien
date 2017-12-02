@@ -657,3 +657,15 @@ body {
     margin-top: 9px;
     display: block;
 }
+
+.products .images_group .image_box {
+    display: inline-block;
+    position: relative;
+    margin: 0 5px;
+}
+
+.products .images_group .image_box a{
+    top: 0px; 
+    right: 0px;
+    position: absolute;
+}

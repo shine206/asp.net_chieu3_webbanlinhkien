@@ -465,3 +465,12 @@ begin
 		Category.id_category=@category_id and
 		GroupCategories.id_group_category=@group_category_id
 end
+
+go
+-- Get product by id
+create procedure getProductById
+	@id_product int
+as
+begin
+	select * from Products where id_product = @id_product
+end

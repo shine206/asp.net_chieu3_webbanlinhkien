@@ -7,11 +7,13 @@ using System.Web.UI.WebControls;
 using System.Text;
 using System.Data;
 using System.IO;
+using System.Globalization;
 
 namespace WebBanLinhKien.Admin
 {
     public partial class Products : System.Web.UI.Page
     {
+        private int IdSelectedDanhMuc;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Request.QueryString["action"] != null)
@@ -20,15 +22,43 @@ namespace WebBanLinhKien.Admin
                 if (action == "add")
                 {
                     pnAddNew.Visible = true;
+                    pnAllImages.Visible = false;
                     pnTable.Visible = false;
-                    LoadCategories();
+                    if (!IsPostBack)
+                        LoadCategories();
                     return;
                 }
                 else if (action == "delete")
                 {
-                    int id = Convert.ToInt32(Request.QueryString["id"].ToString());
-                    deleteProduct(id);
-                    Response.Redirect("Products.aspx");
+                    if (Request.QueryString["id"] != null)
+                    {
+                        int id = Convert.ToInt32(Request.QueryString["id"].ToString());
+                        deleteProduct(id);
+                        Response.Redirect("Products.aspx");
+                    }
+                }
+                else if (action == "edit")
+                {
+                    if (Request.QueryString["id"] != null)
+                    {
+                        pnAddNew.Visible = true;
+                        pnAllImages.Visible = true;
+                        pnTable.Visible = false;
+                        int id = Convert.ToInt32(Request.QueryString["id"].ToString());
+                        loadUpdateProduct(id);
+                        return;
+                    }
+                }
+                else if (action == "delete_image")
+                {
+                    if (Request.QueryString["id"] != null)
+                    {
+                        int id = Convert.ToInt32(Request.QueryString["id"].ToString());
+                        bool isDeleted = (new ConnectDB()).deleteImageById(id);
+                        string referer = Request.UrlReferrer.ToString();
+                        Response.Redirect(referer);
+                        //Response.Write(referer);
+                    }
                 }
             }
             LoadListProductsToTable();
@@ -40,10 +70,35 @@ namespace WebBanLinhKien.Admin
             ConnectDB db = new ConnectDB();
             DataTable dt = db.getAllCategories();
             ddlDanhMucSanPham.Items.Clear();
+            if (dt.Rows.Count > 0) IdSelectedDanhMuc = Convert.ToInt32(dt.Rows[0]["id_category"]);
             foreach (DataRow row in dt.Rows)
             {
                 ddlDanhMucSanPham.Items.Add(new ListItem(row["category"].ToString(), row["id_category"].ToString()));
             }
+        }
+
+        private void loadUpdateProduct(int id_product)
+        {
+            ConnectDB db = new ConnectDB();
+            DataTable dt = db.getProductById(id_product);
+            if (dt.Rows.Count > 0)
+            {
+                if (!IsPostBack)
+                    LoadCategories();
+                ddlDanhMucSanPham.ClearSelection();
+                ddlDanhMucSanPham.Items.FindByValue(dt.Rows[0]["id_category"].ToString()).Selected = true;
+                txtTenSp.Text = dt.Rows[0]["name"].ToString();
+                txtGiaSp.Text = dt.Rows[0]["price"].ToString();
+                txtTrangThaiSp.Text = dt.Rows[0]["status"].ToString();
+                txtTags.Text = dt.Rows[0]["tag"].ToString();
+                txtKhuyenMai.Text = dt.Rows[0]["promotion"].ToString();
+                txtChiTietSp.Text = dt.Rows[0]["details"].ToString();
+                txtMoTaSp.Text = dt.Rows[0]["description"].ToString();
+                txtNoiDungSp.Text = dt.Rows[0]["content"].ToString();
+            }
+            DataTable dtImages = (new ConnectDB()).getImagesByIdProduct(id_product);
+            rptImageContent.DataSource = dtImages;
+            rptImageContent.DataBind();
         }
 
         private void LoadListProductsToTable()
@@ -63,13 +118,13 @@ namespace WebBanLinhKien.Admin
                 {
                     html.Append("<img src='/" + image["link_image"].ToString().Replace("\\", "/") + "' alt='" + row["name"] + "' width='70' height='70' />");
                 }
-                html.Append("</td><td>" + row["price"] + "</td>");
+                CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");   // try with "en-US"
+                string tien = double.Parse(row["price"].ToString()).ToString("#,### VNĐ", cul.NumberFormat);
+                html.Append("</td><td>" + tien + "</td>");
                 html.Append("<td>" + row["status"] + "</td>");
                 html.Append("<td>" + row["tag"] + "</td>");
                 html.Append("<td>" + row["promotion"] + "</td>");
-                html.Append("<td>" + row["details"] + "</td>");
                 html.Append("<td>" + row["description"] + "</td>");
-                html.Append("<td>" + row["content"] + "</td>");
                 html.Append("<td>");
                 html.Append("<a href='Products.aspx?action=edit&id=" + row["id_product"] + "' class='btn btn-primary btn-sm'>Sửa</a><span style='margin-left:10px;'></span>");
                 html.Append("<br><a href='Products.aspx?action=delete&id=" + row["id_product"] + "' class='btn btn-danger btn-sm'>Xóa</a>");
@@ -103,15 +158,17 @@ namespace WebBanLinhKien.Admin
                 file.SaveAs(saveLocation);
                 images += "Content\\images\\" + fileName + ";";
             }
-            Response.Write(images);
+
             bool isSuccess = db.addNewProduct(id, name, price, status, promotion, tag, details, desc, content);
             string[] arrayImages = images.Split(new char[] { ';' });
+
             foreach (string image in arrayImages)
             {
-                if (!string.IsNullOrWhiteSpace(image) && string.IsNullOrEmpty(image))
+                if (!string.IsNullOrWhiteSpace(image) && !string.IsNullOrEmpty(image))
                 {
                     ConnectDB dbUpload = new ConnectDB();
                     dbUpload.uploadImages(image);
+                    Response.Write("Updated " + image + "\r\n");
                 }
             }
 
@@ -155,6 +212,12 @@ namespace WebBanLinhKien.Admin
         {
             pnMessage.Visible = true;
             lblMessage.Text = message;
+        }
+
+        protected void ddlDanhMucSanPham_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            IdSelectedDanhMuc = Convert.ToInt32(ddlDanhMucSanPham.SelectedValue);
+            Response.Write(IdSelectedDanhMuc.ToString());
         }
     }
 }

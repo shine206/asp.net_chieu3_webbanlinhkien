@@ -25,7 +25,7 @@ namespace WebBanLinhKien
 
         protected void btnSend_Click1(object sender, EventArgs e)
         {
-            Response.Write("Test 111111111");
+            Response.Write("jkdfjkds");
             
         }
 
