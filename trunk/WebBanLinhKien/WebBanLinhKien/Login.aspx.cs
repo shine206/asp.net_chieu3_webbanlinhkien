@@ -19,7 +19,7 @@ namespace WebBanLinhKien
                 HttpCookie cookie = new HttpCookie("user_login");
                 if (cookie != null)
                 {
-                    Response.Redirect("home.aspx");
+                    Response.Redirect("Home.aspx");
                 }
             }
         }
@@ -37,7 +37,7 @@ namespace WebBanLinhKien
                 {
                     HttpCookie cookie = new HttpCookie("User_Login");
                     cookie["Username"] = txtName;
-                    cookie.Expires = DateTime.Now.AddDays(1);
+                    cookie.Expires = DateTime.Now.AddMinutes(15);
                     Response.Cookies.Add(cookie);
                     Response.Redirect("Home.aspx");
                 }

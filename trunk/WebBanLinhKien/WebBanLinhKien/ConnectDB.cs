@@ -523,5 +523,74 @@ namespace WebBanLinhKien
             }
             return result;
         }
+
+        /// <summary>
+        /// Thêm người dùng mới
+        /// </summary>
+        /// <param name="name">username</param>
+        /// <param name="password">password</param>
+        /// <param name="fullname">fullname</param>
+        /// <param name="email">email</param>
+        /// <param name="address">address</param>
+        /// <param name="phone">phone</param>
+        /// <returns></returns>
+        public bool addNewUser(string name, string password,string fullname, string email, string address, string phone)
+        {
+            bool result = false;
+            try
+            {
+                connect();
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("addNewUser", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@username", name);
+                cmd.Parameters.AddWithValue("@password", password);
+                cmd.Parameters.AddWithValue("@fullname", fullname);
+                cmd.Parameters.AddWithValue("@email", email);
+                cmd.Parameters.AddWithValue("@address", address);
+                cmd.Parameters.AddWithValue("@phone", phone);
+                cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
+                cmd.Parameters.AddWithValue("@updated_at", DateTime.Now);
+               
+                if (cmd.ExecuteNonQuery() == 1)
+                    result = true;
+            }
+            finally
+            {
+                disconnect();
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Kiểm tra xem username or email có tồn tại chưa
+        /// </summary>
+        /// <param name="userName">username</param>
+        /// <param name="email">email</param>
+        /// <returns></returns>
+        public bool CheckUser(string userName, string email)
+        {
+            bool result = false;
+            try
+            {
+                connect();             
+                SqlCommand cmd = new SqlCommand("select username from Users where username = @userName OR email = @email", conn);
+                cmd.Parameters.AddWithValue("@username", userName);
+                cmd.Parameters.AddWithValue("@email", email);
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    result = true;
+                    
+                }
+            }
+            finally
+            {
+                disconnect();
+            }
+
+            return result;
+        }
     }
+
 }
