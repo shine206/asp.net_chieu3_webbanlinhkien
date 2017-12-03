@@ -30,6 +30,7 @@ namespace WebBanLinhKien
         ///     deleteCategory
         ///     deleteProduct
         ///     deleteImageById
+        ///     updateProduct
         /// </summary>
 
         SqlConnection conn;
@@ -351,7 +352,12 @@ namespace WebBanLinhKien
             return result;
         }
 
-        public void uploadImages(string image)
+        /// <summary>
+        /// Upload hình ảnh
+        /// </summary>
+        /// <param name="image">Link hình</param>
+        /// <param name="id_product">id của sản phẩm, nếu id = -1 sẽ tự động thêm vào sản phẩm cuối cùng</param>
+        public void uploadImages(string image, int id_product = -1)
         {
 
             try
@@ -359,6 +365,7 @@ namespace WebBanLinhKien
                 connect();
                 SqlCommand cmd = new SqlCommand("uploadImage", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id_product", id_product);
                 cmd.Parameters.AddWithValue("@link_image", image);
                 cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
                 cmd.Parameters.AddWithValue("@updated_at", DateTime.Now);
@@ -514,6 +521,49 @@ namespace WebBanLinhKien
                 SqlCommand cmd = new SqlCommand("deleteImageById", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@id_image", id_image);
+                if (cmd.ExecuteNonQuery() == 1)
+                    result = true;
+            }
+            finally
+            {
+                disconnect();
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Cập nhật sản phẩm
+        /// </summary>
+        /// <param name="id_product">id của sản phẩm cần cập nhật</param>
+        /// <param name="id_category">id danh mục</param>
+        /// <param name="name">tên sản phẩm</param>
+        /// <param name="price">giá sản phẩm</param>
+        /// <param name="status">trạng thái sản phẩm</param>
+        /// <param name="promotion">giảm giá %</param>
+        /// <param name="tags">tags</param>
+        /// <param name="details"></param>
+        /// <param name="description"></param>
+        /// <param name="content"></param>
+        /// <returns></returns>
+        public bool updateProduct(int id_product, int id_category, string name, int price, int status, string promotion, string tags, string details, string description, string content)
+        {
+            bool result = false;
+            try
+            {
+                connect();
+                SqlCommand cmd = new SqlCommand("updateProduct", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id_product", id_product);
+                cmd.Parameters.AddWithValue("@id_category", id_category);
+                cmd.Parameters.AddWithValue("@name", name);
+                cmd.Parameters.AddWithValue("@price", price);
+                cmd.Parameters.AddWithValue("@status", status);
+                cmd.Parameters.AddWithValue("@promotion", promotion);
+                cmd.Parameters.AddWithValue("@tags", tags);
+                cmd.Parameters.AddWithValue("@details", details);
+                cmd.Parameters.AddWithValue("@description", description);
+                cmd.Parameters.AddWithValue("@content", content);
+                cmd.Parameters.AddWithValue("@updated_at", DateTime.Now);
                 if (cmd.ExecuteNonQuery() == 1)
                     result = true;
             }

@@ -44,8 +44,11 @@ namespace WebBanLinhKien.Admin
                         pnAddNew.Visible = true;
                         pnAllImages.Visible = true;
                         pnTable.Visible = false;
-                        int id = Convert.ToInt32(Request.QueryString["id"].ToString());
-                        loadUpdateProduct(id);
+                        if (!IsPostBack)
+                        {
+                            int id = Convert.ToInt32(Request.QueryString["id"].ToString());
+                            loadUpdateProduct(id);
+                        }
                         return;
                     }
                 }
@@ -152,7 +155,6 @@ namespace WebBanLinhKien.Admin
             string images = "";
             foreach (HttpPostedFile file in FileUpload1.PostedFiles)
             {
-                //System.IO.File.Copy(Server.MapPath(file.FileName), Server.MapPath("/Content/" + file.FileName));
                 string fileName = Path.GetFileNameWithoutExtension(file.FileName) + "_" + GetTimestamp(DateTime.Now) + Path.GetExtension(file.FileName);
                 string saveLocation = Server.MapPath("\\Content\\images\\" + fileName);
                 file.SaveAs(saveLocation);
@@ -218,6 +220,44 @@ namespace WebBanLinhKien.Admin
         {
             IdSelectedDanhMuc = Convert.ToInt32(ddlDanhMucSanPham.SelectedValue);
             Response.Write(IdSelectedDanhMuc.ToString());
+        }
+
+        protected void btnCapNhatSanPham_Click(object sender, EventArgs e)
+        {
+            ConnectDB db = new ConnectDB();
+            int id_product = Convert.ToInt32(Request.QueryString["id"]);
+            int id = Convert.ToInt32(ddlDanhMucSanPham.SelectedValue);
+            string name = txtTenSp.Text.ToString();
+            int price = Convert.ToInt32(txtGiaSp.Text);
+            int status = 1;
+            if (txtTrangThaiSp.Text != "")
+                status = Convert.ToInt32(txtTrangThaiSp.Text);
+            string promotion = txtKhuyenMai.Text;
+            string tag = txtTags.Text;
+            string details = txtChiTietSp.Text;
+            string desc = txtMoTaSp.Text;
+            string content = txtNoiDungSp.Text;
+            //string images = "";
+            bool isSuccess = db.updateProduct(id_product, id, name, price, status, promotion, tag, details, desc, content);
+
+            foreach (HttpPostedFile file in FileUpload1.PostedFiles)
+            {
+                if (Path.GetFileNameWithoutExtension(file.FileName) != "")
+                {
+                    string fileName = Path.GetFileNameWithoutExtension(file.FileName) + "_" + GetTimestamp(DateTime.Now) + Path.GetExtension(file.FileName);
+                    string saveLocation = Server.MapPath("\\Content\\images\\" + fileName);
+                    file.SaveAs(saveLocation);
+                    //images += "Content\\images\\" + fileName + ";";
+                    ConnectDB dbUpload = new ConnectDB();
+                    dbUpload.uploadImages("Content\\images\\" + fileName, id_product);
+                    Response.Write("Updated " + "Content\\images\\" + fileName + "\r\n");
+                }
+            }
+
+            if (isSuccess)
+            {
+                showmessage("Cập nhật sản phẩm thành công");
+            }
         }
     }
 }

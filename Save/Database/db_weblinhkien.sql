@@ -339,12 +339,16 @@ go
 
 -- Upload Image by id
 create procedure uploadImage
+	@id_product int,
 	@link_image text,
 	@created_at datetime,
 	@updated_at datetime
 as
 begin
-	insert into Images (id_product, link_image, created_at, updated_at) values((select MAX(id_product) from Products), @link_image, @created_at, @updated_at);
+	if (@id_product = -1)
+		insert into Images (id_product, link_image, created_at, updated_at) values((select MAX(id_product) from Products), @link_image, @created_at, @updated_at);
+	else
+		insert into Images (id_product, link_image, created_at, updated_at) values(@id_product, @link_image, @created_at, @updated_at);
 end
 
 -- Delete product
@@ -484,3 +488,24 @@ begin
 	delete from Images where id_image=@id_image
 end
 -- select * from Images
+
+go
+-- update product
+create procedure updateProduct
+	@id_product int,
+	@id_category int,
+	@name nvarchar(255),
+	@price float,
+	@status int,
+	@promotion varchar(255),
+	@tags varchar(255),
+	@details text,
+	@description text,
+	@content text,
+	@updated_at datetime
+as
+begin
+	update Products 
+	set id_category=@id_category, name=@name, price=@price, status=@status, promotion=@promotion, tag=@tags, details=@details, description=@description, content=@content, updated_at=@updated_at
+	where id_product=@id_product;
+end
