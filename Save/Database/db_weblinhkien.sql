@@ -474,3 +474,13 @@ as
 begin
 	select * from Products where id_product = @id_product
 end
+
+go
+-- delete Image by id
+create procedure deleteImageById
+	@id_image int
+as
+begin
+	delete from Images where id_image=@id_image
+end
+-- select * from Images
