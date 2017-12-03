@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login2.aspx.cs" Inherits="WebBanLinhKien.Login2" MasterPageFile="~/Site.Master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="WebBanLinhKien.Login"  MasterPageFile="~/Site.Master" EnableEventValidation="false" %>
 
 <asp:Content runat="server" ContentPlaceHolderID="ProductContent">
     <section class="AccountPage">
@@ -11,25 +11,31 @@
                             <input name="FormType" type="hidden" value="customer_login">
                             <input name="utf8" type="hidden" value="true">
                             <div class="group">
-                                <label for="username">Username <span class="error">*</span>
+                                <%--<label for="username">Username <span class="error">*</span>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" CssClass="error" ErrorMessage="(Tài khoản không được trống !!!)" ControlToValidate="username"></asp:RequiredFieldValidator>
-                                </label>
+                                </label>--%>
+                                <asp:Label ID="lblUserName" Text="Username" runat="server" /><span class="error">*</span>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" CssClass="error" ErrorMessage="(Tài khoản không được trống !!!)" ControlToValidate="username"></asp:RequiredFieldValidator>
+
                                 <%--<input type="text" name="username" id="username" required="" class="input-control">--%>
                                 <asp:TextBox runat="server" ID="username" CssClass="input-control"/>
                             </div>
                             <div class="group">
-                                <label for="passLogin">Mật khẩu <span class="error">*</span>
+                                <%--<label for="passLogin">Mật khẩu <span class="error">*</span>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" CssClass="error" runat="server" ErrorMessage="(Mật khẩu không được trống !!!)" ControlToValidate="passLogin"></asp:RequiredFieldValidator>
-                                </label>
+                                </label>--%>
+                                <asp:Label ID="lblPass" Text="Password" runat="server" /><span class="error">*</span>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" CssClass="error" runat="server" ErrorMessage="(Mật khẩu không được trống !!!)" ControlToValidate="passLogin"></asp:RequiredFieldValidator>
+
                                 <asp:TextBox runat="server" TextMode="Password" ID="passLogin" CssClass="input-control"/>
                                    
                                 <%--<input type="password" id="passLogin" name="password" required="" class="input-control">--%>
                             </div>
                             <div class="group clearfix mt-10">
                                 <a href="#recover" class="left">Quên mật khẩu?</a>
-                                <a href="#" class="right">Đăng ký tài khoản</a>
+                                <a href="Register.aspx" class="right">Đăng ký tài khoản</a>
                             </div>
-                            <asp:Button Text="Đăng nhập" CssClass="button" ID="btnDangNhap" runat="server" OnClick="btnDangNhap_Click" />
+                            <asp:Button Text="Đăng nhập" CssClass="button" ID="btnDangNhap" OnClick="btnDangNhap_Click" OnClientClick="return confirm('Tên người dùng hoặc mật khẩu chưa đúng. Hãy nhập lại!')" runat="server" />
                             <%--<button class="button"><i class="hoverButton"></i>Đăng nhập</button>--%>
                         </form>
                     </div>
