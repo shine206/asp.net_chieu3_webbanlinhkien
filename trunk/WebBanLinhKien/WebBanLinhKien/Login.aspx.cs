@@ -22,7 +22,6 @@ namespace WebBanLinhKien
                     Response.Redirect("home.aspx");
                 }
             }
-
         }
 
         protected void btnDangNhap_Click(object sender, EventArgs e)
@@ -33,7 +32,6 @@ namespace WebBanLinhKien
             {
                 ConnectDB db = new ConnectDB();
                 DataTable dt = db.loginWithUser(txtName, txtPass);
-                Response.Write(dt.Rows.Count.ToString());
 
                 if (dt.Rows.Count > 0)
                 {
@@ -44,7 +42,6 @@ namespace WebBanLinhKien
                     Response.Redirect("Home.aspx");
                 }
                 else {
-                    Response.Redirect("Login.aspx");
                     username.Text = "";
                     passLogin.Text = "";
                     username.Focus();

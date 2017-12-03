@@ -35,7 +35,8 @@
                                 <a href="#recover" class="left">Quên mật khẩu?</a>
                                 <a href="Register.aspx" class="right">Đăng ký tài khoản</a>
                             </div>
-                            <asp:Button Text="Đăng nhập" CssClass="button" ID="btnDangNhap" OnClick="btnDangNhap_Click" OnClientClick="return confirm('Tên người dùng hoặc mật khẩu chưa đúng. Hãy nhập lại!')" runat="server" />
+                            <asp:Button Text="Đăng nhập" CssClass="button" ID="btnDangNhap" OnClick="btnDangNhap_Click"  runat="server" />
+                            <%--OnClientClick="return confirm('Tên người dùng hoặc mật khẩu chưa đúng. Hãy nhập lại!')"--%>
                             <%--<button class="button"><i class="hoverButton"></i>Đăng nhập</button>--%>
                         </form>
                     </div>
