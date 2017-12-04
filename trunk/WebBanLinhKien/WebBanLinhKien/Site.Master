@@ -20,6 +20,8 @@
     <link href="Content/css/item_4.css" rel="stylesheet" type="text/css" />
     <link href="Content/css/login.css" rel="stylesheet" type="text/css" />
     <link href="Content/css/cart.css" rel="stylesheet" type="text/css" />
+    <link href="Content/css/contact.css" rel="stylesheet" type="text/css" />
+    <link href="Content/css/policy.css" rel="stylesheet" type="text/css" />
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
@@ -58,9 +60,8 @@
                             <asp:PlaceHolder runat="server" ID="liContent" />
                         </ul>
                     </li>
-                    <li><a href="#">Tin tức</a></li>
-                    <li><a href="#">Giới thiệu</a></li>
-                    <li><a href="#">Liên hệ</a></li>
+                    <li><a href="Introdue.aspx">Giới thiệu</a></li>
+                    <li><a href="Contact.aspx">Liên hệ</a></li>
                 </ul>
             </div>
         </nav>
@@ -77,10 +78,10 @@
                         <div class="hidden-xs hidden-sm col-md-8 col-lg-8">
                             <ul class="list-unstyled list-inline pull-right">
                                 <li><a href="rules.html">Điều khoản</a></li>
-                                <li><a href="policy.html">Chính sách</a></li>
-                                <li><a href="introduce.html">Giới thiệu</a></li>
-                                <li><a href="register.html">Đăng ký</a></li>
-                                <li><a href="login.html">Đăng nhập</a></li>
+                                <li><a href="Policy.aspx">Chính sách</a></li>
+                                <li><a href="Introdue.aspx">Giới thiệu</a></li>
+                                <li><a href="Register.aspx">Đăng ký</a></li>
+                                <li><a href="Login.aspx">Đăng nhập</a></li>
                             </ul>
                             
                         </div>
@@ -105,10 +106,10 @@
                         <a href="#headerPanelMobileListLinks" class="dropDownButton" data-toggle="collapse" data-parent="#headerPanelMobile"><i class="fa fa-ellipsis-v"></i></a>
                         <div class="headerPanelMobileDropList dropList collapse" id="headerPanelMobileListLinks">
                             <a href="rules.html">Điều khoản</a>
-                            <a href="policy.html">Chính sách</a>
-                            <a href="introduce.html">Giới thiệu</a>
-                            <a href="register.html">Đăng ký</a>
-                            <a href="login.html">Đăng nhập</a>
+                            <a href="Policy.aspx">Chính sách</a>
+                            <a href="Introdue.aspx">Giới thiệu</a>
+                            <a href="Register.aspx">Đăng ký</a>
+                            <a href="Login.aspx">Đăng nhập</a>
                         </div>
                     </div>
                 </div>
@@ -184,9 +185,8 @@
                                         <div class="clearfix"></div>
                                     </div>
                                 </li>
-                                <li><a href="news.html">Tin tức</a></li>
-                                <li><a href="introduce.html">Giới thiệu</a></li>
-                                <li><a href="contact.html">Liên hệ</a></li>
+                                <li><a href="Introdue.aspx">Giới thiệu</a></li>
+                                <li><a href="Contact.aspx">Liên hệ</a></li>
                             </ul>
                         </div>
                     </div>
