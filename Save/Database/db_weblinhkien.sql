@@ -163,13 +163,29 @@ INSERT INTO Category (id_group_category, name, created_at, updated_at) VALUES
 INSERT INTO Products (id_category, name, price, status, promotion, tag, details, description, content, created_at, updated_at) VALUES
 (2, N'KB Bosston K803 giả cơ chuyên Game USB Chính Hãng', 250000, 1, NULL, 'boston', N'chi tiết sản phẩm', N'mô tả chi tiết sản phẩm', N'nội dung bài viết', NULL, NULL),
 (2, N'KEYBOARD R8 - 1822 LED', 250000, 1, NULL, 'r8', N'chi tiết sản phẩm', N'mô tả chi tiết sản phẩm', N'nội dung bài viết', NULL, NULL),
-(1, N'MOUSE R8 - 1658 LED', 50000, 1, NULL, 'r8', N'chi tiết sản phẩm', N'mô tả chi tiết sản phẩm', N'nội dung bài viết', NULL, NULL),
+(7, N'MOUSE R8 - 1658 LED', 50000, 1, NULL, 'r8', N'chi tiết sản phẩm', N'mô tả chi tiết sản phẩm', N'nội dung bài viết', NULL, NULL),
 (3, N'USB Kingston 32GB DT100G3 3.0', 199000, 1, NULL, 'kingston', N'chi tiết sản phẩm', N'mô tả chi tiết sản phẩm', N'nội dung bài viết', NULL, NULL),
-(4, N'Màn hình LCD Samsung 21.5" LS22F350FHEXXV', 2600000, 1, NULL, 'sam-sung', N'chi tiết sản phẩm', N'mô tả chi tiết sản phẩm', N'nội dung bài viết', NULL, NULL),
+(5, N'Màn hình LCD Samsung 21.5" LS22F350FHEXXV', 2600000, 1, NULL, 'sam-sung', N'chi tiết sản phẩm', N'mô tả chi tiết sản phẩm', N'nội dung bài viết', NULL, NULL),
 (2, N'KB MOTOSPEED CƠ K81 LED PRO', 1400000, 1, NULL, 'motospeed', N'chi tiết sản phẩm', N'mô tả chi tiết sản phẩm', N'nội dung bài viết', NULL, NULL),
-(1, N'Chuột máy tính Logitech Gaming G903', 3700000, 1, 10, 'chuột',N'chi tiết sản phẩm', N'mô tả chi tiết sản phẩm', N'nội dung bài viết', NULL, NULL)
-
-
+(5, N'Màn hình LCD Acer 21.5'' R221Q', 2890000, 1, 15, 'acer', N'chi tiết sản phẩm', N'mô tả chi tiết sản phẩm', N'nội dung bài viết', NULL, NULL),
+(5, N'Màn hình LCD Samsung 32'' LC32H711QQEXXV ( Cong )', 13900000, 1, 20, 'sam-sung', N'chi tiết sản phẩm', N'mô tả chi tiết sản phẩm', N'nội dung bài viết', NULL, NULL),
+(5, N'Màn hình LCD Philips 23.8''240V5QDSB/74', 2800000, 1, NULL, 'philips', N'chi tiết sản phẩm', N'mô tả chi tiết sản phẩm', N'nội dung bài viết', NULL, NULL),
+(5, N'Màn hình LCD Asus 31.5''VA325H', 6000000, 0, NULL, 'asus', N'chi tiết sản phẩm', N'mô tả chi tiết sản phẩm', N'nội dung bài viết', NULL, NULL),
+(5, N'Màn hình LCD Asus 21.5'' VZ229HE', 3200000, 1, NULL, 'asus', N'chi tiết sản phẩm', N'mô tả chi tiết sản phẩm', N'nội dung bài viết', NULL, NULL),
+(1, N'Ổ cứng di động/ USB Apacer 8GB AH326', 130000, 1, NULL, 'usb', N'chi tiết sản phẩm', N'mô tả chi tiết sản phẩm', N'nội dung bài viết', NULL, NULL),
+(1, N'Ổ cứng di động/ USB HP 32GB X725', 450000, 1, NULL, 'usb', N'chi tiết sản phẩm', N'mô tả chi tiết sản phẩm', N'nội dung bài viết', NULL, NULL),
+(1, N'Ổ cứng di động/ USB Sandisk 128GB (SDDD3-G46)', 1076000, 1, NULL, 'usb', N'chi tiết sản phẩm', N'mô tả chi tiết sản phẩm', N'nội dung bài viết', NULL, NULL),
+(1, N'Ổ cứng di động/ USB Kingston 32GB DTCNY17', 350000, 0, NULL, 'usb', N'chi tiết sản phẩm', N'mô tả chi tiết sản phẩm', N'nội dung bài viết', NULL, NULL),
+(1, N'Thiết bị mạng ToTo Link 4G MF150', 1450000, 1, NULL, 'usb-4g', N'chi tiết sản phẩm', N'mô tả chi tiết sản phẩm', N'nội dung bài viết', NULL, NULL),
+(1, N'Thiết bị mạng D-link 4G DWR-932C', 1690000, 1, 15, 'usb-4g', N'chi tiết sản phẩm', N'mô tả chi tiết sản phẩm', N'nội dung bài viết', NULL, NULL),
+(1, N'Thiết Bị kết nối 3G D-link DWM 156', 495000, 1, NULL, 'usb-3g', N'chi tiết sản phẩm', N'mô tả chi tiết sản phẩm', N'nội dung bài viết', NULL, NULL),
+(4, N'Bộ nhớ DDR4 Kingmax 8GB (3000) (Heatsink)', 2420000, 0, NULL, 'ram', N'chi tiết sản phẩm', N'mô tả chi tiết sản phẩm', N'nội dung bài viết', NULL, NULL),
+(4, N'Bộ nhớ DDR4 Corsair 16GB (2666)C16 CMK16GX4M2A Ven LPX (2x8GB)', 5100000, 1, 5, 'ram', N'chi tiết sản phẩm', N'mô tả chi tiết sản phẩm', N'nội dung bài viết', NULL, NULL),
+(4, N'Bộ nhớ DDR4 Transcend 16GB (2400) (TS2GLH64V4B)', 4300000, 1, NULL, 'ram', N'chi tiết sản phẩm', N'mô tả chi tiết sản phẩm', N'nội dung bài viết', NULL, NULL),
+(7, N'Chuột máy tính Logitech Gaming G903', 3700000, 1, NULL, 'chuột', N'chi tiết sản phẩm', N'mô tả chi tiết sản phẩm', N'nội dung bài viết', NULL, NULL),
+(7, N'Chuột máy tính Zadez ZM-122', 80000, 1, NULL, 'chuột', N'chi tiết sản phẩm', N'mô tả chi tiết sản phẩm', N'nội dung bài viết', NULL, NULL),
+(7, N'Chuột máy tính Ozone 3K', 550000, 1, NULL, 'chuột', N'chi tiết sản phẩm', N'mô tả chi tiết sản phẩm', N'nội dung bài viết', NULL, NULL),
+(7, N'Chuột máy tính FL Esports G11', 485000, 0, NULL, 'chuột', N'chi tiết sản phẩm', N'mô tả chi tiết sản phẩm', N'nội dung bài viết', NULL, NULL)
 --Insert table Images
 INSERT INTO Images (id_product, link_image, created_at, updated_at) VALUES
 (6, 'Content\images\kb-motospeed-co-k81-led-pro1461370666.jpg', NULL, NULL),
@@ -179,7 +195,23 @@ INSERT INTO Images (id_product, link_image, created_at, updated_at) VALUES
 (4, 'Content\images\2650_1506504793-1.jpg', NULL, NULL),
 (5, 'Content\images\9054_1498896883-1.jpg', NULL, NULL),
 (5, 'Content\images\9054_1498896884-4.jpg', NULL, NULL),
-(1, 'Content\images\kb-bosston-k803-gia-co-chuyen-game-usb-chinh-hang1478848619.jpg', NULL, NULL)
+(1, 'Content\images\kb-bosston-k803-gia-co-chuyen-game-usb-chinh-hang1478848619.jpg', NULL, NULL),
+(7, 'Content\images\13944_1507695775-1.jpg', NULL, NULL),
+(7, 'Content\images\14038_1507875994-1.jpg', NULL, NULL),
+(7, 'Content\images\14316_1509417121-1.jpg', NULL, NULL),
+(1, 'Content\images\14440_1511582690-1.jpg', NULL, NULL),
+(1, 'Content\images\13859_1507275922-1.jpg', NULL, NULL),
+(1, 'Content\images\10855_1506748225-1.jpg', NULL, NULL),
+(1, 'Content\images\12623_1510131195-1.jpg', NULL, NULL),
+(1, 'Content\images\9724_1507003685-1.jpg', NULL, NULL),
+(1, 'Content\images\1589_1498033976-1.jpg', NULL, NULL),
+(1, 'Content\images\10605_1506996898-1.jpg', NULL, NULL),
+(1, 'Content\images\2650_1506504793-1.jpg', NULL, NULL),
+(5, 'Content\images\9054_1498896883-1.jpg', NULL, NULL),
+(5, 'Content\images\14762_1512111397-8.jpg', NULL, NULL),
+(5, 'Content\images\14240_1509414233-2.jpg', NULL, NULL),
+(5, 'Content\images\14236_1509155974-1.jpg', NULL, NULL),
+(5, 'Content\images\14604_1512008288-3.jpg', NULL, NULL)
 
 --Insert table Banners
 
