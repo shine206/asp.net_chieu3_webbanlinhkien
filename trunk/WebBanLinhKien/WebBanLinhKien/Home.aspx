@@ -32,146 +32,38 @@
                 <span class="title fz18">Sản phẩm khuyến mại</span>
             </h2>
             <div class="slideProducts owl-carousel owl-theme">
-                <!-- Item -->
-                <div class="item-slideProducts">
-                    <div class="productGrid">
-                        <!-- <div class="productSale"><span>-23%</span></div> -->
-                        <div class="countDown" data-end="kmdn_ngay1_thang12_nam2017">208D : 12H : 38M : 10S</div>
-                        <div class="productImg">
-                            <a href="detail.html" title="Máy giặt Panasonic NA-F100A1WRV">
-                                <img src="Content/images/slideProduct-1.jpg" data-original="images/slideProduct-1.jpg" class="img-responsive" alt="Máy giặt Panasonic NA-F100A1WRV" style="display: inline;">
-                            </a>
-                            <div class="hoverButtons">
-                                <span data-toggle="modal" data-target="#998"><a class="button quickview-btn" data-toggle="tooltip" data-placement="top" title="" data-countdown="null" data-alias="may-giat-panasonic-10-kg-na-f100a1wrv" data-original-title="Cho vào giỏ hàng"><i class="fa fa-shopping-cart"></i></a></span>
+                <asp:Repeater runat="server" ID="rptPromotionContent">
+                    <ItemTemplate>
+                        <!-- Item -->
+                        <div class="item-slideProducts">
+                            <div class="productGrid">
+                                <!-- <div class="productSale"><span>-23%</span></div> -->
+                                <div class="countDown" data-end="kmdn_ngay1_thang12_nam2017">208D : 12H : 38M : 10S</div>
+                                <div class="productImg">
+                                    <a href="detail.html" title="<%#Eval("name") %>">
+                                        <img src="<%#Eval("link_image") %>" data-original="<%#Eval("link_image") %>" class="img-responsive" alt="<%#Eval("name") %>" style="display: inline;">
+                                    </a>
+                                    <div class="hoverButtons">
+                                        <span data-toggle="modal" data-target="#998"><a class="button quickview-btn" data-toggle="tooltip" data-placement="top" title="" data-countdown="null" data-alias="may-giat-panasonic-10-kg-na-f100a1wrv" data-original-title="Cho vào giỏ hàng"><i class="fa fa-shopping-cart"></i></a></span>
 
-                                <span data-toggle="modal" data-target="#999"><a class="button quickview-btn" data-toggle="tooltip" data-placement="top" title="" data-countdown="null" data-alias="may-giat-panasonic-10-kg-na-f100a1wrv" data-original-title="Xem nhanh"><i class="fa fa-search"></i></a></span>
+                                        <span data-toggle="modal" data-target="#999"><a class="button quickview-btn" data-toggle="tooltip" data-placement="top" title="" data-countdown="null" data-alias="may-giat-panasonic-10-kg-na-f100a1wrv" data-original-title="Xem nhanh"><i class="fa fa-search"></i></a></span>
 
-                                <a href="#" class="button skype" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tư vấn qua Skype"><i class="fa fa-skype"></i></a>
+                                        <a href="#" class="button skype" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tư vấn qua Skype"><i class="fa fa-skype"></i></a>
+                                    </div>
+                                </div>
+                                <h3><a href="detail.html" title="<%#Eval("name") %>"><%#Eval("name") %></a></h3>
+                                <div class="productPrice">
+                                    <del><%# Eval("sel_price", "{0:0,0} VNĐ") %></del>
+                                    <span><%# Eval("price", "{0:0,0} VNĐ") %></span>
+                                </div>
+                                <div class="actions clearfix">
+                                    <a href="#" class="button"><i class="hoverButton"></i>Chọn sản phẩm</a>
+                                </div>
                             </div>
                         </div>
-                        <h3><a href="detail.html" title="Máy giặt Panasonic NA-F100A1WRV">Máy giặt Panasonic NA-F100A1WRV</a></h3>
-                        <div class="productPrice">
-                            <del>7.990.000₫</del>
-                            <span>6.190.000₫</span>
-                        </div>
-                        <form class="actions clearfix" method="post" action="#">
-                            <a href="#" class="button"><i class="hoverButton"></i>Chọn sản phẩm</a>
-                        </form>
-                    </div>
-                </div>
-                <!-- End Item -->
-                <!-- Item -->
-                <div class="item-slideProducts">
-                    <div class="productGrid">
-                        <!-- <div class="productSale"><span>-23%</span></div> -->
-                        <div class="countDown" data-end="kmdn_ngay1_thang12_nam2017">208D : 12H : 38M : 10S</div>
-                        <div class="productImg">
-                            <a href="detail.html" title="Máy giặt Panasonic NA-F100A1WRV">
-                                <img src="Content/images/slideProduct-2.jpg" data-original="images/slideProduct-2.jpg" class="img-responsive" alt="Máy giặt Panasonic NA-F100A1WRV" style="display: inline;">
-                            </a>
-                            <div class="hoverButtons">
-                                <span data-toggle="modal" data-target="#998"><a class="button quickview-btn" data-toggle="tooltip" data-placement="top" title="" data-countdown="null" data-alias="may-giat-panasonic-10-kg-na-f100a1wrv" data-original-title="Cho vào giỏ hàng"><i class="fa fa-shopping-cart"></i></a></span>
-
-                                <span data-toggle="modal" data-target="#999"><a class="button quickview-btn" data-toggle="tooltip" data-placement="top" title="" data-countdown="null" data-alias="may-giat-panasonic-10-kg-na-f100a1wrv" data-original-title="Xem nhanh"><i class="fa fa-search"></i></a></span>
-
-                                <a href="#" class="button skype" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tư vấn qua Skype"><i class="fa fa-skype"></i></a>
-                            </div>
-                        </div>
-                        <h3><a href="detail.html" title="Máy giặt Panasonic NA-F100A1WRV">Máy giặt Panasonic NA-F100A1WRV</a></h3>
-                        <div class="productPrice">
-                            <del>7.990.000₫</del>
-                            <span>6.190.000₫</span>
-                        </div>
-                        <form class="actions clearfix" method="post" action="#">
-                            <a href="#" class="button"><i class="hoverButton"></i>Chọn sản phẩm</a>
-                        </form>
-                    </div>
-                </div>
-                <!-- End Item -->
-                <!-- Item -->
-                <div class="item-slideProducts">
-                    <div class="productGrid">
-                        <!-- <div class="productSale"><span>-23%</span></div> -->
-                        <div class="countDown" data-end="kmdn_ngay1_thang12_nam2017">208D : 12H : 38M : 10S</div>
-                        <div class="productImg">
-                            <a href="detail.html" title="Máy giặt Panasonic NA-F100A1WRV">
-                                <img src="Content/images/slideProduct-3.jpg" data-original="images/slideProduct-3.jpg" class="img-responsive" alt="Máy giặt Panasonic NA-F100A1WRV" style="display: inline;">
-                            </a>
-                            <div class="hoverButtons">
-                                <span data-toggle="modal" data-target="#998"><a class="button quickview-btn" data-toggle="tooltip" data-placement="top" title="" data-countdown="null" data-alias="may-giat-panasonic-10-kg-na-f100a1wrv" data-original-title="Cho vào giỏ hàng"><i class="fa fa-shopping-cart"></i></a></span>
-
-                                <span data-toggle="modal" data-target="#999"><a class="button quickview-btn" data-toggle="tooltip" data-placement="top" title="" data-countdown="null" data-alias="may-giat-panasonic-10-kg-na-f100a1wrv" data-original-title="Xem nhanh"><i class="fa fa-search"></i></a></span>
-
-                                <a href="#" class="button skype" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tư vấn qua Skype"><i class="fa fa-skype"></i></a>
-                            </div>
-                        </div>
-                        <h3><a href="detail.html" title="Máy giặt Panasonic NA-F100A1WRV">Máy giặt Panasonic NA-F100A1WRV</a></h3>
-                        <div class="productPrice">
-                            <del>7.990.000₫</del>
-                            <span>6.190.000₫</span>
-                        </div>
-                        <form class="actions clearfix" method="post" action="#">
-                            <a href="#" class="button"><i class="hoverButton"></i>Chọn sản phẩm</a>
-                        </form>
-                    </div>
-                </div>
-                <!-- End Item -->
-                <!-- Item -->
-                <div class="item-slideProducts">
-                    <div class="productGrid">
-                        <!-- <div class="productSale"><span>-23%</span></div> -->
-                        <div class="countDown" data-end="kmdn_ngay1_thang12_nam2017">208D : 12H : 38M : 10S</div>
-                        <div class="productImg">
-                            <a href="detail.html" title="Máy giặt Panasonic NA-F100A1WRV">
-                                <img src="Content/images/slideProduct-4.jpg" data-original="images/slideProduct-4.jpg" class="img-responsive" alt="Máy giặt Panasonic NA-F100A1WRV" style="display: inline;">
-                            </a>
-                            <div class="hoverButtons">
-                                <span data-toggle="modal" data-target="#998"><a class="button quickview-btn" data-toggle="tooltip" data-placement="top" title="" data-countdown="null" data-alias="may-giat-panasonic-10-kg-na-f100a1wrv" data-original-title="Cho vào giỏ hàng"><i class="fa fa-shopping-cart"></i></a></span>
-
-                                <span data-toggle="modal" data-target="#999"><a class="button quickview-btn" data-toggle="tooltip" data-placement="top" title="" data-countdown="null" data-alias="may-giat-panasonic-10-kg-na-f100a1wrv" data-original-title="Xem nhanh"><i class="fa fa-search"></i></a></span>
-
-                                <a href="#" class="button skype" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tư vấn qua Skype"><i class="fa fa-skype"></i></a>
-                            </div>
-                        </div>
-                        <h3><a href="detail.html" title="Máy giặt Panasonic NA-F100A1WRV">Máy giặt Panasonic NA-F100A1WRV</a></h3>
-                        <div class="productPrice">
-                            <del>7.990.000₫</del>
-                            <span>6.190.000₫</span>
-                        </div>
-                        <form class="actions clearfix" method="post" action="#">
-                            <a href="#" class="button"><i class="hoverButton"></i>Chọn sản phẩm</a>
-                        </form>
-                    </div>
-                </div>
-                <!-- End Item -->
-                <!-- Item -->
-                <div class="item-slideProducts">
-                    <div class="productGrid">
-                        <!-- <div class="productSale"><span>-23%</span></div> -->
-                        <div class="countDown" data-end="kmdn_ngay1_thang12_nam2017">208D : 12H : 38M : 10S</div>
-                        <div class="productImg">
-                            <a href="detail.html" title="Máy giặt Panasonic NA-F100A1WRV">
-                                <img src="Content/images/slideProduct-5.jpg" data-original="images/slideProduct-5.jpg" class="img-responsive" alt="Máy giặt Panasonic NA-F100A1WRV" style="display: inline;">
-                            </a>
-                            <div class="hoverButtons">
-                                <span data-toggle="modal" data-target="#998"><a class="button quickview-btn" data-toggle="tooltip" data-placement="top" title="" data-countdown="null" data-alias="may-giat-panasonic-10-kg-na-f100a1wrv" data-original-title="Cho vào giỏ hàng"><i class="fa fa-shopping-cart"></i></a></span>
-
-                                <span data-toggle="modal" data-target="#999"><a class="button quickview-btn" data-toggle="tooltip" data-placement="top" title="" data-countdown="null" data-alias="may-giat-panasonic-10-kg-na-f100a1wrv" data-original-title="Xem nhanh"><i class="fa fa-search"></i></a></span>
-
-                                <a href="#" class="button skype" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tư vấn qua Skype"><i class="fa fa-skype"></i></a>
-                            </div>
-                        </div>
-                        <h3><a href="detail.html" title="Máy giặt Panasonic NA-F100A1WRV">Máy giặt Panasonic NA-F100A1WRV</a></h3>
-                        <div class="productPrice">
-                            <del>7.990.000₫</del>
-                            <span>6.190.000₫</span>
-                        </div>
-                        <form class="actions clearfix" method="post" action="#">
-                            <a href="#" class="button"><i class="hoverButton"></i>Chọn sản phẩm</a>
-                        </form>
-                    </div>
-                </div>
-                <!-- End Item -->
+                        <!-- End Item -->
+                    </ItemTemplate>
+                </asp:Repeater>
             </div>
         </div>
     </div>

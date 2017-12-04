@@ -541,3 +541,13 @@ begin
 	set id_category=@id_category, name=@name, price=@price, status=@status, promotion=@promotion, tag=@tags, details=@details, description=@description, content=@content, updated_at=@updated_at
 	where id_product=@id_product;
 end
+
+go
+-- get all products have promotion
+create procedure getAllPromotionProducts
+as
+begin
+	select * from Products where promotion != NULL or promotion != '';
+end
+
+--select * from Images

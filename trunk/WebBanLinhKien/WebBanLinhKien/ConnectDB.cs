@@ -24,6 +24,7 @@ namespace WebBanLinhKien
         ///     loginWithUser
         ///     getImagesByIdProduct
         ///     getProductById
+        ///     getAllPromotionProducts
         /// POST:
         ///     addNewProduct
         ///     addNewCategory
@@ -640,6 +641,29 @@ namespace WebBanLinhKien
                 disconnect();
             }
 
+            return result;
+        }
+
+        /// <summary>
+        /// Lấy tất cả sản phẩm có khuyến mãi
+        /// </summary>
+        /// <returns></returns>
+        public DataTable getAllPromotionProducts()
+        {
+            DataTable result = new DataTable();
+            try
+            {
+                connect();
+                SqlCommand cmd = new SqlCommand("getAllPromotionProducts", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataReader rd = cmd.ExecuteReader();
+                result.Load(rd);
+            }
+            finally
+            {
+                result.Dispose();
+                disconnect();
+            }
             return result;
         }
     }

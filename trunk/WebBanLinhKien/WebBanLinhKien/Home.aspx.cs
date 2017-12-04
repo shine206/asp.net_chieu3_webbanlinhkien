@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Text;
 using System.Data;
+using System.Globalization;
 
 namespace WebBanLinhKien
 {
@@ -13,12 +14,13 @@ namespace WebBanLinhKien
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-         
-            loadLeftMenu();
 
+            loadLeftMenu();
+            
             //Login - Cookie
             if (!IsPostBack)
             {
+                loadPromotionProduct();
                 HttpCookie ck = Request.Cookies["User_Login"];
                 string saveCk;
                 if (ck != null)
@@ -27,6 +29,29 @@ namespace WebBanLinhKien
                 }
             }
 
+        }
+
+        protected void loadPromotionProduct()
+        {
+            CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");   // try with "en-US"
+            
+            DataTable dt = (new ConnectDB()).getAllPromotionProducts();
+            dt.Columns.Add("link_image", typeof(string));
+            dt.Columns.Add("sel_price", typeof(System.Int32));
+            foreach (DataRow item in dt.Rows)
+            {
+                int giaTien = Convert.ToInt32(item["price"]);
+                item["sel_price"] = giaTien - (Convert.ToInt32(item["promotion"]) * giaTien / 100);
+                DataTable dtImages = (new ConnectDB()).getImagesByIdProduct(Convert.ToInt32(item["id_product"]));
+                item["link_image"] = "";
+                if (dtImages.Rows.Count > 0)
+                {
+                    item["link_image"] = dtImages.Rows[0]["link_image"].ToString();
+                }
+
+            }
+            rptPromotionContent.DataSource = dt;
+            rptPromotionContent.DataBind();
         }
 
         protected void loadLeftMenu()
@@ -64,7 +89,7 @@ namespace WebBanLinhKien
                 {
                     html.Append("<li role='presentation'>");
                 }
-                html.Append("<a href='#taba"+ count.ToString() +"' data-collection='" + fn.convertToUnSign3(gCat["name"].ToString()) + "' role='tab' data-toggle='tab'>" + gCat["name"] + "</a>");
+                html.Append("<a href='#taba" + count.ToString() + "' data-collection='" + fn.convertToUnSign3(gCat["name"].ToString()) + "' role='tab' data-toggle='tab'>" + gCat["name"] + "</a>");
                 html.Append("<a href='#' class='readMore' data-toggle='tooltip' title='' data-original-title='Xem thêm sản phẩm khác'>+</a></li>");
                 count++;
             }
