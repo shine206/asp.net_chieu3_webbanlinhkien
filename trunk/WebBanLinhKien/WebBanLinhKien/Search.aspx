@@ -29,7 +29,16 @@
                             <div class="boxSelect">
                                 <label for="">Sắp xếp</label>
                                 <span class="boxSelectDown"><i class="fa fa-angle-down"></i></span>
-                                <select name="sortBy" id="sortBy">
+                                <asp:DropDownList runat="server" ID="ddlSapXep">
+                                    <asp:ListItem Text="Mặc định" Value="default" />
+                                    <asp:ListItem Text="A → Z" Value="alpha-asc" />
+                                    <asp:ListItem Text="Z → A" Value="alpha-desc" />
+                                    <asp:ListItem Text="Giá tăng dần" Value="price-asc" />
+                                    <asp:ListItem Text="Giá giảm dần" Value="price-desc" />
+                                    <asp:ListItem Text="Hàng mới nhất" Value="created-desc" />
+                                    <asp:ListItem Text="Hàng cũ nhất" Value="created-asc" />
+                                </asp:DropDownList>
+                                <%--<select name="sortBy" id="sortBy">
                                     <option value="default" selected="selected">Mặc định</option>
                                     <option value="alpha-asc">A → Z</option>
                                     <option value="alpha-desc">Z → A</option>
@@ -37,7 +46,7 @@
                                     <option value="price-desc">Giá giảm dần</option>
                                     <option value="created-desc">Hàng mới nhất</option>
                                     <option value="created-asc">Hàng cũ nhất</option>
-                                </select>
+                                </select>--%>
                             </div>
 
                             <asp:LinkButton ID="btnViewList" runat="server" class="switchView viewCollection" OnClick="btnViewList_Click" data-view="list" data-toggle="tooltip" title="" data-original-title="Xem dạng danh sách"><i class="fa fa-th-list"></i></asp:LinkButton>
@@ -50,10 +59,15 @@
 
                         </div>
                         <div class="pager clearfix">
-                            <span class="current" data-toggle="tooltip" data-placement="top" title="" data-original-title="Trang 1">1</span>
+                            <asp:Repeater runat="server" ID="rptPhanTrang">
+                                <ItemTemplate>
+                                    <a href="#" class="current" data-page="2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Trang 2">2</a>
+                                </ItemTemplate>
+                            </asp:Repeater>
+                            <%--<span class="current" data-toggle="tooltip" data-placement="top" title="" data-original-title="Trang 1">1</span>
                             <a href="#" data-page="2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Trang 2">2</a>
                             <a href="#" data-page="3" data-toggle="tooltip" data-placement="top" title="" data-original-title="Trang 3">3</a>
-                            <a href="#" data-page="2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Trang kế tiếp"><i class="fa fa-angle-right"></i></a>
+                            <a href="#" data-page="2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Trang kế tiếp"><i class="fa fa-angle-right"></i></a>--%>
                         </div>
                     </div>
                 </div>
@@ -143,87 +157,25 @@
                     <div class="listProductsWrapper">
                         <h2 class="titleDecoration"><span class="line"></span><span class="title">Sản phẩm khuyến mại</span></h2>
                         <ul class="list-unstyled listProducts">
-                            <li class="clearfix">
-                                <img src="Content/images/15239577.jpg" class="listsProductsImg" alt="Máy hút bụi Hitachi BM16 1600 W">
-                                <div class="listsProductsInfo">
-                                    <h3><a href="#">Máy hút bụi Hitachi BM16 1600 W</a></h3>
-                                    <div class="listsProductsPrice">
-                                        <span>1.440.000₫</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="clearfix">
-                                <img src="Content/images/1600232-noi-ap-suat-dien-da-nang-sunhouse-5-lit-sh-1650.jpg" class="listsProductsImg" alt="Nồi áp suất điện Sunhouse SHD-1552 5.0 lít">
+                            <asp:Repeater runat="server" ID="rptSanPhamKhuyenMai">
+                                <ItemTemplate>
+                                    <li class="clearfix">
+                                        <img src="<%#Eval("link_image") %>" class="listsProductsImg" alt="<%#Eval("name") %>">
 
-                                <div class="listsProductsInfo">
-                                    <h3><a href="#">Nồi áp suất điện Sunhouse SHD-1552 5.0 lít</a></h3>
-                                    <div class="listsProductsPrice">
-                                        <span>800.000₫</span>
-                                        <del>1.200.000₫</del>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="clearfix">
-                                <img src="/images/big-165330-bep-hong-ngoai-midea-mir-t2015dc.jpg" class="listsProductsImg" alt="Bếp hồng ngoại Midea MIR-T2015DC">
-                                <div class="listsProductsInfo">
-                                    <h3><a href="#">Bếp hồng ngoại Midea MIR-T2015DC</a></h3>
-                                    <div class="listsProductsPrice">
-                                        <span>900.000₫</span>
-                                        <del>1.300.000₫</del>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="clearfix">
-                                <img src="Content/images/bep-hong-ngoai-sunhouse-shd6017-kem-vi-nuong.jpg" class="listsProductsImg" alt="Bếp hồng ngoại Sunhouse SHD 6017">
-                                <div class="listsProductsInfo">
-                                    <h3><a href="#">Bếp hồng ngoại Sunhouse SHD 6017</a></h3>
-                                    <div class="listsProductsPrice">
-                                        <span>700.000₫</span>
-                                        <del>1.000.000₫</del>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="clearfix">
-                                <img src="Content/images/may-giat-toshiba-aw-b1000gv-wl-tim-5862-3154811-1.jpg" class="listsProductsImg" alt="Máy giặt Toshiba 8.2kg AW-MF920LV WK">
-                                <div class="listsProductsInfo">
-                                    <h3><a href="#">Máy giặt Toshiba 8.2kg AW-MF920LV WK</a></h3>
-                                    <div class="listsProductsPrice">
-                                        <span>5.690.000₫</span>
-                                        <del>6.200.000₫</del>
-                                    </div>
-                                </div>
-                            </li>
+                                        <div class="listsProductsInfo">
+                                            <h3><a href="#"><%#Eval("name") %></a></h3>
+                                            <div class="listsProductsPrice">
+                                                <span><%# Eval("price", "{0:0,0} đ") %></span>
+                                                <del><%# Eval("sel_price", "{0:0,0} đ") %></del>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ItemTemplate>
+                            </asp:Repeater>
 
                         </ul>
                     </div>
                     <!-- End ListProductsWrapper -->
-                    <div class="sidebarBlogDefault">
-                        <div class="listProductsWrapper recentlyProducts">
-                            <h2 class="titleDecoration"><span class="line"></span><span class="title">Sản phẩm đã xem</span></h2>
-                            <ul class="list-unstyled listProducts" id="recently-viewed-products">
-                                <li class="clearfix">
-                                    <img src="Content/images/1600232-noi-ap-suat-dien-da-nang-sunhouse-5-lit-sh-1650.jpg" class="listsProductsImg" alt="Nồi áp suất điện Sunhouse SHD-1552 5.0 lít">
-                                    <div class="listsProductsInfo">
-                                        <h3 title="Nồi áp suất điện Sunhouse SHD-1552 5.0 lít"><a href="#">Nồi áp suất điện Sunhouse SHD-1552 5.0 lít</a></h3>
-                                        <div class="listsProductsPrice">
-                                            <span>800.000 VND</span>
-                                            <del>1.200.000 VND</del>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="clearfix">
-                                    <img src="Content/images/1600232-noi-ap-suat-dien-da-nang-sunhouse-5-lit-sh-1650.jpg" class="listsProductsImg" alt="Nồi áp suất điện Sunhouse SHD-1552 5.0 lít">
-                                    <div class="listsProductsInfo">
-                                        <h3 title="Nồi áp suất điện Sunhouse SHD-1552 5.0 lít"><a href="#">Nồi áp suất điện Sunhouse SHD-1552 5.0 lít</a></h3>
-                                        <div class="listsProductsPrice">
-                                            <span>800.000 VND</span>
-                                            <del>1.200.000 VND</del>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
                     <!-- End SidebarBlogDefault -->
                     <div class="sidebarPorductGroup">
                         <a href="#">

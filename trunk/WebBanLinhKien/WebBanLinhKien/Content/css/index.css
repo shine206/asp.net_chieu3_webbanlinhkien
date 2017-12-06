@@ -1568,6 +1568,11 @@ header .bottom-header .listCateMobile li:nth-child(7) {
   -webkit-flex-wrap: wrap;
   -moz-flex-wrap: wrap;
 }
+
+.bigCollection .tabContentWrapper .tabContent .tab-pane-custom{
+    display: none;
+}
+
 .brand {
   margin-top: 30px;
 }

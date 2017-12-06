@@ -38,7 +38,7 @@
                         <div class="item-slideProducts">
                             <div class="productGrid">
                                 <!-- <div class="productSale"><span>-23%</span></div> -->
-                                <div class="countDown" data-end="kmdn_ngay1_thang12_nam2017">208D : 12H : 38M : 10S</div>
+                                <div class="countDown" data-end="kmdn_ngay1_thang12_nam2017">Còn hàng</div>
                                 <div class="productImg">
                                     <a href="detail.html" title="<%#Eval("name") %>">
                                         <img src="<%#Eval("link_image") %>" data-original="<%#Eval("link_image") %>" class="img-responsive" alt="<%#Eval("name") %>" style="display: inline;">
@@ -53,8 +53,8 @@
                                 </div>
                                 <h3><a href="detail.html" title="<%#Eval("name") %>"><%#Eval("name") %></a></h3>
                                 <div class="productPrice">
-                                    <del><%# Eval("sel_price", "{0:0,0} VNĐ") %></del>
-                                    <span><%# Eval("price", "{0:0,0} VNĐ") %></span>
+                                    <del><%# Eval("sel_price", "{0:0,0} đ") %></del>
+                                    <span><%# Eval("price", "{0:0,0} đ") %></span>
                                 </div>
                                 <div class="actions clearfix">
                                     <a href="#" class="button"><i class="hoverButton"></i>Chọn sản phẩm</a>
@@ -101,212 +101,13 @@
         <!-- End ControlTabsWrapper -->
         <div class="tabContentWrapper">
             <div class="tabContent">
-                <div class="tab-pane fade in active" id="taba1" role="tabpanel">
-                    <!-- Item -->
-                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                        <div class="productGrid">
-                            <div class="productSale"><span>-23%</span></div>
-                            <div class="productImg">
-                                <a href="#" title="Máy giặt Panasonic NA-F100A1WRV">
-                                    <img src="Content/images/apihulozuab22v.jpg" data-original="images/apihulozuab22v.jpg" class="img-fix" alt="Máy giặt Panasonic NA-F100A1WRV" style="display: inline;">
-                                </a>
-                                <div class="hoverButtons">
-                                    <span data-toggle="modal" data-target="#999"><a class="button quickview-btn" data-toggle="tooltip" data-placement="top" title="" data-countdown="null" data-alias="may-giat-panasonic-10-kg-na-f100a1wrv" data-original-title="Xem nhanh"><i class="fa fa-search"></i></a></span>
-                                    <a href="#" class="button skype" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tư vấn qua Skype"><i class="fa fa-skype"></i></a>
-                                </div>
-                            </div>
-                            <h3><a href="#" title="Máy giặt Panasonic NA-F100A1WRV">Máy giặt Panasonic NA-F100A1WRV</a></h3>
-                            <div class="productPrice">
-                                <del>7.990.000₫</del>
-                                <span>6.190.000₫</span>
-                            </div>
-                            <form class="actions clearfix" method="post" action="#">
-                                <a href="#" class="button"><i class="hoverButton"></i>Chọn sản phẩm</a>
-                            </form>
-                        </div>
-                    </div>
-                    <!--End Item-->
-                    <!-- Item -->
-                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                        <div class="productGrid">
-                            <!-- <div class="productSale"><span>-23%</span></div> -->
-                            <div class="productImg">
-                                <a href="#" title="Máy giặt Panasonic NA-F100A1WRV">
-                                    <img src="Content/images/sanpham-2.jpg" data-original="images/sanpham-2.jpg" class="img-fix" alt="Máy giặt Samsung 9 kg WA90J5710SG/SV" style="display: inline;">
-                                </a>
-                                <div class="hoverButtons">
-                                    <span data-toggle="modal" data-target="#999"><a class="button quickview-btn" data-toggle="tooltip" data-placement="top" title="" data-countdown="null" data-alias="may-giat-panasonic-10-kg-na-f100a1wrv" data-original-title="Xem nhanh"><i class="fa fa-search"></i></a></span>
-                                    <a href="#" class="button skype" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tư vấn qua Skype"><i class="fa fa-skype"></i></a>
-                                </div>
-                            </div>
-                            <h3><a href="#" title="Máy giặt Panasonic NA-F100A1WRV">Máy giặt Samsung 9 kg WA90J5710SG/SV</a></h3>
-                            <div class="productPrice">
-                                <del>7.990.000₫</del>
-                                <span>6.190.000₫</span>
-                            </div>
-                            <form class="actions clearfix" method="post" action="#">
-                                <a href="#" class="button"><i class="hoverButton"></i>Chọn sản phẩm</a>
-                            </form>
-                        </div>
-                    </div>
-                    <!--End Item-->
-                    <!-- Item -->
-                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                        <div class="productGrid">
-                            <div class="productSale"><span>-3%</span></div>
-                            <div class="productImg">
-                                <a href="#" title="Máy giặt Panasonic NA-F100A1WRV">
-                                    <img src="Content/images/sanpham-3.jpg" data-original="images/sanpham-3.jpg" class="img-fix" alt="Máy giặt Samsung 9 kg WA90J5710SG/SV" style="display: inline;">
-                                </a>
-                                <div class="hoverButtons">
-                                    <span data-toggle="modal" data-target="#999"><a class="button quickview-btn" data-toggle="tooltip" data-placement="top" title="" data-countdown="null" data-alias="may-giat-panasonic-10-kg-na-f100a1wrv" data-original-title="Xem nhanh"><i class="fa fa-search"></i></a></span>
-                                    <a href="#" class="button skype" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tư vấn qua Skype"><i class="fa fa-skype"></i></a>
-                                </div>
-                            </div>
-                            <h3><a href="#" title="Máy giặt Panasonic NA-F100A1WRV">Máy giặt Samsung 9 kg WA90J5710SG/SV</a></h3>
-                            <div class="productPrice">
-                                <del>7.990.000₫</del>
-                                <span>6.190.000₫</span>
-                            </div>
-                            <form class="actions clearfix" method="post" action="#">
-                                <a href="#" class="button"><i class="hoverButton"></i>Chọn sản phẩm</a>
-                            </form>
-                        </div>
-                    </div>
-                    <!--End Item-->
-                    <!-- Item -->
-                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                        <div class="productGrid">
-                            <!-- <div class="productSale"><span>-23%</span></div> -->
-                            <div class="productImg">
-                                <a href="#" title="Máy giặt Panasonic NA-F100A1WRV">
-                                    <img src="Content/images/sanpham-4.jpg" data-original="images/sanpham-4.jpg" class="img-fix" alt="Máy giặt Samsung 9 kg WA90J5710SG/SV" style="display: inline;">
-                                </a>
-                                <div class="hoverButtons">
-                                    <span data-toggle="modal" data-target="#999"><a class="button quickview-btn" data-toggle="tooltip" data-placement="top" title="" data-countdown="null" data-alias="may-giat-panasonic-10-kg-na-f100a1wrv" data-original-title="Xem nhanh"><i class="fa fa-search"></i></a></span>
-                                    <a href="#" class="button skype" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tư vấn qua Skype"><i class="fa fa-skype"></i></a>
-                                </div>
-                            </div>
-                            <h3><a href="#" title="Máy giặt Panasonic NA-F100A1WRV">Máy giặt Samsung 9 kg WA90J5710SG/SV</a></h3>
-                            <div class="productPrice">
-                                <del>7.990.000₫</del>
-                                <span>6.190.000₫</span>
-                            </div>
-                            <form class="actions clearfix" method="post" action="#">
-                                <a href="#" class="button"><i class="hoverButton"></i>Chọn sản phẩm</a>
-                            </form>
-                        </div>
-                    </div>
-                    <!--End Item-->
-                    <!-- Item -->
-                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                        <div class="productGrid">
-                            <div class="productSale"><span>-37%</span></div>
-                            <div class="productImg">
-                                <a href="#" title="Máy giặt Panasonic NA-F100A1WRV">
-                                    <img src="Content/images/sanpham-5.jpg" data-original="images/sanpham-5.jpg" class="img-fix" alt="Máy giặt Samsung 9 kg WA90J5710SG/SV" style="display: inline;">
-                                </a>
-                                <div class="hoverButtons">
-                                    <span data-toggle="modal" data-target="#999"><a class="button quickview-btn" data-toggle="tooltip" data-placement="top" title="" data-countdown="null" data-alias="may-giat-panasonic-10-kg-na-f100a1wrv" data-original-title="Xem nhanh"><i class="fa fa-search"></i></a></span>
-                                    <a href="#" class="button skype" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tư vấn qua Skype"><i class="fa fa-skype"></i></a>
-                                </div>
-                            </div>
-                            <h3><a href="#" title="Máy giặt Panasonic NA-F100A1WRV">Máy giặt Samsung 9 kg WA90J5710SG/SV</a></h3>
-                            <div class="productPrice">
-                                <del>7.990.000₫</del>
-                                <span>6.190.000₫</span>
-                            </div>
-                            <form class="actions clearfix" method="post" action="#">
-                                <a href="#" class="button"><i class="hoverButton"></i>Chọn sản phẩm</a>
-                            </form>
-                        </div>
-                    </div>
-                    <!--End Item-->
-                    <!-- Item -->
-                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                        <div class="productGrid">
-                            <!-- <div class="productSale"><span>-23%</span></div> -->
-                            <div class="productImg">
-                                <a href="#" title="Máy giặt Panasonic NA-F100A1WRV">
-                                    <img src="Content/images/sanpham-6.jpg" data-original="images/sanpham-6.jpg" class="img-fix" alt="Máy giặt Samsung 9 kg WA90J5710SG/SV" style="display: inline;">
-                                </a>
-                                <div class="hoverButtons">
-                                    <span data-toggle="modal" data-target="#999"><a class="button quickview-btn" data-toggle="tooltip" data-placement="top" title="" data-countdown="null" data-alias="may-giat-panasonic-10-kg-na-f100a1wrv" data-original-title="Xem nhanh"><i class="fa fa-search"></i></a></span>
-                                    <a href="#" class="button skype" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tư vấn qua Skype"><i class="fa fa-skype"></i></a>
-                                </div>
-                            </div>
-                            <h3><a href="#" title="Máy giặt Panasonic NA-F100A1WRV">Máy giặt Samsung 9 kg WA90J5710SG/SV</a></h3>
-                            <div class="productPrice">
-                                <del>7.990.000₫</del>
-                                <span>6.190.000₫</span>
-                            </div>
-                            <form class="actions clearfix" method="post" action="#">
-                                <a href="#" class="button"><i class="hoverButton"></i>Chọn sản phẩm</a>
-                            </form>
-                        </div>
-                    </div>
-                    <!--End Item-->
-                    <!-- Item -->
-                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                        <div class="productGrid">
-                            <!-- <div class="productSale"><span>-23%</span></div> -->
-                            <div class="productImg">
-                                <a href="#" title="Máy giặt Panasonic NA-F100A1WRV">
-                                    <img src="Content/images/sanpham-7.jpg" data-original="images/sanpham-7.jpg" class="img-fix" alt="Máy giặt Samsung 9 kg WA90J5710SG/SV" style="display: inline;">
-                                </a>
-                                <div class="hoverButtons">
-                                    <span data-toggle="modal" data-target="#999"><a class="button quickview-btn" data-toggle="tooltip" data-placement="top" title="" data-countdown="null" data-alias="may-giat-panasonic-10-kg-na-f100a1wrv" data-original-title="Xem nhanh"><i class="fa fa-search"></i></a></span>
-                                    <a href="#" class="button skype" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tư vấn qua Skype"><i class="fa fa-skype"></i></a>
-                                </div>
-                            </div>
-                            <h3><a href="#" title="Máy giặt Panasonic NA-F100A1WRV">Máy giặt Samsung 9 kg WA90J5710SG/SV</a></h3>
-                            <div class="productPrice">
-                                <del>7.990.000₫</del>
-                                <span>6.190.000₫</span>
-                            </div>
-                            <form class="actions clearfix" method="post" action="#">
-                                <a href="#" class="button"><i class="hoverButton"></i>Chọn sản phẩm</a>
-                            </form>
-                        </div>
-                    </div>
-                    <!--End Item-->
-                    <!-- Item -->
-                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                        <div class="productGrid">
-                            <div class="productSale"><span>-13%</span></div>
-                            <div class="productImg">
-                                <a href="#" title="Máy giặt Panasonic NA-F100A1WRV">
-                                    <img src="Content/images/sanpham-8.jpg" data-original="images/sanpham-8.jpg" class="img-fix" alt="Máy giặt Samsung 9 kg WA90J5710SG/SV" style="display: inline;">
-                                </a>
-                                <div class="hoverButtons">
-                                    <span data-toggle="modal" data-target="#999"><a class="button quickview-btn" data-toggle="tooltip" data-placement="top" title="" data-countdown="null" data-alias="may-giat-panasonic-10-kg-na-f100a1wrv" data-original-title="Xem nhanh"><i class="fa fa-search"></i></a></span>
-                                    <a href="#" class="button skype" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tư vấn qua Skype"><i class="fa fa-skype"></i></a>
-                                </div>
-                            </div>
-                            <h3><a href="#" title="Máy giặt Panasonic NA-F100A1WRV">Máy giặt Samsung 9 kg WA90J5710SG/SV</a></h3>
-                            <div class="productPrice">
-                                <del>7.990.000₫</del>
-                                <span>6.190.000₫</span>
-                            </div>
-                            <form class="actions clearfix" method="post" action="#">
-                                <a href="#" class="button"><i class="hoverButton"></i>Chọn sản phẩm</a>
-                            </form>
-                        </div>
-                    </div>
-                    <!--End Item-->
-
-                </div>
-                <div class="tab-pane fade in" id="taba2" role="tabpanel"></div>
-                <div class="tab-pane fade in" id="taba3" role="tabpanel"></div>
-                <div class="tab-pane fade in" id="taba4" role="tabpanel"></div>
-                <div class="tab-pane fade in" id="taba5" role="tabpanel"></div>
-                <div class="tab-pane fade in" id="taba6" role="tabpanel"></div>
-                <div class="tab-pane fade in" id="taba7" role="tabpanel"></div>
+                <asp:PlaceHolder runat="server" ID="tabContent"/>
             </div>
         </div>
         <!--  tabContentWrapper -->
     </div>
     <!-- End s1 -->
+    <%--<asp:GridView runat="server" ID="gvTest"></asp:GridView>--%>
     <div id="999" class="modal fade" role="dialog">
         <div class="quickViewWrapper">
             <a href="#" class="close close-window" data-dismiss="modal" title="Close" href="">×</a>

@@ -38,5 +38,14 @@ namespace WebBanLinhKien {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder tabAJAXProductsContent;
+        
+        /// <summary>
+        /// tabContent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder tabContent;
     }
 }

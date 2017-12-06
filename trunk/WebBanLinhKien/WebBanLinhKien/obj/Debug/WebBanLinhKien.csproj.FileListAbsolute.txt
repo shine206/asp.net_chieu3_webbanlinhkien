@@ -119,3 +119,4 @@ D:\Github\ASP.NET\ASP_WEbBanLinhKienMayTinh\asp.net_chieu3_webbanlinhkien\trunk\
 D:\Github\ASP.NET\ASP_WEbBanLinhKienMayTinh\asp.net_chieu3_webbanlinhkien\trunk\WebBanLinhKien\WebBanLinhKien\bin\DotNetOpenAuth.OpenId.xml
 D:\Github\ASP.NET\ASP_WEbBanLinhKienMayTinh\asp.net_chieu3_webbanlinhkien\trunk\WebBanLinhKien\WebBanLinhKien\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
 D:\Github\ASP.NET\ASP_WEbBanLinhKienMayTinh\asp.net_chieu3_webbanlinhkien\trunk\WebBanLinhKien\WebBanLinhKien\bin\DotNetOpenAuth.AspNet.xml
+E:\Web\ProjectNhom\asp.net_chieu3_webbanlinhkien\trunk\WebBanLinhKien\WebBanLinhKien\bin\AjaxControlToolkit.dll

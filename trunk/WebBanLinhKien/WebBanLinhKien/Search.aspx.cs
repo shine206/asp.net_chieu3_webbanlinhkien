@@ -65,6 +65,11 @@ namespace WebBanLinhKien
                 }
             }
 
+            if (!IsPostBack)
+            {
+                loadPromotionProducts();
+            }
+
             setCssFor2Button(viewType);
         }
 
@@ -135,6 +140,35 @@ namespace WebBanLinhKien
             // Response.Write(min.ToString() + "\t" + max.ToString());
         }
 
+        private void loadPromotionProducts()
+        {
+            DataTable dt = (new ConnectDB()).getAllPromotionProducts();
+            int i = dt.Rows.Count - 1;
+            while (dt.Rows.Count > 5)
+            {
+                dt.Rows[i].Delete();
+                i--;
+            }
+            dt.AcceptChanges();
+
+            dt.Columns.Add("link_image", typeof(string));
+            dt.Columns.Add("sel_price", typeof(System.Int32));
+            foreach (DataRow item in dt.Rows)
+            {
+                int giaTien = Convert.ToInt32(item["price"]);
+                item["sel_price"] = giaTien - (Convert.ToInt32(item["promotion"]) * giaTien / 100);
+                DataTable dtImages = (new ConnectDB()).getImagesByIdProduct(Convert.ToInt32(item["id_product"]));
+                item["link_image"] = "";
+                if (dtImages.Rows.Count > 0)
+                {
+                    item["link_image"] = dtImages.Rows[0]["link_image"].ToString();
+                }
+
+            }
+
+            rptSanPhamKhuyenMai.DataSource = dt;
+            rptSanPhamKhuyenMai.DataBind();
+        }
 
         private void renderHTML(DataTable dt, string view = "1")
         {

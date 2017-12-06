@@ -22,6 +22,15 @@ namespace WebBanLinhKien {
         protected global::System.Web.UI.WebControls.Panel pnControl;
         
         /// <summary>
+        /// ddlSapXep control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlSapXep;
+        
+        /// <summary>
         /// btnViewList control.
         /// </summary>
         /// <remarks>
@@ -49,6 +58,15 @@ namespace WebBanLinhKien {
         protected global::System.Web.UI.WebControls.PlaceHolder grdContent;
         
         /// <summary>
+        /// rptPhanTrang control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptPhanTrang;
+        
+        /// <summary>
         /// drlFilterPrice control.
         /// </summary>
         /// <remarks>
@@ -65,5 +83,14 @@ namespace WebBanLinhKien {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnFilter;
+        
+        /// <summary>
+        /// rptSanPhamKhuyenMai control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptSanPhamKhuyenMai;
     }
 }
