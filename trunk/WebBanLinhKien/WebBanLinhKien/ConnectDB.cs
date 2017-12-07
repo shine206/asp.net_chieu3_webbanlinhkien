@@ -666,5 +666,40 @@ namespace WebBanLinhKien
             }
             return result;
         }
+
+        /// <summary>
+        /// Xác nhận mail để lấy password
+        /// </summary>
+        /// <returns></returns>
+        /// 
+
+        public bool sendMail(string email)
+        {
+            bool result = false;
+            string username = string.Empty;
+            string password = string.Empty;
+
+            try
+            {
+                connect();
+                SqlCommand cmd = new SqlCommand("SELECT username, [password] FROM Users WHERE email = @email", conn);
+                cmd.Parameters.AddWithValue("@Email", email.Trim());
+
+
+                SqlDataReader sdr = cmd.ExecuteReader();
+                if (sdr.Read())
+                {
+                    username = sdr["username"].ToString();
+                    password = sdr["password"].ToString();
+                    result = true;
+                }
+
+            }
+            finally
+            {
+                disconnect();
+            }
+            return result;
+        }
     }
 }
