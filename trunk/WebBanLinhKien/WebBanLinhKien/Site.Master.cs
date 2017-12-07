@@ -65,12 +65,25 @@ namespace WebBanLinhKien
                     throw new InvalidOperationException("Validation of Anti-XSRF token failed.");
                 }
             }
-            loadLeftMenu();
+            
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+            loadLeftMenu();
+            StringBuilder html = new StringBuilder();
+            HttpCookie ck = Request.Cookies["User_Login"];
+            if (ck != null)
+            {
+                string userName = ck.Values["Username"].ToString();
+                html.Append("<li><strong>" + userName + "</strong><a href='Login.aspx?action=logout'> (Logout)</a></li>");
+            }
+            else
+            {
+                html.Append("<li><a href='Register.aspx'>Đăng ký</a></li>");
+                html.Append("<li><a href='Login.aspx'>Đăng nhập</a></li>");
+            }
+             userContent.Controls.Add(new Literal { Text = html.ToString() });
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)

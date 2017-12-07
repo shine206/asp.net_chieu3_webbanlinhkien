@@ -22,7 +22,8 @@
     <link href="Content/css/cart.css" rel="stylesheet" type="text/css" />
     <link href="Content/css/contact.css" rel="stylesheet" type="text/css" />
     <link href="Content/css/policy.css" rel="stylesheet" type="text/css" />
-    <webopt:BundleReference runat="server" Path="~/Content/css" />
+    <link href="Content/css/detail.css" rel="stylesheet" type="text/css"/>
+    <%--<webopt:BundleReference runat="server" Path="~/Content/css" />--%>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
     <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
@@ -80,8 +81,7 @@
                                 <li><a href="rules.html">Điều khoản</a></li>
                                 <li><a href="Policy.aspx">Chính sách</a></li>
                                 <li><a href="Introdue.aspx">Giới thiệu</a></li>
-                                <li><a href="Register.aspx">Đăng ký</a></li>
-                                <li><a href="Login.aspx">Đăng nhập</a></li>
+                                <asp:ContentPlaceHolder ID="userContent" runat="server"></asp:ContentPlaceHolder>
                             </ul>
                             
                         </div>
@@ -313,6 +313,7 @@
 <script src="Content/js/owl.carousel.min.js" type="text/javascript"></script>
 <script src="Content/js/index.js" type="text/javascript"></script>
 <script src="Content/js/item.js" type="text/javascript"></script>
+<script src="Content/js/detail.js" type="text/javascript"></script>
 <script src="Content/js/product.js" type="text/javascript"></script>
 <script src="Content/js/item_3.js" type="text/javascript"></script>
 </html>

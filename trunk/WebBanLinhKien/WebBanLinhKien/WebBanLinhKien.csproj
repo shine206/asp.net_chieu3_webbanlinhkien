@@ -157,6 +157,7 @@
     <Content Include="Admin\Login.aspx" />
     <Content Include="Admin\Products.aspx" />
     <Content Include="Admin\Users.aspx" />
+    <Content Include="Cart.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\contact.css" />
@@ -386,6 +387,7 @@
     <Content Include="Admin\Content\bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Policy.aspx" />
+    <Content Include="ProductDetail.aspx" />
     <Content Include="ProductSingle.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Rule.aspx" />
@@ -512,6 +514,13 @@
     <Compile Include="Account\RegisterExternalLogin.aspx.designer.cs">
       <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Cart.aspx.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cart.aspx.designer.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ConnectDB.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
@@ -552,6 +561,13 @@
     <Compile Include="Policy.aspx.cs">
       <DependentUpon>Policy.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductDetail.aspx.cs">
+      <DependentUpon>ProductDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductDetail.aspx.designer.cs">
+      <DependentUpon>ProductDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProductSingle.aspx.cs">
       <DependentUpon>ProductSingle.aspx</DependentUpon>

@@ -12,8 +12,15 @@ namespace WebBanLinhKien
 {
     public partial class Home : System.Web.UI.Page
     {
+        private DataTable dtModalProducts;
+        private int indexModalProduct = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+            dtModalProducts = new DataTable();
+            dtModalProducts.Columns.Add("id_product");
+            dtModalProducts.Columns.Add("name");
+            dtModalProducts.Columns.Add("price");
 
             loadLeftMenu();
             
@@ -98,6 +105,8 @@ namespace WebBanLinhKien
                 count++;
             }
             tabAJAXProductsContent.Controls.Add(new Literal { Text = html.ToString() });
+            rptModalContent.DataSource = dtModalProducts;
+            rptModalContent.DataBind();
         }
 
         protected StringBuilder loadTabContent(int indexTab, int id_group_cat)
@@ -110,7 +119,13 @@ namespace WebBanLinhKien
             html.Append("<div class='tab-pane-custom tab-pane fade" + fadeIn + "' id='taba" + indexTab.ToString() + "' role='tabpanel'>");
             Function fn = new Function();
             DataTable dtGroupCats = (new ConnectDB()).getAllProductsByGroupCategory(id_group_cat);
-            int count = 0;
+            int count = dtGroupCats.Rows.Count - 1;
+            while (count >= dtGroupCats.Rows.Count)
+            {
+                dtGroupCats.Rows[count].Delete();
+                count--;
+            }
+
             foreach (DataRow row in dtGroupCats.Rows)
             {
                 string giaGiam = "";
@@ -126,10 +141,10 @@ namespace WebBanLinhKien
                     promotion = "<div class='productSale'><span>-" + promotion + "%</span></div>";
                     giaGiam = string.Format("{0:0,0} đ", giaGiam);
                 }
-
+                string id_product = row["id_product"].ToString();
                 string nameProduct = row["name"].ToString();
                 string price = string.Format("{0:0,0} đ", row["price"]);
-                DataTable dtImages = (new ConnectDB()).getImagesByIdProduct(Convert.ToInt32(row["id_product"]));
+                DataTable dtImages = (new ConnectDB()).getImagesByIdProduct(Convert.ToInt32(id_product));
                 string link_image = "";
                 if (dtImages.Rows.Count > 0)
                 {
@@ -138,15 +153,21 @@ namespace WebBanLinhKien
                 
                 html.Append("<div class='col-xs-12 col-sm-6 col-md-4 col-lg-3'><div class='productGrid'>" + promotion);
                 html.Append("<div class='productImg'><a href='#' title='" + nameProduct + "'><img src='" + link_image + "' data-original='" + link_image + "' class='img-fix' alt='" + nameProduct + "' style='display: inline;'></a>");
-                html.Append("<div class='hoverButtons'><span data-toggle='modal' data-target='#999'><a class='button quickview-btn' data-toggle='tooltip' data-placement='top' title='' data-countdown='null' data-alias='" + fn.convertToUnSign3(nameProduct) + "' data-original-title='Xem nhanh'><i class='fa fa-search'></i></a></span>");
+                html.Append("<div class='hoverButtons'><span data-toggle='modal' data-target='#product_" + id_product + "'><a class='button quickview-btn' data-toggle='tooltip' data-placement='top' title='' data-countdown='null' data-alias='" + fn.convertToUnSign3(nameProduct) + "' data-original-title='Xem nhanh'><i class='fa fa-search'></i></a></span>");
                 html.Append("<a href='#' class='button skype' data-toggle='tooltip' data-placement='top' title='' data-original-title='Tư vấn qua Skype'><i class='fa fa-skype'></i></a></div></div>");
-                html.Append("<h3><a href='#' title='" + nameProduct + "'>" + nameProduct + "</a></h3><div class='productPrice'><del>" + giaGiam + "</del><span>" + price + "</span></div>");
+                html.Append("<h3><a href='ProductDetail.aspx?id=" + id_product + "' title='" + nameProduct + "'>" + nameProduct + "</a></h3><div class='productPrice'><del>" + giaGiam + "</del><span>" + price + "</span></div>");
                 html.Append("<div class='actions clearfix'><a href='#' class='button'><i class='hoverButton'></i>Chọn sản phẩm</a></div></div></div>");
-                count++;
-                if (count >= 8)
-                {
-                    break;
-                }
+                DataRow tempRow = dtModalProducts.NewRow();
+                tempRow["id_product"] = id_product;
+                tempRow["name"] = nameProduct;
+                tempRow["price"] = price;
+                dtModalProducts.Rows.Add(tempRow);
+
+                //count++;
+                //if (count >= 8)
+                //{
+                //    break;
+                //}
             }
             html.Append("</div>");
             return html;

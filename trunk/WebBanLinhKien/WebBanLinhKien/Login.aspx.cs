@@ -16,10 +16,16 @@ namespace WebBanLinhKien
 
             if (!IsPostBack)
             {
-                HttpCookie cookie = new HttpCookie("user_login");
-                if (cookie != null)
+                //HttpCookie cookie = new HttpCookie("user_login");
+               
+            }
+
+            if (Request.QueryString["action"] != null)
+            {
+                if (Request.QueryString["action"].ToString() == "logout")
                 {
-                    Response.Redirect("Home.aspx");
+                    Response.Cookies["User_Login"].Expires = DateTime.Now.AddDays(-1);
+                    Response.Redirect(Request.UrlReferrer.ToString());
                 }
             }
         }
@@ -37,9 +43,10 @@ namespace WebBanLinhKien
                 {
                     HttpCookie cookie = new HttpCookie("User_Login");
                     cookie["Username"] = txtName;
-                    cookie.Expires = DateTime.Now.AddMinutes(15);
+                    cookie.Expires = DateTime.Now.AddDays(1);
                     Response.Cookies.Add(cookie);
-                    Response.Redirect("Home.aspx");
+                    //Response.Redirect("Home.aspx");
+                    Response.Redirect(Request.UrlReferrer.ToString());
                 }
                 else {
                     username.Text = "";

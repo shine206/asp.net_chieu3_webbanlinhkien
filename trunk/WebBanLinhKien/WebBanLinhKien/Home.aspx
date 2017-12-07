@@ -46,12 +46,12 @@
                                     <div class="hoverButtons">
                                         <span data-toggle="modal" data-target="#998"><a class="button quickview-btn" data-toggle="tooltip" data-placement="top" title="" data-countdown="null" data-alias="may-giat-panasonic-10-kg-na-f100a1wrv" data-original-title="Cho vào giỏ hàng"><i class="fa fa-shopping-cart"></i></a></span>
 
-                                        <span data-toggle="modal" data-target="#999"><a class="button quickview-btn" data-toggle="tooltip" data-placement="top" title="" data-countdown="null" data-alias="may-giat-panasonic-10-kg-na-f100a1wrv" data-original-title="Xem nhanh"><i class="fa fa-search"></i></a></span>
+                                        <span data-toggle="modal" data-target="#product_<%#Eval("id_product") %>"><a class="button quickview-btn" data-toggle="tooltip" data-placement="top" title="" data-countdown="null" data-alias="may-giat-panasonic-10-kg-na-f100a1wrv" data-original-title="Xem nhanh"><i class="fa fa-search"></i></a></span>
 
                                         <a href="#" class="button skype" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tư vấn qua Skype"><i class="fa fa-skype"></i></a>
                                     </div>
                                 </div>
-                                <h3><a href="detail.html" title="<%#Eval("name") %>"><%#Eval("name") %></a></h3>
+                                <h3><a href="ProductDetail.aspx?id=<%#Eval("id_product") %>" title="<%#Eval("name") %>"><%#Eval("name") %></a></h3>
                                 <div class="productPrice">
                                     <del><%# Eval("sel_price", "{0:0,0} đ") %></del>
                                     <span><%# Eval("price", "{0:0,0} đ") %></span>
@@ -101,101 +101,105 @@
         <!-- End ControlTabsWrapper -->
         <div class="tabContentWrapper">
             <div class="tabContent">
-                <asp:PlaceHolder runat="server" ID="tabContent"/>
+                <asp:PlaceHolder runat="server" ID="tabContent" />
             </div>
         </div>
         <!--  tabContentWrapper -->
     </div>
     <!-- End s1 -->
     <%--<asp:GridView runat="server" ID="gvTest"></asp:GridView>--%>
-    <div id="999" class="modal fade" role="dialog">
-        <div class="quickViewWrapper">
-            <a href="#" class="close close-window" data-dismiss="modal" title="Close" href="">×</a>
-            <div class="quickViewCountDown" style="">236D : 22H : 2M : 5S</div>
-            <div class="clearfix">
-                <div class="quickViewImg">
-                    <div class="quickViewFeaturedImg">
-                        <div class="slideshow-product owl-carousel owl-theme">
-                            <div class="item" data-hash="sp1">
-                                <img src="Content/images/sp1.jpg" class="img-responsive" alt="Ảnh sản phẩm">
-                            </div>
-                            <div class="item" data-hash="sp2">
-                                <img src="Content/images/sp2.jpg" class="img-responsive" alt="Ảnh sản phẩm">
-                            </div>
-                            <div class="item" data-hash="sp3">
-                                <img src="Content/images/sp3.jpg" class="img-responsive" alt="Ảnh sản phẩm">
-                            </div>
-                            <div class="item" data-hash="sp4">
-                                <img src="Content/images/sp4.jpg" class="img-responsive" alt="Ảnh sản phẩm">
-                            </div>
-                            <div class="item" data-hash="sp5">
-                                <img src="Content/images/sp5.jpg" class="img-responsive" alt="Ảnh sản phẩm">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="quickViewThumbImg owl-carousel owl-theme">
-                        <div class="sub-item">
-                            <a href="#sp1">
-                                <img src="Content/images/sub-1.jpg"></a>
-                        </div>
-                        <div class="sub-item">
-                            <a href="#sp2">
-                                <img src="Content/images/sub-2.jpg"></a>
-                        </div>
-                        <div class="sub-item">
-                            <a href="#sp3">
-                                <img src="Content/images/sub-3.jpg"></a>
-                        </div>
-                        <div class="sub-item">
-                            <a href="#sp4">
-                                <img src="Content/images/sub-4.jpg"></a>
-                        </div>
-                        <div class="sub-item">
-                            <a href="#sp5">
-                                <img src="Content/images/sub-5.jpg"></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="quickViewProduct">
-                    <div class="quickViewProductTitle"><a href="#">Bếp hồng ngoại Midea MIR-T2015DC</a></div>
-                    <div class="quickViewProductMeta clearfix">
-                        <div class="quickViewProductVendor">NSX: <b>Midea</b></div>
-                        <div class="quickViewProductBrand">Loại: <b>Bếp điện</b></div>
-                        <div class="quickViewProductsku" style="display: none;"></div>
-                        <div class="quickViewProductBarcode">Mã SP: <b>T2015DC</b></div>
-                    </div>
-                    <div class="quickViewProductPrice hasMarginTop">
-                        <span>900.000 VND</span>
-                        <del style="">1.300.000 VND</del>
-                    </div>
-                    <div class="quickViewProductActions clearfix">
-                        <form action="#" method="post" class="quickViewProductVariants" id="product-actions-5868449">
-                            <div class="quickViewProductQuantity clearfix">
-                                <label>Số lượng:</label>
-                                <div class="quickViewProductQuantityGroup">
-                                    <button class="button quickViewProductQuantityButton" onclick="var result = document.getElementById('quickviewQty'); var quickviewQty = result.value; if( !isNaN( quickviewQty ) &amp;&amp; quickviewQty > 1 ) result.value--;return false;">-</button>
-                                    <input type="text" title="Số lượng" value="1" min="1" class="quickviewQty" id="quickviewQty" name="quantity">
-                                    <button class="button quickViewProductQuantityButton" onclick="var result = document.getElementById('quickviewQty'); var quickviewQty = result.value; if( !isNaN( quickviewQty )) result.value++;return false;">+</button>
+    <asp:Repeater runat="server" ID="rptModalContent">
+        <ItemTemplate>
+            <div id="product_<%#Eval("id_product") %>" class="modal fade" role="dialog">
+                <div class="quickViewWrapper">
+                    <a href="#" class="close close-window" data-dismiss="modal" title="Close">×</a>
+                    <div class="clearfix">
+                        <div class="quickViewImg">
+                            <div class="quickViewFeaturedImg">
+                                <div class="slideshow-product owl-carousel owl-theme">
+                                    <div class="item" data-hash="sp1">
+                                        <img src="Content/images/sp1.jpg" class="img-responsive" alt="Ảnh sản phẩm">
+                                    </div>
+                                    <div class="item" data-hash="sp2">
+                                        <img src="Content/images/sp2.jpg" class="img-responsive" alt="Ảnh sản phẩm">
+                                    </div>
+                                    <div class="item" data-hash="sp3">
+                                        <img src="Content/images/sp3.jpg" class="img-responsive" alt="Ảnh sản phẩm">
+                                    </div>
+                                    <div class="item" data-hash="sp4">
+                                        <img src="Content/images/sp4.jpg" class="img-responsive" alt="Ảnh sản phẩm">
+                                    </div>
+                                    <div class="item" data-hash="sp5">
+                                        <img src="Content/images/sp5.jpg" class="img-responsive" alt="Ảnh sản phẩm">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="quickViewProductButtons">
-                                <button class="button quickViewAddCart">
-                                    <i class="fa fa-shopping-cart"></i>Cho vào giỏ hàng
-                                </button>
-                                <a href="javascript:void(0);" class="button quickViewContact" style="display: none;" data-code="T2015DC">
-                                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                                    Đặt hàng
-                                </a>
-                                <a href="#" title="Tư vấn qua Skype" class="button skype"><i class="fa fa-skype"></i></a>
+                            <div class="quickViewThumbImg owl-carousel owl-theme">
+                                <div class="sub-item">
+                                    <a href="#sp1">
+                                        <img src="Content/images/sub-1.jpg"></a>
+                                </div>
+                                <div class="sub-item">
+                                    <a href="#sp2">
+                                        <img src="Content/images/sub-2.jpg"></a>
+                                </div>
+                                <div class="sub-item">
+                                    <a href="#sp3">
+                                        <img src="Content/images/sub-3.jpg"></a>
+                                </div>
+                                <div class="sub-item">
+                                    <a href="#sp4">
+                                        <img src="Content/images/sub-4.jpg"></a>
+                                </div>
+                                <div class="sub-item">
+                                    <a href="#sp5">
+                                        <img src="Content/images/sub-5.jpg"></a>
+                                </div>
                             </div>
-                            <input type="hidden" name="variantId" value="9363066">
-                        </form>
+                        </div>
+                        <div class="quickViewProduct">
+                            <div class="quickViewProductTitle"><a href="#"><% %></a></div>
+                            <div class="quickViewProductMeta clearfix">
+                                <div class="quickViewProductVendor">NSX: <b>Midea</b></div>
+                                <div class="quickViewProductBrand">Loại: <b>Bếp điện</b></div>
+                                <div class="quickViewProductsku" style="display: none;"></div>
+                                <div class="quickViewProductBarcode">Mã SP: <b>T2015DC</b></div>
+                            </div>
+                            <div class="quickViewProductPrice hasMarginTop">
+                                <span>900.000 VND</span>
+                                <del style="">1.300.000 VND</del>
+                            </div>
+                            <div class="quickViewProductActions clearfix">
+                                <form action="#" method="post" class="quickViewProductVariants" id="product-actions-5868449">
+                                    <div class="quickViewProductQuantity clearfix">
+                                        <label>Số lượng:</label>
+                                        <div class="quickViewProductQuantityGroup">
+                                            <button class="button quickViewProductQuantityButton" onclick="var result = document.getElementById('quickviewQty'); var quickviewQty = result.value; if( !isNaN( quickviewQty ) &amp;&amp; quickviewQty > 1 ) result.value--;return false;">-</button>
+                                            <input type="text" title="Số lượng" value="1" min="1" class="quickviewQty" id="quickviewQty" name="quantity">
+                                            <button class="button quickViewProductQuantityButton" onclick="var result = document.getElementById('quickviewQty'); var quickviewQty = result.value; if( !isNaN( quickviewQty )) result.value++;return false;">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="quickViewProductButtons">
+                                        <button class="button quickViewAddCart">
+                                            <i class="fa fa-shopping-cart"></i>Cho vào giỏ hàng
+                                        </button>
+                                        <a href="javascript:void(0);" class="button quickViewContact" style="display: none;" data-code="T2015DC">
+                                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                            Đặt hàng
+                                        </a>
+                                        <a href="#" title="Tư vấn qua Skype" class="button skype"><i class="fa fa-skype"></i></a>
+                                    </div>
+                                    <input type="hidden" name="variantId" value="9363066">
+                                </form>
+                            </div>
+                            <a href="tel:0868155456" class="boxHotline"><i class="fa fa-volume-control-phone"></i>0868.155.456</a>
+                        </div>
                     </div>
-                    <a href="tel:0868155456" class="boxHotline"><i class="fa fa-volume-control-phone"></i>0868.155.456</a>
                 </div>
             </div>
-        </div>
-    </div>
+
+        </ItemTemplate>
+    </asp:Repeater>
     <div id="998" class="modal fade" role="dialog">
         <div class="noticeAddWrapper">
             <a href="#" class="close" data-dismiss="modal">×</a>
