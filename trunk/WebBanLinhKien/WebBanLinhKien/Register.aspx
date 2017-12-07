@@ -31,6 +31,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 ">
                     <div class="formAccountPage" id="loginForm">
                         <h2 class="titleDecoration AccountPageTitle"><span class="line"></span><span class="title fz18"><i class="fa fa-lock"></i>&nbsp; Đăng ký tài khoản</span></h2>
+                        <asp:Label Text="" ID="lblMessage" runat="server" />
                         <form accept-charset="UTF-8" action="#" id="customer_login" method="post">
                             <input name="FormType" type="hidden" value="customer_login">
                             <input name="utf8" type="hidden" value="true">
@@ -48,7 +49,7 @@
                             </div>
 
                             <div class="group">
-                                <asp:Label ID="lblRePassword" Text="Nhập lại mật khẩu" runat="server" />
+                                <asp:Label ID="lblRePassword" Text="Nhập lại mật khẩu" runat="server" /><span class="error">*</span>
                                 <asp:RequiredFieldValidator CssClass="error" ErrorMessage="(Bạn phải nhập lại mật khẩu!)" ControlToValidate="rePassLogin" SetFocusOnError="True" Display="Dynamic" runat="server" />
                                 <asp:CompareValidator ErrorMessage="(Nhập lại mật khẩu chưa chính xác!!!)" ForeColor="red" ControlToCompare="passLogin" ControlToValidate="rePassLogin" runat="server" />
                                 <asp:TextBox ID="rePassLogin" TextMode="Password" CssClass="input-control" runat="server" />
@@ -85,6 +86,7 @@
 
                             <%--<button class="button"><i class="hoverButton"></i>Đăng ký</button>--%>
                             <asp:Button Text="Đăng ký" ID="btnRegister" CssClass="button" runat="server" OnClick="btnRegister_Click" />
+
                         </form>
                     </div>
 
