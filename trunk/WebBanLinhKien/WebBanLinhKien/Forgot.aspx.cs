@@ -31,7 +31,7 @@ namespace WebBanLinhKien
 
                 MailMessage mm = new MailMessage("sender@gmail.com", txtEmailVerify.Text.Trim());
                 mm.Subject = "Password Recovery";
-                mm.Body = string.Format("Xin chào {0},<br /><br />M?t kh?u m?i là {1}.<br /><br />C?m on b?n dã quan tâm.", username, password);
+                mm.Body = string.Format("Xin chào {0},<br /><br />Mật khẩu mới là {1}.<br /><br />Cảm ơn bạn đã quan tâm.", username, password);
                 mm.IsBodyHtml = true;
                 SmtpClient smtp = new SmtpClient();
                 smtp.Host = "smtp.gmail.com";
@@ -44,12 +44,12 @@ namespace WebBanLinhKien
                 smtp.Port = 587;
                 //smtp.Send(mm);
                 lblEmail.ForeColor = Color.Green;
-                lblEmail.Text = "Password has been sent to your email address.";
+                lblEmail.Text = "Mật khẩu mới sẽ được gửi tới mail của bạn.!!!";
             }
             else
             {
                 lblEmail.ForeColor = Color.Red;
-                lblEmail.Text = "This email address does not match our records.";
+                lblEmail.Text = "Địa chỉ email này không khớp với hồ sơ của chúng tôi.";
             }
         }
 
