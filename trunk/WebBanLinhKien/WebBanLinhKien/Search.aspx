@@ -49,8 +49,8 @@
                                 </select>--%>
                             </div>
 
-                            <asp:LinkButton ID="btnViewList" runat="server" class="switchView viewCollection" OnClick="btnViewList_Click" data-view="list" data-toggle="tooltip" title="" data-original-title="Xem dạng danh sách"><i class="fa fa-th-list"></i></asp:LinkButton>
-                            <asp:LinkButton ID="btnViewGird" runat="server" class="switchView active viewCollection" OnClick="btnViewGrid_Click" data-view="grid" data-toggle="tooltip" title="" data-original-title="Xem dạng lưới"><i class="fa fa-th"></i></asp:LinkButton>
+                            <asp:LinkButton ID="btnViewList" runat="server" CssClass="switchView viewCollection" OnClick="btnViewList_Click" data-view="list" data-toggle="tooltip" title="" data-original-title="Xem dạng danh sách"><i class="fa fa-th-list"></i></asp:LinkButton>
+                            <asp:LinkButton ID="btnViewGird" runat="server" CssClass="switchView active viewCollection" OnClick="btnViewGrid_Click" data-view="grid" data-toggle="tooltip" title="" data-original-title="Xem dạng lưới"><i class="fa fa-th"></i></asp:LinkButton>
                         </div>
                     </asp:Panel>
                     <div class="collectionDisplay">
@@ -163,7 +163,7 @@
                                         <img src="<%#Eval("link_image") %>" class="listsProductsImg" alt="<%#Eval("name") %>">
 
                                         <div class="listsProductsInfo">
-                                            <h3><a href="#"><%#Eval("name") %></a></h3>
+                                            <h3><a href="ProductDetail.aspx?id=<%#Eval("id_product") %>"><%#Eval("name") %></a></h3>
                                             <div class="listsProductsPrice">
                                                 <span><%# Eval("price", "{0:0,0} đ") %></span>
                                                 <del><%# Eval("sel_price", "{0:0,0} đ") %></del>

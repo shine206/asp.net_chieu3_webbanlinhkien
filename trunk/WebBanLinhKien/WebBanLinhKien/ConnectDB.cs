@@ -701,5 +701,30 @@ namespace WebBanLinhKien
             }
             return result;
         }
+
+        /// <summary>
+        /// Lấy tất cả sản phẩm liên quan của một sản phẩm
+        /// </summary>
+        /// <param name="id_product">id của sản phẩm chính</param>
+        /// <returns>Danh sách sản phẩm liên quan</returns>
+        public DataTable getRelatedProductsById(int id_product)
+        {
+            DataTable result = new DataTable();
+            try
+            {
+                connect();
+                SqlCommand cmd = new SqlCommand("getRelatedProducts", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id_product", id_product);
+                SqlDataReader rd = cmd.ExecuteReader();
+                result.Load(rd);
+            }
+            finally
+            {
+                result.Dispose();
+                disconnect();
+            }
+            return result;
+        }
     }
 }

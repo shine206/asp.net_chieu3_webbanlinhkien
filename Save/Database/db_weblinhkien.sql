@@ -551,3 +551,12 @@ begin
 end
 
 --select * from Images
+
+go
+-- get related products
+create procedure getRelatedProducts
+	@id_product int
+as
+begin
+	select * from Products where (select id_category from Products where id_product=@id_product)=id_category
+end

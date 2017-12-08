@@ -40,7 +40,7 @@
                                 <!-- <div class="productSale"><span>-23%</span></div> -->
                                 <div class="countDown" data-end="kmdn_ngay1_thang12_nam2017">Còn hàng</div>
                                 <div class="productImg">
-                                    <a href="detail.html" title="<%#Eval("name") %>">
+                                    <a href="ProductDetail.aspx?id=<%#Eval("id_product") %>" title="<%#Eval("name") %>">
                                         <img src="<%#Eval("link_image") %>" data-original="<%#Eval("link_image") %>" class="img-responsive" alt="<%#Eval("name") %>" style="display: inline;">
                                     </a>
                                     <div class="hoverButtons">

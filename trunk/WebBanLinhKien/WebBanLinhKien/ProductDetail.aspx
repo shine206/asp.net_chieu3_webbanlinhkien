@@ -7,9 +7,10 @@
             <div class="row">
 
                 <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
-                    <asp:Repeater runat="server" ID="rptProdutDetail" OnItemDataBound="rptProdutDetail_ItemDataBound">
-                        <ItemTemplate>
-                            <div class="row">
+
+                    <div class="row">
+                        <asp:Repeater runat="server" ID="rptProdutDetail" OnItemDataBound="rptProdutDetail_ItemDataBound">
+                            <ItemTemplate>
                                 <div class="clearfix prodDetailQuickAddCartWrapper">
                                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                                         <div class="quickViewImg">
@@ -65,7 +66,7 @@
                                             <div class="quickViewProductPrice hasMarginTop">
                                                 <span><%# Eval("price", "{0:0,0} đ") %></span>
                                                 <del><%# Eval("sel_price", "{0:0,0} đ") %></del>
-                                                
+
                                             </div>
                                             <div class="quickViewProductActions clearfix">
                                                 <div class="quickViewProductVariants" id="product-actions-5868449">
@@ -221,21 +222,25 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="clearfix relatedProdDetailWrapper">
-                                    <h2 class="titleDecoration fz18">
-                                        <span class="line"></span>
-                                        <span class="title">Sản phẩm liên quan</span>
-                                    </h2>
-                                    <div class="relatedProdDetail owl-carousel owl-theme" id="relatedProdDetail">
+                            </ItemTemplate>
+                        </asp:Repeater>
+                        <div class="clearfix relatedProdDetailWrapper">
+                            <h2 class="titleDecoration fz18">
+                                <span class="line"></span>
+                                <span class="title">Sản phẩm liên quan</span>
+                            </h2>
+                            <div class="relatedProdDetail owl-carousel owl-theme" id="relatedProdDetail">
+                                <asp:Repeater runat="server" ID="rptRelatedProducts">
+                                    <ItemTemplate>
                                         <div class="item">
                                             <div class="productGrid">
                                                 <!-- <div class="productSale"><span>-23%</span></div> -->
                                                 <!-- <div class="countDown" data-end="kmdn_ngay1_thang12_nam2017">208D : 12H : 38M : 10S</div> -->
                                                 <div class="productImg">
-                                                    <a href="#" title="Máy giặt Panasonic NA-F100A1WRV">
-                                                        <img src="images/sanpham-1.jpg" data-original="images/sanpham-1.jpg" class="img-fix" alt="Máy giặt Panasonic NA-F100A1WRV" style="display: inline;">
+                                                    <a href="ProductDetail.aspx?id=<%#Eval("id_product") %>" title="<%#Eval("name") %>">
+                                                        <img src="<%#Eval("image_link") %>" data-original="<%#Eval("image_link") %>" class="img-fix" alt="<%#Eval("name") %>" style="display: inline;">
                                                     </a>
-                                                    &nbsp;&nbsp;&nbsp;<div class="hoverButtons">
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="hoverButtons">
                                                         <span data-toggle="modal" data-target="#998"><a class="button quickview-btn" data-toggle="tooltip" data-placement="top" title="" data-countdown="null" data-alias="may-giat-panasonic-10-kg-na-f100a1wrv" data-original-title="Cho vào giỏ hàng"><i class="fa fa-shopping-cart"></i></a></span>
 
                                                         <span data-toggle="modal" data-target="#999"><a class="button quickview-btn" data-toggle="tooltip" data-placement="top" title="" data-countdown="null" data-alias="may-giat-panasonic-10-kg-na-f100a1wrv" data-original-title="Xem nhanh"><i class="fa fa-search"></i></a></span>
@@ -243,30 +248,32 @@
                                                         <a href="#" class="button skype" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tư vấn qua Skype"><i class="fa fa-skype"></i></a>
                                                     </div>
                                                 </div>
-                                                <h3><a href="#" title="Máy giặt Panasonic NA-F100A1WRV">Máy giặt Panasonic NA-F100A1WRV</a></h3>
+                                                <h3><a href="ProductDetail.aspx?id=<%#Eval("id_product") %>" title="<%#Eval("name") %>"><%#Eval("name") %></a></h3>
                                                 <div class="productPrice">
-                                                    <del>7.990.000₫</del>
-                                                    <span>6.190.000₫</span>
+                                                    <del><%# Eval("del_price", "{0:0,0} đ") %></del>
+                                                    <span><%# Eval("price", "{0:0,0} đ") %></span>
                                                 </div>
-                                                <!--
-                                        <form class="actions clearfix" method="post" action="#">
-                                            <a href="#" class="button"><i class="hoverButton"></i>Chọn sản phẩm</a>
-                                        </form>
-                                        -->
+
+                                                <div class="actions clearfix">
+                                                    <a href="#" class="button"><i class="hoverButton"></i>Chọn sản phẩm</a>
+                                                </div>
+
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+
                             </div>
-                        </ItemTemplate>
-                    </asp:Repeater>
+                        </div>
+                    </div>
+
                 </div>
 
                 <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
                     <div class="sidebarBlog">
                         <div class="sidebarBlogGroup">
-                            <a href="#policyWrapper" class="dropDownButton collapsed" data-toggle="collapse">Chính Sách <i class="fa fa-angle-up"></i></a>
-                            <div class="policyWrapper collapse" id="policyWrapper">
+                            <a href="#policyWrapper" class="dropDownButton" aria-expanded="true" data-toggle="collapse">Chính Sách <i class="fa fa-angle-up"></i></a>
+                            <div class="policyWrapper collapse in" id="policyWrapper">
                                 <div class="policy">
                                     <i class="ico icoPolicy1"></i>
                                     <h4>Miễn phí vận chuyển </h4>
@@ -338,24 +345,7 @@
                         </div>
                     </div>
                     <!-- End SideBarBlog -->
-                    <div class="sidebarBlogDefault">
-                        <div class="listProductsWrapper recentlyProducts">
-                            <h2 class="titleDecoration"><span class="line"></span><span class="title">Sản phẩm đã xem</span></h2>
-                            <ul class="list-unstyled listProducts" id="recently-viewed-products">
-                                <li class="clearfix">
-                                    <img src="images/1600232-noi-ap-suat-dien-da-nang-sunhouse-5-lit-sh-1650.jpg" class="listsProductsImg" alt="Nồi áp suất điện Sunhouse SHD-1552 5.0 lít">
-                                    <div class="listsProductsInfo">
-                                        <h3 title="Nồi áp suất điện Sunhouse SHD-1552 5.0 lít"><a href="#">Nồi áp suất điện Sunhouse SHD-1552 5.0 lít</a></h3>
-                                        <div class="listsProductsPrice">
-                                            <span>800.000 VND</span>
-                                            <del>1.200.000 VND</del>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- End SidebarBlogDefault -->
+
                 </div>
             </div>
         </div>

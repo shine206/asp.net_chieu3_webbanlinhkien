@@ -12,14 +12,16 @@ namespace WebBanLinhKien
     {
         string htmlMainImage = "";
         string htmlSubImage = "";
+        int idProduct;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 if (Request.QueryString["id"] != null)
                 {
-                    int id_product = Convert.ToInt32(Request.QueryString["id"]);
-                    getProduct(id_product);
+                    idProduct = Convert.ToInt32(Request.QueryString["id"]);
+                    getProduct(idProduct);
+                    loadRelatedProducts(idProduct, rptRelatedProducts);
                 }
                 else
                 {
@@ -58,6 +60,32 @@ namespace WebBanLinhKien
             }
         }
 
+        protected void loadRelatedProducts(int id, Repeater rptData)
+        {
+            DataTable dtRelatedProducts = (new ConnectDB()).getRelatedProductsById(id);
+            dtRelatedProducts.Columns.Add("image_link");
+            dtRelatedProducts.Columns.Add("del_price");
+            foreach (DataRow row in dtRelatedProducts.Rows)
+            {
+                DataTable dtImages = (new ConnectDB()).getImagesByIdProduct(Convert.ToInt32(row["id_product"]));
+                if (dtImages.Rows.Count > 0)
+                {
+                    if (row["promotion"] != null && row["promotion"].ToString() != "")
+                    {
+                        int giaTien = Convert.ToInt32(row["price"]);
+                        row["del_price"] = giaTien - (Convert.ToInt32(row["promotion"]) * giaTien / 100);
+                    }
+                    else
+                    {
+                        row["del_price"] = 0;
+                    }
+                    row["image_link"] = dtImages.Rows[0]["link_image"].ToString();
+                }
+            }
+            rptData.DataSource = dtRelatedProducts;
+            rptData.DataBind();
+        }
+
         protected void rptProdutDetail_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
@@ -68,6 +96,8 @@ namespace WebBanLinhKien
                 PlaceHolder phSubImage = (PlaceHolder)e.Item.FindControl("subImageContent");
                 phSubImage.Controls.Clear();
                 phSubImage.Controls.Add(new Literal { Text = htmlSubImage.ToString() });
+
+                //loadRelatedProducts(idProduct, (Repeater)e.Item.FindControl("rptRelatedProducts"));
             }
         }
     }
