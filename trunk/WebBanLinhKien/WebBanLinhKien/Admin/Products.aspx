@@ -130,11 +130,11 @@
 
                             </div>
 
-                            <div class="form-group clearfix">
+                            <%--<div class="form-group clearfix">
                                 <div class="col-sm-offset-2 col-sm-10">
                                     <asp:CheckBox Text="Tiếp tục thêm sản phẩm" runat="server" />
                                 </div>
-                            </div>
+                            </div>--%>
                             <div class="form-group clearfix">
                                 <div class="col-sm-offset-2 col-sm-10">
                                     <asp:Button Text="Cập nhật sản phẩm" runat="server" CssClass="btn btn-success" ID="btnCapNhatSanPham" OnClick="btnCapNhatSanPham_Click"/>

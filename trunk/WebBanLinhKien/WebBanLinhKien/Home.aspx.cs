@@ -172,5 +172,10 @@ namespace WebBanLinhKien
             html.Append("</div>");
             return html;
         }
+
+        protected void rptModalContent_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+
+        }
     }
 }

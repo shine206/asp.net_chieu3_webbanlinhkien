@@ -43,7 +43,7 @@
                                     <a href="ProductDetail.aspx?id=<%#Eval("id_product") %>" title="<%#Eval("name") %>">
                                         <img src="<%#Eval("link_image") %>" data-original="<%#Eval("link_image") %>" class="img-responsive" alt="<%#Eval("name") %>" style="display: inline;">
                                     </a>
-                                    <div class="hoverButtons">
+                                    &nbsp;<div class="hoverButtons">
                                         <span data-toggle="modal" data-target="#998"><a class="button quickview-btn" data-toggle="tooltip" data-placement="top" title="" data-countdown="null" data-alias="may-giat-panasonic-10-kg-na-f100a1wrv" data-original-title="Cho vào giỏ hàng"><i class="fa fa-shopping-cart"></i></a></span>
 
                                         <span data-toggle="modal" data-target="#product_<%#Eval("id_product") %>"><a class="button quickview-btn" data-toggle="tooltip" data-placement="top" title="" data-countdown="null" data-alias="may-giat-panasonic-10-kg-na-f100a1wrv" data-original-title="Xem nhanh"><i class="fa fa-search"></i></a></span>
@@ -206,7 +206,7 @@
             <span class="noteAddWrapper">✔ Thêm vào giỏ hàng thành công!</span>
             <div class="clearfix">
                 <div class="noticeAddImg">
-                    <a href="">
+                    <a href="#">
                         <img src="Content/images/big-165330-bep-hong-ngoai-midea-mir-t2015dc.jpg" class="img-responsive" alt="Ảnh sản phẩm"></a>
                 </div>
                 <div class="noticeAddInfo">

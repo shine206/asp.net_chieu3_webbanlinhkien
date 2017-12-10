@@ -22,6 +22,7 @@ namespace WebBanLinhKien
         ///     getAllProductsByCategory
         ///     getAllProductsByCategoryAndGroup
         ///     loginWithUser
+        ///     loginWithUserAmin
         ///     getImagesByIdProduct
         ///     getProductById
         ///     getAllPromotionProducts
@@ -716,6 +717,33 @@ namespace WebBanLinhKien
                 SqlCommand cmd = new SqlCommand("getRelatedProducts", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@id_product", id_product);
+                SqlDataReader rd = cmd.ExecuteReader();
+                result.Load(rd);
+            }
+            finally
+            {
+                result.Dispose();
+                disconnect();
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Đăng nhập vào trang quản trị
+        /// </summary>
+        /// <param name="username">Tên đăng nhâp</param>
+        /// <param name="password">Mật khẩu đăng nhập</param>
+        /// <returns></returns>
+        public DataTable loginWithUserAmin(string username, string password)
+        {
+            DataTable result = new DataTable();
+            try
+            {
+                connect();
+                SqlCommand cmd = new SqlCommand("loginByUserAdmin", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@username", username);
+                cmd.Parameters.AddWithValue("@password", password);
                 SqlDataReader rd = cmd.ExecuteReader();
                 result.Load(rd);
             }

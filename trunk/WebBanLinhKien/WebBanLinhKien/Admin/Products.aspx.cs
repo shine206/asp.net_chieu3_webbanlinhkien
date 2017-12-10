@@ -25,7 +25,12 @@ namespace WebBanLinhKien.Admin
                     pnAllImages.Visible = false;
                     pnTable.Visible = false;
                     if (!IsPostBack)
+                    {
+                        btnCapNhatSanPham.Visible = false;
+                        btnThemSanPham.Visible = true;
+                        pnTitle.InnerText = "Thêm sản phẩm mới";
                         LoadCategories();
+                    }
                     return;
                 }
                 else if (action == "delete")
@@ -48,6 +53,9 @@ namespace WebBanLinhKien.Admin
                         {
                             int id = Convert.ToInt32(Request.QueryString["id"].ToString());
                             loadUpdateProduct(id);
+                            btnCapNhatSanPham.Visible = true;
+                            btnThemSanPham.Visible = false;
+                            pnTitle.InnerText = "Cập nhật sản phẩm (ID: "+ id.ToString() +")";
                         }
                         return;
                     }

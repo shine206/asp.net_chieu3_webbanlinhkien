@@ -11,7 +11,15 @@ namespace WebBanLinhKien.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Request.Cookies["login_admin"] == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
+            else
+            {
+                string username = Request.Cookies["login_admin"].Values["username"].ToString();
+                lblDisplayUsername.Text = username;
+            }
         }
     }
 }
