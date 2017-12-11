@@ -49,40 +49,44 @@
                     </thead>
                     <tbody>
 
-                        <tr>
-                            <td>
-                                <a href="/may-say-quan-ao-electrolux-6-kg-edv6051?variantid=9362597">
+                        <asp:Repeater runat="server" ID="rptCart">
+                            <ItemTemplate>
+                                <tr>
+                                    <td>
+                                        <a href="ProductDetail.aspx?id=<%#Eval("ID") %>">
 
-                                    <img alt="MÁY S?Y QU?N ÁO ELECTROLUX 6 KG EDV6051" src="Content/images/sanpham-8.jpg" class="img-fix">
-                                </a>
-                            </td>
-                            <td>
-                                <a href="/may-say-quan-ao-electrolux-6-kg-edv6051?variantid=9362597" id="product_name">MÁY SẤY QUẦN ÁO ELECTROLUX 6 KG EDV6051</a>
+                                            <img alt="<%#Eval("Name") %>" src="<%#Eval("Image") %>" class="img-fix">
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="ProductDetail.aspx?id=<%#Eval("ID") %>" id="product_name"><%#Eval("Name") %></a>
 
-                            </td>
-                            <td>7.900.000?</td>
-                            <td>
-                                <div class="cartQtyGroup">
-                                    <%--<a href="#" class="button">Cập nhật giỏ hàng</a>--%>
-                                    <asp:Button Text="-" ID="btnSub" CssClass="cartQtyButton" runat="server" />
-                                    <%--<a href="/checkout" class="button">Tiến hành thanh toán</a>--%>
-                                    <asp:TextBox ID="Qty4326078" CssClass="input-control" runat="server">1</asp:TextBox>
-                                    <%--<button class="button cartQtyButton">+</button>--%>
+                                    </td>
+                                    <td><%# Eval("Price", "{0:0,0} đ") %></td>
+                                    <td>
+                                        <div class="cartQtyGroup">
+                                            <%--<a href="#" class="button">Cập nhật giỏ hàng</a>--%>
+                                            <asp:Button Text="-" ID="btnSub" CssClass="cartQtyButton" runat="server" />
+                                            <%--<a href="/checkout" class="button">Tiến hành thanh toán</a>--%>
+                                            <input type="text" ID="Qty4326078" class="input-control" value="<%# Eval("Quantity") %>" />
+                                            <%--<asp:TextBox ID="Qty4326078" CssClass="input-control" runat="server" Text=""></asp:TextBox>--%>
+                                            <button class="button cartQtyButton">+</button>
 
-                                    <asp:Button Text="+" ID="btnAdd" CssClass="cartQtyButton" runat="server" />
-                                </div>
-                            </td>
-                            <td class="auto-style1"><b>7.900.000?</b>
-                            </td>
-                            <td>
-                                <%--<a href="/cart/change?line=1&amp;quantity=0" data-toggle="tooltip" data-placement="top" title="" data-original-title="Xóa"><i class="fa fa-trash"></i>--%>
-                                <%--<asp:CheckBox ID="chkDel" Text="X" ForeColor="Red" runat="server" OnCheckedChanged="chkDel_CheckedChanged" />--%>
+                                            <%--<asp:Button Text="+" ID="btnAdd" CssClass="cartQtyButton" runat="server" />--%>
+                                        </div>
+                                    </td>
+                                    <td class="auto-style1"><b><%# Eval("Total", "{0:0,0} đ") %></b>
+                                    </td>
+                                    <td>
+                                        <a href="/cart/change?line=1&amp;quantity=0" data-toggle="tooltip" data-placement="top" title="" data-original-title="Xóa"><i class="fa fa-trash"></i>
+                                            <%--<asp:CheckBox ID="chkDel" Text="X" ForeColor="Red" runat="server" />--%>
 
-                                <%--</a>--%>
-                                <asp:Button Text="X" ForeColor="Red" ID="btnDel" runat="server" />
-                            </td>
-                        </tr>
-
+                                        </a>
+                                        <%--<asp:Button Text="X" ForeColor="Red" ID="btnDel" runat="server" />--%>
+                                    </td>
+                                </tr>
+                            </ItemTemplate>
+                        </asp:Repeater>
                     </tbody>
                 </table>
             </div>

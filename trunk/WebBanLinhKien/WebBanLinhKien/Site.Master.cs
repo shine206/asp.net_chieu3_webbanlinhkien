@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Text;
 using System.Data;
+using System.Globalization;
 
 namespace WebBanLinhKien
 {
@@ -71,6 +72,7 @@ namespace WebBanLinhKien
         protected void Page_Load(object sender, EventArgs e)
         {
             loadLeftMenu();
+            loadCartInfo();
             StringBuilder html = new StringBuilder();
             HttpCookie ck = Request.Cookies["User_Login"];
             if (ck != null)
@@ -92,6 +94,32 @@ namespace WebBanLinhKien
             {
                 Response.Redirect("Search.aspx?action=search&type=name&q=" + txtQuery.Text);
             }
+        }
+
+        protected void loadCartInfo()
+        {
+            StringBuilder html = new StringBuilder();
+            if (Session["cart"] != null)
+            {
+                
+                DataTable dtCart = Session["cart"] as DataTable;
+                lblCounter.Text = dtCart.Rows.Count.ToString();
+                int sum = 0;
+                foreach (DataRow row in dtCart.Rows)
+                {
+                    sum += Convert.ToInt32(row["Price"]) * Convert.ToInt32(row["Quantity"]);
+                }
+                CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");   // try with "en-US"
+                string tien = double.Parse(sum.ToString()).ToString("#,### đ", cul.NumberFormat);
+                html.Append("<div class='clearfix bottomMiniCart'><span class='left'>Tổng cộng</span>");
+                html.Append("<span class='right totalCart' style='float: right;'>" + tien + "</span></div>");
+            }
+            else
+            {
+                html.Append("Không có sản phẩm nào trong giỏ hàng của bạn!");
+            }
+
+            CartInfoContent.Controls.Add(new Literal { Text = html.ToString() });
         }
 
         protected void loadLeftMenu()

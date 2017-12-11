@@ -154,7 +154,7 @@ namespace WebBanLinhKien
                 html.Append("<div class='col-xs-12 col-sm-6 col-md-4 col-lg-3'><div class='productGrid'>" + promotion);
                 html.Append("<div class='productImg'><a href='#' title='" + nameProduct + "'><img src='" + link_image + "' data-original='" + link_image + "' class='img-fix' alt='" + nameProduct + "' style='display: inline;'></a>");
                 html.Append("<div class='hoverButtons'><span data-toggle='modal' data-target='ProductDetail.aspx?id=" + id_product + "'><a href='ProductDetail.aspx?id=" + id_product + "' class='button quickview-btn' data-toggle='tooltip' data-placement='top' title='' data-countdown='null' data-alias='" + fn.convertToUnSign3(nameProduct) + "' data-original-title='Xem nhanh'><i class='fa fa-search'></i></a></span>");
-                html.Append("<a href='#' class='button skype' data-toggle='tooltip' data-placement='top' title='' data-original-title='Tư vấn qua Skype'><i class='fa fa-skype'></i></a></div></div>");
+                html.Append("<a href='Cart.aspx?action=add&id="+ id_product +"' class='button skype' data-toggle='tooltip' data-placement='top' title='' data-original-title='Thêm vào giỏ hàng'><i class='fa fa-shopping-cart'></i></a></div></div>");
                 html.Append("<h3><a href='ProductDetail.aspx?id=" + id_product + "' title='" + nameProduct + "'>" + nameProduct + "</a></h3><div class='productPrice'><del>" + giaGiam + "</del><span>" + price + "</span></div>");
                 html.Append("<div class='actions clearfix'><a href='#' class='button'><i class='hoverButton'></i>Chọn sản phẩm</a></div></div></div>");
                 DataRow tempRow = dtModalProducts.NewRow();

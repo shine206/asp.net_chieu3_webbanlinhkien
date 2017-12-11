@@ -22,7 +22,7 @@
     <link href="Content/css/cart.css" rel="stylesheet" type="text/css" />
     <link href="Content/css/contact.css" rel="stylesheet" type="text/css" />
     <link href="Content/css/policy.css" rel="stylesheet" type="text/css" />
-    <link href="Content/css/detail.css" rel="stylesheet" type="text/css"/>
+    <link href="Content/css/detail.css" rel="stylesheet" type="text/css" />
     <%--<webopt:BundleReference runat="server" Path="~/Content/css" />--%>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
@@ -83,7 +83,7 @@
                                 <li><a href="Introdue.aspx">Giới thiệu</a></li>
                                 <asp:ContentPlaceHolder ID="userContent" runat="server"></asp:ContentPlaceHolder>
                             </ul>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -105,7 +105,7 @@
                     <div class="panel">
                         <a href="#headerPanelMobileListLinks" class="dropDownButton" data-toggle="collapse" data-parent="#headerPanelMobile"><i class="fa fa-ellipsis-v"></i></a>
                         <div class="headerPanelMobileDropList dropList collapse" id="headerPanelMobileListLinks">
-                            <a href="rules.html">Điều khoản</a>
+                            <a href="Policy.aspx">Điều khoản</a>
                             <a href="Policy.aspx">Chính sách</a>
                             <a href="Introdue.aspx">Giới thiệu</a>
                             <a href="Register.aspx">Đăng ký</a>
@@ -136,21 +136,23 @@
                         </div>
                         <div class="hidden-xs hidden-sm col-md-5 col-lg-5">
                             <div class="miniCart">
-                                <a href="#" class="linkOver"></a>
+                                <a href="Cart.aspx" class="linkOver"></a>
                                 <i class="spr ico_cart"></i>
                                 <b>Giỏ hàng</b><br>
-                                <span class="cartCount">0</span> sản phẩm
-                            <div class="miniCartWrapper">
-                                <div class="nano-content">
-                                    <div class="hasItem">
-                                        <div class="clearfix bottomMiniCart">
-                                            <span class="left">Tổng cộng</span>
-                                            <span class="right totalCart">0₫</span>
+                                <span class="cartCount"><asp:Label Text="0" ID="lblCounter" runat="server" /></span> sản phẩm
+                                <div class="miniCartWrapper">
+                                    <div class="nano-content">
+                                        
+                                        <div class="noItem">
+                                            <asp:PlaceHolder runat="server" ID="CartInfoContent" />
+                                            <%--<div class="clearfix bottomMiniCart">
+                                                <span class="left">Tổng cộng</span>
+                                                <span class="right totalCart" style="float: right;">0₫</span>
+                                            </div>--%>
                                         </div>
+                                        <%--<div class="noItem" style="">Không có sản phẩm nào trong giỏ hàng của bạn!</div>--%>
                                     </div>
-                                    <div class="noItem" style="">Không có sản phẩm nào trong giỏ hàng của bạn!</div>
                                 </div>
-                            </div>
                             </div>
                             <div class="hotLine">
                                 <i class="fa fa-volume-control-phone" aria-hidden="true"></i>

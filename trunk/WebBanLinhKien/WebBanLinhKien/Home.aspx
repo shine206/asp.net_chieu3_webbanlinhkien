@@ -44,7 +44,7 @@
                                         <img src="<%#Eval("link_image") %>" data-original="<%#Eval("link_image") %>" class="img-responsive" alt="<%#Eval("name") %>" style="display: inline;">
                                     </a>
                                     &nbsp;<div class="hoverButtons">
-                                        <span data-toggle="modal" data-target="#998"><a class="button quickview-btn" data-toggle="tooltip" data-placement="top" title="" data-countdown="null" data-alias="may-giat-panasonic-10-kg-na-f100a1wrv" data-original-title="Cho vào giỏ hàng"><i class="fa fa-shopping-cart"></i></a></span>
+                                        <span data-toggle="modal" data-target="Cart.aspx?action=add&id=<%#Eval("id_product") %>"><a href="Cart.aspx?action=add&id=<%#Eval("id_product") %>" class="button quickview-btn" data-toggle="tooltip" data-placement="top" title="" data-countdown="null" data-alias="may-giat-panasonic-10-kg-na-f100a1wrv" data-original-title="Cho vào giỏ hàng"><i class="fa fa-shopping-cart"></i></a></span>
 
                                         <span data-toggle="modal" data-target="ProductDetail.aspx?id=<%#Eval("id_product") %>"><a href="ProductDetail.aspx?id=<%#Eval("id_product") %>" class="button quickview-btn" data-toggle="tooltip" data-placement="top" title="" data-countdown="null" data-alias="may-giat-panasonic-10-kg-na-f100a1wrv" data-original-title="Xem nhanh"><i class="fa fa-search"></i></a></span>
 
