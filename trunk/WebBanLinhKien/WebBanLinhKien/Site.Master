@@ -78,7 +78,7 @@
                         </div>
                         <div class="hidden-xs hidden-sm col-md-8 col-lg-8">
                             <ul class="list-unstyled list-inline pull-right">
-                                <li><a href="rules.html">Điều khoản</a></li>
+                                <li><a href="Rule.aspx">Điều khoản</a></li>
                                 <li><a href="Policy.aspx">Chính sách</a></li>
                                 <li><a href="Introdue.aspx">Giới thiệu</a></li>
                                 <asp:ContentPlaceHolder ID="userContent" runat="server"></asp:ContentPlaceHolder>

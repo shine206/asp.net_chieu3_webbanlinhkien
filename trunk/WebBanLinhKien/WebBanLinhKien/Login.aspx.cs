@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using System.Drawing;
 
 
 namespace WebBanLinhKien
@@ -40,15 +41,18 @@ namespace WebBanLinhKien
                 DataTable dt = db.loginWithUser(txtName, txtPass);
 
                 if (dt.Rows.Count > 0)
-                {
+                {  
                     HttpCookie cookie = new HttpCookie("User_Login");
                     cookie["Username"] = txtName;
                     cookie.Expires = DateTime.Now.AddDays(1);
                     Response.Cookies.Add(cookie);
-                    //Response.Redirect("Home.aspx");
+                    Response.Redirect("Home.aspx");
                     Response.Redirect(Request.UrlReferrer.ToString());
+                    
                 }
                 else {
+                    lblMessage.ForeColor = Color.Red;
+                    lblMessage.Text = "Đăng nhập không thành công!!!";
                     username.Text = "";
                     passLogin.Text = "";
                     username.Focus();
