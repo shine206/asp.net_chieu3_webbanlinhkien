@@ -40,6 +40,24 @@ namespace WebBanLinhKien.Admin {
         protected global::System.Web.UI.WebControls.ListBox lbNhomDanhMuc;
         
         /// <summary>
+        /// btnSuaNhomDanhMuc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSuaNhomDanhMuc;
+        
+        /// <summary>
+        /// btnXoaNhomDanhMuc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnXoaNhomDanhMuc;
+        
+        /// <summary>
         /// pnAddNew control.
         /// </summary>
         /// <remarks>
@@ -47,6 +65,15 @@ namespace WebBanLinhKien.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnAddNew;
+        
+        /// <summary>
+        /// lblTieuDe control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTieuDe;
         
         /// <summary>
         /// pnMessage control.
@@ -101,5 +128,14 @@ namespace WebBanLinhKien.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnThemDanhMuc;
+        
+        /// <summary>
+        /// btnCapNhatDanhMuc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCapNhatDanhMuc;
     }
 }

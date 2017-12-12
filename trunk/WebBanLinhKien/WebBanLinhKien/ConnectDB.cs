@@ -26,6 +26,7 @@ namespace WebBanLinhKien
         ///     getImagesByIdProduct
         ///     getProductById
         ///     getAllPromotionProducts
+        ///     getCategoryById
         /// POST:
         ///     addNewProduct
         ///     addNewCategory
@@ -750,6 +751,56 @@ namespace WebBanLinhKien
             finally
             {
                 result.Dispose();
+                disconnect();
+            }
+            return result;
+        }
+
+        //getCategoryById
+        public DataTable getCategoryById(int id_category)
+        {
+            DataTable result = new DataTable();
+            try
+            {
+                connect();
+                SqlCommand cmd = new SqlCommand("getCategoryById", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id_category", id_category);
+                SqlDataReader rd = cmd.ExecuteReader();
+                result.Load(rd);
+            }
+            finally
+            {
+                result.Dispose();
+                disconnect();
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Cập nhật danh mục
+        /// </summary>
+        /// <param name="id_category">id danh muc</param>
+        /// <param name="id_group">id danh mục cha</param>
+        /// <param name="name">tên danh mục</param>
+        /// <returns></returns>
+        public bool updateCategory(int id_category, int id_group, string name)
+        {
+            bool result = false;
+            try
+            {
+                connect();
+                SqlCommand cmd = new SqlCommand("updateCategory", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id_category", id_category);
+                cmd.Parameters.AddWithValue("@id_group", id_group);
+                cmd.Parameters.AddWithValue("@name", name);
+                cmd.Parameters.AddWithValue("@updated_at", DateTime.Now);
+                if (cmd.ExecuteNonQuery() == 1)
+                    result = true;
+            }
+            finally
+            {
                 disconnect();
             }
             return result;

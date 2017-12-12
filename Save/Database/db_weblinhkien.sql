@@ -560,3 +560,24 @@ as
 begin
 	select * from Products where (select id_category from Products where id_product=@id_product)=id_category
 end
+go
+-- get category by id_category
+
+create procedure getCategoryById
+	@id_category int
+as
+begin
+	select * from Category where id_category=@id_category
+end
+
+go
+-- update category
+create procedure updateCategory
+	@id_category int,
+	@id_group int,
+	@name nvarchar(50),
+	@updated_at datetime
+as
+begin
+	update Category set id_group_category=@id_group, name=@name, updated_at=@updated_at where id_category=@id_category
+end

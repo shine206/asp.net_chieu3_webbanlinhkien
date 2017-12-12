@@ -20,14 +20,37 @@ namespace WebBanLinhKien.Admin
                 {
                     pnAddNew.Visible = true;
                     pnTable.Visible = false;
+                    btnCapNhatDanhMuc.Visible = false;
+                    btnThemDanhMuc.Visible = true;
                     if (!IsPostBack)
                         LoadCategories();
+
                     return;
                 }
                 else if (action == "delete")
                 {
                     int id = Convert.ToInt32(Request.QueryString["id"].ToString());
                     deleteCategory(id);
+                }
+                else if (action == "edit")
+                {
+                    if (Request.QueryString["id"] != null && Request.QueryString["pID"] != null && !IsPostBack)
+                    {
+                        string id = Request.QueryString["id"].ToString();
+                        string pID = Request.QueryString["pID"].ToString();
+                        pnAddNew.Visible = true;
+                        pnTable.Visible = false;
+                        if (!IsPostBack)
+                            LoadCategories();
+                        ddlDanhMucSanPham.ClearSelection();
+                        ddlDanhMucSanPham.Items.FindByValue(pID).Selected = true;
+                        btnCapNhatDanhMuc.Visible = true;
+                        btnThemDanhMuc.Visible = false;
+                        DataTable dtDanhMuc = (new ConnectDB()).getCategoryById(Convert.ToInt32(id));
+                        txtTenDanhMuc.Text = dtDanhMuc.Rows[0]["name"].ToString();
+                        lblTieuDe.Text = "Cập nhật danh mục (ID: " + id + ")";
+                        return;
+                    }
                 }
             }
             LoadListCateegoriesToTable();
@@ -76,7 +99,7 @@ namespace WebBanLinhKien.Admin
                 html.Append("<td>" + row["category"] + "</td>");
                 html.Append("<td>" + row["group_category"] + "</td>");
                 html.Append("<td>");
-                html.Append("<a href='Categories.aspx?action=edit&id=" + row["id_category"] + "' class='btn btn-primary btn-sm'>Sửa</a><span style='margin-left:10px;'></span>");
+                html.Append("<a href='Categories.aspx?action=edit&id=" + row["id_category"] + "&pID=" + row["id_group"] + "' class='btn btn-primary btn-sm'>Sửa</a><span style='margin-left:10px;'></span>");
                 html.Append("<a href='Categories.aspx?action=delete&id=" + row["id_category"] + "' class='btn btn-danger btn-sm'>Xóa</a>");
                 html.Append("</td>");
                 html.Append("</tr>");
@@ -84,12 +107,16 @@ namespace WebBanLinhKien.Admin
 
             tableContent.Controls.Add(new Literal { Text = html.ToString() });
 
-            ConnectDB db1 = new ConnectDB();
-            DataTable dt1 = db1.getAllGroupCategories();
-            lbNhomDanhMuc.Items.Clear();
-            foreach (DataRow row in dt1.Rows)
+
+            if (!IsPostBack)
             {
-                lbNhomDanhMuc.Items.Add(new ListItem(row["name"].ToString(), row["id_group_category"].ToString()));
+                ConnectDB db1 = new ConnectDB();
+                DataTable dt1 = db1.getAllGroupCategories();
+                lbNhomDanhMuc.Items.Clear();
+                foreach (DataRow row in dt1.Rows)
+                {
+                    lbNhomDanhMuc.Items.Add(new ListItem(row["name"].ToString(), row["id_group_category"].ToString()));
+                }
             }
         }
 
@@ -114,6 +141,44 @@ namespace WebBanLinhKien.Admin
         protected void btnThemDanhMuc_Click(object sender, EventArgs e)
         {
             addNewCategory();
+        }
+
+        protected void btnXoaNhomDanhMuc_Click(object sender, EventArgs e)
+        {
+            foreach (ListItem li in lbNhomDanhMuc.Items)
+            {
+                if (li.Selected == true)
+                {
+                    bool isSuccess = (new ConnectDB()).deleteCategory(Convert.ToInt32(li.Value), 0);
+                    Response.Redirect("Categories.aspx");
+                    break;
+                }
+            }
+        }
+
+        protected void btnSuaNhomDanhMuc_Click(object sender, EventArgs e)
+        {
+            foreach (ListItem li in lbNhomDanhMuc.Items)
+            {
+                if (li.Selected == true)
+                {
+                    Response.Redirect("Categories.aspx?action=edit&id=" + li.Value);
+                    break;
+                }
+            }
+        }
+
+        protected void btnCapNhatDanhMuc_Click(object sender, EventArgs e)
+        {
+            int id_cat = Convert.ToInt32(Request.QueryString["id"]);
+            int id_group = Convert.ToInt32(ddlDanhMucSanPham.SelectedValue);
+            string name = txtTenDanhMuc.Text;
+            bool isSuccess = (new ConnectDB()).updateCategory(id_cat, id_group, name);
+            if (isSuccess)
+            {
+                pnMessage.Visible = true;
+                lblMessage.Text = "Cập nhật danh mục thành công";
+            }
         }
 
     }

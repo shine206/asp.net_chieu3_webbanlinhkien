@@ -226,8 +226,8 @@ namespace WebBanLinhKien.Admin
 
         protected void ddlDanhMucSanPham_SelectedIndexChanged(object sender, EventArgs e)
         {
-            IdSelectedDanhMuc = Convert.ToInt32(ddlDanhMucSanPham.SelectedValue);
-            Response.Write(IdSelectedDanhMuc.ToString());
+            //IdSelectedDanhMuc = Convert.ToInt32(ddlDanhMucSanPham.SelectedValue);
+            //Response.Write(IdSelectedDanhMuc.ToString());
         }
 
         protected void btnCapNhatSanPham_Click(object sender, EventArgs e)

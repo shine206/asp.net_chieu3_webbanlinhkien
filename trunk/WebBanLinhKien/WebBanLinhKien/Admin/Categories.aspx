@@ -47,7 +47,12 @@
                         </div>
                         <div class="panel-body">
                             <div class="form-group clearfix">
-                                <asp:ListBox runat="server" CssClass="form-control" ID="lbNhomDanhMuc" Rows="10"></asp:ListBox>
+                                <asp:ListBox runat="server" CssClass="form-control" ID="lbNhomDanhMuc" Rows="10" AutoPostBack="true"></asp:ListBox>
+                            </div>
+
+                            <div class="form-group clearfix">
+                                <asp:Button Text="Sửa" CssClass="btn btn-success" ID="btnSuaNhomDanhMuc" runat="server" OnClick="btnSuaNhomDanhMuc_Click" />
+                                <asp:Button Text="Xóa" CssClass="btn btn-danger" ID="btnXoaNhomDanhMuc" runat="server" OnClick="btnXoaNhomDanhMuc_Click" />
                             </div>
                         </div>
                     </div>
@@ -58,7 +63,9 @@
             <asp:Panel runat="server" ID="pnAddNew" Visible="False">
                 <div class="content-box-large">
                     <div class="panel-heading">
-                        <div class="panel-title">Thêm danh mục</div>
+                        <div class="panel-title">
+                            <asp:Label Text="Thêm danh mục" ID="lblTieuDe" runat="server" />
+                        </div>
                     </div>
                     <div class="panel-body">
                         <asp:Panel runat="server" ID="pnMessage" Visible="False">
@@ -79,7 +86,7 @@
                         <div class="form-group clearfix">
                             <label class="col-sm-2 control-label">Tên danh mục:</label>
                             <div class="col-sm-8">
-                                <asp:TextBox runat="server" ID="txtTenDanhMuc" CssClass="form-control" />
+                                <asp:TextBox runat="server" ID="txtTenDanhMuc" CssClass="form-control"/>
                             </div>
                             <div class="col-sm-2">
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" CssClass="err-message" ControlToValidate="txtTenDanhMuc" runat="server" ErrorMessage="Chưa có tên danh mục !" Font-Bold="True" SetFocusOnError="True" ForeColor="Red"></asp:RequiredFieldValidator>
@@ -89,6 +96,7 @@
                         <div class="form-group clearfix">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <asp:Button Text="Thêm danh mục mới" runat="server" CssClass="btn btn-success" ID="btnThemDanhMuc" OnClick="btnThemDanhMuc_Click" />
+                                <asp:Button Text="Cập nhật danh mục mới" runat="server" CssClass="btn btn-success" ID="btnCapNhatDanhMuc" OnClick="btnCapNhatDanhMuc_Click" />
                             </div>
                         </div>
                     </div>
