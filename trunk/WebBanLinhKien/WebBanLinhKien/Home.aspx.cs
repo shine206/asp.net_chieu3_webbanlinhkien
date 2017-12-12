@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Text;
 using System.Data;
 using System.Globalization;
+using System.Web.Services;
 
 namespace WebBanLinhKien
 {
@@ -59,6 +60,13 @@ namespace WebBanLinhKien
             }
             rptPromotionContent.DataSource = dt;
             rptPromotionContent.DataBind();
+        }
+
+        [WebMethod()]
+
+        public static string Test(int id)
+        {
+            return "Hello ID: " + id.ToString();
         }
 
         protected void loadLeftMenu()

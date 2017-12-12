@@ -1,4 +1,19 @@
-$(document).ready(function() {
+
+function Test(id) {
+    jQuery.ajax({
+        url: 'Home.aspx/Test',
+        type: "POST",
+        data: '{"id":' + id.toString() + '}',
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (value) {
+            console.log(value);
+            alert(value);
+        }
+    });
+}
+
+$(document).ready(function () {
     // top menu
     if ($(this).scrollTop() >= $('.top-header').height() + $('.mid-header').height() && $(window).width() >= 992)
     {

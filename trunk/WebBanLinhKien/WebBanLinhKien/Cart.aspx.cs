@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using System.Web.Services;
 
 namespace WebBanLinhKien
 {
@@ -23,7 +24,8 @@ namespace WebBanLinhKien
                 cart.Columns.Add("Total");
                 Session["cart"] = cart;
             }
-            else {
+            else
+            {
                 cart = Session["cart"] as DataTable;
             }
 
@@ -91,7 +93,7 @@ namespace WebBanLinhKien
         {
         }
 
-        
+
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
         }
@@ -100,8 +102,43 @@ namespace WebBanLinhKien
         {
         }
 
+        [WebMethod(EnableSession = true)]
+        public static string changeQuantity(string id, string op)
+        {
+            int quantity = 1;
+            int total = -1;
+            //Session["cart"]
+            if (HttpContext.Current.Session["cart"] != null)
+            {
+                DataTable dtCart = HttpContext.Current.Session["cart"] as DataTable;
+                foreach (DataRow row in dtCart.Rows)
+                {
+                    if (row["ID"].ToString() == id)
+                    {
+                        
+                        if (op == "1")
+                            quantity = Convert.ToInt32(row["Quantity"]) + 1;
+                        else
+                        {
+                            if (Convert.ToInt32(row["Quantity"]) > 0)
+                            {
+                                quantity = Convert.ToInt32(row["Quantity"]) - 1;
+                            }
+                        }
+                        total = quantity * Convert.ToInt32(row["Price"]);
+                        row["Total"] = total;
+                        row["Quantity"] = quantity;
+                        break;
+                    }
+                }
+                HttpContext.Current.Session["cart"] = dtCart;
+                return "{\"Quantity\": " + quantity.ToString() + ", \"Total\": "+ total.ToString() +"}";
+            }
+            return "";
+        }
 
 
-        
+
+
     }
 }

@@ -24,7 +24,9 @@
 </asp:Content>
 
 
+
 <asp:Content runat="server" ContentPlaceHolderID="PromotionProductContent" ID="PromotionProductContent">
+    <button class="btn" onclick="Test(1)">Hello</button>
     <div class="clearfix">
         <div class="coDownCollection">
             <h2 class="titleDecoration">

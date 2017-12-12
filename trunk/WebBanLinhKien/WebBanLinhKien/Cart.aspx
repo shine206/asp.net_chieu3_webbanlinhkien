@@ -65,17 +65,24 @@
                                     <td><%# Eval("Price", "{0:0,0} đ") %></td>
                                     <td>
                                         <div class="cartQtyGroup">
-                                            <%--<a href="#" class="button">Cập nhật giỏ hàng</a>--%>
-                                            <asp:Button Text="-" ID="btnSub" CssClass="cartQtyButton" runat="server" />
-                                            <%--<a href="/checkout" class="button">Tiến hành thanh toán</a>--%>
-                                            <input type="text" ID="Qty4326078" class="input-control" value="<%# Eval("Quantity") %>" />
-                                            <%--<asp:TextBox ID="Qty4326078" CssClass="input-control" runat="server" Text=""></asp:TextBox>--%>
-                                            <button class="button cartQtyButton">+</button>
+                                            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                                <ContentTemplate>
+                                                    <%--<a href="#" class="button">Cập nhật giỏ hàng</a>--%>
+                                                    <button class="cartQtyButton" onclick="changeQuantity(<%#Eval("ID") %>, 2)">-</button>
+                                                    <%--<asp:Button Text="-" ID="btnSub" CssClass="cartQtyButton" runat="server" />--%>
+                                                    <%--<a href="/checkout" class="button">Tiến hành thanh toán</a>--%>
+                                                    <input type="text" id="Qty4326078" class="input-control" data-id="<%#Eval("ID") %>" value="<%# Eval("Quantity") %>" />
+                                                    <%--<asp:TextBox ID="Qty4326078" CssClass="input-control" runat="server" Text=""></asp:TextBox>--%>
+
+                                                    <button class="button cartQtyButton" onclick="changeQuantity(<%#Eval("ID") %>, 1)">+</button>
+                                                </ContentTemplate>
+                                            </asp:UpdatePanel>
+
 
                                             <%--<asp:Button Text="+" ID="btnAdd" CssClass="cartQtyButton" runat="server" />--%>
                                         </div>
                                     </td>
-                                    <td class="auto-style1"><b><%# Eval("Total", "{0:0,0} đ") %></b>
+                                    <td class="auto-style1"><b data-id="<%#Eval("ID") %>"><%# Eval("Total", "{0:0,0} đ") %></b>
                                     </td>
                                     <td>
                                         <a href="/cart/change?line=1&amp;quantity=0" data-toggle="tooltip" data-placement="top" title="" data-original-title="Xóa"><i class="fa fa-trash"></i>
@@ -130,6 +137,28 @@
             </div>
         </div>
     </section>
+    <script>
+        function changeQuantity(id, op) {
+            jQuery.ajax({
+                url: 'Cart.aspx/changeQuantity',
+                type: "POST",
+                data: '{"id":' + id.toString() + ', "op":' + op.toString() + '}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (value) {
+                    if (value.d != "") {
+                        var obj = jQuery.parseJSON(value.d);
+                        $("input[data-id=" + id + "]").val(obj.Quantity);
+                        $("b[data-id=" + id + "]").html(obj.Total);
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("some error");
+                }
+            });
+        }
+
+    </script>
 </asp:Content>
 <asp:Content ID="Content7" ContentPlaceHolderID="BrandContent" runat="server">
 </asp:Content>
