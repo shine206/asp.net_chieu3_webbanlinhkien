@@ -23,21 +23,39 @@ namespace WebBanLinhKien
                 cart.Columns.Add("Quantity");
                 cart.Columns.Add("Total");
                 Session["cart"] = cart;
+                pnNoItem.Visible = true;
+                pnTableCart.Visible = false;
             }
             else
             {
                 cart = Session["cart"] as DataTable;
+                pnNoItem.Visible = false;
+                pnTableCart.Visible = true;
             }
 
             if (!String.IsNullOrEmpty(Request.QueryString["action"]))
             {
-                if (Request.QueryString["action"] == "add")
+                if (Request.QueryString["action"] == "delete")
+                {
+                    string id = Request.QueryString["id"].ToString();
+                    foreach (DataRow row in cart.Rows)
+                    {
+                        if (row["ID"].ToString() == id)
+                        {
+                            row.Delete();
+                            break;
+                        }
+                    }
+                    cart.AcceptChanges();
+                    Session["cart"] = cart;
+                }
+                else if (Request.QueryString["action"] == "add")
                 {
                     string id = Request.QueryString["id"].ToString();
                     bool isExisted = false;
                     foreach (DataRow row in cart.Rows)
                     {
-                        if (row["ID"] == id)
+                        if (row["ID"].ToString() == id)
                         {
                             int quantity = Convert.ToInt32(row["Quantity"]) + 1;
                             row["Quantity"] = quantity;
@@ -85,6 +103,12 @@ namespace WebBanLinhKien
 
         protected void loadCartToView(DataTable cart)
         {
+            int sum = 0;
+            foreach (DataRow row in cart.Rows)
+            {
+                sum += Convert.ToInt32(row["Price"]) * Convert.ToInt32(row["Quantity"]);
+            }
+            lblSum.Text = sum.ToString("#,### đ");
             rptCart.DataSource = cart;
             rptCart.DataBind();
         }
@@ -120,7 +144,7 @@ namespace WebBanLinhKien
                             quantity = Convert.ToInt32(row["Quantity"]) + 1;
                         else
                         {
-                            if (Convert.ToInt32(row["Quantity"]) > 0)
+                            if (Convert.ToInt32(row["Quantity"]) > 1)
                             {
                                 quantity = Convert.ToInt32(row["Quantity"]) - 1;
                             }
@@ -132,7 +156,14 @@ namespace WebBanLinhKien
                     }
                 }
                 HttpContext.Current.Session["cart"] = dtCart;
-                return "{\"Quantity\": " + quantity.ToString() + ", \"Total\": "+ total.ToString() +"}";
+
+                // Get sum of among in cart
+                int sum = 0;
+                foreach (DataRow row in dtCart.Rows)
+                {
+                    sum += Convert.ToInt32(row["Price"]) * Convert.ToInt32(row["Quantity"]);
+                }
+                return "{\"Quantity\": " + quantity.ToString() + ", \"Total\": "+ total.ToString() +", \"Sum\": "+ sum.ToString() +"}";
             }
             return "";
         }

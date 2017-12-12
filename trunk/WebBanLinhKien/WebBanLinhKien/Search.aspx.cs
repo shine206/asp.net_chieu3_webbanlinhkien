@@ -16,7 +16,7 @@ namespace WebBanLinhKien
         protected void Page_Load(object sender, EventArgs e)
         {
             string viewType = "1";
-            
+
             if (Request.QueryString["view"] != null)
             {
                 viewType = Request.QueryString["view"].ToString();
@@ -194,16 +194,16 @@ namespace WebBanLinhKien
                             image_link = dtImages.Rows[0]["link_image"].ToString();
                         }
                     }
-
+                    string id_product = row["id_product"].ToString();
                     if (view == "1")
                     {
                         html.Append("<div class='coDownProduct'><div class='productGrid'><div class='countDown' data-end='kmdn_ngay1_thang12_nam2017'>208D : 12H : 38M : 10S</div><div class='productImg'>");
                         html.Append("<a href='#' title='" + row["name"] + "'><img src='" + image_link + "' data-original='" + image_link + "' class='img-fix' alt='" + row["name"] + "' style='display: inline;'></a>");
                         html.Append("<div class='hoverButtons'>");
-                        html.Append("<span data-toggle='modal' data-target='#998'><a class='button quickview-btn' data-toggle='tooltip' data-placement='top' title='' data-countdown='null' data-alias='may-giat-panasonic-10-kg-na-f100a1wrv' data-original-title='Cho vào giỏ hàng'><i class='fa fa-shopping-cart'></i></a></span>");
-                        html.Append("<span data-toggle='modal' data-target='#999'><a class='button quickview-btn' data-toggle='tooltip' data-placement='top' title='' data-countdown='null' data-alias='may-giat-panasonic-10-kg-na-f100a1wrv' data-original-title='Xem nhanh'><i class='fa fa-search'></i></a></span>");
+                        html.Append("<span data-toggle='modal' data-target='Cart.aspx?action=add&id=" + id_product + "'><a href='Cart.aspx?action=add&id=" + id_product + "' class='button quickview-btn' data-toggle='tooltip' data-placement='top' title='' data-countdown='null' data-alias='may-giat-panasonic-10-kg-na-f100a1wrv' data-original-title='Cho vào giỏ hàng'><i class='fa fa-shopping-cart'></i></a></span>");
+                        html.Append("<span data-toggle='modal' data-target='ProductDetail.aspx?id=" + id_product + "'><a href='ProductDetail.aspx?id=" + id_product + "' class='button quickview-btn' data-toggle='tooltip' data-placement='top' title='' data-countdown='null' data-alias='may-giat-panasonic-10-kg-na-f100a1wrv' data-original-title='Xem nhanh'><i class='fa fa-search'></i></a></span>");
                         html.Append("<a href='#' class='button skype' data-toggle='tooltip' data-placement='top' title='' data-original-title='Tư vấn qua Skype'><i class='fa fa-skype'></i></a>");
-                        html.Append("</div></div><h3><a href='#' title='" + row["name"] + "'>" + row["name"] + "</a></h3>");
+                        html.Append("</div></div><h3><a href='ProductDetail.aspx?id=" + id_product + "' title='" + row["name"] + "'>" + row["name"] + "</a></h3>");
                         html.Append("<div class='productPrice'><del>7.990.000₫</del><span>&nbsp;&nbsp;" + tien + "</span></div></div></div>");
                     }
                     else
