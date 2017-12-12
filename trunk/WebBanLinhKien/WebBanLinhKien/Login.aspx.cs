@@ -47,8 +47,7 @@ namespace WebBanLinhKien
                     cookie.Expires = DateTime.Now.AddDays(1);
                     Response.Cookies.Add(cookie);
                     Response.Redirect("Home.aspx");
-                    Response.Redirect(Request.UrlReferrer.ToString());
-                    
+                    Response.Redirect(Request.UrlReferrer.ToString());     
                 }
                 else {
                     lblMessage.ForeColor = Color.Red;
@@ -65,6 +64,5 @@ namespace WebBanLinhKien
             }
             
         }
-
     }
 }
