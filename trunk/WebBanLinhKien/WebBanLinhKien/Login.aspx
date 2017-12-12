@@ -11,7 +11,7 @@
                                 
                                 <asp:Label ID="lblMessage" Text="" runat="server"></asp:Label>
 
-                        <form accept-charset="UTF-8" action="#" id="customer_login" method="post">
+                        <div  id="customer_login" method="post">
                             <input name="FormType" type="hidden" value="customer_login">
                             <input name="utf8" type="hidden" value="true">
                             <div class="group">
@@ -42,7 +42,7 @@
                             <asp:Button Text="Đăng nhập" CssClass="button" ID="btnDangNhap" OnClick="btnDangNhap_Click" runat="server" />
                             
                             
-                        </form>
+                        </div>
                     </div>
                     <div class="formAccountPage" id="recoverForm" style="display: none">
                         <h2 class="titleDecoration AccountPageTitle"><span class="line"></span><span class="title fz18"><i class="fa fa-lock"></i>&nbsp; Lấy lại mật khẩu</span></h2>
