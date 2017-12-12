@@ -29,35 +29,53 @@ namespace WebBanLinhKien
             else
             {
                 cart = Session["cart"] as DataTable;
-                pnNoItem.Visible = false;
-                pnTableCart.Visible = true;
+                if (cart.Rows.Count > 0)
+                {
+                    pnNoItem.Visible = false;
+                    pnTableCart.Visible = true;
+                }
+                else
+                {
+                    pnNoItem.Visible = true;
+                    pnTableCart.Visible = false;
+                }
+
             }
 
             if (!String.IsNullOrEmpty(Request.QueryString["action"]))
             {
                 if (Request.QueryString["action"] == "delete")
                 {
-                    string id = Request.QueryString["id"].ToString();
-                    foreach (DataRow row in cart.Rows)
+                    if (!IsPostBack)
                     {
-                        if (row["ID"].ToString() == id)
+                        string id = Request.QueryString["id"].ToString();
+                        foreach (DataRow row in cart.Rows)
                         {
-                            row.Delete();
-                            break;
+                            if (row["ID"].ToString() == id)
+                            {
+                                row.Delete();
+                                break;
+                            }
                         }
+                        cart.AcceptChanges();
+                        Session["cart"] = cart;
+                        Response.Redirect("Cart.aspx");
                     }
-                    cart.AcceptChanges();
-                    Session["cart"] = cart;
                 }
                 else if (Request.QueryString["action"] == "add")
                 {
                     string id = Request.QueryString["id"].ToString();
                     bool isExisted = false;
+                    int nQ = 1;
+                    if (Request.QueryString["Quantity"] != null)
+                        nQ = Convert.ToInt32(Request.QueryString["Quantity"]);
                     foreach (DataRow row in cart.Rows)
                     {
                         if (row["ID"].ToString() == id)
                         {
-                            int quantity = Convert.ToInt32(row["Quantity"]) + 1;
+
+
+                            int quantity = Convert.ToInt32(row["Quantity"]) + nQ;
                             row["Quantity"] = quantity;
                             row["Total"] = quantity * Convert.ToInt32(row["Price"]);
                             isExisted = true;
@@ -84,17 +102,24 @@ namespace WebBanLinhKien
                             dr["Name"] = name;
                             dr["Price"] = price;
                             dr["Image"] = image_link;
-                            dr["Quantity"] = 1;
+                            dr["Quantity"] = nQ;
                             dr["Total"] = price;
                             cart.Rows.Add(dr);
                         }
                     }
 
                     Session["cart"] = cart;
-                    if (Request.UrlReferrer != null)
-                        Response.Redirect(Request.UrlReferrer.ToString());
+                    if (Request.QueryString["Quantity"] != null)
+                    {
+                        Response.Redirect("Cart.aspx");
+                    }
                     else
-                        Response.Redirect("Home.aspx");
+                    {
+                        if (Request.UrlReferrer != null)
+                            Response.Redirect(Request.UrlReferrer.ToString());
+                        else
+                            Response.Redirect("Home.aspx");
+                    }
                 }
             }
             loadCartToView(cart);
@@ -120,10 +145,12 @@ namespace WebBanLinhKien
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
+            Response.Redirect("Cart.aspx");
         }
 
         protected void btnContinue_Click(object sender, EventArgs e)
         {
+            Response.Redirect("Home.aspx");
         }
 
         [WebMethod(EnableSession = true)]
@@ -139,7 +166,7 @@ namespace WebBanLinhKien
                 {
                     if (row["ID"].ToString() == id)
                     {
-                        
+
                         if (op == "1")
                             quantity = Convert.ToInt32(row["Quantity"]) + 1;
                         else
@@ -163,7 +190,7 @@ namespace WebBanLinhKien
                 {
                     sum += Convert.ToInt32(row["Price"]) * Convert.ToInt32(row["Quantity"]);
                 }
-                return "{\"Quantity\": " + quantity.ToString() + ", \"Total\": "+ total.ToString() +", \"Sum\": "+ sum.ToString() +"}";
+                return "{\"Quantity\": " + quantity.ToString() + ", \"Total\": " + total.ToString() + ", \"Sum\": " + sum.ToString() + "}";
             }
             return "";
         }

@@ -100,5 +100,11 @@ namespace WebBanLinhKien
                 //loadRelatedProducts(idProduct, (Repeater)e.Item.FindControl("rptRelatedProducts"));
             }
         }
+
+        protected void btnAddToCart_Click(object sender, EventArgs e)
+        {
+            string quantity = Request.Form["quantity"];
+            Response.Write(quantity);
+        }
     }
 }

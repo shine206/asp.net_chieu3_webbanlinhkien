@@ -26,7 +26,6 @@
 
 
 <asp:Content runat="server" ContentPlaceHolderID="PromotionProductContent" ID="PromotionProductContent">
-    <button class="btn" onclick="Test(1)">Hello</button>
     <div class="clearfix">
         <div class="coDownCollection">
             <h2 class="titleDecoration">
@@ -59,7 +58,7 @@
                                     <span><%# Eval("price", "{0:0,0} đ") %></span>
                                 </div>
                                 <div class="actions clearfix">
-                                    <a href="#" class="button"><i class="hoverButton"></i>Chọn sản phẩm</a>
+                                    <a href="Cart.aspx?action=add&id=<%#Eval("id_product") %>&quantity=1" class="button"><i class="hoverButton"></i>Chọn sản phẩm</a>
                                 </div>
                             </div>
                         </div>

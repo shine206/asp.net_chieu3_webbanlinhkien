@@ -67,7 +67,7 @@ namespace WebBanLinhKien.Admin
                         int id = Convert.ToInt32(Request.QueryString["id"].ToString());
                         bool isDeleted = (new ConnectDB()).deleteImageById(id);
                         string referer = Request.UrlReferrer.ToString();
-                        Response.Redirect(referer);
+                        //Response.Redirect(referer);
                         //Response.Write(referer);
                     }
                 }
@@ -178,7 +178,7 @@ namespace WebBanLinhKien.Admin
                 {
                     ConnectDB dbUpload = new ConnectDB();
                     dbUpload.uploadImages(image);
-                    Response.Write("Updated " + image + "\r\n");
+                    //Response.Write("Updated " + image + "\r\n");
                 }
             }
 

@@ -223,7 +223,8 @@
                             <input type="hidden" name="contact[Name]" value="Đăng ký nhận mã giảm giá 10% cho tất cả mặt hàng">
                             <input type="hidden" name="contact[Body]" value="Đăng ký nhận mã giảm giá 10% cho tất cả mặt hàng">
                             <input type="email" name="contact[email]" class="input-control" placeholder="Nhập email của bạn...">
-                            <button><i class="fa fa-envelope" aria-hidden="true"></i></button>
+                            <%--<button runat="server" id="btnSendMail" OnClick="btnSendMail_Click"><i class="fa fa-envelope" aria-hidden="true"></i></button>--%>
+                            <asp:LinkButton runat="server" ID="btnSendMail" OnClick="btnSendMail_Click"><i class="fa fa-envelope" aria-hidden="true"></i></asp:LinkButton>
                         </div>
                     </div>
                 </div>

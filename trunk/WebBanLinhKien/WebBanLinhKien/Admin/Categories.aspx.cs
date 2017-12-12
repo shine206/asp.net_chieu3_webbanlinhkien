@@ -20,7 +20,8 @@ namespace WebBanLinhKien.Admin
                 {
                     pnAddNew.Visible = true;
                     pnTable.Visible = false;
-                    LoadCategories();
+                    if (!IsPostBack)
+                        LoadCategories();
                     return;
                 }
                 else if (action == "delete")
@@ -36,7 +37,6 @@ namespace WebBanLinhKien.Admin
         {
             ConnectDB db = new ConnectDB();
             int id = Convert.ToInt32(ddlDanhMucSanPham.SelectedItem.Value);
-            //Response.Write();
             string name = txtTenDanhMuc.Text.ToString();
             bool isSuccess = db.addNewCategory(id, name);
             if (isSuccess)
@@ -62,7 +62,7 @@ namespace WebBanLinhKien.Admin
                 lblMessage.Text = "Xóa sản phẩm thất bại";
             }
         }
-        
+
         private void LoadListCateegoriesToTable()
         {
             ConnectDB db = new ConnectDB();

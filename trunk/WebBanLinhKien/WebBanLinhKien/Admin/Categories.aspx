@@ -70,7 +70,7 @@
                         <div class="form-group clearfix">
                             <label class="col-sm-2 control-label">Danh mục cha:</label>
                             <div class="col-sm-8">
-                                <asp:DropDownList runat="server" CssClass="form-control" ID="ddlDanhMucSanPham">
+                                <asp:DropDownList runat="server" CssClass="form-control" ID="ddlDanhMucSanPham" AutoPostBack="true">
                                     <asp:ListItem Text="Danh mục gốc" Value="0" />
                                 </asp:DropDownList>
                             </div>

@@ -1,7 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ProductDetail.aspx.cs" Inherits="WebBanLinhKien.ProductDetail" MasterPageFile="~/Site.Master" %>
 
 <asp:Content ContentPlaceHolderID="ProductContent" ID="productDetailContent" runat="server">
-
     <section class="blogPage">
         <div class="container">
             <div class="row">
@@ -75,11 +74,16 @@
                                                         <div class="quickViewProductQuantityGroup">
                                                             <button class="button quickViewProductQuantityButton" onclick="var result = document.getElementById('quickviewQty'); var quickviewQty = result.value; if( !isNaN( quickviewQty ) &amp;&amp; quickviewQty > 1 ) result.value--;return false;">-</button>
                                                             <input type="text" title="Số lượng" value="1" min="1" class="quickviewQty" id="quickviewQty" name="quantity">
+                                                            <input type="hidden" id="idProduct" value="<%#Eval("id_product") %>"/>
+                                                            <%--<asp:TextBox runat="server" Text="1" CssClass="quickviewQty" ID=""/>--%>
                                                             <button class="button quickViewProductQuantityButton" onclick="var result = document.getElementById('quickviewQty'); var quickviewQty = result.value; if( !isNaN( quickviewQty )) result.value++;return false;">+</button>
                                                         </div>
                                                     </div>
                                                     <div class="quickViewProductButtons">
-                                                        <button class="button quickViewAddCart">
+                                                        <%--<asp:LinkButton ID="btnAddToCart" runat="server" CssClass="button quickViewAddCart" style="text-decoration: none;" OnClick="btnAddToCart_Click">
+                                                            <i class="fa fa-shopping-cart"></i>Cho vào giỏ hàng
+                                                        </asp:LinkButton>--%>
+                                                        <button id="btnAddToCart" class="button quickViewAddCart" style="text-decoration: none;">
                                                             <i class="fa fa-shopping-cart"></i>Cho vào giỏ hàng
                                                         </button>
                                                         <a href="javascript:void(0);" class="button quickViewContact" style="display: none;" data-code="T2015DC">
@@ -240,7 +244,7 @@
                                                     <a href="ProductDetail.aspx?id=<%#Eval("id_product") %>" title="<%#Eval("name") %>">
                                                         <img src="<%#Eval("image_link") %>" data-original="<%#Eval("image_link") %>" class="img-fix" alt="<%#Eval("name") %>" style="display: inline;">
                                                     </a>
-                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="hoverButtons">
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="hoverButtons">
                                                         <span data-toggle="modal" data-target="#998"><a class="button quickview-btn" data-toggle="tooltip" data-placement="top" title="" data-countdown="null" data-alias="may-giat-panasonic-10-kg-na-f100a1wrv" data-original-title="Cho vào giỏ hàng"><i class="fa fa-shopping-cart"></i></a></span>
 
                                                         <span data-toggle="modal" data-target="#999"><a class="button quickview-btn" data-toggle="tooltip" data-placement="top" title="" data-countdown="null" data-alias="may-giat-panasonic-10-kg-na-f100a1wrv" data-original-title="Xem nhanh"><i class="fa fa-search"></i></a></span>
@@ -351,6 +355,15 @@
         </div>
     </section>
     <!-- End BlogPage -->
-
+    <script>
+        $(document).ready(function () {
+            $("#btnAddToCart").click(function () {
+                var id = $("#idProduct").val();
+                var quantity = $("#quickviewQty").val();
+                alert("Cart.aspx?action=add&id=" + id + "&quantity=" + quantity);
+                window.location.href = "Cart.aspx?action=add&id=" + id + "&quantity=" + quantity;
+            });
+        });
+    </script>
 
 </asp:Content>

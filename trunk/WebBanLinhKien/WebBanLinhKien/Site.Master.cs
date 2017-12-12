@@ -186,5 +186,10 @@ namespace WebBanLinhKien
             }
             mobileMenuContent.Controls.Add(new Literal { Text = html.ToString() });
         }
+
+        protected void btnSendMail_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
