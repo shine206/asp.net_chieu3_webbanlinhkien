@@ -386,6 +386,7 @@
     <Content Include="Admin\Content\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Admin\Content\bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Payment.aspx" />
     <Content Include="Policy.aspx" />
     <Content Include="ProductDetail.aspx" />
     <Content Include="ProductSingle.aspx" />
@@ -557,6 +558,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Payment.aspx.cs">
+      <DependentUpon>Payment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Payment.aspx.designer.cs">
+      <DependentUpon>Payment.aspx</DependentUpon>
     </Compile>
     <Compile Include="Policy.aspx.cs">
       <DependentUpon>Policy.aspx</DependentUpon>
