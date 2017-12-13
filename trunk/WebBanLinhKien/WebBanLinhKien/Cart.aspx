@@ -57,7 +57,7 @@
 
                                                 <img alt="<%#Eval("Name") %>" src="<%#Eval("Image") %>" class="img-fix">
                                             </a>
-                                        </td>
+                                        &nbsp;&nbsp;&nbsp;</td>
                                         <td>
                                             <a href="ProductDetail.aspx?id=<%#Eval("ID") %>" id="product_name"><%#Eval("Name") %></a>
 
@@ -128,7 +128,7 @@
                             </tbody>
                         </table>
                         <%--<a href="/checkout" class="button">Tiến hành thanh toán</a>--%>
-                        <asp:Button Text="Tiến hành thanh toán" CssClass="button" runat="server" />
+                        <asp:Button Text="Tiến hành thanh toán" CssClass="button" runat="server" ID="btnTienHanhThanhToan" OnClick="btnTienHanhThanhToan_Click" />
                     </div>
                 </div>
             </asp:Panel>

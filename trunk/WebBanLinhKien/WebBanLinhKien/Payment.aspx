@@ -101,7 +101,8 @@
             </asp:Panel>
 
             <asp:Panel runat="server" ID="pnTrangThai" Visible="False">
-                <asp:Label Text="" ID="lblTrangThai" runat="server" />
+                <br />
+                <h1 style="text-align:center;"><asp:Label Text="" ID="lblTrangThai" runat="server" /></h1> 
             </asp:Panel>
         </div>
 

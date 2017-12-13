@@ -22,15 +22,6 @@ namespace WebBanLinhKien {
         protected global::System.Web.UI.WebControls.Panel pnControl;
         
         /// <summary>
-        /// ddlSapXep control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSapXep;
-        
-        /// <summary>
         /// btnViewList control.
         /// </summary>
         /// <remarks>

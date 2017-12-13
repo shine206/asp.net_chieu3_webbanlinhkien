@@ -26,7 +26,7 @@
                     </div>
                     <asp:Panel runat="server" ID="pnControl">
                         <div class="toolsCollection clearfix">
-                            <div class="boxSelect">
+                            <%--<div class="boxSelect">
                                 <label for="">Sắp xếp</label>
                                 <span class="boxSelectDown"><i class="fa fa-angle-down"></i></span>
                                 <asp:DropDownList runat="server" ID="ddlSapXep">
@@ -38,16 +38,7 @@
                                     <asp:ListItem Text="Hàng mới nhất" Value="created-desc" />
                                     <asp:ListItem Text="Hàng cũ nhất" Value="created-asc" />
                                 </asp:DropDownList>
-                                <%--<select name="sortBy" id="sortBy">
-                                    <option value="default" selected="selected">Mặc định</option>
-                                    <option value="alpha-asc">A → Z</option>
-                                    <option value="alpha-desc">Z → A</option>
-                                    <option value="price-asc">Giá tăng dần</option>
-                                    <option value="price-desc">Giá giảm dần</option>
-                                    <option value="created-desc">Hàng mới nhất</option>
-                                    <option value="created-asc">Hàng cũ nhất</option>
-                                </select>--%>
-                            </div>
+                            </div>--%>
 
                             <asp:LinkButton ID="btnViewList" runat="server" CssClass="switchView viewCollection" OnClick="btnViewList_Click" data-view="list" data-toggle="tooltip" title="" data-original-title="Xem dạng danh sách"><i class="fa fa-th-list"></i></asp:LinkButton>
                             <asp:LinkButton ID="btnViewGird" runat="server" CssClass="switchView active viewCollection" OnClick="btnViewGrid_Click" data-view="grid" data-toggle="tooltip" title="" data-original-title="Xem dạng lưới"><i class="fa fa-th"></i></asp:LinkButton>
@@ -73,67 +64,6 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-md-pull-9 col-lg-pull-9">
                     <div class="filter-container">
-                        <div class="filtersTool filterCheckbox">
-                            <h2 class="titleDecoration"><span class="line"></span>
-                                <span class="title">Lọc theo thương hiệu</span>
-                            </h2>
-                            <div class="filterToolGroup">
-                                <ul class="list-unstyled clearfix">
-                                    <li class="checkbox clearfix">
-                                        <input type="checkbox" id="filter-elextrolux" data-group="Hãng" data-field="vendor" data-text="Elextrolux" value="(Elextrolux)" data-operator="OR">
-                                        <label for="filter-elextrolux"><i class="fa fa-check"></i>Elextrolux</label>
-                                        <span>Elextrolux</span>
-                                    </li>
-                                    <li class="checkbox clearfix">
-                                        <input type="checkbox" id="filter-hitachi" data-group="Hãng" data-field="vendor" data-text="Hitachi" value="(Hitachi)" data-operator="OR">
-                                        <label for="filter-hitachi"><i class="fa fa-check"></i>Hitachi</label>
-                                        <span>Hitachi</span>
-                                    </li>
-                                    <li class="checkbox clearfix">
-                                        <input type="checkbox" id="filter-lg" data-group="Hãng" data-field="vendor" data-text="LG" value="(LG)" data-operator="OR">
-                                        <label for="filter-lg"><i class="fa fa-check"></i>LG</label>
-                                        <span>LG</span>
-                                    </li>
-                                    <li class="checkbox clearfix">
-                                        <input type="checkbox" id="filter-midea" data-group="Hãng" data-field="vendor" data-text="Midea" value="(Midea)" data-operator="OR">
-                                        <label for="filter-midea"><i class="fa fa-check"></i>Midea</label>
-                                        <span>Midea</span>
-                                    </li>
-                                    <li class="checkbox clearfix">
-                                        <input type="checkbox" id="filter-panasonic" data-group="Hãng" data-field="vendor" data-text="Panasonic" value="(Panasonic)" data-operator="OR">
-                                        <label for="filter-panasonic"><i class="fa fa-check"></i>Panasonic</label>
-                                        <span>Panasonic</span>
-                                    </li>
-                                    <li class="checkbox clearfix">
-                                        <input type="checkbox" id="filter-samsung" data-group="Hãng" data-field="vendor" data-text="Samsung" value="(Samsung)" data-operator="OR">
-                                        <label for="filter-samsung"><i class="fa fa-check"></i>Samsung</label>
-                                        <span>Samsung</span>
-                                    </li>
-                                    <li class="checkbox clearfix">
-                                        <input type="checkbox" id="filter-sanaky" data-group="Hãng" data-field="vendor" data-text="Sanaky" value="(Sanaky)" data-operator="OR">
-                                        <label for="filter-sanaky"><i class="fa fa-check"></i>Sanaky</label>
-                                        <span>Sanaky</span>
-                                    </li>
-                                    <li class="checkbox clearfix">
-                                        <input type="checkbox" id="filter-sharp" data-group="Hãng" data-field="vendor" data-text="Sharp" value="(Sharp)" data-operator="OR">
-                                        <label for="filter-sharp"><i class="fa fa-check"></i>Sharp</label>
-                                        <span>Sharp</span>
-                                    </li>
-                                    <li class="checkbox clearfix">
-                                        <input type="checkbox" id="filter-sunhouse" data-group="Hãng" data-field="vendor" data-text="Sunhouse" value="(Sunhouse)" data-operator="OR">
-                                        <label for="filter-sunhouse"><i class="fa fa-check"></i>Sunhouse</label>
-                                        <span>Sunhouse</span>
-                                    </li>
-                                    <li class="checkbox clearfix">
-                                        <input type="checkbox" id="filter-toshiba" data-group="Hãng" data-field="vendor" data-text="Toshiba" value="(Toshiba)" data-operator="OR">
-                                        <label for="filter-toshiba"><i class="fa fa-check"></i>Toshiba</label>
-                                        <span>Toshiba</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- End FilterCheckbox -->
-
                         <div class="filtersTool filterRange">
                             <h2 class="titleDecoration">
                                 <span class="line"></span>

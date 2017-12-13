@@ -14,7 +14,6 @@ namespace WebBanLinhKien
     public partial class Home : System.Web.UI.Page
     {
         private DataTable dtModalProducts;
-        private int indexModalProduct = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
 

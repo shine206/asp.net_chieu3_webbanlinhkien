@@ -15,17 +15,6 @@
                     </div>
                     <div class="panel-body">
                         <asp:PlaceHolder runat="server" ID="tableContent" />
-                        <%--<div class="row">
-                            <div class="col-md-6 pull-left">
-                                <ul class="pagination pull-left" style="margin:0;">
-                                    <li><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li><a href="#">5</a></li>
-                                </ul>
-                            </div>
-                        </div>--%>
                     </div>
                 </div>
 

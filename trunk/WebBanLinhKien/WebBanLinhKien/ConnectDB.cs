@@ -848,17 +848,65 @@ namespace WebBanLinhKien
                 connect();
                 SqlCommand cmd = new SqlCommand("addNewOrder", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id_order", id_order);
                 cmd.Parameters.AddWithValue("@id_product", id_product);
                 cmd.Parameters.AddWithValue("@id_user", id_user);
                 cmd.Parameters.AddWithValue("@quantity", quantity);
                 cmd.Parameters.AddWithValue("@price", price);
                 cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
                 cmd.Parameters.AddWithValue("@updated_at", DateTime.Now);
+                Console.Write(cmd);
                 if (cmd.ExecuteNonQuery() == 1)
                     result = true;
             }
             finally
             {
+                disconnect();
+            }
+            return result;
+        }
+
+
+        /// <summary>
+        /// Lấy tất cả các đơn hàng
+        /// </summary>
+        /// <returns></returns>
+        public DataTable getAllOrders()
+        {
+            DataTable result = new DataTable();
+            try
+            {
+                connect();
+                SqlCommand cmd = new SqlCommand("getAllOrders", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataReader rd = cmd.ExecuteReader();
+                result.Load(rd);
+            }
+            finally
+            {
+                result.Dispose();
+                disconnect();
+            }
+            return result;
+        }
+
+
+        public DataTable getOrderDetailByIdOrder(int id_order, int top = 1)
+        {
+            DataTable result = new DataTable();
+            try
+            {
+                connect();
+                SqlCommand cmd = new SqlCommand("getOrderDetailByIdOrder", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id_order", id_order);
+                cmd.Parameters.AddWithValue("@top", top);
+                SqlDataReader rd = cmd.ExecuteReader();
+                result.Load(rd);
+            }
+            finally
+            {
+                result.Dispose();
                 disconnect();
             }
             return result;

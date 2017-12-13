@@ -7,72 +7,54 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebBanLinhKien {
+namespace WebBanLinhKien.Admin {
     
     
-    public partial class Cart {
+    public partial class Orders {
         
         /// <summary>
-        /// pnTableCart control.
+        /// lblCountOrder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnTableCart;
+        protected global::System.Web.UI.WebControls.Label lblCountOrder;
         
         /// <summary>
-        /// rptCart control.
+        /// rptOrders control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptCart;
+        protected global::System.Web.UI.WebControls.Repeater rptOrders;
         
         /// <summary>
-        /// btnContinue control.
+        /// pnDetail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnContinue;
+        protected global::System.Web.UI.WebControls.Panel pnDetail;
         
         /// <summary>
-        /// btnUpdate control.
+        /// lblDetailOrder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUpdate;
+        protected global::System.Web.UI.WebControls.Label lblDetailOrder;
         
         /// <summary>
-        /// lblSum control.
+        /// rptDetail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSum;
-        
-        /// <summary>
-        /// btnTienHanhThanhToan control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnTienHanhThanhToan;
-        
-        /// <summary>
-        /// pnNoItem control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnNoItem;
+        protected global::System.Web.UI.WebControls.Repeater rptDetail;
     }
 }

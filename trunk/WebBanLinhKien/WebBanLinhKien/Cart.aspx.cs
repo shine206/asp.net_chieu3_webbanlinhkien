@@ -193,8 +193,10 @@ namespace WebBanLinhKien
             return "";
         }
 
-
-
+        protected void btnTienHanhThanhToan_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Payment.aspx");
+        }
 
     }
 }

@@ -85,6 +85,11 @@ CREATE TABLE OrderDetail(
 	id_product INT NOT NULL,
 	quantity INT,
 	current_price FLOAT,
+	fullname_customer nvarchar(50),
+	email_customer varchar(255),
+	phone_customer varchar(15),
+	address_customer ntext,
+	description text,
 	created_at DATETIME NULL DEFAULT NULL,
 	updated_at DATETIME NULL DEFAULT NULL
 )
@@ -599,12 +604,40 @@ alter procedure addNewOrder
 	@id_user int,
 	@quantity int,
 	@price float,
+	@fullname nvarchar(50),
+	@email varchar(255),
+	@address ntext,
+	@phone varchar(15),
+	@description text,
 	@updated_at datetime,
 	@created_at datetime
 as
 begin
-	insert into OrderDetail(id_product,quantity,current_price, created_at, updated_at) values(@id_product, @quantity, @price, @created_at, @updated_at);
+	if (@id_user = -1)
+		insert into OrderDetail(id_product,quantity,current_price, created_at, updated_at) values(@id_product, @quantity, @price, @created_at, @updated_at);
+	else
+		insert into OrderDetail(id_product,quantity,current_price, created_at, updated_at) values(@id_product, @quantity, @price, @created_at, @updated_at);
 	insert into Orders(id_order, id_order_detail, id_user, created_at, updated_at) values(@id_order, (select MAX(OrderDetail.id_order_detail) from OrderDetail),@id_user, @created_at, @updated_at);
 end
+-- get all orders
+go
+create procedure getAllOrders
+as
+begin
+	select id_order, count(1) as count_order from Orders group by id_order
+end
 
-select * from Orders
+-- getOrderDetailByIdOrder 
+go
+create procedure getOrderDetailByIdOrder
+	@id_order int,
+	@top int
+as
+begin
+	if (@top=1)
+		select top 1 * from OrderDetail, Orders where OrderDetail.id_order_detail = Orders.id_order_detail and Orders.id_order=@id_order;
+	else
+		select Orders.*, OrderDetail.*, Products.name 
+		from OrderDetail, Orders, Products 
+		where OrderDetail.id_order_detail = Orders.id_order_detail and Products.id_product=OrderDetail.id_product and Orders.id_order=@id_order;
+end

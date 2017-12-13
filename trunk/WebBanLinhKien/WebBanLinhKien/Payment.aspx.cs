@@ -52,21 +52,20 @@ namespace WebBanLinhKien
              DataTable cart = new DataTable();
              cart = Session["cart"] as DataTable;
              int id_user = Convert.ToInt32(Request.Cookies["User_Login"].Values["ID"]);
-             int sum = 0;
              int id_order = (new Random()).Next(1111, 9999);
              foreach (DataRow row in cart.Rows)
              {
                  int id_product = Convert.ToInt32(row["ID"]);
                  int quantity = Convert.ToInt32(row["Quantity"]);
                  int price = Convert.ToInt32(row["Price"]);
-                 bool isSuccess = (new ConnectDB()).addNewOrder(id_order, id_product, id_user, quantity, price);
-                 if (isSuccess)
-                 {
-                     pnTrangThai.Visible = true;
-                     pnThanhToan.Visible = false;
-                     lblTrangThai.Text = "OK";
-                 }
+                 (new ConnectDB()).addNewOrder(id_order, id_product, id_user, quantity, price);
+                 //Response.Write(isSuccess.ToString());
              }
+             pnTrangThai.Visible = true;
+             pnThanhToan.Visible = false;
+             lblTrangThai.Text = "Đơn hàng của bạn sẽ được vận chuyển từ 1-3 ngày (tùy khối lượng). Click vào <a href='Home.aspx'>đây</a> để tiếp tục mua hàng.";
+             Session.Clear();
+             Session["cart"] = null;
         }
     }
 }
