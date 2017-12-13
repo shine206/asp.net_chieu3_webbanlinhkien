@@ -33,7 +33,7 @@
                                     <asp:TextBox runat="server" ID="txtHoTen" CssClass="form-control" />
                                 </div>
                                 <div class="col-sm-2">
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" CssClass="err-message" ControlToValidate="txtHoTen" runat="server" ErrorMessage="Chưa có tên sản phẩm !" Font-Bold="True" SetFocusOnError="True" ForeColor="Red"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" CssClass="err-message" ControlToValidate="txtHoTen" runat="server" ErrorMessage="Bạn chưa nhập tên người nhận !" Font-Bold="True" SetFocusOnError="True" ForeColor="Red"></asp:RequiredFieldValidator>
                                 </div>
                             </div>
 
@@ -43,7 +43,7 @@
                                     <asp:TextBox runat="server" ID="txtDiaChi" CssClass="form-control" />
                                 </div>
                                 <div class="col-sm-2">
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" CssClass="err-message" ControlToValidate="txtDiaChi" runat="server" ErrorMessage="Chưa có giá sản phẩm !" Font-Bold="True" SetFocusOnError="True" ForeColor="Red"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" CssClass="err-message" ControlToValidate="txtDiaChi" runat="server" ErrorMessage="Phải nhập địa chỉ người nhận !" Font-Bold="True" SetFocusOnError="True" ForeColor="Red"></asp:RequiredFieldValidator>
                                 </div>
                             </div>
 
@@ -53,7 +53,7 @@
                                     <asp:TextBox runat="server" ID="txtSoDienThoai" CssClass="form-control" TextMode="Number" />
                                 </div>
                                 <div class="col-sm-2">
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" CssClass="err-message" ControlToValidate="txtSoDienThoai" runat="server" ErrorMessage="Chưa có giá sản phẩm !" Font-Bold="True" SetFocusOnError="True" ForeColor="Red"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" CssClass="err-message" ControlToValidate="txtSoDienThoai" runat="server" ErrorMessage="Phải nhập số điện thoại người nhận !" Font-Bold="True" SetFocusOnError="True" ForeColor="Red"></asp:RequiredFieldValidator>
                                 </div>
                             </div>
                             <div class="form-group clearfix">
