@@ -7,7 +7,12 @@
                 <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 ">
                     <div class="formAccountPage" id="loginForm">
                         <h2 class="titleDecoration AccountPageTitle"><span class="line"></span><span class="title fz18"><i class="fa fa-lock"></i>&nbsp; Đăng nhập</span></h2>
-                        <asp:Label ID="lblMessage" Text="" runat="server"></asp:Label>
+                        <%--<asp:Label ID="lblMessage" Text="" runat="server"></asp:Label>--%>
+                        <asp:Panel runat="server" ID="pnError" Visible="False">
+                                    <div class="alert alert-danger">
+                                      <strong>Lỗi! </strong> <asp:Label Text="" ID="lblErrorMessage" runat="server" />
+                                    </div>
+                                </asp:Panel>
                         <form accept-charset="UTF-8" action="#" id="customer_login" method="post">
                             <input name="FormType" type="hidden" value="customer_login">
                             <input name="utf8" type="hidden" value="true">

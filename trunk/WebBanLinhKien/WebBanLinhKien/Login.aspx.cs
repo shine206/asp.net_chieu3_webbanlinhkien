@@ -50,8 +50,8 @@ namespace WebBanLinhKien
                     Response.Redirect(Request.UrlReferrer.ToString());     
                 }
                 else {
-                    lblMessage.ForeColor = Color.Red;
-                    lblMessage.Text = "Đăng nhập không thành công!!!";
+                    pnError.Visible = true;
+                    lblErrorMessage.Text = "Đăng nhập thất bại !!!";
                     username.Text = "";
                     passLogin.Text = "";
                     username.Focus();
