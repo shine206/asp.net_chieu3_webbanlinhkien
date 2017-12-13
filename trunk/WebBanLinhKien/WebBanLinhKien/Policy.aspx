@@ -1,6 +1,19 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Policy.aspx.cs" MasterPageFile="~/Site.Master" Inherits="WebBanLinhKien.Policy" %>
 
 <asp:Content ContentPlaceHolderID="ProductContent" ID="policyContent" runat="server">
+    <div class="breadcrumb">
+        <div class="container">
+            <ol class="list-unstyled list-inline">
+                <li>
+                    <a href="Home.aspx" itemprop="item"><i class="fa fa-home"></i> <span>Trang chủ</span></a>
+                </li>
+                <li><span class="divide"><i class="fa fa-angle-right"></i></span></li>
+                <li>
+                    <span class="current" itemprop="item"><b>Chính sách</b></span>
+                </li>
+            </ol>
+        </div>
+    </div><!-- End Breadcrumb -->
     <section class="blogPage">
         <div class="container">
             <div class="row">

@@ -15,7 +15,7 @@
         <div class="container">
             <ol class="list-unstyled list-inline">
                 <li>
-                    <a href="index.html" itemprop="item"><i class="fa fa-home"></i><span>Trang chủ</span></a>
+                    <a href="Home.aspx" itemprop="item"><i class="fa fa-home"></i><span>Trang chủ</span></a>
                 </li>
                 <li><span class="divide"><i class="fa fa-angle-right"></i></span></li>
                 <li>
