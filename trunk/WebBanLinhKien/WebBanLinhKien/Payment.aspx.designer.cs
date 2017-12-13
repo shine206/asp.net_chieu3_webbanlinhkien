@@ -13,6 +13,15 @@ namespace WebBanLinhKien {
     public partial class Payment {
         
         /// <summary>
+        /// pnThanhToan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnThanhToan;
+        
+        /// <summary>
         /// pnTitle control.
         /// </summary>
         /// <remarks>
@@ -119,5 +128,41 @@ namespace WebBanLinhKien {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtGhiChu;
+        
+        /// <summary>
+        /// btnThanhToan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnThanhToan;
+        
+        /// <summary>
+        /// rptSanPham control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptSanPham;
+        
+        /// <summary>
+        /// pnTrangThai control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnTrangThai;
+        
+        /// <summary>
+        /// lblTrangThai control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTrangThai;
     }
 }

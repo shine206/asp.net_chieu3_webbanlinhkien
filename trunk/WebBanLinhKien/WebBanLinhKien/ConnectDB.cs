@@ -27,6 +27,7 @@ namespace WebBanLinhKien
         ///     getProductById
         ///     getAllPromotionProducts
         ///     getCategoryById
+        ///     getInfoUserById
         /// POST:
         ///     addNewProduct
         ///     addNewCategory
@@ -795,6 +796,63 @@ namespace WebBanLinhKien
                 cmd.Parameters.AddWithValue("@id_category", id_category);
                 cmd.Parameters.AddWithValue("@id_group", id_group);
                 cmd.Parameters.AddWithValue("@name", name);
+                cmd.Parameters.AddWithValue("@updated_at", DateTime.Now);
+                if (cmd.ExecuteNonQuery() == 1)
+                    result = true;
+            }
+            finally
+            {
+                disconnect();
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Lấy thông tin khách hàng từ ID
+        /// </summary>
+        /// <param name="id">id khách hàng</param>
+        /// <returns></returns>
+        public DataTable getInfoUserById(int id)
+        {
+            DataTable result = new DataTable();
+            try
+            {
+                connect();
+                SqlCommand cmd = new SqlCommand("getInfoUserById", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id", id);
+                SqlDataReader rd = cmd.ExecuteReader();
+                result.Load(rd);
+            }
+            finally
+            {
+                result.Dispose();
+                disconnect();
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Thêm đơn đặt hàng vào db
+        /// </summary>
+        /// <param name="id_product"></param>
+        /// <param name="id_user"></param>
+        /// <param name="quantity"></param>
+        /// <param name="price"></param>
+        /// <returns></returns>
+        public bool addNewOrder(int id_order, int id_product, int id_user, int quantity, int price)
+        {
+            bool result = false;
+            try
+            {
+                connect();
+                SqlCommand cmd = new SqlCommand("addNewOrder", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id_product", id_product);
+                cmd.Parameters.AddWithValue("@id_user", id_user);
+                cmd.Parameters.AddWithValue("@quantity", quantity);
+                cmd.Parameters.AddWithValue("@price", price);
+                cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
                 cmd.Parameters.AddWithValue("@updated_at", DateTime.Now);
                 if (cmd.ExecuteNonQuery() == 1)
                     result = true;

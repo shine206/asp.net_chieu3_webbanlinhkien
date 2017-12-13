@@ -73,8 +73,6 @@ namespace WebBanLinhKien
                     {
                         if (row["ID"].ToString() == id)
                         {
-
-
                             int quantity = Convert.ToInt32(row["Quantity"]) + nQ;
                             row["Quantity"] = quantity;
                             row["Total"] = quantity * Convert.ToInt32(row["Price"]);

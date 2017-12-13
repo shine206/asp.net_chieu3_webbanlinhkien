@@ -44,6 +44,7 @@ namespace WebBanLinhKien
                 {  
                     HttpCookie cookie = new HttpCookie("User_Login");
                     cookie["Username"] = txtName;
+                    cookie["ID"] = dt.Rows[0]["id_user"].ToString();
                     cookie.Expires = DateTime.Now.AddDays(1);
                     Response.Cookies.Add(cookie);
                     Response.Redirect("Home.aspx");

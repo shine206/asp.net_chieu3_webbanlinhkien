@@ -581,3 +581,30 @@ as
 begin
 	update Category set id_group_category=@id_group, name=@name, updated_at=@updated_at where id_category=@id_category
 end
+
+-- get info user
+go
+create procedure getInfoUserById
+	@id int
+as
+begin
+	select * from Users where id_user=@id
+end
+
+-- add new orderdetail
+go
+alter procedure addNewOrder
+	@id_order int,
+	@id_product int,
+	@id_user int,
+	@quantity int,
+	@price float,
+	@updated_at datetime,
+	@created_at datetime
+as
+begin
+	insert into OrderDetail(id_product,quantity,current_price, created_at, updated_at) values(@id_product, @quantity, @price, @created_at, @updated_at);
+	insert into Orders(id_order, id_order_detail, id_user, created_at, updated_at) values(@id_order, (select MAX(OrderDetail.id_order_detail) from OrderDetail),@id_user, @created_at, @updated_at);
+end
+
+select * from Orders
