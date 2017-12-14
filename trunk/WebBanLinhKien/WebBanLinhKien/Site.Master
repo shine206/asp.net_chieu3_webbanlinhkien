@@ -319,4 +319,5 @@
 <script src="Content/js/detail.js" type="text/javascript"></script>
 <script src="Content/js/product.js" type="text/javascript"></script>
 <script src="Content/js/item_3.js" type="text/javascript"></script>
+<script src="Content/js/search.js" type="text/javascript"></script>
 </html>

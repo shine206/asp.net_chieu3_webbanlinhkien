@@ -86,6 +86,11 @@ namespace WebBanLinhKien
                 html.Append("<li><a href='Login.aspx'>Đăng nhập</a></li>");
             }
              userContent.Controls.Add(new Literal { Text = html.ToString() });
+
+            if (!IsPostBack)
+            {
+                txtQuery.Attributes.Add("onkeypress", "return clickButton(event,'" + btnSearch.ClientID + "')");
+            }
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
