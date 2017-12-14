@@ -195,6 +195,7 @@ namespace WebBanLinhKien
                         }
                     }
                     string id_product = row["id_product"].ToString();
+
                     if (view == "1")
                     {
                         html.Append("<div class='coDownProduct'><div class='productGrid'><div class='countDown' data-end='kmdn_ngay1_thang12_nam2017'>208D : 12H : 38M : 10S</div><div class='productImg'>");
@@ -204,7 +205,7 @@ namespace WebBanLinhKien
                         html.Append("<span data-toggle='modal' data-target='ProductDetail.aspx?id=" + id_product + "'><a href='ProductDetail.aspx?id=" + id_product + "' class='button quickview-btn' data-toggle='tooltip' data-placement='top' title='' data-countdown='null' data-alias='may-giat-panasonic-10-kg-na-f100a1wrv' data-original-title='Xem nhanh'><i class='fa fa-search'></i></a></span>");
                         html.Append("<a href='#' class='button skype' data-toggle='tooltip' data-placement='top' title='' data-original-title='Tư vấn qua Skype'><i class='fa fa-skype'></i></a>");
                         html.Append("</div></div><h3><a href='ProductDetail.aspx?id=" + id_product + "' title='" + row["name"] + "'>" + row["name"] + "</a></h3>");
-                        html.Append("<div class='productPrice'><del>7.990.000₫</del><span>&nbsp;&nbsp;" + tien + "</span></div></div></div>");
+                        html.Append("<div class='productPrice'><span>" + tien + "</span></div></div></div>");
                     }
                     else
                     {
@@ -217,7 +218,7 @@ namespace WebBanLinhKien
                         html.Append("<div class='productListDesc'>" + row["description"] + "</div>");
                         html.Append("<div class='formQuickAddToCart productListForm'>");
                         html.Append("<input type='hidden' name='variantId' value='9363959'>");
-                        html.Append("<button class='button buttonProductList quickAddToCart' data-toggle='tooltip' title='' data-original-title='Cho vào giỏ hàng'><i class='fa fa-shopping-cart'></i> Cho vào giỏ hàng</button>");
+                        html.Append("<a href='Cart.aspx?action=add&id=" + id_product + "' class='button buttonProductList quickAddToCart' data-toggle='tooltip' title='' data-original-title='Cho vào giỏ hàng'><i class='fa fa-shopping-cart'></i> Cho vào giỏ hàng</button>");
                         html.Append("<a href='#' class='button skype' data-toggle='tooltip' title='' data-original-title='Chat qua Skype'><i class='fa fa-skype'></i></a></div></div></div></div>");
                     }
                 }
