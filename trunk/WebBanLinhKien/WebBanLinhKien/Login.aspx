@@ -12,7 +12,7 @@
                                     <div class="alert alert-danger">
                                       <strong>Lỗi! </strong> <asp:Label Text="" ID="lblErrorMessage" runat="server" />
                                     </div>
-                                </asp:Panel>
+                        </asp:Panel>
                         <form accept-charset="UTF-8" action="#" id="customer_login" method="post">
                             <input name="FormType" type="hidden" value="customer_login">
                             <input name="utf8" type="hidden" value="true">
@@ -38,7 +38,7 @@
                                 <%--<input type="password" id="passLogin" name="password" required="" class="input-control">--%>
                             </div>
                             <div class="group clearfix mt-10">
-                                <a href="#recover" class="left">Quên mật khẩu?</a>
+                                <a href="Forgot.aspx" class="left">Quên mật khẩu?</a>
                                 <a href="Register.aspx" class="right">Đăng ký tài khoản</a>
                             </div>
                             <asp:Button Text="Đăng nhập" CssClass="button" ID="btnDangNhap" OnClick="btnDangNhap_Click" runat="server" />
