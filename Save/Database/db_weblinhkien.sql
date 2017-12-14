@@ -613,18 +613,17 @@ alter procedure addNewOrder
 	@created_at datetime
 as
 begin
+	-- status: 1-chua giao hang, 2-da nhan hang
 	insert into OrderDetail(id_product,quantity,current_price, fullname_customer, email_customer, phone_customer, address_customer, description, created_at, updated_at) 
 			values(@id_product, @quantity, @price, @fullname, @email, @phone, @address, @description, @created_at, @updated_at);
-	insert into Orders(id_order, id_order_detail, id_user, created_at, updated_at) values(@id_order, (select MAX(OrderDetail.id_order_detail) from OrderDetail),@id_user, @created_at, @updated_at);
+	insert into Orders(id_order, id_order_detail, id_user, status, created_at, updated_at) values(@id_order, (select MAX(OrderDetail.id_order_detail) from OrderDetail),@id_user, 1, @created_at, @updated_at);
 end
-
-
 -- get all orders
 go
-create procedure getAllOrders
+alter procedure getAllOrders
 as
 begin
-	select id_order, count(1) as count_order from Orders group by id_order
+	select id_order, count(1) as count_order, status from Orders group by id_order, status
 end
 
 -- getOrderDetailByIdOrder 
@@ -640,4 +639,23 @@ begin
 		select Orders.*, OrderDetail.*, Products.name 
 		from OrderDetail, Orders, Products 
 		where OrderDetail.id_order_detail = Orders.id_order_detail and Products.id_product=OrderDetail.id_product and Orders.id_order=@id_order;
+end
+
+-- confirm Order
+go
+alter procedure confirmOrder
+	@id_order int,
+	@updated_at datetime
+as
+begin
+	update Orders set status=2, updated_at=@updated_at where id_order=@id_order
+end
+
+-- delete order
+go
+create procedure deleteOrder
+	@id_order int
+as
+begin
+	delete from Orders where id_order=@id_order
 end

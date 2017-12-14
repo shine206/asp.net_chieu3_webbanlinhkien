@@ -32,7 +32,7 @@
                                             <td><%# Eval("count_order") %></td>
                                             <td>
                                                 <a href="Orders.aspx?action=delete&id=<%# Eval("id_order") %>" style="margin: 0 5px;" class="btn btn-danger">Xóa</a>
-                                                <a href="Orders.aspx?action=confirm&id=<%# Eval("id_order") %>" style="margin: 0 5px;" class="btn btn-success">Duyệt</a>
+                                                <a href="Orders.aspx?action=confirm&id=<%# Eval("id_order") %>" style="margin: 0 5px;" class="btn btn-success <%# (Eval("status").ToString() == "2") ? "disabled" : "" %>">Duyệt</a>
                                                 <a href="Orders.aspx?action=detail&id=<%# Eval("id_order") %>" style="margin: 0 5px;" class="btn btn-primary">Chi tiết</a>
                                             </td>
                                         </tr>

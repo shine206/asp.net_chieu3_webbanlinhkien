@@ -840,7 +840,7 @@ namespace WebBanLinhKien
         /// <param name="quantity"></param>
         /// <param name="price"></param>
         /// <returns></returns>
-        public bool addNewOrder(int id_order, int id_product, int id_user, int quantity, int price)
+        public bool addNewOrder(int id_order, int id_product, int id_user, int quantity, int price, string fullname = "", string email = "", string address = "", string phone = "", string description = "")
         {
             bool result = false;
             try
@@ -853,6 +853,11 @@ namespace WebBanLinhKien
                 cmd.Parameters.AddWithValue("@id_user", id_user);
                 cmd.Parameters.AddWithValue("@quantity", quantity);
                 cmd.Parameters.AddWithValue("@price", price);
+                cmd.Parameters.AddWithValue("@fullname", fullname);
+                cmd.Parameters.AddWithValue("@email", email);
+                cmd.Parameters.AddWithValue("@address", address);
+                cmd.Parameters.AddWithValue("@phone", phone);
+                cmd.Parameters.AddWithValue("@description", description);
                 cmd.Parameters.AddWithValue("@created_at", DateTime.Now);
                 cmd.Parameters.AddWithValue("@updated_at", DateTime.Now);
                 Console.Write(cmd);
@@ -907,6 +912,47 @@ namespace WebBanLinhKien
             finally
             {
                 result.Dispose();
+                disconnect();
+            }
+            return result;
+        }
+
+        public bool confirmOrder(int id_order)
+        {
+            bool result = false;
+            try
+            {
+                connect();
+                SqlCommand cmd = new SqlCommand("confirmOrder", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id_order", id_order);
+                cmd.Parameters.AddWithValue("@updated_at", DateTime.Now);
+                Console.Write(cmd);
+                if (cmd.ExecuteNonQuery() == 1)
+                    result = true;
+            }
+            finally
+            {
+                disconnect();
+            }
+            return result;
+        }
+
+        public bool deleteOrder(int id_order)
+        {
+            bool result = false;
+            try
+            {
+                connect();
+                SqlCommand cmd = new SqlCommand("deleteOrder", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id_order", id_order);
+                Console.Write(cmd);
+                if (cmd.ExecuteNonQuery() == 1)
+                    result = true;
+            }
+            finally
+            {
                 disconnect();
             }
             return result;

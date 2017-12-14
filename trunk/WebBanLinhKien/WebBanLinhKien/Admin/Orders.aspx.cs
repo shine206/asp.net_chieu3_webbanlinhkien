@@ -22,6 +22,14 @@ namespace WebBanLinhKien.Admin
                     int id_order = Convert.ToInt32(Request.QueryString["id"]);
                     loadOrderDetail(id_order);
                 }
+                else if (action == "confirm")
+                {
+                    (new ConnectDB()).confirmOrder(Convert.ToInt32(Request.QueryString["id"]));
+                }
+                else if (action == "delete")
+                {
+                    (new ConnectDB()).deleteOrder(Convert.ToInt32(Request.QueryString["id"]));
+                }
             }
             loadOrders();
         }
