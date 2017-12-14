@@ -613,12 +613,12 @@ alter procedure addNewOrder
 	@created_at datetime
 as
 begin
-	if (@id_user = -1)
-		insert into OrderDetail(id_product,quantity,current_price, created_at, updated_at) values(@id_product, @quantity, @price, @created_at, @updated_at);
-	else
-		insert into OrderDetail(id_product,quantity,current_price, created_at, updated_at) values(@id_product, @quantity, @price, @created_at, @updated_at);
+	insert into OrderDetail(id_product,quantity,current_price, fullname_customer, email_customer, phone_customer, address_customer, description, created_at, updated_at) 
+			values(@id_product, @quantity, @price, @fullname, @email, @phone, @address, @description, @created_at, @updated_at);
 	insert into Orders(id_order, id_order_detail, id_user, created_at, updated_at) values(@id_order, (select MAX(OrderDetail.id_order_detail) from OrderDetail),@id_user, @created_at, @updated_at);
 end
+
+
 -- get all orders
 go
 create procedure getAllOrders
