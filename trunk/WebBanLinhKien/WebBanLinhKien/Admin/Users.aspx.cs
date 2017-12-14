@@ -57,5 +57,13 @@ namespace WebBanLinhKien.Admin
 
             tableContent.Controls.Add(new Literal { Text = html.ToString() });
         }
+
+        protected void btnCapNhapThanhVien_Click(object sender, EventArgs e)
+        {
+            ConnectDB db = new ConnectDB();
+            int id_admin_user = Convert.ToInt32(Request.QueryString["id"]);
+           
+            
+        }
     }
 }
