@@ -1,0 +1,322 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="WebBanLinhKien.SiteMaster" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <title><%: Page.Title %>- My ASP.NET Application</title>
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <link href="Content/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="Content/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="Content/css/owl.theme.default.min.css" rel="stylesheet" type="text/css" />
+    <link href="Content/css/owl.carousel.min.css" rel="stylesheet" type="text/css" />
+    <link href="Content/css/index.css" rel="stylesheet" type="text/css" />
+    <link href="Content/css/item.css" rel="stylesheet" type="text/css" />
+    <link href="Content/css/item_2.css" rel="stylesheet" type="text/css" />
+    <link href="Content/css/product.css" rel="stylesheet" type="text/css" />
+    <link href="Content/css/item_3.css" rel="stylesheet" type="text/css" />
+    <link href="Content/css/item_4.css" rel="stylesheet" type="text/css" />
+    <link href="Content/css/login.css" rel="stylesheet" type="text/css" />
+    <link href="Content/css/cart.css" rel="stylesheet" type="text/css" />
+    <link href="Content/css/contact.css" rel="stylesheet" type="text/css" />
+    <link href="Content/css/policy.css" rel="stylesheet" type="text/css" />
+    <link href="Content/css/detail.css" rel="stylesheet" type="text/css" />
+    <%--<webopt:BundleReference runat="server" Path="~/Content/css" />--%>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+</head>
+<body>
+
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <%--<asp:ScriptReference Name="jquery.ui.combined" />--%>
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+
+        <nav class="offset-menu offset-menu-left">
+            <div class="offset-menu-wrapper">
+                <ul class="list-unstyled mobile-menu">
+                    <li><a href="Home.aspx">Trang chủ</a></li>
+                    <li class="has-sub">
+                        <a href="#">Sản phẩm</a><em data-target="#sub-menu-product" data-toggle="collapse" class="collapsed"><i class="fa fa-angle-down"></i></em>
+                        <ul class="list-unstyled collapse panel-group" id="sub-menu-product">
+                            <asp:PlaceHolder runat="server" ID="liContent" />
+                        </ul>
+                    </li>
+                    <li><a href="Introdue.aspx">Giới thiệu</a></li>
+                    <li><a href="Contact.aspx">Liên hệ</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- End Offset Menu Left -->
+        <header class="header">
+            <div class="top-header">
+                <div class="container">
+                    <div class="row">
+                        <div class="hidden-xs hidden-sm col-md-4 col-lg-4">
+                            <a href="#" class="welText">Chào bạn, cửa hàng có thể giúp gì cho bạn? </a>
+
+
+                        </div>
+                        <div class="hidden-xs hidden-sm col-md-8 col-lg-8">
+                            <ul class="list-unstyled list-inline pull-right">
+                                <li><a href="Rule.aspx">Điều khoản</a></li>
+                                <li><a href="Policy.aspx">Chính sách</a></li>
+                                <li><a href="Introdue.aspx">Giới thiệu</a></li>
+                                <asp:ContentPlaceHolder ID="userContent" runat="server"></asp:ContentPlaceHolder>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="headerPanelMobile clearfix panel-group" id="headerPanelMobile">
+                    <div class="panel">
+                        <a class="first" id="LeftPush"><i class="fa fa-bars"></i></a>
+                    </div>
+                    <div class="panel">
+                        <a href="#headerPanelMobileListPhone" class="dropDownButton" data-toggle="collapse" data-parent="#headerPanelMobile"><i class="fa fa-phone"></i></a>
+                        <div class="headerPanelMobileDropList dropList collapse" id="headerPanelMobileListPhone">
+                            <a href="tel:0868155456">0868.155.456</a>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <a href="#" class="headerPanelMobileCart">
+                            <i class="fa fa-shopping-cart"></i><span class="cartCount">1</span>
+                        </a>
+                    </div>
+                    <div class="panel">
+                        <a href="#headerPanelMobileListLinks" class="dropDownButton" data-toggle="collapse" data-parent="#headerPanelMobile"><i class="fa fa-ellipsis-v"></i></a>
+                        <div class="headerPanelMobileDropList dropList collapse" id="headerPanelMobileListLinks">
+                            <a href="Policy.aspx">Điều khoản</a>
+                            <a href="Policy.aspx">Chính sách</a>
+                            <a href="Introdue.aspx">Giới thiệu</a>
+                            <a href="Register.aspx">Đăng ký</a>
+                            <a href="Login.aspx">Đăng nhập</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Top Header -->
+            <div class="mid-header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                            <h1 class="logo">
+                                <a href="Home.aspx">
+                                    <span>skymarket</span>
+                                    <img src="Content/images/logo.png" alt="skymarket" class="img-responsive">
+                                </a>
+                            </h1>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <div class="searchForm">
+                                <asp:TextBox ID="txtQuery" CssClass="input-control" runat="server" ToolTip="Tìm kiếm sản phẩm ..."></asp:TextBox>
+                                <%--Framework Scripts--%>
+                                <asp:LinkButton ID="btnSearch" CssClass="button" runat="server" Text="Tìm kiếm" OnClick="btnSearch_Click"><i class="fa fa-search"></i></asp:LinkButton>
+                                <%--<asp:ScriptReference Name="jquery.ui.combined" />--%>
+                            </div>
+                        </div>
+                        <div class="hidden-xs hidden-sm col-md-5 col-lg-5">
+                            <div class="miniCart">
+                                <a href="Cart.aspx" class="linkOver"></a>
+                                <i class="spr ico_cart"></i>
+                                <b>Giỏ hàng</b><br>
+                                <span class="cartCount"><asp:Label Text="0" ID="lblCounter" runat="server" /></span> sản phẩm
+                                <div class="miniCartWrapper">
+                                    <div class="nano-content">
+                                        
+                                        <div class="noItem">
+                                            <asp:PlaceHolder runat="server" ID="CartInfoContent" />
+                                            <%--<div class="clearfix bottomMiniCart">
+                                                <span class="left">Tổng cộng</span>
+                                                <span class="right totalCart" style="float: right;">0₫</span>
+                                            </div>--%>
+                                        </div>
+                                        <%--<div class="noItem" style="">Không có sản phẩm nào trong giỏ hàng của bạn!</div>--%>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hotLine">
+                                <i class="fa fa-volume-control-phone" aria-hidden="true"></i>
+                                <a href="tel:0868155456" class="linkOver"></a>
+                                <b>0868.155.456</b>
+                                <br>
+                                <span>(8:00 - 18:00)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Mid Header -->
+            <div class="bottom-header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 sidebar-menu">
+                            <h3 class="hidden-xs hidden-sm hidden-md cateTitle active"><i class="spr icoBar"></i>Danh mục sản phẩm</h3>
+                            <h3 class="hidden-lg cateTitle dropDownButton collapsed" data-toggle="collapse" data-target="#listCateMobile"><i class="spr icoBar"></i>Danh mục sản phẩm</h3>
+                            <div class="hidden-lg listCateMobile dropList collapse" id="listCateMobile">
+                                <ul class="list-unstyled hasIcon mobile-menu panel-group" id="panel-mobile-menu">
+                                    <asp:PlaceHolder runat="server" ID="mobileMenuContent" />
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="hidden-xs hidden-sm col-md-9 col-lg-9">
+                            <ul class="list-unstyled mainNav list-inline">
+                                <li class="active"><a href="Home.aspx">Trang chủ</a></li>
+                                <li class="hasMega"><a>Sản phẩm</a>
+                                    <div class="megaMenu">
+                                        <asp:PlaceHolder runat="server" ID="megaMenuContent" />
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </li>
+                                <li><a href="Introdue.aspx">Giới thiệu</a></li>
+                                <li><a href="Contact.aspx">Liên hệ</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Bottom Header -->
+        </header>
+
+        <section class="index">
+            <div class="container">
+                <asp:ContentPlaceHolder runat="server" ID="SlideShowContent" />
+
+                <asp:ContentPlaceHolder runat="server" ID="PromotionProductContent" />
+
+                <asp:ContentPlaceHolder runat="server" ID="ADSContent" />
+                <asp:ContentPlaceHolder runat="server" ID="NewsContent" />
+                <asp:ContentPlaceHolder runat="server" ID="ProductContent" />
+                <asp:ContentPlaceHolder runat="server" ID="BrandContent" />
+            </div>
+        </section>
+
+        <div class="newsletter ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                        <h3>Đăng ký nhận mã giảm giá 10% cho tất cả mặt hàng</h3>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="formNewsLetter">
+                            <input name="FormType" type="hidden" value="contact">
+                            <input name="utf8" type="hidden" value="true">
+                            <input type="hidden" name="contact[Name]" value="Đăng ký nhận mã giảm giá 10% cho tất cả mặt hàng">
+                            <input type="hidden" name="contact[Body]" value="Đăng ký nhận mã giảm giá 10% cho tất cả mặt hàng">
+                            <input type="email" name="contact[email]" class="input-control" placeholder="Nhập email của bạn...">
+                            <button><i class="fa fa-envelope" aria-hidden="true"></i></button>
+                            <%--<asp:LinkButton runat="server" ID="btnSendMail" OnClick="btnSendMail_Click"><i class="fa fa-envelope" aria-hidden="true"></i></asp:LinkButton>--%>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Newsletter  -->
+
+        <footer id="footer">
+            <div class="topFooter">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-6">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6">
+                                    <a href="#">
+                                        <img src="Content/images/logo.png" class="img-responsive" alt="skymarket"></a>
+                                    <div class="aboutShop">
+                                        Sky Market là chuỗi siêu thị bán đồ điện máy, đồ gia dụng lấy cảm hứng tại một khu chợ sầm uất nhất Hà Nội là chợ giời.                
+                                    <div class="listSocial">
+                                        <a href="#" class="fb"><i class="fa fa-facebook"></i></a>
+                                        <a href="#" class="tw"><i class="fa fa-twitter"></i></a>
+                                        <a href="#" class="yt"><i class="fa fa-youtube"></i></a>
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="footerContact">
+                                        <h3 class="titleDecoration"><span class="line"></span><span class="title">Thông tin liên hệ</span></h3>
+                                        <ul class="list-unstyled">
+                                            <li class="clearfix">
+                                                <i class="fa fa-map-marker"></i>
+                                                <span>Hồ Chí Minh</span>
+                                            </li>
+                                            <li class="clearfix">
+                                                <i class="fa fa-phone"></i>
+                                                <a href="tel:01677852765">0987494949</a>
+                                            </li>
+                                            <li class="clearfix">
+                                                <i class="fa fa-envelope"></i>
+                                                <a href="#">SDViet@gmail.com</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6">
+                                    <h3 class="titleDecoration"><span class="line"></span><span class="title">Chính sách</span></h3>
+                                    <ul class="list-unstyled linklists">
+                                        <li><a href="#">Chính sách thanh toán</a></li>
+                                        <li><a href="#">Chính sách vận chuyển</a></li>
+                                        <li><a href="#">Chính sách đổi trả</a></li>
+                                        <li><a href="#">Chính sách bảo hành</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                    <h3 class="titleDecoration"><span class="line"></span><span class="title">Điều khoản</span></h3>
+                                    <ul class="list-unstyled linklists">
+                                        <li><a href="#">Điều khoản giao dịch</a></li>
+                                        <li><a href="#">Dịch vụ tiện ích</a></li>
+                                        <li><a href="#">Điều khoản sử dụng</a></li>
+                                        <li><a href="#">Quyền sở hữu trí tuệ</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <div class="container">
+                    © Bản quyền thuộc về Medusa Team | Cung cấp bởi <a href="#">SDViet</a>.
+                <img src="Content/images/payment.png" class="payment hidden-xs hidden-sm" alt="Phương thức thanh toán">
+                </div>
+            </div>
+            <!-- Back Top -->
+            <div id="bttop" class="bttop is-hidden-sm-down">
+                <i class="fa fa-angle-up" aria-hidden="true"></i>
+            </div>
+            <!-- End Back Top -->
+        </footer>
+    </form>
+</body>
+<script src="Content/js/jquery-2.1.4.min.js" type="text/javascript"></script>
+<script src="Content/js/index.js" type="text/javascript"></script>
+<script src="Content/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="Content/js/owl.carousel.min.js" type="text/javascript"></script>
+<script src="Content/js/index.js" type="text/javascript"></script>
+<script src="Content/js/item.js" type="text/javascript"></script>
+<script src="Content/js/detail.js" type="text/javascript"></script>
+<script src="Content/js/product.js" type="text/javascript"></script>
+<script src="Content/js/item_3.js" type="text/javascript"></script>
+</html>
